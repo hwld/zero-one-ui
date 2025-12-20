@@ -8,12 +8,12 @@
     "start": "npx serve@latest out",
     "lint": "next lint",
     "test": "vitest run",
-    "storybook": "storybook dev -p 6006",
-    "storybook:build": "storybook build",
-    "storybook:test": "test-storybook",
-    "storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"npm run storybook:ci:serve\" \"npm run storybook:ci:test\"",
-    "storybook:ci:serve": "npm run storybook:build && npx http-server storybook-static --port 6006 --silent",
-    "storybook:ci:test": "wait-on tcp:127.0.0.1:6006 && npm run storybook:test"
+    "storybook": "__NEXT_PRIVATE_RENDER_WORKER=defined storybook dev -p 6006",
+    "storybook:build": "__NEXT_PRIVATE_RENDER_WORKER=defined storybook build",
+    "storybook:test": "__NEXT_PRIVATE_RENDER_WORKER=defined test-storybook",
+    "storybook:ci": "concurrently -k -s first -n \"SB,TEST\" -c \"magenta,blue\" \"pnpm run storybook:ci:serve\" \"pnpm run storybook:ci:test\"",
+    "storybook:ci:serve": "pnpm run storybook:build && npx http-server storybook-static --port 6006 --silent",
+    "storybook:ci:test": "wait-on tcp:127.0.0.1:6006 && pnpm run storybook:test"
   },
   "dependencies": {
     "@faker-js/faker": "^8.4.1",
