@@ -18,7 +18,7 @@ type _Context = [
 ];
 const _Context = createContext<_Context | undefined>(undefined);
 
-const _usePendingDeleteEvents = () => {
+const usePendingDeleteEventsInternal = () => {
   const ctx = useContext(_Context);
   if (!ctx) {
     throw new Error("DeleteEventProviderが存在しません");
@@ -30,14 +30,14 @@ const _usePendingDeleteEvents = () => {
 export const usePendingDeleteEvents = (): {
   pendingDeleteEventIds: _Context[0];
 } => {
-  const ctx = _usePendingDeleteEvents();
+  const ctx = usePendingDeleteEventsInternal();
   return { pendingDeleteEventIds: ctx[0] };
 };
 
 export const useDeleteEvent = () => {
   const queryClient = useQueryClient();
   const { toast } = useToast();
-  const [_, setPendingDeleteEventIds] = _usePendingDeleteEvents();
+  const [_, setPendingDeleteEventIds] = usePendingDeleteEventsInternal();
 
   const { mutate: deleteEventMutate } = useMutation({
     mutationFn: (id: string) => {
