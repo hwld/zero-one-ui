@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskListContent } from "./task-list-content";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";

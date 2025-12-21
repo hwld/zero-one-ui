@@ -1,7 +1,7 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskCreateInput } from "./task-create-input";
 import { defaultStoryMeta } from "../story-meta";
-import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
+import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { Todo1API, createTaskInputSchema } from "../_backend/api";
 import { HttpResponse, http } from "msw";
 import { initialTasks } from "../_backend/data";

@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTable } from "./task-table";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTableSelectionContext } from "./selection-provider";
@@ -12,7 +12,7 @@ import {
   userEvent,
   waitFor,
   within,
-} from "@storybook/test";
+} from "storybook/test";
 import { SortEntry } from "../../_backend/api";
 import { getNextSortOrder } from "./header";
 import { useState } from "react";

@@ -32,9 +32,6 @@ jobs:
       - name: "run vitest tests"
         run: pnpm run test
 
-      - name: "Run storybook tests"
-        run: pnpm run storybook:ci
-
       - name: "Build"
         run: pnpm run build
 

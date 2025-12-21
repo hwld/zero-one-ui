@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskDetailContentCard } from "./task-detail-content-card";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";
@@ -9,7 +9,7 @@ import {
   userEvent,
   waitFor,
   within,
-} from "@storybook/test";
+} from "storybook/test";
 import { HttpResponse, http } from "msw";
 import {
   Todo2API,
