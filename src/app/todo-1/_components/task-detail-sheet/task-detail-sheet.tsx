@@ -59,7 +59,7 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
               タスクを読み込むことができませんでした。
             </div>
             <button
-              className="rounded bg-neutral-700 px-3 py-2 text-sm text-neutral-100 transition-colors hover:bg-neutral-600"
+              className="rounded-sm bg-neutral-700 px-3 py-2 text-sm text-neutral-100 transition-colors hover:bg-neutral-600"
               onClick={() => {
                 onOpenChange(false);
               }}
@@ -130,15 +130,15 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
               <RadixDialog.Content forceMount asChild>
                 <motion.div
                   ref={ref}
-                  className="fixed bottom-0 right-0 top-0 z-10 w-[450px] max-w-full p-3"
+                  className="fixed top-0 right-0 bottom-0 z-10 w-[450px] max-w-full p-3"
                   tabIndex={undefined}
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                 >
-                  <div className="relative flex h-full w-full flex-col gap-6 overflow-auto rounded-lg border-neutral-300 bg-neutral-100 p-6 text-neutral-700 [&_*]:outline-neutral-900">
+                  <div className="relative flex h-full w-full flex-col gap-6 overflow-auto rounded-lg border-neutral-300 bg-neutral-100 p-6 text-neutral-700 **:outline-neutral-900">
                     <RadixDialog.Close asChild>
                       <button
-                        className="absolute right-3 top-3 rounded p-1 text-neutral-700 transition-colors hover:bg-black/5"
+                        className="absolute top-3 right-3 rounded-sm p-1 text-neutral-700 transition-colors hover:bg-black/5"
                         aria-label="シートを閉じる"
                       >
                         <XIcon />

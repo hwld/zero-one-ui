@@ -22,7 +22,7 @@ export const ViewContent: React.FC<Props> = ({ viewId }) => {
   return (
     <>
       {view && (
-        <div className="grid grid-cols-[auto,1fr] grid-rows-1">
+        <div className="grid grid-cols-[auto_1fr] grid-rows-1">
           <ResizableViewSlicerPanel view={view} />
           <ViewTaskBoardPanel view={view} />
         </div>

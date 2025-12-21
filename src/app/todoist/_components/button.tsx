@@ -8,7 +8,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
   slots: {
-    base: "relative select-none text-nowrap rounded ring-offset-2 transition-all focus-visible:outline-none focus-visible:ring-2 active:scale-95 flex items-center",
+    base: "relative select-none text-nowrap rounded-sm ring-offset-2 transition-all focus-visible:outline-hidden focus-visible:ring-2 active:scale-95 flex items-center",
   },
   variants: {
     size: {

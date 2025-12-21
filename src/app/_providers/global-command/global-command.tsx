@@ -25,16 +25,16 @@ export const GlobalCommand: React.FC<Props> = ({ onClickItem }) => {
     >
       <Command className="flex h-full flex-col" loop>
         <div className="flex flex-col gap-2 px-4 pt-4">
-          <div className="flex h-5 w-fit items-center rounded bg-white/10 px-2 text-xs text-neutral-400">
+          <div className="flex h-5 w-fit items-center rounded-sm bg-white/10 px-2 text-xs text-neutral-400">
             {currentPage}
           </div>
           <Command.Input
             placeholder="Type a page or command..."
-            className="bg-transparent p-1 text-sm placeholder:text-neutral-500 focus-visible:outline-none"
+            className="bg-transparent p-1 text-sm placeholder:text-neutral-500 focus-visible:outline-hidden"
           />
         </div>
 
-        <div className="mt-2 h-[1px] w-full bg-neutral-600" />
+        <div className="mt-2 h-px w-full bg-neutral-600" />
 
         <Command.List className="flex h-full scroll-p-2 flex-col overflow-auto p-2">
           <Command.Empty className="mt-4 w-full text-center text-sm text-neutral-300">
@@ -115,7 +115,7 @@ const PageItem: React.FC<PageItemProps> = ({
 
   return (
     <Command.Item
-      className="h-8 rounded px-2 text-sm transition-colors aria-selected:bg-white/10"
+      className="h-8 rounded-sm px-2 text-sm transition-colors aria-selected:bg-white/10"
       onSelect={handleNavigate}
       keywords={["page"]}
     >
@@ -147,7 +147,7 @@ const CommandItem: React.FC<CommandItemProps> = ({
   return (
     <Command.Item
       keywords={["command"]}
-      className="flex h-8 cursor-pointer items-center gap-2 rounded px-2 text-sm transition-colors aria-selected:bg-white/10"
+      className="flex h-8 cursor-pointer items-center gap-2 rounded-sm px-2 text-sm transition-colors aria-selected:bg-white/10"
       onSelect={async () => {
         await command.action();
         onAfterAction?.();

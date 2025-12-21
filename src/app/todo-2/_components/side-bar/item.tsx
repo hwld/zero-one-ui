@@ -11,7 +11,7 @@ export const SidebarItem: React.FC<{
     <Link
       href={path}
       className={clsx(
-        "flex cursor-pointer items-center gap-1 whitespace-nowrap rounded-md border-zinc-600 p-2 text-sm transition-colors",
+        "flex cursor-pointer items-center gap-1 rounded-md border-zinc-600 p-2 text-sm whitespace-nowrap transition-colors",
         active
           ? "border bg-zinc-700 text-zinc-100 shadow-2xl"
           : "text-zinc-200 hover:bg-white/10",

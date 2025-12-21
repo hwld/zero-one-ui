@@ -109,7 +109,7 @@ export const ViewColumn: React.FC<Props> = ({
         draggable
         onDragStart={handleDragStart}
       >
-        <div className="flex items-center justify-between px-4 pb-2 pt-4">
+        <div className="flex items-center justify-between px-4 pt-4 pb-2">
           <div className="flex items-center gap-2">
             <TaskStatusIcon color={column.status.color} />
             <div className="font-bold">{column.status.name}</div>

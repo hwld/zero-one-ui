@@ -84,7 +84,7 @@ export const Drawer: React.FC<Props> = ({
                   >
                     <motion.div
                       className={clsx(
-                        "fixed bottom-0 top-0 m-2 flex w-[320px] flex-col overflow-hidden rounded-lg border border-neutral-600 bg-neutral-800 text-neutral-200",
+                        "fixed top-0 bottom-0 m-2 flex w-[320px] flex-col overflow-hidden rounded-lg border border-neutral-600 bg-neutral-800 text-neutral-200",
                         positionClass[position],
                       )}
                       initial={animationClass[position].initial}

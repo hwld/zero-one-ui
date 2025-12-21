@@ -20,7 +20,7 @@ export const TaskDeleteConfirmDialog: React.FC<{
     >
       <div>
         タスク`
-        <span className="mx-1 break-all font-bold text-neutral-900">
+        <span className="mx-1 font-bold break-all text-neutral-900">
           {task.title}
         </span>
         ` を削除してもよろしいですか？

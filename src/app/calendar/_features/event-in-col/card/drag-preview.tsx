@@ -21,7 +21,7 @@ export const DragPreviewEventInColCard = forwardRef<HTMLButtonElement, Props>(
     return (
       <EventInColCardBase
         ref={ref}
-        className={clsx("pointer-events-none z-30 bg-neutral-900 ring")}
+        className={clsx("pointer-events-none z-30 bg-neutral-900 ring-3")}
         style={style}
       >
         {event && <EventInColCardContent event={event} />}

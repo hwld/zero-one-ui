@@ -7,7 +7,7 @@ export const NextMenuItem: React.FC<{ onClick: () => void }> = ({
   return (
     <motion.button
       layout="position"
-      className="flex items-center gap-1 rounded px-3 py-1 hover:bg-black/10"
+      className="flex items-center gap-1 rounded-sm px-3 py-1 hover:bg-black/10"
       onClick={onClick}
     >
       <p className="text-sm">次へ</p>

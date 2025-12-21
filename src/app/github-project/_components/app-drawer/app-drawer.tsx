@@ -30,7 +30,7 @@ export const AppDrawer: React.FC = () => {
       position="left"
       trigger={<HeaderButton icon={MenuIcon} />}
     >
-      <div className="flex w-full items-center justify-between px-4 pb-2 pt-4">
+      <div className="flex w-full items-center justify-between px-4 pt-4 pb-2">
         <Logo />
         <IconButton icon={XIcon} onClick={() => setIsOpen(false)} />
       </div>

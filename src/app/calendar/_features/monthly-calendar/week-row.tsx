@@ -33,7 +33,7 @@ export const WeekRow: React.FC<Props> = ({
   };
 
   return (
-    <div className="relative grid min-h-[80px] min-w-[560px] select-none grid-cols-7">
+    <div className="relative grid min-h-[80px] min-w-[560px] grid-cols-7 select-none">
       {week.map((date) => {
         return (
           <CalendarDate

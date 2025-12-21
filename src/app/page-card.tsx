@@ -13,7 +13,7 @@ export const PageCard: React.FC<Props> = (props) => {
     <Link
       href={props.page.href}
       className={clsx(
-        "group flex flex-col gap-2 rounded-lg  border bg-zinc-800 px-4 pb-2 pt-4 text-zinc-200 transition-colors hover:bg-zinc-700",
+        "group flex flex-col gap-2 rounded-lg border bg-zinc-800 px-4 pt-4 pb-2 text-zinc-200 transition-colors hover:bg-zinc-700",
         isPrime ? "border-violet-400" : "border-zinc-700",
       )}
     >
@@ -24,10 +24,10 @@ export const PageCard: React.FC<Props> = (props) => {
         )}
         <p>{props.page.title}</p>
       </div>
-      <div className="grow whitespace-pre-wrap text-sm text-zinc-400">
+      <div className="grow text-sm whitespace-pre-wrap text-zinc-400">
         {props.page.description}
       </div>
-      <div className="h-[1px] bg-zinc-700" />
+      <div className="h-px bg-zinc-700" />
       <div className="flex flex-wrap gap-2">
         {props.page.tags.map((t) => (
           <PageCardTag key={t}>{t}</PageCardTag>

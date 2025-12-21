@@ -57,7 +57,7 @@ const SettingItem: React.FC<{ children: ReactNode; active?: boolean }> = ({
   return (
     <button
       className={clsx(
-        "flex justify-start rounded px-4 py-1 transition-colors hover:bg-white/5",
+        "flex justify-start rounded-sm px-4 py-1 transition-colors hover:bg-white/5",
         active ? "bg-white/20 text-neutral-100" : "text-neutral-300",
       )}
     >

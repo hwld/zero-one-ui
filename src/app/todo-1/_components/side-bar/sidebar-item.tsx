@@ -12,7 +12,7 @@ export const SideBarItem: React.FC<{
     <Link
       href={href}
       className={clsx(
-        "flex w-full items-center justify-start gap-2 rounded p-2 text-sm transition-all duration-200",
+        "flex w-full items-center justify-start gap-2 rounded-sm p-2 text-sm transition-all duration-200",
         { "pointer-events-none bg-neutral-100 text-neutral-700": active },
         { "text-neutral-100 hover:bg-white/20": !active },
       )}

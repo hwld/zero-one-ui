@@ -51,13 +51,13 @@ export const TaskAddDialog: React.FC<Props> = ({ isOpen, onOpenChange }) => {
                 initial={{ opacity: 0, x: "-50%", y: "-60%" }}
                 animate={{ opacity: 1, x: "-50%", y: "-50%" }}
                 exit={{ opacity: 0, x: "-50%", y: "-60%" }}
-                className="fixed left-1/2 top-1/2 w-full max-w-[550px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
+                className="fixed top-1/2 left-1/2 w-full max-w-[550px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
               >
                 <div className="flex justify-between p-4">
-                  <div className="grid select-none place-items-center rounded bg-zinc-700 px-2 text-xs text-zinc-400">
+                  <div className="grid place-items-center rounded-sm bg-zinc-700 px-2 text-xs text-zinc-400 select-none">
                     New Task
                   </div>
-                  <DialogClose className="grid size-[25px] place-items-center rounded transition-colors hover:bg-white/10">
+                  <DialogClose className="grid size-[25px] place-items-center rounded-sm transition-colors hover:bg-white/10">
                     <XIcon size={20} />
                   </DialogClose>
                 </div>
@@ -66,7 +66,7 @@ export const TaskAddDialog: React.FC<Props> = ({ isOpen, onOpenChange }) => {
                   id={taskFormId}
                   onAddTask={handleAddTask}
                 />
-                <div className="h-[1px] w-full bg-zinc-700" />
+                <div className="h-px w-full bg-zinc-700" />
                 <div className="flex justify-end gap-4 p-3">
                   <div className="flex items-center gap-2">
                     <input

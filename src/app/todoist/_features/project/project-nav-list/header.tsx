@@ -28,7 +28,7 @@ export const ProjectNavListHeader: React.FC<Props> = ({
   return (
     <div
       className={clsx(
-        "group/sidebar flex h-9 w-full items-center justify-between rounded transition-colors",
+        "group/sidebar flex h-9 w-full items-center justify-between rounded-sm transition-colors",
         active ? "bg-rose-100" : "hover:bg-black/5",
       )}
     >
@@ -43,7 +43,7 @@ export const ProjectNavListHeader: React.FC<Props> = ({
       </Link>
       <div
         className={clsx(
-          "group flex h-full items-center gap-1 pr-2 opacity-0 focus-within:opacity-100 group-hover/sidebar:opacity-100 has-[*[data-open]]:opacity-100",
+          "group flex h-full items-center gap-1 pr-2 opacity-0 group-hover/sidebar:opacity-100 focus-within:opacity-100 has-[*[data-open]]:opacity-100",
         )}
       >
         <Menu

@@ -19,7 +19,7 @@ export const Pagination: React.FC<Props> = ({ total, page, onChangePage }) => {
   });
 
   const prevNextClass =
-    "rounded transition-colors enabled:hover:bg-white/20 disabled:text-zinc-500";
+    "rounded-sm transition-colors enabled:hover:bg-white/20 disabled:text-zinc-500";
 
   return (
     <div className="flex gap-1">
@@ -32,7 +32,7 @@ export const Pagination: React.FC<Props> = ({ total, page, onChangePage }) => {
       </button>
       {pagination.range.map((r, i) => {
         const baseClass =
-          "grid h-[25px] min-w-[25px] place-items-center rounded text-sm";
+          "grid h-[25px] min-w-[25px] place-items-center rounded-sm text-sm";
 
         if (r === "dots") {
           return (

@@ -7,7 +7,7 @@ export const Settings: React.FC = () => {
     <motion.div
       layoutId={APP_CONTROL_LAYOUT_ID}
       transition={{ type: "spring", damping: 20, stiffness: 200 }}
-      className="flex  w-[250px] flex-col items-start gap-1 overflow-hidden bg-neutral-900 p-3"
+      className="flex w-[250px] flex-col items-start gap-1 overflow-hidden bg-neutral-900 p-3"
       style={{ borderRadius: "20px" }}
     >
       <SettingItem />

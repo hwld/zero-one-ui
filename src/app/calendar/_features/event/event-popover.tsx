@@ -78,7 +78,7 @@ export const EventPopover: React.FC<Props> = ({
           <FloatingPortal>
             <FloatingOverlay
               lockScroll
-              className="z-[100]"
+              className="z-100"
               onMouseDown={(e) => e.stopPropagation()}
               onClick={(e) => e.stopPropagation()}
             >
@@ -93,7 +93,7 @@ export const EventPopover: React.FC<Props> = ({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.1 }}
-                    className="w-[320px] space-y-2 rounded-lg border border-neutral-300 bg-neutral-50 text-neutral-700 shadow"
+                    className="w-[320px] space-y-2 rounded-lg border border-neutral-300 bg-neutral-50 text-neutral-700 shadow-sm"
                   >
                     <div className="flex items-center justify-between px-2 pt-2">
                       <div className="text-xs text-neutral-400">

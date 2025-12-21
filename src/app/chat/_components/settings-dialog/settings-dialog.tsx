@@ -26,7 +26,7 @@ export const SettingsDialog = forwardRef<HTMLDivElement, Props>(
         >
           <motion.div
             ref={ref}
-            className="fixed inset-0 grid grid-cols-[30%_1fr] bg-neutral-950 text-neutral-100 focus-visible:outline-none"
+            className="fixed inset-0 grid grid-cols-[30%_1fr] bg-neutral-950 text-neutral-100 focus-visible:outline-hidden"
             initial={initial}
             animate={animate}
             style={{ colorScheme: "dark" }}

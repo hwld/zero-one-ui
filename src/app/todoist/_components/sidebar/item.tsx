@@ -6,7 +6,7 @@ import { IconType } from "@react-icons/all-files/lib";
 const mutedTextClass = "text-stone-500";
 const activeTextClass = "text-rose-700";
 const wrapperChildClass =
-  "flex h-full w-full items-center pl-[--padding-x] overflow-hidden";
+  "flex h-full w-full items-center pl-(--padding-x) overflow-hidden";
 
 type WrapperProps = {
   active?: boolean;
@@ -29,9 +29,9 @@ const ItemWrapper: React.FC<WrapperProps> = ({
     <div
       {...props}
       className={clsx(
-        "flex h-9 items-center justify-between rounded transition-colors",
+        "flex h-9 items-center justify-between rounded-sm transition-colors",
         active ? clsx("bg-rose-100", activeTextClass) : "hover:bg-black/5",
-        isDragging && "outline-dashed outline-2 outline-rose-400",
+        isDragging && "outline-2 outline-rose-400 outline-dashed",
       )}
       style={{
         ["--padding-x" as string]: "8px",
@@ -42,7 +42,7 @@ const ItemWrapper: React.FC<WrapperProps> = ({
       {right && (
         <span
           className={clsx(
-            "pl-1 pr-[--padding-x]",
+            "pr-(--padding-x) pl-1",
             active ? activeTextClass : mutedTextClass,
           )}
         >

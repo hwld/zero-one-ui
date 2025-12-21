@@ -17,7 +17,7 @@ export const Tooltip: React.FC<Props> = ({ children, label }) => {
             side="top"
             align="center"
             sideOffset={5}
-            className="rounded border border-zinc-700 bg-zinc-900 p-2 text-xs shadow"
+            className="rounded-sm border border-zinc-700 bg-zinc-900 p-2 text-xs shadow-sm"
           >
             {label}
           </TooltipContent>

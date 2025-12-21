@@ -19,7 +19,7 @@ export const IconButton = forwardRef<HTMLButtonElement, Props>(
         ref={ref}
         {...props}
         className={clsx(
-          "grid place-items-center rounded ring-stone-500 transition-all hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2",
+          "grid place-items-center rounded-sm ring-stone-500 transition-all hover:bg-black/5 focus-visible:ring-2 focus-visible:outline-hidden",
           sizeClass[size].button,
           label ? "grid-cols-[auto_1fr] gap-1 px-2" : "w-8",
         )}

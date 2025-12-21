@@ -26,7 +26,7 @@ export const AppControl: React.FC = () => {
   };
 
   return (
-    <div className="flex max-w-[100dvw] gap-2 px-2 text-neutral-100">
+    <div className="flex max-w-dvw gap-2 px-2 text-neutral-100">
       {content[mode]}
       {mode !== "idle" && (
         <button

@@ -27,7 +27,7 @@ export const UserMenuTrigger: React.FC = () => {
   return (
     <Menu
       trigger={
-        <button className="group/usermenu flex h-8 items-center gap-2 rounded p-2 transition-colors hover:bg-black/5">
+        <button className="group/usermenu flex h-8 items-center gap-2 rounded-sm p-2 transition-colors hover:bg-black/5">
           <UserIcon />
           <span className="font-bold">User</span>
           <PiCaretDownBold className="text-stone-600 group-hover/usermenu:text-stone-900" />

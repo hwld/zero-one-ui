@@ -18,7 +18,7 @@ export const Kbd: React.FC<Props> = ({ children }) => {
   }, [children]);
 
   return (
-    <kbd className="grid size-5 place-items-center rounded bg-stone-500 text-stone-100">
+    <kbd className="grid size-5 place-items-center rounded-sm bg-stone-500 text-stone-100">
       {key}
     </kbd>
   );

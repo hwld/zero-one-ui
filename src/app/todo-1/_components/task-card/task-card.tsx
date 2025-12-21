@@ -61,7 +61,7 @@ export const TaskCard: React.FC<{
             ></input>
             <div
               className={clsx(
-                "pointer-events-none absolute inset-0 flex origin-[50%_70%] items-center  justify-center rounded-full bg-neutral-900 text-neutral-100 transition-all duration-200 ease-in-out",
+                "pointer-events-none absolute inset-0 flex origin-[50%_70%] items-center justify-center rounded-full bg-neutral-900 text-neutral-100 transition-all duration-200 ease-in-out",
                 task.done ? "opacity-100" : "opacity-0",
               )}
             >

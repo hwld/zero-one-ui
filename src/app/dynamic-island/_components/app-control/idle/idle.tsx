@@ -10,7 +10,7 @@ export const Idle: React.FC<{
     <motion.div
       layout
       layoutId={APP_CONTROL_LAYOUT_ID}
-      className="flex h-[40px] w-fit min-w-[150px] items-center justify-between bg-neutral-900 px-[5px] shadow"
+      className="flex h-[40px] w-fit min-w-[150px] items-center justify-between bg-neutral-900 px-[5px] shadow-sm"
       transition={{
         type: "spring",
         damping: 30,

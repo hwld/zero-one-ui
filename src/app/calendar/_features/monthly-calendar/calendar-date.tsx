@@ -21,7 +21,7 @@ export const CalendarDate: React.FC<Props> = ({ calendarYearMonth, date }) => {
   return (
     <div
       className={clsx(
-        "relative select-none border-r border-t border-neutral-200 text-xs text-neutral-700 transition-colors",
+        "relative border-t border-r border-neutral-200 text-xs text-neutral-700 transition-colors select-none",
         isWeekend(date) ? "bg-neutral-200/15" : "",
       )}
     >
@@ -37,7 +37,7 @@ export const CalendarDate: React.FC<Props> = ({ calendarYearMonth, date }) => {
         >
           <div
             className={clsx(
-              "grid place-items-center rounded p-1",
+              "grid place-items-center rounded-sm p-1",
               isSameMonth(calendarYearMonth, date)
                 ? "opacity-100"
                 : "opacity-50",

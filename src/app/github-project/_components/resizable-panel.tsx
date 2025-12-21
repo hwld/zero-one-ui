@@ -14,7 +14,7 @@ export const ResizablePanel: React.FC<Props> = ({
 }) => {
   const directionClass = { left: "border-l", right: "border-r" };
 
-  const handleClass = "z-[100] flex justify-center group";
+  const handleClass = "z-100 flex justify-center group";
   const handle = (
     <div className="h-full w-[2px] transition-colors group-hover:bg-neutral-500 group-active:bg-blue-500"></div>
   );

@@ -37,18 +37,18 @@ export const AppHeader: React.FC = () => {
             <SearchIcon size={16} />
             <div className="text-sm">
               Type
-              <kbd className="mx-1 rounded border border-neutral-400 px-[3px]">
+              <kbd className="mx-1 rounded-sm border border-neutral-400 px-[3px]">
                 /
               </kbd>
               to search
             </div>
           </div>
           <div className="flex h-full items-center gap-2">
-            <div className="h-2/3 w-[1px] bg-neutral-600" />
+            <div className="h-2/3 w-px bg-neutral-600" />
             <TerminalIcon size={16} />
           </div>
         </button>
-        <div className="h-5 w-[1px] bg-neutral-600" />
+        <div className="h-5 w-px bg-neutral-600" />
         <CreateNewMenuTrigger>
           <HeaderButton icon={PlusIcon} rightIcon={ChevronDown} />
         </CreateNewMenuTrigger>

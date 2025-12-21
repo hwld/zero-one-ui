@@ -98,7 +98,7 @@ const MenuItemWrapper = forwardRef<HTMLButtonElement, MenuItemWrapperProps>(
   },
 );
 
-const wideItemClass = "mx-2 rounded focus:bg-black/5 focus:outline-none";
+const wideItemClass = "mx-2 rounded-sm focus:bg-black/5 focus:outline-hidden";
 
 type ButtonItemProps = ContentProps & ComponentPropsWithoutRef<"button">;
 
@@ -182,7 +182,7 @@ const _MenuIconButtonItem = forwardRef<
   return (
     <MenuItemWrapper
       className={cn(
-        "grid size-8 place-items-center rounded border border-stone-200 focus:bg-black/5 focus:outline-none",
+        "grid size-8 place-items-center rounded-sm border border-stone-200 focus:bg-black/5 focus:outline-hidden",
         className,
       )}
     >

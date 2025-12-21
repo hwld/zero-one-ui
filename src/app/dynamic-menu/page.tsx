@@ -12,7 +12,7 @@ const Page: NextPage = () => {
   return (
     <div
       className={clsx(
-        "flex h-[100dvh] justify-center pt-[50px] text-neutral-900",
+        "flex h-dvh justify-center pt-[50px] text-neutral-900",
         bgClass,
       )}
     >

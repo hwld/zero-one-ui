@@ -17,7 +17,7 @@ export const Tooltip: React.FC<Props> = ({ children, label, disabled }) => {
         <RadixTooltip.Portal>
           {!disabled && (
             <RadixTooltip.Content
-              className="flex h-6 items-center rounded bg-neutral-700 px-2 text-xs text-neutral-300 shadow"
+              className="flex h-6 items-center rounded-sm bg-neutral-700 px-2 text-xs text-neutral-300 shadow-sm"
               sideOffset={8}
             >
               {label}
