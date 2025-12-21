@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/nextjs";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskSelectionMenu } from "./task-selection-menu";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTableSelectionContext } from "../task-table/selection-provider";

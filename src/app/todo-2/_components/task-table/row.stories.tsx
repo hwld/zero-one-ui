@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/nextjs";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTableRow } from "./row";
 import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
@@ -21,7 +21,7 @@ import {
   updateTaskInputSchema,
 } from "../../_backend/api";
 import { z } from "zod";
-import { getRouter } from "@storybook/nextjs/router.mock";
+import { getRouter } from "@storybook/nextjs-vite/router.mock";
 import { Routes } from "../../_lib/routes";
 import { MockTaskTableProvider } from "./provider";
 

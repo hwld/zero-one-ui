@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/nextjs";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { defaultStoryMeta } from "../story-meta";
 import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { TaskAddButton } from "./task-add-button";

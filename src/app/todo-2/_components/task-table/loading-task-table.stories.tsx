@@ -1,6 +1,6 @@
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 import { defaultStoryMeta } from "../../story-meta";
-import { Meta, StoryObj } from "@storybook/nextjs";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { LoadingTaskTable } from "./loading-task-table";
 import { TaskTableProvider } from "./provider";
 

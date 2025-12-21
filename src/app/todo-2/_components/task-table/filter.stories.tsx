@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/nextjs";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTableFilter } from "./filter";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTablePagingContext } from "./paging-provider";

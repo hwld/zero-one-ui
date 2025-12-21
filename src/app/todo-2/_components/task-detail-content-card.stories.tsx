@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/nextjs";
+import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskDetailContentCard } from "./task-detail-content-card";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";
