@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 import { TaskSelectionMenu } from "./task-selection-menu";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTableSelectionContext } from "../task-table/selection-provider";
@@ -10,7 +10,7 @@ import {
   userEvent,
   waitFor,
   within,
-} from "@storybook/test";
+} from "storybook/test";
 import { HttpResponse, http } from "msw";
 import {
   Todo2API,

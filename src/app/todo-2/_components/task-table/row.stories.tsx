@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 import { TaskTableRow } from "./row";
 import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
@@ -11,7 +11,7 @@ import {
   userEvent,
   waitFor,
   within,
-} from "@storybook/test";
+} from "storybook/test";
 import { useState } from "react";
 import { getTaskStatusLabel } from "../../_backend/task-store";
 import { HttpResponse, http } from "msw";

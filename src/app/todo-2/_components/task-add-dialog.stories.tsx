@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 import { defaultStoryMeta } from "../story-meta";
 import {
   clearAllMocks,
@@ -7,7 +7,7 @@ import {
   userEvent,
   waitFor,
   within,
-} from "@storybook/test";
+} from "storybook/test";
 import { TaskAddDialog } from "./task-add-dialog";
 import { HttpResponse, http } from "msw";
 import {

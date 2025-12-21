@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 import { TaskTableFilter } from "./filter";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTablePagingContext } from "./paging-provider";
@@ -10,7 +10,7 @@ import {
   userEvent,
   waitFor,
   within,
-} from "@storybook/test";
+} from "storybook/test";
 import { MockTaskTableProvider } from "./provider";
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 

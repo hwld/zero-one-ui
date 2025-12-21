@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from "@storybook/react";
+import { Meta, StoryObj } from "@storybook/nextjs";
 import { defaultStoryMeta } from "../story-meta";
-import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
+import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { TaskAddButton } from "./task-add-button";
 import { Todo2API } from "../_backend/api";
 import { HttpResponse, http } from "msw";
