@@ -19,7 +19,7 @@ export const ActionButton = forwardRef<HTMLButtonElement, Props>(
         ref={ref}
         {...props}
         className={cn(
-          "grid size-7 place-items-center rounded text-stone-600 transition-colors hover:bg-black/5",
+          "grid size-7 place-items-center rounded-sm text-stone-600 transition-colors hover:bg-black/5",
           sizeClass[size].button,
           className,
         )}

@@ -201,7 +201,7 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
     <li
       {...getRovingProps<"li">({
         className:
-          "flex flex-col cursor-pointer select-none focus:outline-none group",
+          "flex flex-col cursor-pointer select-none focus:outline-hidden group",
         onKeyDown: function (e: KeyboardEvent) {
           e.stopPropagation();
 
@@ -253,13 +253,13 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
       >
         <div
           className={clsx(
-            "overflow-hidden rounded transition-colors duration-75",
+            "overflow-hidden rounded-sm transition-colors duration-75",
             selectedId === id ? classNames.selected : "bg-transparent",
           )}
         >
           <div
             className={clsx(
-              "rounded border border-transparent transition-colors duration-75",
+              "rounded-sm border border-transparent transition-colors duration-75",
               isFocusable && classNames.groupFocus,
             )}
           >
@@ -273,7 +273,7 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
               {children?.length ? (
                 <button
                   className={clsx(
-                    "grid size-5 shrink-0 place-items-center rounded transition-all duration-75",
+                    "grid size-5 shrink-0 place-items-center rounded-sm transition-all duration-75",
                     expandOnlyOnIconClick && classNames.hoverIcon,
                   )}
                   onClick={handleClickIcon}
@@ -283,7 +283,7 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
               ) : (
                 <span className="size-5" />
               )}
-              <span className="grow overflow-hidden text-ellipsis whitespace-nowrap pl-2">
+              <span className="grow overflow-hidden pl-2 text-ellipsis whitespace-nowrap">
                 {name}
               </span>
             </div>

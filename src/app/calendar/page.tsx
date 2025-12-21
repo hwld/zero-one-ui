@@ -55,13 +55,13 @@ const Page = () => {
   return (
     <div
       className={clsx(
-        "grid h-[100dvh] w-[100dvw] grid-cols-[250px_1fr] overflow-hidden text-neutral-700",
+        "grid h-dvh w-dvw grid-cols-[250px_1fr] overflow-hidden text-neutral-700",
         bgClass,
       )}
       style={{ colorScheme: "light" }}
     >
       <Sidebar />
-      <div className="grid grid-rows-[60px,1fr] overflow-hidden">
+      <div className="grid grid-rows-[60px_1fr] overflow-hidden">
         <div className="flex items-center gap-2 px-4">
           <Select
             items={CALENDAR_TYPE_LIST}

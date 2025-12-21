@@ -52,7 +52,7 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
                   },
                 })}
                 style={{ ...floatingStyles }}
-                className="focus-visible:outline-none"
+                className="focus-visible:outline-hidden"
               >
                 {children}
               </div>

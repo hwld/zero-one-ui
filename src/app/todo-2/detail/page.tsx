@@ -18,12 +18,12 @@ const TaskDetailPage: NextPage = () => {
       <h1 className="ml-1 text-sm">
         <Link
           href="/todo-2"
-          className="rounded px-2 py-1 transition-colors hover:bg-zinc-700"
+          className="rounded-sm px-2 py-1 transition-colors hover:bg-zinc-700"
         >
           home
         </Link>
         <span className="mx-1">/</span>
-        <span className="rounded p-1 px-2">{id}</span>
+        <span className="rounded-sm p-1 px-2">{id}</span>
       </h1>
 
       <TaskDetailContent taskId={id} />

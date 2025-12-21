@@ -28,10 +28,10 @@ export const TaskAddButton: React.FC = () => {
     <>
       <Button onClick={handleAddTask}>
         <div className="flex items-center">
-          <IconPlus size={15} className="mb-[1px]" />
+          <IconPlus size={15} className="mb-px" />
           <p className="text-xs">タスクを追加する</p>
         </div>
-        <div className="flex items-center rounded bg-white/20 px-1 text-zinc-300 transition-colors">
+        <div className="flex items-center rounded-sm bg-white/20 px-1 text-zinc-300 transition-colors">
           <IconCommand size={13} />
           <p className="text-[10px]">K</p>
         </div>

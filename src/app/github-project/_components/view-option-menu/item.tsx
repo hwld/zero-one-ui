@@ -18,7 +18,7 @@ export const ViewConfigMenuItem = forwardRef<HTMLButtonElement, Props>(
             <div className="text-sm">{title}:</div>
           </div>
           <div className="flex min-w-0 items-center gap-1">
-            <div className="truncate text-nowrap text-sm">{value}</div>
+            <div className="truncate text-sm text-nowrap">{value}</div>
             <ChevronRightIcon size={16} className="text-neutral-400" />
           </div>
         </div>

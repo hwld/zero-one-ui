@@ -43,11 +43,11 @@ export const TaskCreateInput = forwardRef<HTMLInputElement, {}>(
     return (
       <Popover.Root open={!!errors.title}>
         <Popover.Anchor asChild>
-          <div className="flex h-[50px] w-[300px] max-w-full items-center justify-center overflow-hidden rounded-full bg-neutral-900 shadow-lg  shadow-neutral-800/20 ring-neutral-900 ring-offset-2 ring-offset-neutral-100 transition-all duration-300 ease-in-out focus-within:w-[650px] focus-within:ring">
+          <div className="flex h-[50px] w-[300px] max-w-full items-center justify-center overflow-hidden rounded-full bg-neutral-900 shadow-lg shadow-neutral-800/20 ring-neutral-900 transition-all duration-300 ease-in-out focus-within:w-[650px] focus-within:ring-3 focus-within:ring-offset-2 focus-within:ring-offset-neutral-100">
             <form onSubmit={handleSubmit} className="h-full w-full">
               <input
                 ref={inputRef}
-                className="h-full w-full bg-transparent pl-5  pr-2 text-neutral-200 placeholder:text-neutral-400 focus:outline-none"
+                className="h-full w-full bg-transparent pr-2 pl-5 text-neutral-200 placeholder:text-neutral-400 focus:outline-hidden"
                 placeholder="タスクを入力してください..."
                 onBlur={handleBlur}
                 aria-invalid={!!errors.title}
@@ -81,7 +81,7 @@ export const TaskCreateInput = forwardRef<HTMLInputElement, {}>(
                 exit={{ opacity: 0, y: 10 }}
               >
                 <CommandIcon size={15} />
-                <div className="select-none text-sm">K</div>
+                <div className="text-sm select-none">K</div>
               </motion.div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export const TaskCreateInput = forwardRef<HTMLInputElement, {}>(
                 id={errorMessageId}
               >
                 <motion.div
-                  className="flex items-center gap-1 rounded bg-neutral-900 p-2 text-xs text-red-200"
+                  className="flex items-center gap-1 rounded-sm bg-neutral-900 p-2 text-xs text-red-200"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 10 }}

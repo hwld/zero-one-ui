@@ -49,7 +49,7 @@ export const TaskCreateForm: React.FC<Props> = ({ onAddTask, id }) => {
           aria-invalid={!!errors.title}
           aria-errormessage={titleErrorMessageId}
           className={clsx(
-            "w-full rounded bg-transparent text-lg font-bold placeholder:text-zinc-500 focus-visible:outline-none",
+            "w-full rounded-sm bg-transparent text-lg font-bold placeholder:text-zinc-500 focus-visible:outline-hidden",
             errors.title && "text-red-400",
           )}
           {...titleRegister}
@@ -66,7 +66,7 @@ export const TaskCreateForm: React.FC<Props> = ({ onAddTask, id }) => {
           aria-invalid={!!errors.description}
           aria-errormessage={descErrorMessageId}
           className={clsx(
-            "w-full resize-none bg-transparent text-sm placeholder:text-zinc-500 focus-visible:outline-none",
+            "w-full resize-none bg-transparent text-sm placeholder:text-zinc-500 focus-visible:outline-hidden",
             errors.description && "text-red-400",
           )}
           {...register("description")}

@@ -20,13 +20,13 @@ export const EventInColCardBase = forwardRef<HTMLButtonElement, Props>(
     return (
       <button
         ref={ref}
-        className="group absolute z-10 select-none pb-[1px] focus-visible:outline-none"
+        className="group absolute z-10 pb-px select-none focus-visible:outline-hidden"
         style={style}
         {...props}
       >
         <div
           className={cn(
-            "outline-3 flex h-full w-full flex-col overflow-hidden rounded border border-neutral-500 bg-neutral-700 pl-[10px] text-start text-neutral-100 ring-blue-500 transition-colors group-focus-visible:ring",
+            "flex h-full w-full flex-col overflow-hidden rounded-sm border border-neutral-500 bg-neutral-700 pl-[10px] text-start text-neutral-100 ring-blue-500 outline-3 transition-colors group-focus-visible:ring-3",
             thin ? "pt-0" : "pt-1",
             className,
           )}
@@ -34,8 +34,8 @@ export const EventInColCardBase = forwardRef<HTMLButtonElement, Props>(
           {children}
           <div
             className={cn(
-              "absolute bottom-0 left-0 top-0 w-1 rounded-full bg-neutral-500",
-              thin ? "mx-[2px] mb-[4px] mt-[3px]" : "mx-[3px] mb-[5px] mt-1",
+              "absolute top-0 bottom-0 left-0 w-1 rounded-full bg-neutral-500",
+              thin ? "mx-[2px] mt-[3px] mb-[4px]" : "mx-[3px] mt-1 mb-[5px]",
             )}
           />
         </div>

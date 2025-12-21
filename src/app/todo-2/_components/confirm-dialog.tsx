@@ -42,7 +42,7 @@ export const ConfirmDialog: React.FC<Props> = ({
             </DialogOverlay>
             <DialogContent asChild>
               <motion.div
-                className="fixed left-1/2 top-1/2 w-full max-w-[500px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
+                className="fixed top-1/2 left-1/2 w-full max-w-[500px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
                 initial={{ opacity: 0, x: "-50%", y: "-60%" }}
                 animate={{ opacity: 1, x: "-50%", y: "-50%" }}
                 exit={{ opacity: 0, x: "-50%", y: "-60%" }}

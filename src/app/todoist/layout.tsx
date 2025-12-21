@@ -16,7 +16,7 @@ const Layout: React.FC<{ children: ReactNode; modal: ReactNode }> = ({
       <GlobalDataProvider>
         <SidebarContextProvider>
           <div
-            className="flex h-[100dvh] bg-stone-50 text-sm text-neutral-900"
+            className="flex h-dvh bg-stone-50 text-sm text-neutral-900"
             style={{ [appHeaderHeightName as string]: "56px" }}
           >
             <Suspense>

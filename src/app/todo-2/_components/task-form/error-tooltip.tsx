@@ -49,7 +49,7 @@ export const TaskFormErrorTooltip: React.FC<Props> = ({
             <div ref={refs.setFloating} style={floatingStyles}>
               <motion.div
                 id={id}
-                className="flex gap-1 rounded bg-zinc-950 p-2 text-xs text-red-400 shadow"
+                className="flex gap-1 rounded-sm bg-zinc-950 p-2 text-xs text-red-400 shadow-sm"
                 initial={{ opacity: 0, y: initialY }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: initialY }}

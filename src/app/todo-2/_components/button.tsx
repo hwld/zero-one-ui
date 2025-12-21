@@ -2,7 +2,7 @@ import clsx from "clsx";
 import { ComponentPropsWithoutRef, ReactNode, forwardRef } from "react";
 
 export const buttonBaseClass =
-  "flex h-7 items-center gap-1 text-nowrap rounded px-2 text-xs transition-colors";
+  "flex h-7 items-center gap-1 text-nowrap rounded-sm px-2 text-xs transition-colors";
 export const buttonClass = {
   default:
     "border text-zinc-200 border-zinc-600 bg-zinc-700 hover:bg-zinc-600 ",

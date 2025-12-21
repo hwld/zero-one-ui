@@ -145,7 +145,7 @@ export const EventForm: React.FC<Props> = ({
         option={
           <div className="flex shrink-0 gap-1">
             <input id="allDay" type="checkbox" {...register("allDay")} />
-            <label htmlFor="allDay" className="select-none text-sm">
+            <label htmlFor="allDay" className="text-sm select-none">
               終日
             </label>
           </div>
@@ -199,7 +199,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       ref={ref}
       {...props}
       className={cn(
-        "focus-visible:outline-neu h-8 w-full rounded border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-1",
+        "focus-visible:outline-neu h-8 w-full rounded-sm border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:ring-1 focus-visible:outline-hidden",
         error
           ? "border-red-600 ring-red-600"
           : "border-neutral-300 ring-neutral-500",

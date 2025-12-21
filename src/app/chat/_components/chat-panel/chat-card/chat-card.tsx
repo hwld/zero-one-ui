@@ -24,7 +24,7 @@ export const ChatCard: React.FC<Props> = ({ children, onDelete }) => {
         <div className="text-xs text-neutral-400">2024/02/11 11:11:11</div>
       </div>
       <div className="break-all">{children}</div>
-      <div className="absolute right-0 top-0 hidden overflow-hidden rounded bg-neutral-700 transition-opacity group-hover:flex">
+      <div className="absolute top-0 right-0 hidden overflow-hidden rounded-sm bg-neutral-700 transition-opacity group-hover:flex">
         <ChatCardMenuItem icon={SmileIcon} label="絵文字をつける" />
         <ChatCardMenuItem icon={ReplyIcon} label="返信" />
         <ChatCardMenuItem icon={TrashIcon} label="削除" onClick={onDelete} />

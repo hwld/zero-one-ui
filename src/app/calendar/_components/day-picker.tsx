@@ -81,8 +81,8 @@ export const DayPicker: React.FC<Props> = ({
         head_cell: "text-neutral-500 rounded-md w-8 font-normal text-[0.6rem]",
         row: "flex w-full",
         cell: "relative p-[2px] text-center text-xs [&:has(.first-selected)]:rounded-l [&:has(.last-selected)]:rounded-r overflow-hidden [&:has([aria-selected])]:bg-neutral-500/15",
-        day: "size-7 p-0 font-normal aria-selected:opacity-100 hover:bg-neutral-500/15 rounded",
-        day_today: "!bg-blue-500 hover:!bg-blue-500 !text-neutral-100",
+        day: "size-7 p-0 font-normal aria-selected:opacity-100 hover:bg-neutral-500/15 rounded-sm",
+        day_today: "bg-blue-500! hover:bg-blue-500! text-neutral-100!",
         day_selected: "pointer-events-none",
         day_outside:
           "day-outside text-neutral-400 aria-selected:text-neutral-500",

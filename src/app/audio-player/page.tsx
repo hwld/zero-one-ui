@@ -125,7 +125,7 @@ const Page: React.FC = () => {
     <AudioProvider src={currentMusic?.url}>
       <div
         className={clsx(
-          "grid h-[100dvh] w-full place-items-center  text-neutral-100",
+          "grid h-dvh w-full place-items-center text-neutral-100",
           bgClass,
         )}
         style={{ colorScheme: "dark" }}

@@ -11,7 +11,7 @@ export const Sound: React.FC = () => {
   return (
     <motion.div
       layoutId={APP_CONTROL_LAYOUT_ID}
-      className="w-[300px] overflow-hidden bg-neutral-900 px-5 pb-8 pt-5"
+      className="w-[300px] overflow-hidden bg-neutral-900 px-5 pt-5 pb-8"
       style={{ borderRadius: "20px" }}
       transition={{ type: "spring", damping: 20, stiffness: 200 }}
     >

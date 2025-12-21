@@ -11,7 +11,7 @@ const NotFoundPage: React.FC = () => {
   return (
     <div
       className={clsx(
-        "flex h-[100dvh] w-full flex-col items-center justify-center gap-14 text-zinc-200",
+        "flex h-dvh w-full flex-col items-center justify-center gap-14 text-zinc-200",
         bgClass,
       )}
     >

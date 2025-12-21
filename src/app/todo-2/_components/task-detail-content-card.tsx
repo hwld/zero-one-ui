@@ -36,7 +36,7 @@ export const TaskDetailContentCard: React.FC<Props> = ({ task }) => {
     <Card>
       <div className="flex h-full flex-col gap-4">
         <div className="flex items-center justify-between">
-          <div className="flex h-[24px] items-center rounded bg-zinc-700 px-2 text-sm text-zinc-400">
+          <div className="flex h-[24px] items-center rounded-sm bg-zinc-700 px-2 text-sm text-zinc-400">
             Task Detail
           </div>
           {isEditing ? (
@@ -50,7 +50,7 @@ export const TaskDetailContentCard: React.FC<Props> = ({ task }) => {
             </div>
           ) : (
             <Button onClick={() => setIsEditing(true)}>
-              <IconPencil size={15} className="mb-[1px]" />
+              <IconPencil size={15} className="mb-px" />
               編集する
             </Button>
           )}

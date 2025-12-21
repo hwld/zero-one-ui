@@ -42,8 +42,8 @@ export const TaskDetailPanelContent: React.FC<Props> = ({
       return <ErrorContent onClose={onClose} />;
     } else if (status === "success") {
       return (
-        <div className="size-full @container">
-          <motion.div className="grid size-full grid-cols-1 grid-rows-[min-content,1fr] @3xl:grid-cols-[1fr,400px]">
+        <div className="@container size-full">
+          <motion.div className="grid size-full grid-cols-1 grid-rows-[min-content_1fr] @3xl:grid-cols-[1fr_400px]">
             <div className="space-y-2 border-b border-neutral-600 p-4 @3xl:col-span-2">
               <div className="flex items-center justify-end gap-2">
                 <IconButton
@@ -54,13 +54,13 @@ export const TaskDetailPanelContent: React.FC<Props> = ({
               </div>
               <TaskTitleSection task={task} />
             </div>
-            <div className="overflow-auto border-b border-neutral-600 p-4 @3xl:border-b-0 @3xl:border-r">
+            <div className="overflow-auto border-b border-neutral-600 p-4 @3xl:border-r @3xl:border-b-0">
               <TaskCommentSection task={task} />
             </div>
-            <div className="grid grid-rows-[min-content,1fr]">
+            <div className="grid grid-rows-[min-content_1fr]">
               <div className="space-y-2 border-b border-neutral-600 p-4">
                 <TaskDetailPanelMetaRow label="Assignees">
-                  <button className="h-full w-full rounded px-2 text-start text-sm text-neutral-400 transition-colors hover:bg-white/15">
+                  <button className="h-full w-full rounded-sm px-2 text-start text-sm text-neutral-400 transition-colors hover:bg-white/15">
                     Add assigness...
                   </button>
                 </TaskDetailPanelMetaRow>

@@ -199,7 +199,7 @@ const MenuComponent = forwardRef<HTMLButtonElement, MenuComponentProps>(
           data-open={isOpen ? "" : undefined}
           data-nested={isNested ? "" : undefined}
           data-focus-inside={hasFocusInside ? "" : undefined}
-          className="data-[open]:bg-black/5"
+          className="data-open:bg-black/5"
           {...getReferenceProps(
             parent.getItemProps({
               ...props,
@@ -234,7 +234,7 @@ const MenuComponent = forwardRef<HTMLButtonElement, MenuComponentProps>(
                       returnFocus={!isNested}
                     >
                       <div
-                        className="z-40 focus-visible:outline-none"
+                        className="z-40 focus-visible:outline-hidden"
                         ref={refs.setFloating}
                         style={floatingStyles}
                         {...getFloatingProps({
@@ -290,7 +290,7 @@ export const Menu = forwardRef<HTMLButtonElement, MenuProps>(
 );
 
 export const MenuSeparator: React.FC = () => {
-  return <div className="my-1 h-[1px] w-full bg-stone-200" />;
+  return <div className="my-1 h-px w-full bg-stone-200" />;
 };
 
 type MenuActions = { label: string; right: ReactNode } & PropsWithChildren;

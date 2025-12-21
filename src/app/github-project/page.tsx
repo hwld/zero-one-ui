@@ -39,7 +39,7 @@ const GitHubProjectPage: React.FC = () => {
     <>
       <div
         className={clsx(
-          "grid h-[100dvh] w-[100dvw] grid-cols-1 grid-rows-[var(--header-height)_minmax(0,1fr)] overflow-hidden text-neutral-100",
+          "grid h-dvh w-dvw grid-cols-1 grid-rows-[var(--header-height)_minmax(0,1fr)] overflow-hidden text-neutral-100",
           BG_COLOR_CLASS,
         )}
         style={{
@@ -49,11 +49,11 @@ const GitHubProjectPage: React.FC = () => {
       >
         <AppHeader />
         <div className="flex w-full">
-          <div className="grid size-full grid-cols-1 grid-rows-[min-content,1fr] overflow-auto">
+          <div className="grid size-full grid-cols-1 grid-rows-[min-content_1fr] overflow-auto">
             <div className="flex h-[48px] w-full items-center justify-between gap-4 px-8">
-              <div className="text-nowrap text-lg font-bold">zero-one-ui</div>
+              <div className="text-lg font-bold text-nowrap">zero-one-ui</div>
               <div className="flex items-center gap-2">
-                <button className="h-5 text-nowrap rounded-full bg-neutral-700 px-2 text-xs font-bold text-neutral-400 transition-colors hover:bg-neutral-600 hover:text-neutral-200">
+                <button className="h-5 rounded-full bg-neutral-700 px-2 text-xs font-bold text-nowrap text-neutral-400 transition-colors hover:bg-neutral-600 hover:text-neutral-200">
                   Add status update
                 </button>
                 <div className="flex items-center">

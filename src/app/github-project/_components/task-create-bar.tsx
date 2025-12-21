@@ -68,7 +68,7 @@ export const TaskCreateBar: React.FC<Props> = ({
       {isOpen && (
         <div
           ref={refs.setFloating}
-          className="absolute bottom-6 left-0 right-0 h-12 p-2"
+          className="absolute right-0 bottom-6 left-0 h-12 p-2"
           {...getFloatingProps()}
         >
           <motion.div
@@ -76,8 +76,8 @@ export const TaskCreateBar: React.FC<Props> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
           >
-            <div className="flex h-12  items-center rounded-md border-2 border-blue-600 bg-neutral-800">
-              <button className="grid size-12 shrink-0 place-items-center border-r-2 border-blue-600 transition-colors hover:bg-white/15 focus-visible:bg-white/15 focus-visible:outline-none">
+            <div className="flex h-12 items-center rounded-md border-2 border-blue-600 bg-neutral-800">
+              <button className="grid size-12 shrink-0 place-items-center border-r-2 border-blue-600 transition-colors hover:bg-white/15 focus-visible:bg-white/15 focus-visible:outline-hidden">
                 <PlusIcon size={18} />
               </button>
               <form
@@ -88,7 +88,7 @@ export const TaskCreateBar: React.FC<Props> = ({
                   aria-disabled={createTaskMutation.isPending}
                   autoFocus
                   className={clsx(
-                    "h-full w-full bg-transparent px-4 text-sm text-neutral-100 placeholder:text-neutral-400 focus-visible:outline-none",
+                    "h-full w-full bg-transparent px-4 text-sm text-neutral-100 placeholder:text-neutral-400 focus-visible:outline-hidden",
                     createTaskMutation.isPending && "text-neutral-400",
                   )}
                   placeholder="Start typing to create a draft"
@@ -99,7 +99,7 @@ export const TaskCreateBar: React.FC<Props> = ({
                   strokeWidth={3}
                   size={25}
                   className={clsx(
-                    "absolute bottom-0 left-4 top-0 my-auto rounded-full",
+                    "absolute top-0 bottom-0 left-4 my-auto rounded-full",
                     createTaskMutation.isPending
                       ? "animate-spin opacity-100"
                       : "opacity-0",
@@ -108,7 +108,7 @@ export const TaskCreateBar: React.FC<Props> = ({
                 <AnimatePresence>
                   {errors.title && (
                     <motion.div
-                      className="absolute bottom-[130%] rounded border border-red-300 bg-neutral-900  px-2 py-1 text-xs text-red-300"
+                      className="absolute bottom-[130%] rounded-sm border border-red-300 bg-neutral-900 px-2 py-1 text-xs text-red-300"
                       initial={{ opacity: 0, y: 4 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: 4 }}

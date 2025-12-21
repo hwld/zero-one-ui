@@ -15,7 +15,7 @@ export const TableHeader: React.FC<TableHeaderProps> = ({
 }) => {
   return (
     <th
-      className="whitespace-nowrap border-b border-zinc-600 bg-black/10 p-2 font-medium text-zinc-400"
+      className="border-b border-zinc-600 bg-black/10 p-2 font-medium whitespace-nowrap text-zinc-400"
       style={{ width }}
     >
       {children}
@@ -35,12 +35,12 @@ export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({
 }) => {
   return (
     <th
-      className="whitespace-nowrap border-b border-zinc-600 bg-black/10 p-2 font-medium text-zinc-400"
+      className="border-b border-zinc-600 bg-black/10 p-2 font-medium whitespace-nowrap text-zinc-400"
       style={{ width }}
     >
       <div className="text-m flex items-center gap-1 p-1">
         {Icon && <Icon size={15} />}
-        <div className="mt-[1px]">{text}</div>
+        <div className="mt-px">{text}</div>
       </div>
     </th>
   );
@@ -75,15 +75,15 @@ export const SortableTableHeader: React.FC<SortableTableHeaderProps> = ({
 
   return (
     <th
-      className="whitespace-nowrap border-b border-zinc-600 bg-black/10 p-2 font-medium text-zinc-400"
+      className="border-b border-zinc-600 bg-black/10 p-2 font-medium whitespace-nowrap text-zinc-400"
       style={{ width }}
     >
       <button
-        className="text-m flex items-center gap-1 rounded p-1 transition-colors hover:bg-white/10"
+        className="text-m flex items-center gap-1 rounded-sm p-1 transition-colors hover:bg-white/10"
         onClick={handleSort}
       >
         {Icon && <Icon size={15} />}
-        <div className="mt-[1px]">{text}</div>
+        <div className="mt-px">{text}</div>
         <SortedIcon field={fieldName} sortEntry={sortEntry} />
       </button>
     </th>

@@ -16,7 +16,7 @@ export const DropdownItemGroup: React.FC<DropdownItemGroupProps> = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <div className="px-4 pb-1 pt-2 text-xs text-neutral-400">{group}</div>
+      <div className="px-4 pt-2 pb-1 text-xs text-neutral-400">{group}</div>
       <DropdownItemList>{children}</DropdownItemList>
     </div>
   );

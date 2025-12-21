@@ -43,9 +43,9 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
   return (
     <div
       className={clsx(
-        "t flex cursor-pointer items-center rounded p-4 transition-colors",
+        "t flex cursor-pointer items-center rounded-sm p-4 transition-colors",
         isSelected
-          ? "bg-white/20 outline outline-2 outline-green-400"
+          ? "bg-white/20 outline-2 outline-green-400 outline-solid"
           : "bg-white/10 hover:bg-white/15",
       )}
       onClick={() => onSelect(item.value)}

@@ -93,7 +93,7 @@ const TaskDetail: React.FC<{ taskId: string }> = ({ taskId }) => {
 
   if (status === "error") {
     return (
-      <div className="flex size-full flex-col items-center gap-2 px-4 pb-4 pt-10 text-red-600">
+      <div className="flex size-full flex-col items-center gap-2 px-4 pt-10 pb-4 text-red-600">
         <PiWarningCircle className="size-7" />
         <div className="flex w-full flex-col items-center gap-1">
           <p className="text-sm">タスクが見つかりませんでした</p>
@@ -118,17 +118,17 @@ const TaskDetail: React.FC<{ taskId: string }> = ({ taskId }) => {
           >
             <button
               className={clsx(
-                "break-all text-start text-lg font-bold leading-5",
+                "text-start text-lg leading-5 font-bold break-all",
                 task.done && "line-through",
               )}
             >
               {task.title}
             </button>
-            <button className="whitespace-pre-wrap break-all text-start">
+            <button className="text-start break-all whitespace-pre-wrap">
               {task.description ? (
                 task.description
               ) : (
-                <span className="flex select-none items-center gap-1 text-stone-400">
+                <span className="flex items-center gap-1 text-stone-400 select-none">
                   <PiTextAlignLeftLight className="size-5" />
                   説明
                 </span>
@@ -188,12 +188,12 @@ const TaskEditor: React.FC<{ task: Task; onEndEdit: () => void }> = ({
       >
         <input
           autoFocus
-          className="bg-transparent text-lg font-bold leading-5 outline-none placeholder:text-stone-400"
+          className="bg-transparent text-lg leading-5 font-bold outline-hidden placeholder:text-stone-400"
           placeholder="タスク名"
           {...register("title")}
         />
         <textarea
-          className="resize-none bg-transparent outline-none placeholder:text-stone-400"
+          className="resize-none bg-transparent outline-hidden placeholder:text-stone-400"
           placeholder="説明"
           rows={3}
           {...register("description")}
@@ -243,7 +243,7 @@ const Sidebar: React.FC = () => {
           label={
             <p className="flex items-center gap-1">
               位置情報
-              <span className="flex h-[15px] items-center rounded bg-orange-100 px-1 text-[10px] font-bold text-orange-800">
+              <span className="flex h-[15px] items-center rounded-sm bg-orange-100 px-1 text-[10px] font-bold text-orange-800">
                 アップグレード
               </span>
             </p>
@@ -256,7 +256,7 @@ const Sidebar: React.FC = () => {
 };
 
 const sidebarItemClass =
-  "flex h-7 items-center justify-between gap-2 rounded px-1 transition-colors hover:bg-rose-100/70";
+  "flex h-7 items-center justify-between gap-2 rounded-sm px-1 transition-colors hover:bg-rose-100/70";
 
 const SidebarSelect: React.FC<{
   title: string;

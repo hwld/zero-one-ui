@@ -86,7 +86,7 @@ export const TaskListItem: React.FC<Props> = ({ task }) => {
         </div>
 
         <div
-          className="absolute right-0 flex items-center gap-1 bg-stone-50 opacity-0 transition-all group-hover:opacity-100 has-[:focus]:opacity-100 has-[[data-open]]:opacity-100"
+          className="absolute right-0 flex items-center gap-1 bg-stone-50 opacity-0 transition-all group-hover:opacity-100 has-focus:opacity-100 has-data-open:opacity-100"
           onClick={stopPropagation}
         >
           {!task.done && (

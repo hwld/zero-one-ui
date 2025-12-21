@@ -13,9 +13,9 @@ export default function Home() {
   return (
     <div
       className={clsx(
-        "flex h-[100dvh] flex-col items-center overflow-auto pb-6 pt-[200px]",
+        "flex h-dvh flex-col items-center overflow-auto pt-[200px] pb-6",
         // chromeでキーボードを操作しているとなぜかfocus-visibleがあたることがあるので
-        "focus-visible:outline-none",
+        "focus-visible:outline-hidden",
         bgClass,
       )}
       style={{ colorScheme: "dark" }}
@@ -26,7 +26,7 @@ export default function Home() {
           <a
             href="https://github.com/hwld/zero-one-ui"
             target="_blank"
-            className="grid size-[30px] place-items-center rounded  transition-colors hover:bg-white/15"
+            className="grid size-[30px] place-items-center rounded-sm transition-colors hover:bg-white/15"
           >
             <IoLogoGithub
               className="fill-neutral-200"

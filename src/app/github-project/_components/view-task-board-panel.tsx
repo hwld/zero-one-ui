@@ -73,7 +73,7 @@ export const ViewTaskBoardPanel: React.FC<Props> = ({ view }) => {
         <div className="flex h-8 grow items-center rounded-md border border-neutral-600 bg-transparent pl-2 focus-within:border-blue-500">
           <ListFilterIcon size={16} className="text-neutral-400" />
           <input
-            className="h-full grow bg-transparent px-2 text-sm placeholder:text-neutral-400 focus-visible:outline-none"
+            className="h-full grow bg-transparent px-2 text-sm placeholder:text-neutral-400 focus-visible:outline-hidden"
             placeholder="Filter by keyword or by field"
           />
         </div>

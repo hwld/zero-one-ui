@@ -10,7 +10,7 @@ export const MenuItem: React.FC<{
   return (
     <motion.button
       layout="position"
-      className="flex gap-1 rounded p-2 transition-colors hover:bg-black/10"
+      className="flex gap-1 rounded-sm p-2 transition-colors hover:bg-black/10"
       onClick={onClick}
     >
       <Icon />

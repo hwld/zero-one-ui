@@ -55,7 +55,7 @@ const ViewTabContent: React.FC<ViewTabProps> = ({
   return (
     <div
       className={clsx(
-        "flex w-full items-center gap-3 overflow-hidden rounded-md border-[2px] border-transparent px-2 py-[6px] outline-1 transition-colors group-focus-visible:border-blue-300",
+        "flex w-full items-center gap-3 overflow-hidden rounded-md border-2 border-transparent px-2 py-[6px] transition-colors group-focus-visible:border-blue-300",
         interactive
           ? "text-neutral-400 group-hover:bg-neutral-700 group-hover:text-neutral-100"
           : "text-neutral-100",
@@ -65,9 +65,9 @@ const ViewTabContent: React.FC<ViewTabProps> = ({
         <Icon size={16} className="shrink-0" />
         <div
           className={clsx(
-            "w-full min-w-0 whitespace-nowrap text-sm",
+            "w-full min-w-0 text-sm whitespace-nowrap",
             isOverflow &&
-              "bg-gradient-to-r from-neutral-400 from-85% to-transparent bg-clip-text text-transparent group-hover:from-neutral-100",
+              "bg-linear-to-r from-neutral-400 from-85% to-transparent bg-clip-text text-transparent group-hover:from-neutral-100",
           )}
         >
           {children}
@@ -89,7 +89,7 @@ const ViewTabContent: React.FC<ViewTabProps> = ({
 
 const viewTabWrapperClass = (active: boolean = false) =>
   clsx(
-    "group relative flex min-w-[100px] shrink-0 items-start gap-1 border-x border-t px-1 focus-visible:outline-none",
+    "group relative flex min-w-[100px] shrink-0 items-start gap-1 border-x border-t px-1 focus-visible:outline-hidden",
     active
       ? "rounded-t-md border-neutral-600 bg-neutral-800 text-neutral-100"
       : "max-w-[200px] rounded-md border-transparent",
@@ -130,7 +130,9 @@ export const ViewTabLink: React.FC<ViewTabLinkProps> = ({
       <ViewTabContent
         icon={icon}
         interactive={!active}
-        rightIcon={active && <ViewOptionMenuTrigger viewSummary={viewSummary} />}
+        rightIcon={
+          active && <ViewOptionMenuTrigger viewSummary={viewSummary} />
+        }
       >
         {children}
         {active && (
@@ -155,7 +157,7 @@ const OuterBottomCorner: React.FC<{
   return (
     <div
       className={clsx(
-        "corner absolute bottom-0 size-2 bg-neutral-800 before:absolute before:left-0 before:top-0 before:size-2  before:border-b before:border-neutral-600 before:bg-neutral-900 before:content-['']",
+        "corner absolute bottom-0 size-2 bg-neutral-800 before:absolute before:top-0 before:left-0 before:size-2 before:border-b before:border-neutral-600 before:bg-neutral-900 before:content-['']",
         positionClass[position],
       )}
     />

@@ -22,7 +22,7 @@ export const Popover: React.FC<Props> = ({
           <RxPopover.Content
             align="start"
             side="bottom"
-            className="z-[10000] h-[350px] w-[300px] overflow-hidden rounded-lg border border-stone-300 bg-stone-50 text-sm text-stone-700 shadow-lg"
+            className="z-10000 h-[350px] w-[300px] overflow-hidden rounded-lg border border-stone-300 bg-stone-50 text-sm text-stone-700 shadow-lg"
           >
             {children}
           </RxPopover.Content>
