@@ -1,5 +1,3 @@
-"use client";
-
 import { IconCheck } from "@tabler/icons-react";
 import clsx from "clsx";
 
@@ -14,7 +12,7 @@ export const TaskTableCheckbox: React.FC<Props> = ({
   return (
     <div
       className={clsx(
-        "relative block size-[18px] overflow-hidden rounded-sm border border-zinc-500 outline-2 outline-[#4c84e5] transition-colors has-focus-visible:outline-solid",
+        "has-focus-visible: relative block size-[18px] overflow-hidden rounded-sm border border-zinc-500 outline-[#4c84e5] transition-colors has-focus-visible:outline-2 has-focus-visible:outline-solid",
         checked ? "border-zinc-300 bg-zinc-300" : "hover:bg-white/10",
       )}
     >
