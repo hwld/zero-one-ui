@@ -13,7 +13,7 @@ import { UserMenuTrigger } from "./user-menu";
 import { SidebarNavList } from "./nav-list";
 import { IconButton } from "../icon-button";
 import { useSidebarContext } from "./provider";
-import { appHeaderHeightName } from "../../layout";
+import { appHeaderHeightName } from "../../lib";
 
 export const Sidebar: React.FC = () => {
   const resizableRef = useRef<Resizable>(null);

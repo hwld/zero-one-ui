@@ -12,7 +12,7 @@ import { useSidebarContext } from "../sidebar/provider";
 import { Tooltip } from "../tooltip";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import clsx from "clsx";
-import { appHeaderHeightName } from "../../layout";
+import { appHeaderHeightName } from "../../lib";
 
 type Props = {
   title: string;
