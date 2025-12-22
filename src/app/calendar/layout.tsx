@@ -14,7 +14,7 @@ const MinuteClockProviderCC = dynamic(
   { ssr: false },
 );
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+const Layout: React.FC<LayoutProps<"/calendar">> = ({ children }) => {
   return (
     <ToastProvider>
       <MinuteClockProviderCC>

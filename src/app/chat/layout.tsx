@@ -7,7 +7,7 @@ import { SideBar } from "./_components/sidebar/sidebar";
 import clsx from "clsx";
 import { useBodyBgColor } from "../../lib/useBodyBgColor";
 
-const ChatPage: React.FC<{ children: ReactNode }> = ({ children }) => {
+const ChatPage: React.FC<LayoutProps<"/chat">> = ({ children }) => {
   const bgClass = "bg-neutral-800";
   useBodyBgColor(bgClass);
 

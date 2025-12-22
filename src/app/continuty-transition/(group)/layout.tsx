@@ -6,7 +6,9 @@ import { useSearchParams } from "next/navigation";
 import { ReactNode } from "react";
 import { z } from "zod";
 
-const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
+const Layout: React.FC<LayoutProps<"/continuty-transition">> = ({
+  children,
+}) => {
   const searchParams = useSearchParams();
   const isMenuOpen = !!z.string().nullable().parse(searchParams.get("isOpen"));
 

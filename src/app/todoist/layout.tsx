@@ -6,7 +6,7 @@ import { SidebarContextProvider } from "./_components/sidebar/provider";
 import { GlobalDataProvider } from "./_components/global-data-provider";
 import { appHeaderHeightName } from "./lib";
 
-const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
+const Layout: React.FC<LayoutProps<"/todoist">> = ({ children }) => {
   return (
     <DefaultQueryClientProvider>
       <GlobalDataProvider>
