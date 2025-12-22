@@ -5,6 +5,7 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -17,6 +18,7 @@ import {
 } from "react";
 import { LucideIcon } from "lucide-react";
 import { GlobalCommand } from "./global-command";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export type CommandItem = {
   id: string;
@@ -155,13 +157,16 @@ export const GlobalCommandDialog: React.FC = () => {
                 exit={{ opacity: 0 }}
               />
             </DialogOverlay>
-            <DialogContent asChild>
+            <DialogContent asChild aria-describedby={undefined}>
               <motion.div
                 className="fixed top-1/2 left-1/2 z-100 h-[350px] w-[95%] max-w-[550px]"
                 initial={{ opacity: 0, x: "-50%", y: "-60%" }}
                 animate={{ opacity: 1, x: "-50%", y: "-50%" }}
                 exit={{ opacity: 0, x: "-50%", y: "-60%" }}
               >
+                <VisuallyHidden asChild>
+                  <DialogTitle>コマンド</DialogTitle>
+                </VisuallyHidden>
                 <GlobalCommand onClickItem={onCloseDialog} />
               </motion.div>
             </DialogContent>

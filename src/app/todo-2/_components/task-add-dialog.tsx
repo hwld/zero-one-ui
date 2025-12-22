@@ -4,6 +4,7 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import { PlusIcon, XIcon } from "lucide-react";
@@ -12,6 +13,7 @@ import { useState } from "react";
 import { useAddTask } from "../_queries/use-add-task";
 import { Button } from "./button";
 import { CreateTaskInput } from "../_backend/api";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const taskFormId = "task-form-id";
 
@@ -46,7 +48,7 @@ export const TaskAddDialog: React.FC<Props> = ({ isOpen, onOpenChange }) => {
                 exit={{ opacity: 0 }}
               ></motion.div>
             </DialogOverlay>
-            <DialogContent asChild>
+            <DialogContent asChild aria-describedby={undefined}>
               <motion.div
                 initial={{ opacity: 0, x: "-50%", y: "-60%" }}
                 animate={{ opacity: 1, x: "-50%", y: "-50%" }}
@@ -54,9 +56,9 @@ export const TaskAddDialog: React.FC<Props> = ({ isOpen, onOpenChange }) => {
                 className="fixed top-1/2 left-1/2 w-full max-w-[550px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
               >
                 <div className="flex justify-between p-4">
-                  <div className="grid place-items-center rounded-sm bg-zinc-700 px-2 text-xs text-zinc-400 select-none">
+                  <DialogTitle className="grid place-items-center rounded-sm bg-zinc-700 px-2 text-xs text-zinc-400 select-none">
                     New Task
-                  </div>
+                  </DialogTitle>
                   <DialogClose className="grid size-[25px] place-items-center rounded-sm transition-colors hover:bg-white/10">
                     <XIcon size={20} />
                   </DialogClose>

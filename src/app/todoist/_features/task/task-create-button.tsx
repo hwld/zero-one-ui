@@ -3,6 +3,7 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@radix-ui/react-dialog";
 import { PiPlusCircleFill } from "@react-icons/all-files/pi/PiPlusCircleFill";
 import { AnimatePresence, motion } from "framer-motion";
@@ -10,6 +11,7 @@ import { forwardRef, useState } from "react";
 import { TaskForm } from "./task-form";
 import { useCreateTask } from "./use-create-task";
 import type { TaskFormData } from "../../_backend/task/schema";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export const TaskCreateButton: React.FC = forwardRef<HTMLButtonElement>(
   function TaskCreateButton(props, ref) {
@@ -58,7 +60,7 @@ const TaskCreateDialog: React.FC<{
             <DialogOverlay asChild>
               <motion.div className="fixed inset-0 z-40" />
             </DialogOverlay>
-            <DialogContent asChild>
+            <DialogContent asChild aria-describedby={undefined}>
               <motion.div
                 className="fixed top-[120px] left-1/2 z-50 w-[550px] rounded-lg border border-stone-300 bg-stone-50 shadow-2xl"
                 initial={{ opacity: 0, y: 40, x: "-50%", scale: 0.8 }}
@@ -66,6 +68,9 @@ const TaskCreateDialog: React.FC<{
                 exit={{ opacity: 0, y: 40, x: "-50%", scale: 0.8 }}
                 transition={{ duration: 0.1 }}
               >
+                <VisuallyHidden asChild>
+                  <DialogTitle>タスクの作成</DialogTitle>
+                </VisuallyHidden>
                 <TaskForm
                   submitText="作成する"
                   onSubmit={handleCreateTask}

@@ -1,4 +1,9 @@
-import { Dialog, DialogClose, DialogContent } from "@radix-ui/react-dialog";
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogTitle,
+} from "@radix-ui/react-dialog";
 import { Target, motion } from "framer-motion";
 import { SettingsSidebar } from "./sidebar";
 import { Spacer } from "../spacer";
@@ -8,6 +13,7 @@ import { SwitchSettingEntry } from "./switch-entry";
 import { radioSettings, switchSettings } from "./data";
 import { RadioSettingEntry } from "./radio-entry";
 import { ProfileForm } from "./profile-form";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type Props = {
   onOpenChange: (open: boolean) => void;
@@ -23,6 +29,7 @@ export const SettingsDialog = forwardRef<HTMLDivElement, Props>(
           asChild
           onOpenAutoFocus={(e) => e.preventDefault()}
           forceMount
+          aria-describedby={undefined}
         >
           <motion.div
             ref={ref}
@@ -31,6 +38,9 @@ export const SettingsDialog = forwardRef<HTMLDivElement, Props>(
             animate={animate}
             style={{ colorScheme: "dark" }}
           >
+            <VisuallyHidden asChild>
+              <DialogTitle>設定</DialogTitle>
+            </VisuallyHidden>
             <SettingsSidebar />
             <div className="grid grid-cols-[700px_50px] justify-start gap-8 overflow-auto bg-neutral-700 px-6 py-14">
               <div className="flex h-full flex-col gap-8">
