@@ -9,7 +9,7 @@ import { useAppState } from "../../_components/use-app-state";
 type Props = {
   week: Date[];
   events: Event[];
-  rowRef?: RefObject<HTMLDivElement>;
+  rowRef?: RefObject<HTMLDivElement | null>;
   calendarYearMonth: Date;
   eventLimit: number;
 };
