@@ -56,7 +56,7 @@ export const ResizeEventInColProvider: React.FC<PropsWithChildren> = ({
 
   const { resizeEventPreview, isEventResizing } = state;
 
-  const mouseHistoryRef = useRef<MouseHistory>();
+  const mouseHistoryRef = useRef<MouseHistory>(undefined);
 
   const startResize: ResizeEventActions["startResize"] = useCallback(
     ({ event, origin, y }) => {

@@ -52,7 +52,7 @@ export const MoveEventInColProvider: React.FC<PropsWithChildren> = ({
 
   const { isEventMoving, moveEventPreview } = state;
 
-  const mouseHistoryRef = useRef<MouseHistory>();
+  const mouseHistoryRef = useRef<MouseHistory>(undefined);
 
   const startMove: MoveEventActions["startMove"] = useCallback(
     (event, { date, y }) => {

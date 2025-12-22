@@ -57,7 +57,7 @@ export const PrepareCreateEventInColProvider: React.FC<PropsWithChildren> = ({
 
   // マウスイベントが発生したときのyとscrollableのscrollTopを保存して、スクロールされたときに
   // これを使用してdragDateRangeを更新する
-  const mouseHistoryRef = useRef<MouseHistory>();
+  const mouseHistoryRef = useRef<MouseHistory>(undefined);
 
   const startDrag: PrepareCreateEventActions["startDrag"] = useCallback(
     (day, y) => {

@@ -22,8 +22,7 @@ import { Toaster } from "sonner";
 // Static ExportでParallel Routesが動かないっぽいので、page.tsxにnullを返させて
 // layoutでページをレンダリングする
 
-type Props = { children: ReactNode };
-const LayoutInner: React.FC<Props> = ({ children }) => {
+const LayoutInner: React.FC<PropsWithChildren> = ({ children }) => {
   const { data: tasks = [], status: tasksStatus } = useTasks();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -83,7 +82,7 @@ const LayoutInner: React.FC<Props> = ({ children }) => {
   );
 };
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+const Layout: React.FC<LayoutProps<"/todo-1">> = ({ children }) => {
   return (
     <DefaultQueryClientProvider>
       <LayoutInner>{children}</LayoutInner>

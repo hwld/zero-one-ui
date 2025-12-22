@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, Suspense } from "react";
+import { Suspense, type PropsWithChildren } from "react";
 import { useScrollableRoot } from "./_providers/scrollable-root-provider";
 import { ScrollableRootProvider } from "./_providers/scrollable-root-provider";
 import clsx from "clsx";
@@ -9,7 +9,7 @@ import { DefaultQueryClientProvider } from "../_providers/default-query-client-p
 import { TaskTableProvider } from "./_components/task-table/provider";
 import { useBodyBgColor } from "../../lib/useBodyBgColor";
 
-const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
+const Layout: React.FC<PropsWithChildren> = ({ children }) => {
   const { scrollableRootRef } = useScrollableRoot();
 
   const bgClass = "bg-zinc-900";
@@ -36,7 +36,7 @@ const Layout: React.FC<{ children: ReactNode }> = ({ children }) => {
   );
 };
 
-const LayoutWithProviders: React.FC<{ children: ReactNode }> = ({
+const LayoutWithProviders: React.FC<LayoutProps<"/todo-2">> = ({
   children,
 }) => {
   return (

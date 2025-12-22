@@ -13,7 +13,7 @@ type Props = {
   message?: string | undefined;
   messageId: string;
   offset?: number;
-  anchorRef: RefObject<HTMLElement> | RefCallBack;
+  anchorRef: RefObject<HTMLElement | null> | RefCallBack;
   anchor: ReactNode;
 };
 
