@@ -33,7 +33,7 @@ export const Dialog: React.FC<{
               <motion.div className="fixed inset-0 bg-black/15" />
             </RadixDialog.Overlay>
 
-            <RadixDialog.Content asChild>
+            <RadixDialog.Content asChild aria-describedby={undefined}>
               <motion.div
                 className="fixed top-1/2 left-1/2 flex min-h-[200px] w-[500px] max-w-[95%] flex-col overflow-hidden rounded-lg border border-neutral-300 bg-neutral-100 text-neutral-600"
                 initial={{ opacity: 0, translateX: "-50%", translateY: "-50%" }}
@@ -45,9 +45,9 @@ export const Dialog: React.FC<{
                     <XIcon />
                   </button>
                 </RadixDialog.Close>
-                <div className="bg-neutral-900 p-4 text-lg font-bold text-neutral-100">
+                <RadixDialog.Title className="bg-neutral-900 p-4 text-lg font-bold text-neutral-100">
                   {titleText}
-                </div>
+                </RadixDialog.Title>
                 <div className="grow p-4">{children}</div>
                 <div className="flex justify-end gap-2 p-4">
                   <button
