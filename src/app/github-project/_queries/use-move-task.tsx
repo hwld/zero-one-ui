@@ -25,7 +25,7 @@ export const useMoveTask = () => {
           return view;
         }
 
-        let targetTask = view.columns
+        const targetTask = view.columns
           .flatMap((c) => c.tasks)
           .find((t) => t.id === input.taskId);
 

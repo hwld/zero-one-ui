@@ -1,6 +1,5 @@
 "use client";
 
-import { ReactNode } from "react";
 import { ChatPanel } from "./_components/chat-panel/chat-panel";
 import { ServerSidebar } from "./_components/server-sidebar/server-sidebar";
 import { SideBar } from "./_components/sidebar/sidebar";

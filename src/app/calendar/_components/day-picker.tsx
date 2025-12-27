@@ -112,7 +112,7 @@ export const DayPicker: React.FC<Props> = ({
 
 const Empty = () => <></>;
 
-const Day = ({ day, modifiers, children, ...props }: DayProps) => {
+const Day = ({ day: _, modifiers, children, ...props }: DayProps) => {
   const content = useMemo(() => {
     if (modifiers.today) {
       return (
@@ -122,7 +122,7 @@ const Day = ({ day, modifiers, children, ...props }: DayProps) => {
       );
     }
     return children;
-  }, [modifiers]);
+  }, [children, modifiers.today]);
 
   return <td {...props}>{content}</td>;
 };
@@ -156,14 +156,18 @@ const MonthCaption = ({ calendarMonth }: MonthCaptionProps) => {
           icon={TbChevronLeft}
           disabled={!previousMonth}
           onClick={() => {
-            previousMonth && goToMonth(previousMonth);
+            if (previousMonth) {
+              goToMonth(previousMonth);
+            }
           }}
         />
         <IconButton
           size="sm"
           disabled={!nextMonth}
           onClick={() => {
-            nextMonth && goToMonth(nextMonth);
+            if (nextMonth) {
+              goToMonth(nextMonth);
+            }
           }}
           icon={TbChevronRight}
         />

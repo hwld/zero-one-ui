@@ -4,9 +4,10 @@ import { calendarApiHandlers } from "../app/calendar/_backend/api";
 import { todoistApiHandler } from "../app/todoist/_backend/api";
 import { todo1Handlers } from "../app/todo-1/_backend/api";
 import { setupWorker } from "msw/browser";
+import type { RequestHandler } from "msw";
 
 export const setupMsw = async () => {
-  const handlers: any[] = [
+  const handlers: RequestHandler[] = [
     ...todo1Handlers,
     ...todo2Handlers,
     ...githubProjcetApiHandler,

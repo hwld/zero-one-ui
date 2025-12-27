@@ -1,13 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import {
-  PropsWithChildren,
-  ReactNode,
-  Suspense,
-  useEffect,
-  useRef,
-} from "react";
+import { PropsWithChildren, Suspense, useEffect, useRef } from "react";
 import { SideBar } from "./_components/side-bar/side-bar";
 import { HomeIcon } from "lucide-react";
 import { TaskCreateInput } from "./_components/task-create-input";

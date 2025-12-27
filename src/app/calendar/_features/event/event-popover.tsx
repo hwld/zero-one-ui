@@ -11,7 +11,7 @@ import {
   useInteractions,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { Event } from "../../_backend/event-store";
 import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { TbClockHour5 } from "@react-icons/all-files/tb/TbClockHour5";
@@ -140,10 +140,17 @@ export const EventPopover: React.FC<Props> = ({
 };
 
 const EventPeriod: React.FC<{ event: Event }> = ({ event }) => {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setNow(Date.now());
+    }, 60 * 1000);
+    return () => clearInterval(id);
+  });
+
   const content = useMemo(() => {
     const { start, end } = event;
-
-    const now = Date.now();
 
     // どちらかが今年ではなければどちらの年月も表示する
     const showYear = !(isSameYear(now, start) && isSameYear(now, end));
@@ -189,7 +196,7 @@ const EventPeriod: React.FC<{ event: Event }> = ({ event }) => {
         </>
       );
     }
-  }, [event]);
+  }, [event, now]);
 
   return <div className="tabular-nums">{content}</div>;
 };

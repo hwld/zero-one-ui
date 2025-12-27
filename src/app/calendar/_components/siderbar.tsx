@@ -5,9 +5,7 @@ import { eventsQueryOption } from "../_features/event/use-events";
 import { AnimatePresence, motion } from "motion/react";
 import { TbLoader2 } from "@react-icons/all-files/tb/TbLoader2";
 
-type Props = {};
-
-export const Sidebar: React.FC<Props> = () => {
+export const Sidebar: React.FC = () => {
   const { calendarInfo, selectDate, dayPickerMonth, setDayPickerMonth } =
     useAppState();
 

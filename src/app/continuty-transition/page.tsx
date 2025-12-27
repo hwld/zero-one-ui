@@ -21,10 +21,6 @@ const Page: React.FC = () => {
   const searchParams = useSearchParams();
   const isMenuOpen = !!z.string().nullable().parse(searchParams.get("isOpen"));
 
-  const ref = useClickOutside(() => {
-    onCloseMenu();
-  });
-
   const onOpenMenu = () => {
     router.replace(`${pathname}?isOpen=true`, { scroll: false });
   };
@@ -32,6 +28,10 @@ const Page: React.FC = () => {
   const onCloseMenu = () => {
     router.replace(`${pathname}`, { scroll: false });
   };
+
+  const ref = useClickOutside(() => {
+    onCloseMenu();
+  });
 
   const bgClass = "bg-neutral-100";
   useBodyBgColor(bgClass);

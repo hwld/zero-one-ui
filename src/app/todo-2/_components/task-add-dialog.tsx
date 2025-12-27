@@ -13,7 +13,6 @@ import { useState } from "react";
 import { useAddTask } from "../_queries/use-add-task";
 import { Button } from "./button";
 import { CreateTaskInput } from "../_backend/api";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const taskFormId = "task-form-id";
 

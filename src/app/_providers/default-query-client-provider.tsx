@@ -6,13 +6,13 @@ type Props = { children: ReactNode };
 
 export const DefaultQueryClientProvider: React.FC<Props> = ({ children }) => {
   const [queryClient] = useState(() => {
-    return new QueryClient({
+    const client = new QueryClient({
       defaultOptions: {
         queries: { retry: 1 },
         mutations: {
           onSettled: async () => {
-            if (queryClient.isMutating() === 1) {
-              await queryClient.invalidateQueries();
+            if (client.isMutating() === 1) {
+              await client.invalidateQueries();
             }
           },
           onError: (e) => {
@@ -21,6 +21,8 @@ export const DefaultQueryClientProvider: React.FC<Props> = ({ children }) => {
         },
       },
     });
+
+    return client;
   });
 
   return (
