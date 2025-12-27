@@ -13,7 +13,7 @@ export const QueryClientProvider: React.FC<PropsWithChildren> = ({
   const { toast } = useToast();
 
   const [queryClient] = useState(() => {
-    return new QueryClient({
+    const client = new QueryClient({
       queryCache: new QueryCache({
         onError: () => {
           toast.error({
@@ -30,7 +30,7 @@ export const QueryClientProvider: React.FC<PropsWithChildren> = ({
         queries: { retry: 1 },
         mutations: {
           onSettled: async () => {
-            await queryClient.invalidateQueries();
+            await client.invalidateQueries();
           },
           onError: (e) => {
             console.error(e);
@@ -38,6 +38,8 @@ export const QueryClientProvider: React.FC<PropsWithChildren> = ({
         },
       },
     });
+
+    return client;
   });
 
   return (

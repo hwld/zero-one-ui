@@ -34,10 +34,10 @@ export const Slider: React.FC<{
 // Rangeの長さを調節して、Thumbとずれないようにする
 const CustomRange = forwardRef<HTMLSpanElement, RadixSlider.SliderThumbProps>(
   function CustomRange({ style, ...others }, ref) {
-    let right =
+    const right =
       parseFloat(style?.right?.toString().split("calc(")[0] ?? "0") ?? 0;
     const delta = `${(right - 50) / 4}px`;
-    let newRight = `calc(${right}% - (${delta}))`;
+    const newRight = `calc(${right}% - (${delta}))`;
 
     return <span ref={ref} {...others} style={{ ...style, right: newRight }} />;
   },

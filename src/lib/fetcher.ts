@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 
 type Resource = Parameters<typeof fetch>[0];
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 type FetchOptions = Omit<RequestInit, "method" | "body"> & { body?: {} };
 
 type Args = [Resource, FetchOptions?];

@@ -46,7 +46,7 @@ export const MusicListCard: React.FC<Props> = ({
   };
 
   const addMusicFiles = (files: FileList) => {
-    let musics = Array.from(files)
+    const musics = Array.from(files)
       .filter((f) => f.type.startsWith("audio/"))
       .map((f): Music => {
         return {

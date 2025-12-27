@@ -1,5 +1,5 @@
 "use client";
-import { ReactNode, Suspense } from "react";
+import { Suspense } from "react";
 import { Sidebar } from "./_components/sidebar/sidebar";
 import { DefaultQueryClientProvider } from "../_providers/default-query-client-provider";
 import { SidebarContextProvider } from "./_components/sidebar/provider";

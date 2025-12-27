@@ -3,7 +3,6 @@ import { motion } from "motion/react";
 import { XIcon } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { ReactNode } from "react";
 import { z } from "zod";
 
 const Layout: React.FC<LayoutProps<"/continuty-transition">> = ({

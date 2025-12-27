@@ -1,31 +1,26 @@
-import { defineConfig } from "eslint/config";
-import nextCoreWebVitals from "eslint-config-next/core-web-vitals";
-import typescriptEslint from "@typescript-eslint/eslint-plugin";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
-import js from "@eslint/js";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier/flat";
+import storybook from "eslint-plugin-storybook";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all,
-});
-
-export default defineConfig([
+export default defineConfig(
+  globalIgnores([
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+    "storybook-static",
+  ]),
   {
     extends: [
-      ...nextCoreWebVitals,
-      ...compat.extends("prettier"),
-      ...compat.extends("plugin:storybook/recommended"),
+      nextVitals,
+      nextTs,
+      storybook.configs["flat/recommended"],
+      prettier,
     ],
-
-    plugins: {
-      "@typescript-eslint": typescriptEslint,
-    },
-
+  },
+  {
     rules: {
       "no-restricted-globals": [
         "error",
@@ -34,7 +29,6 @@ export default defineConfig([
           message: "`lib/fetcher`を使用してください",
         },
       ],
-
       "@typescript-eslint/no-unused-vars": [
         "warn",
         {
@@ -44,6 +38,8 @@ export default defineConfig([
           destructuredArrayIgnorePattern: "^_",
         },
       ],
+      // TODO: https://github.com/facebook/react/issues/34775 が解決するのを待つ
+      "react-hooks/refs": "off",
     },
   },
-]);
+);

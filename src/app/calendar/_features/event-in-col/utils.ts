@@ -53,7 +53,7 @@ export const getEventsInCol = ({
 
     const overlappingEvents = [];
     let prevOverlappings = 0;
-    for (let prevEvent of prevEvents) {
+    for (const prevEvent of prevEvents) {
       if (
         areIntervalsOverlapping(event, prevEvent) &&
         Math.abs(differenceInMinutes(event.start, prevEvent.start)) < 30

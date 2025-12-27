@@ -8,7 +8,6 @@ import {
 import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { ReactNode } from "react";
 import { Button } from "./button";
-import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type Props = {
   isOpen: boolean;

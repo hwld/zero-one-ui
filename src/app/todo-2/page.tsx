@@ -9,7 +9,6 @@ import { TaskSearchForm } from "./_components/task-search-form";
 import { TaskSelectionMenu } from "./_components/task-selection-menu/task-selection-menu";
 import { Card } from "./_components/card";
 import { usePaginatedTasks } from "./_queries/use-paginated-tasks";
-import { useMemo } from "react";
 import { LoadingTaskTable } from "./_components/task-table/loading-task-table";
 import { ErrorTaskTable } from "./_components/task-table/error-task-table";
 import { useTodo2HomeCommands } from "./commands";
@@ -35,7 +34,7 @@ const Page: NextPage = () => {
     selectedTaskIds,
   });
 
-  const content = useMemo(() => {
+  const renderContent = () => {
     switch (status) {
       case "success": {
         return (
@@ -49,7 +48,7 @@ const Page: NextPage = () => {
         return <ErrorTaskTable />;
       }
     }
-  }, [data?.tasks, data?.totalPages, status]);
+  };
 
   useTodo2HomeCommands();
 
@@ -69,7 +68,7 @@ const Page: NextPage = () => {
               </div>
               <TaskAddButton />
             </div>
-            {content}
+            {renderContent()}
           </div>
         </Card>
       </div>

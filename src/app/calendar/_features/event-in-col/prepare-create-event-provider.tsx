@@ -113,15 +113,15 @@ export const PrepareCreateEventInColProvider: React.FC<PropsWithChildren> = ({
     [dragDateRange, updateDragEnd],
   );
 
+  const [defaultCreateEventValues, setDefaultCreateEventValues] =
+    useState<PrepareCreateEventState["defaultCreateEventValues"]>();
+
   const clearState: PrepareCreateEventActions["clearState"] =
     useCallback(() => {
       setDragDateRange(undefined);
       setDefaultCreateEventValues(undefined);
       mouseHistoryRef.current = undefined;
     }, []);
-
-  const [defaultCreateEventValues, setDefaultCreateEventValues] =
-    useState<PrepareCreateEventState["defaultCreateEventValues"]>();
 
   const setDefaultValues: PrepareCreateEventActions["setDefaultValues"] =
     useCallback(() => {
