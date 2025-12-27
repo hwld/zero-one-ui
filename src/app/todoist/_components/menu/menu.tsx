@@ -180,7 +180,7 @@ const MenuComponent = forwardRef<HTMLButtonElement, MenuComponentProps>(
     }, [tree, nodeId, parentId, handleOpenChange]);
 
     useEffect(() => {
-      if (isOpen && tree) {
+      if (isOpen && tree && nodeId) {
         tree.events.emit("menuopen", {
           parentId,
           nodeId,
