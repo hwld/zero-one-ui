@@ -14,7 +14,7 @@ import {
   startOfWeek,
 } from "date-fns";
 
-export type OmitDistributive<T, K extends keyof unknown> = T extends unknown
+export type OmitDistributive<T, K extends PropertyKey> = T extends unknown
   ? Omit<T, K>
   : never;
 
