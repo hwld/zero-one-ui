@@ -1,7 +1,7 @@
 import { useMergeRefs } from "@floating-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Popover from "@radix-ui/react-popover";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { AlertCircleIcon, CommandIcon, Loader2Icon } from "lucide-react";
 import { FocusEventHandler, forwardRef, useId } from "react";
 import { useForm } from "react-hook-form";

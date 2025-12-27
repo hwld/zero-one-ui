@@ -4,7 +4,7 @@ import {
   DialogContent,
   DialogTitle,
 } from "@radix-ui/react-dialog";
-import { Target, motion } from "framer-motion";
+import { Target, motion } from "motion/react";
 import { SettingsSidebar } from "./sidebar";
 import { Spacer } from "../spacer";
 import { XCircleIcon } from "lucide-react";

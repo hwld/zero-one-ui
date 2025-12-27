@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { AnimatePresence, motion, MotionConfig, Variants } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig, Variants } from "motion/react";
 import {
   createContext,
   KeyboardEvent,

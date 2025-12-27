@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { TbVolumeOff } from "@react-icons/all-files/tb/TbVolumeOff";
 
 const delays = [0.1, 0.3, 0.2, 0.4];

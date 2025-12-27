@@ -5,7 +5,7 @@ import { Button } from "./button";
 import { TaskCreateBar } from "./task-create-bar";
 import { ListFilterIcon } from "lucide-react";
 import { ViewColumn } from "./view-column";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 type Props = { view: View };
 

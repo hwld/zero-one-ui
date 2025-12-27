@@ -7,7 +7,7 @@ import {
   useFloating,
   useInteractions,
 } from "@floating-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { ReactNode } from "react";
 import { TbX } from "@react-icons/all-files/tb/TbX";
 import { IconButton } from "./button";

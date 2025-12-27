@@ -9,7 +9,7 @@ import {
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
-import { AnimatePresence, AnimationProps, motion } from "framer-motion";
+import { AnimatePresence, MotionProps, motion } from "motion/react";
 import { ReactNode } from "react";
 
 type Position = "left" | "right";
@@ -55,9 +55,9 @@ export const Drawer: React.FC<Props> = ({
   } as const satisfies Record<
     Position,
     {
-      initial: AnimationProps["initial"];
-      animate: AnimationProps["animate"];
-      exit: AnimationProps["exit"];
+      initial: MotionProps["initial"];
+      animate: MotionProps["animate"];
+      exit: MotionProps["exit"];
     }
   >;
 

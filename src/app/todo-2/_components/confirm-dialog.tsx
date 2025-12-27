@@ -5,7 +5,7 @@ import {
   DialogPortal,
   DialogTitle,
 } from "@radix-ui/react-dialog";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { ReactNode } from "react";
 import { Button } from "./button";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";

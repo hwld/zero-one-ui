@@ -9,7 +9,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { ReactNode } from "react";
 import { IconButton } from "./icon-button";
 import { XIcon } from "lucide-react";

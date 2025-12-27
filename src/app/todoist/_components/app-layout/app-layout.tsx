@@ -10,7 +10,7 @@ import { IconButton } from "../icon-button";
 import { PiSidebarSimpleLight } from "@react-icons/all-files/pi/PiSidebarSimpleLight";
 import { useSidebarContext } from "../sidebar/provider";
 import { Tooltip } from "../tooltip";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import clsx from "clsx";
 import { appHeaderHeightName } from "../../lib";
 

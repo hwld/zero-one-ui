@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useState } from "react";
 import { Slider } from "../slider";
 import { MicIcon, MicOffIcon, Volume2Icon, VolumeXIcon } from "lucide-react";

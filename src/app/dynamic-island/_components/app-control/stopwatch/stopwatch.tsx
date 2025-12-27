@@ -7,7 +7,7 @@ import {
   TimerIcon,
   TimerResetIcon,
 } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { APP_CONTROL_LAYOUT_ID } from "../app-control";
 
 const maxSeconds = 359_999;

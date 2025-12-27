@@ -3,7 +3,7 @@ import { NextMenuItem } from "./next-item";
 import { MenuItem } from "./item";
 import { PrevMenuItem } from "./prev-item";
 import { AnnoyedIcon, LaughIcon } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import clsx from "clsx";
 
 const initialMenu = [...new Array(3)].map(

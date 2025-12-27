@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { Button } from "./button";
 import { TbCheck } from "@react-icons/all-files/tb/TbCheck";
 import { TbChevronDown } from "@react-icons/all-files/tb/TbChevronDown";

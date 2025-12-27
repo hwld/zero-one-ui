@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import * as RadixDialog from "@radix-ui/react-dialog";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { LoaderCircleIcon, XIcon } from "lucide-react";
 
 export const Dialog: React.FC<{

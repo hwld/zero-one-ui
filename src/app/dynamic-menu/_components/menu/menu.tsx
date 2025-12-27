@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { MenuTrigger } from "./trigger";
 import { useState } from "react";
 import {

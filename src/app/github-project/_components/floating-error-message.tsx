@@ -5,7 +5,7 @@ import {
   useMergeRefs,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { ReactNode, RefObject } from "react";
 import { RefCallBack } from "react-hook-form";
 

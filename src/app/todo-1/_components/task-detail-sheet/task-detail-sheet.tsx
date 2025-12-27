@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { ActivityIcon, CircleAlertIcon, TextIcon, XIcon } from "lucide-react";
 import { TaskStatusBadge } from "../task-status-badge";

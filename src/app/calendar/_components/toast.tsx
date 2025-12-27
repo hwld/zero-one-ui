@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import * as RxToast from "@radix-ui/react-toast";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { TbAlertCircle } from "@react-icons/all-files/tb/TbAlertCircle";
 import { TbInfoCircle } from "@react-icons/all-files/tb/TbInfoCircle";
 import { TbX } from "@react-icons/all-files/tb/TbX";

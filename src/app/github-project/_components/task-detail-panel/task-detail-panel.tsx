@@ -5,7 +5,7 @@ import {
   useFloating,
   useInteractions,
 } from "@floating-ui/react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
 import { useLayoutEffect, useMemo, useRef } from "react";
 import { appHeaderHeightPx } from "../app-header/app-header";

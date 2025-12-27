@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ArrowRightIcon } from "lucide-react";
 
 export const NextMenuItem: React.FC<{ onClick: () => void }> = ({

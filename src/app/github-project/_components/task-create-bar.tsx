@@ -1,6 +1,6 @@
 import { useDismiss, useFloating, useInteractions } from "@floating-ui/react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { Loader2Icon, PlusIcon } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { createTaskInputSchema } from "../_backend/task/api";
