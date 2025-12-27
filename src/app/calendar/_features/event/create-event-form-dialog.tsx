@@ -13,7 +13,7 @@ import { Button } from "../../_components/button";
 
 type Props = {
   isOpen: boolean;
-  defaultFormValues: Omit<CreateEventInput, "title"> | undefined;
+  defaultFormValues: CreateEventInput | undefined;
   onChangeEventPeriodPreview: Dispatch<
     SetStateAction<DragDateRange | undefined>
   >;

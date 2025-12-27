@@ -13,43 +13,51 @@ const CalendarAPI = {
 // 今のところcreateInputとupdateInputは同じなのでこれを使う。
 // 別々にしたくなったタイミングで(create|update)EventInputSchemaを変更する
 type EventInputSchemaKeys = "title" | "allDay" | "start" | "end";
-export const eventInputSchema = z
-  .object({
-    title: z
-      .string()
-      .min(1, "タイトルを入力してください")
-      .max(200, "タイトルは200文字以下で入力してください"),
-    allDay: z.boolean(),
-    start: z.union([z.string(), z.date()]).pipe(z.coerce.date()),
-    end: z.union([z.string(), z.date()]).pipe(z.coerce.date()),
-  } satisfies Record<EventInputSchemaKeys, unknown>)
-  .refine(
-    (input) => {
-      return input.start.getTime() <= input.end.getTime();
-    },
-    {
+
+const eventInputBaseSchema = z.object({
+  title: z
+    .string()
+    .min(1, "タイトルを入力してください")
+    .max(200, "タイトルは200文字以下で入力してください"),
+  allDay: z.boolean(),
+  start: z.string().pipe(z.coerce.date()),
+  end: z.string().pipe(z.coerce.date()),
+} satisfies Record<EventInputSchemaKeys, unknown>);
+
+type EventInputBase = z.infer<typeof eventInputBaseSchema>;
+
+const withEventPeriodRefinements = <T extends z.ZodType<EventInputBase>>(
+  schema: T,
+) => {
+  return schema
+    .refine((input) => input.start.getTime() <= input.end.getTime(), {
       path: ["start"] satisfies EventInputSchemaKeys[],
       error: "開始日時は終了日時より前に設定してください",
-    },
-  )
-  .refine(
-    (input) => {
-      if (input.allDay) {
-        return true;
-      }
-      return !isSameMinute(input.start, input.end);
-    },
-    {
+    })
+    .refine((input) => input.allDay || !isSameMinute(input.start, input.end), {
       path: ["end"] satisfies EventInputSchemaKeys[],
       error: "開始日時と異なる日時を設定してください",
-    },
-  );
+    });
+};
+
+export const eventInputSchema =
+  withEventPeriodRefinements(eventInputBaseSchema);
 export type EventInput = z.infer<typeof eventInputSchema>;
 
-const createEventInputSchema = eventInputSchema;
+// API境界ではstring -> Dateの変換が必要だが、フォーム(フロントエンド内)ではDate型に限定する
+// useFormでeventInputSchemaを使うと、バリデーション後の値はDateになるが、register.valueがstring | Dateになってしまう
+// eventInputSchemaとは入力型だけが異なり、他のバリデーションは同じものを維持する必要がある
+export const eventInputFormSchema = withEventPeriodRefinements(
+  eventInputBaseSchema.extend({
+    start: z.date(),
+    end: z.date(),
+  }),
+);
+
+export const createEventInputSchema = eventInputSchema;
 export type CreateEventInput = z.infer<typeof createEventInputSchema>;
 
-const updateEventInputSchema = eventInputSchema;
+export const updateEventInputSchema = eventInputSchema;
 export type UpdateEventInput = z.infer<typeof updateEventInputSchema>;
 
 export const fetchEvents = async (): Promise<Event[]> => {
