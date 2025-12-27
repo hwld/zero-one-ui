@@ -9,33 +9,41 @@ import { FlatCompat } from "@eslint/eslintrc";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const compat = new FlatCompat({
-    baseDirectory: __dirname,
-    recommendedConfig: js.configs.recommended,
-    allConfig: js.configs.all
+  baseDirectory: __dirname,
+  recommendedConfig: js.configs.recommended,
+  allConfig: js.configs.all,
 });
 
-export default defineConfig([{
+export default defineConfig([
+  {
     extends: [
-        ...nextCoreWebVitals,
-        ...compat.extends("prettier"),
-        ...compat.extends("plugin:storybook/recommended")
+      ...nextCoreWebVitals,
+      ...compat.extends("prettier"),
+      ...compat.extends("plugin:storybook/recommended"),
     ],
 
     plugins: {
-        "@typescript-eslint": typescriptEslint,
+      "@typescript-eslint": typescriptEslint,
     },
 
     rules: {
-        "no-restricted-globals": ["error", {
-            name: "fetch",
-            message: "`lib/fetcher`を使用してください",
-        }],
+      "no-restricted-globals": [
+        "error",
+        {
+          name: "fetch",
+          message: "`lib/fetcher`を使用してください",
+        },
+      ],
 
-        "@typescript-eslint/no-unused-vars": ["warn", {
-            argsIgnorePattern: "^_",
-            varsIgnorePattern: "^_",
-            caughtErrorsIgnorePattern: "^_",
-            destructuredArrayIgnorePattern: "^_",
-        }],
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
+          destructuredArrayIgnorePattern: "^_",
+        },
+      ],
     },
-}]);
+  },
+]);

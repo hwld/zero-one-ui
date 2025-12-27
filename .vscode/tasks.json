@@ -1,28 +1,23 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "typecheck",
-			"type": "shell",
-			"command": "npx",
-			"args": [
-				"tsc",
-				"--noEmit"
-			],
-			"problemMatcher": [
-				"$tsc"
-			],
-			// Cmd + Shfit + Bで実行できるように、ビルドタスクとして定義する
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			},
-			"presentation": {
-				"reveal": "silent"
-			},
-			"runOptions": {
-				"runOn": "default"
-			}
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "typecheck",
+      "type": "shell",
+      "command": "npx",
+      "args": ["tsc", "--noEmit"],
+      "problemMatcher": ["$tsc"],
+      // Cmd + Shfit + Bで実行できるように、ビルドタスクとして定義する
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "silent"
+      },
+      "runOptions": {
+        "runOn": "default"
+      }
+    }
+  ]
 }

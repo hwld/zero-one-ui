@@ -9,17 +9,11 @@
     "classNames",
     "ngClass",
     ".*ClassMap",
-    ".*CLASS_NAMES",
+    ".*CLASS_NAMES"
   ],
   "tailwindCSS.experimental.classRegex": [
-    [
-      "clsx\\(.*?\\)(?!\\])",
-      "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)"
-    ],
-    [
-      "([\"'`][^\"'`]*.*?[\"'`])",
-      "[\"'`]([^\"'`]*).*?[\"'`]"
-    ]
+    ["clsx\\(.*?\\)(?!\\])", "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)"],
+    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
   ],
   "editor.codeLens": true,
   "typescript.referencesCodeLens.enabled": true,
