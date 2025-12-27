@@ -1,9 +1,12 @@
-import { format, isSameDay } from "date-fns";
+import { format, isSameDay, isWithinInterval } from "date-fns";
 import { Dispatch, SetStateAction, useMemo } from "react";
 import {
-  CaptionProps,
-  useNavigation,
   DayPicker as ReactDayPicker,
+  type ChevronProps,
+  Chevron as DayPickerChevron,
+  type MonthCaptionProps,
+  useDayPicker,
+  type DayProps,
 } from "react-day-picker";
 import { TbArrowBackUp } from "@react-icons/all-files/tb/TbArrowBackUp";
 import { TbChevronRight } from "@react-icons/all-files/tb/TbChevronRight";
@@ -26,12 +29,23 @@ export const DayPicker: React.FC<Props> = ({
   onChangeMonth,
   onClickDay,
 }) => {
-  const selected = useMemo((): Date | { from: Date; to: Date } | undefined => {
+  const selected = useMemo((): { from: Date; to: Date } | undefined => {
     if (hideSelectedDates) {
       return undefined;
     }
     return { from: selectedDates.at(0)!, to: selectedDates.at(-1)! };
   }, [hideSelectedDates, selectedDates]);
+
+  const isSelectedDay = (day: Date) => {
+    if (!selected) {
+      return false;
+    }
+    if ("from" in selected) {
+      return isWithinInterval(day, { start: selected.from, end: selected.to });
+    }
+
+    return isSameDay(selected, day);
+  };
 
   const isFirstSelectedDay = (day: Date) => {
     if (!selected) {
@@ -40,6 +54,7 @@ export const DayPicker: React.FC<Props> = ({
     if ("from" in selected) {
       return isSameDay(selected.from, day);
     }
+
     return isSameDay(selected, day);
   };
 
@@ -57,7 +72,6 @@ export const DayPicker: React.FC<Props> = ({
     <ReactDayPicker
       month={month}
       onMonthChange={onChangeMonth}
-      selected={selected}
       onDayClick={onClickDay}
       fixedWeeks
       showOutsideDays
@@ -67,47 +81,74 @@ export const DayPicker: React.FC<Props> = ({
       }}
       className="w-fit"
       modifiers={{
+        selected: isSelectedDay,
         "first-selected": isFirstSelectedDay,
         "last-selected": isLastSelectedDay,
       }}
       modifiersClassNames={{
-        "first-selected": "first-selected",
-        "last-selected": "last-selected",
+        selected: "bg-neutral-500/15 pointer-events-none",
+        "first-selected": "rounded-l",
+        "last-selected": "rounded-r",
       }}
       classNames={{
         month: "space-y-2",
-        table: "w-full border-collapse",
-        head_row: "flex mb-1",
-        head_cell: "text-neutral-500 rounded-md w-8 font-normal text-[0.6rem]",
-        row: "flex w-full",
-        cell: "relative p-[2px] text-center text-xs [&:has(.first-selected)]:rounded-l [&:has(.last-selected)]:rounded-r overflow-hidden [&:has([aria-selected])]:bg-neutral-500/15",
-        day: "size-7 p-0 font-normal aria-selected:opacity-100 hover:bg-neutral-500/15 rounded-sm",
-        day_today: "bg-blue-500! hover:bg-blue-500! text-neutral-100!",
-        day_selected: "pointer-events-none",
-        day_outside:
-          "day-outside text-neutral-400 aria-selected:text-neutral-500",
+        month_grid: "w-full border-collapse",
+        weekdays: "flex mb-1",
+        weekday: "text-neutral-500 rounded-md w-8 font-normal text-[0.6rem]",
+        week: "flex w-full",
+        day: "relative p-[2px] text-center text-xs overflow-hidden",
+        day_button: "size-7 p-0 font-normal hover:bg-neutral-500/15 rounded-sm",
+        outside: "day-outside text-neutral-400",
       }}
       components={{
-        IconLeft: TbChevronLeft,
-        IconRight: TbChevronRight,
-        Caption,
+        Nav: Empty,
+        Day,
+        Chevron,
+        MonthCaption,
       }}
     />
   );
 };
 
-const Caption = ({ displayMonth }: CaptionProps) => {
-  const { goToMonth, goToDate, nextMonth, previousMonth } = useNavigation();
+const Empty = () => <></>;
+
+const Day = ({ day, modifiers, children, ...props }: DayProps) => {
+  const content = useMemo(() => {
+    if (modifiers.today) {
+      return (
+        <div className="rounded-sm bg-blue-500 text-neutral-100">
+          {children}
+        </div>
+      );
+    }
+    return children;
+  }, [modifiers]);
+
+  return <td {...props}>{content}</td>;
+};
+
+const Chevron = ({ orientation, ...props }: ChevronProps) => {
+  if (orientation === "left") {
+    return <TbChevronLeft {...props} />;
+  }
+  if (orientation === "right") {
+    return <TbChevronRight {...props} />;
+  }
+  return <DayPickerChevron orientation={orientation} {...props} />;
+};
+
+const MonthCaption = ({ calendarMonth }: MonthCaptionProps) => {
+  const { goToMonth, nextMonth, previousMonth } = useDayPicker();
 
   return (
     <div className="flex w-full items-center justify-between pl-2">
-      <div className="text-xs">{format(displayMonth, "yyyy年MM月")}</div>
+      <div className="text-xs">{format(calendarMonth.date, "yyyy年MM月")}</div>
       <div className="flex">
         <IconButton
           size="sm"
           icon={TbArrowBackUp}
           onClick={() => {
-            goToDate(new Date());
+            goToMonth(new Date());
           }}
         />
         <IconButton
