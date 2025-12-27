@@ -9,12 +9,12 @@ export const projectFormSchema = z.object({
 export type ProjectFormData = z.infer<typeof projectFormSchema>;
 
 export const createProjectInputSchema = z.union([
-  projectFormSchema.merge(z.object({ type: z.literal("default") })),
-  projectFormSchema.merge(
+  projectFormSchema.extend(z.object({ type: z.literal("default") }).shape),
+  projectFormSchema.extend(
     z.object({
       type: z.union([z.literal("before"), z.literal("after")]),
       referenceProjectId: z.string(),
-    }),
+    }).shape,
   ),
 ]);
 

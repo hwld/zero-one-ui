@@ -28,8 +28,8 @@ export const eventInputSchema = z
       return input.start.getTime() <= input.end.getTime();
     },
     {
-      message: "開始日時は終了日時より前に設定してください",
       path: ["start"] satisfies EventInputSchemaKeys[],
+      error: "開始日時は終了日時より前に設定してください",
     },
   )
   .refine(
@@ -40,8 +40,8 @@ export const eventInputSchema = z
       return !isSameMinute(input.start, input.end);
     },
     {
-      message: "開始日時と異なる日時を設定してください",
       path: ["end"] satisfies EventInputSchemaKeys[],
+      error: "開始日時と異なる日時を設定してください",
     },
   );
 export type EventInput = z.infer<typeof eventInputSchema>;

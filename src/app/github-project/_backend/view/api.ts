@@ -12,14 +12,14 @@ import { GitHubProjectAPI } from "../api-routes";
 import { fetcher } from "../../../../lib/fetcher";
 
 const viewTaskSchema = viewTaskRecordSchema.merge(taskSchema);
-const viewColumnSchema = viewColumnRecordSchema.merge(
-  z.object({ tasks: z.array(viewTaskSchema), status: taskStatusSchema }),
+const viewColumnSchema = viewColumnRecordSchema.extend(
+  z.object({ tasks: z.array(viewTaskSchema), status: taskStatusSchema }).shape,
 );
 const viewSummarySchema = viewRecordSchema.pick({ id: true, name: true });
-const viewSchema = viewSummarySchema.merge(
+const viewSchema = viewSummarySchema.extend(
   z.object({
     columns: z.array(viewColumnSchema),
-  }),
+  }).shape,
 );
 
 export type View = z.infer<typeof viewSchema>;

@@ -24,7 +24,7 @@ export const useTaskForm = ({ defaultValues, onCancel }: Params) => {
     mode: "all",
     resolver: zodResolver(taskFormSchema, {
       errorMap: (issue, ctx) => {
-        if (issue.code === z.ZodIssueCode.too_big && issue.type === "string") {
+        if (issue.code === "too_big" && issue.type === "string") {
           const field = issue.path[0];
 
           return {
@@ -39,7 +39,7 @@ export const useTaskForm = ({ defaultValues, onCancel }: Params) => {
 
   const errorMessagesWithoutTooSmall = [errors.title, errors.description]
     .filter((e) => {
-      return e?.type !== z.ZodIssueCode.too_small;
+      return e?.type !== "too_small";
     })
     .map((e) => e?.message)
     .filter((m) => m !== undefined);

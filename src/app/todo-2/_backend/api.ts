@@ -79,14 +79,14 @@ export const updateTaskInputSchema = z
       .string()
       .max(10000, "説明は10000文字以下で入力してください。"),
   })
-  .merge(taskSchema.pick({ status: true }));
+  .extend(taskSchema.pick({ status: true }).shape);
 export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
 
 export const updateTaskStatusesInputSchema = z
   .object({
     selectedTaskIds: z.array(z.string()),
   })
-  .merge(taskSchema.pick({ status: true }));
+  .extend(taskSchema.pick({ status: true }).shape);
 export type UpdateTaskStatusesInput = z.infer<
   typeof updateTaskStatusesInputSchema
 >;
