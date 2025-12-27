@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMergeRefs } from "@floating-ui/react";
 import * as Popover from "@radix-ui/react-popover";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { AlertCircleIcon } from "lucide-react";
 import { Task } from "../_backend/task-store";
 import { UpdateTaskInput, updateTaskInputSchema } from "../_backend/api";

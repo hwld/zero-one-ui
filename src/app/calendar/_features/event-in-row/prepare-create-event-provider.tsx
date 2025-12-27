@@ -15,7 +15,7 @@ import { max, min } from "date-fns";
 
 type PrepareCreateEventState = {
   dragDateRange: DragDateRange | undefined;
-  defaultCreateEventValues: Omit<CreateEventInput, "title"> | undefined;
+  defaultCreateEventValues: CreateEventInput | undefined;
 };
 
 type PrepareCreateEventActions = {
@@ -81,6 +81,7 @@ export const PrepareCreateEventInRowProvider: React.FC<PropsWithChildren> = ({
       const eventEnd = max([dragStartDate, dragEndDate]);
 
       setDefaultCreateEventValues({
+        title: "",
         allDay: true,
         start: eventStart,
         end: eventEnd,

@@ -35,10 +35,10 @@ export const deleteTask = async (id: string) => {
   await fetcher.delete(GitHubProjectAPI.task(id));
 };
 
-export const updateTaskInputSchema = createTaskInputSchema.merge(
+export const updateTaskInputSchema = createTaskInputSchema.extend(
   z.object({
     comment: z.string().max(1000, "1000文字以内で入力してください"),
-  }),
+  }).shape,
 );
 
 export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;

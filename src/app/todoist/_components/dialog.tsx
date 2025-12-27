@@ -1,6 +1,6 @@
 import * as RxDialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { PropsWithChildren, ReactNode, useRef } from "react";
 import { IconButton } from "./icon-button";
 import { PiXLight } from "@react-icons/all-files/pi/PiXLight";

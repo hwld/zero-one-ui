@@ -4,7 +4,7 @@ import { TaskFormOpenButton } from "../../_features/task/task-form-open-button";
 import { TaskListItem } from "../../_features/task/task-list-item/task-list-item";
 import { PiWarningCircle } from "@react-icons/all-files/pi/PiWarningCircle";
 import type React from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { PiSpinnerGap } from "@react-icons/all-files/pi/PiSpinnerGap";
 
 type Props = {

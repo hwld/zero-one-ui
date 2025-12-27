@@ -6,7 +6,7 @@ import {
   DialogPortal,
   DialogTitle,
 } from "@radix-ui/react-dialog";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { PlusIcon, XIcon } from "lucide-react";
 import { TaskCreateForm } from "./task-form/task-create-form";
 import { useState } from "react";

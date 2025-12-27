@@ -3,7 +3,7 @@ import { useQueryTaskboxNodes } from "../_features/taskbox/use-query-taskbox-nod
 import { TaskboxNodesProvider } from "../_features/taskbox/taskbox-nodes-provider";
 import { PiSpinnerGap } from "@react-icons/all-files/pi/PiSpinnerGap";
 import { useProjectsQuery } from "../_features/project/use-projects-query";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import {
   ProjectsProvider,
   type ProjectsContext,

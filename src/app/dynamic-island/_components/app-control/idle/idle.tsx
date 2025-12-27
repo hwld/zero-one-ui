@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { APP_CONTROL_LAYOUT_ID, AppControlMode } from "../app-control";
 import { MenuItem } from "./item";
 import { SearchIcon, SettingsIcon, TimerIcon, Volume2Icon } from "lucide-react";

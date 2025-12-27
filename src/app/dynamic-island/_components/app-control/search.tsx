@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { APP_CONTROL_LAYOUT_ID } from "./app-control";
 import { SearchIcon } from "lucide-react";
 

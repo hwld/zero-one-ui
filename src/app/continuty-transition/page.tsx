@@ -1,7 +1,7 @@
 "use client";
 import { useClickOutside } from "@mantine/hooks";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   BookIcon,
   HomeIcon,

@@ -19,7 +19,7 @@ import { useScrollableElement } from "./scrollable-provider";
 
 type PrepareCreateEventState = {
   dragDateRange: DragDateRange | undefined;
-  defaultCreateEventValues: Omit<CreateEventInput, "title"> | undefined;
+  defaultCreateEventValues: CreateEventInput | undefined;
 };
 
 type PrepareCreateEventActions = {
@@ -136,6 +136,7 @@ export const PrepareCreateEventInColProvider: React.FC<PropsWithChildren> = ({
         const eventEnd = max([dragStartDate, dragEndDate]);
 
         setDefaultCreateEventValues({
+          title: "",
           allDay: false,
           start: eventStart,
           end: eventEnd,

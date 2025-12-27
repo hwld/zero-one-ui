@@ -4,7 +4,7 @@ import {
   AnimatePresence,
   AnimatePresenceProps,
   useIsPresent,
-} from "framer-motion";
+} from "motion/react";
 import {
   FloatingFocusManager,
   FloatingOverlay,

@@ -13,7 +13,7 @@ import {
 import { Slot } from "@radix-ui/react-slot";
 import { ReactNode, useMemo, useState } from "react";
 import { Event } from "../../_backend/event-store";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { TbClockHour5 } from "@react-icons/all-files/tb/TbClockHour5";
 import { TbPencilMinus } from "@react-icons/all-files/tb/TbPencilMinus";
 import { TbTrash } from "@react-icons/all-files/tb/TbTrash";

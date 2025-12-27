@@ -1,6 +1,6 @@
 import { IconType } from "@react-icons/all-files";
 import { PiCaretRightLight } from "@react-icons/all-files/pi/PiCaretRightLight";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ComponentPropsWithoutRef, forwardRef } from "react";
 import { cn } from "../../../../../lib/utils";
 

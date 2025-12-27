@@ -1,6 +1,6 @@
 import type { IconType } from "@react-icons/all-files";
 import { PiSpinnerGapBold } from "@react-icons/all-files/pi/PiSpinnerGapBold";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import type { LinkProps } from "next/link";
 import Link from "next/link";
 import { ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";

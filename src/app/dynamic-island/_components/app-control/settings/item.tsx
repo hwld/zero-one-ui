@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { SmileIcon } from "lucide-react";
 
 export const SettingItem: React.FC = () => {

@@ -25,7 +25,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { AnimatePresence, motion, Variants } from "framer-motion";
+import { AnimatePresence, motion, Variants } from "motion/react";
 import {
   HTMLProps,
   useState,
@@ -180,7 +180,7 @@ const MenuComponent = forwardRef<HTMLButtonElement, MenuComponentProps>(
     }, [tree, nodeId, parentId, handleOpenChange]);
 
     useEffect(() => {
-      if (isOpen && tree) {
+      if (isOpen && tree && nodeId) {
         tree.events.emit("menuopen", {
           parentId,
           nodeId,

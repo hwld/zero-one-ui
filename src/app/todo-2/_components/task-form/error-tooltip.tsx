@@ -6,7 +6,7 @@ import {
   offset,
   useFloating,
 } from "@floating-ui/react";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { AlertCircleIcon } from "lucide-react";
 import { ReactNode, useRef } from "react";
 

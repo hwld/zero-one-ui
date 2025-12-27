@@ -6,7 +6,7 @@ import {
   DialogTitle,
 } from "@radix-ui/react-dialog";
 import { PiPlusCircleFill } from "@react-icons/all-files/pi/PiPlusCircleFill";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { forwardRef, useState } from "react";
 import { TaskForm } from "./task-form";
 import { useCreateTask } from "./use-create-task";

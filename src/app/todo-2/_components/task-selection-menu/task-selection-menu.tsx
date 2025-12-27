@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { CircleDotIcon, LucideIcon, Trash2Icon, XIcon } from "lucide-react";
 import { ConfirmDialog } from "../confirm-dialog";
 import { useState } from "react";

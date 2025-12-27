@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { XIcon } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";

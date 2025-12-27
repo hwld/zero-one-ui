@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ReactNode, forwardRef } from "react";
 
 type Props = { children: ReactNode; width?: number };

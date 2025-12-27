@@ -3,10 +3,10 @@ import { z } from "zod";
 const BaseHomeSchema = z.object({ viewId: z.string().optional() });
 
 export const HomeSearchParamsSchema = z.union([
-  BaseHomeSchema.merge(
-    z.object({ panel: z.literal("detail"), taskId: z.string() }),
+  BaseHomeSchema.extend(
+    z.object({ panel: z.literal("detail"), taskId: z.string() }).shape,
   ),
-  BaseHomeSchema.merge(z.object({ panel: z.undefined().optional() })),
+  BaseHomeSchema.extend(z.object({ panel: z.undefined().optional() }).shape),
 ]);
 
 type HomeSearchParams = z.infer<typeof HomeSearchParamsSchema>;

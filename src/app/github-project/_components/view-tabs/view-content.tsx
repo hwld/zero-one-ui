@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useView } from "../../_queries/use-view";
 import { ViewTaskBoardPanel } from "../view-task-board-panel";
 import { ErrorContent } from "./error-content";

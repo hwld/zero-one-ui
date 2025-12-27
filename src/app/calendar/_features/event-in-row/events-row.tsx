@@ -2,7 +2,7 @@ import { forwardRef, useRef } from "react";
 import { useMergedRef } from "@mantine/hooks";
 import { useMoveEventInRow } from "./move-event-provider";
 import { usePrepareCreateEventInRow } from "./prepare-create-event-provider";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { EventInRowCard, EventInRowCardProps } from "./card/event-in-row-card";
 import { MoreEventInrowCard } from "./card/more-event-in-row";
 import { DragPreviewEventInRowCard } from "./card/drag-preview";
