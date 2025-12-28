@@ -3,6 +3,7 @@ import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
 import prettier from "eslint-config-prettier/flat";
 import storybook from "eslint-plugin-storybook";
+import eslintPluginBetterTailwindcss from "eslint-plugin-better-tailwindcss";
 
 export default defineConfig(
   globalIgnores([
@@ -18,7 +19,14 @@ export default defineConfig(
       nextTs,
       storybook.configs["flat/recommended"],
       prettier,
+      eslintPluginBetterTailwindcss.configs.recommended,
     ],
+
+    settings: {
+      "better-tailwindcss": {
+        entryPoint: "./src/app/globals.css",
+      },
+    },
   },
   {
     rules: {
@@ -40,6 +48,7 @@ export default defineConfig(
       ],
       // TODO: https://github.com/facebook/react/issues/34775 が解決するのを待つ
       "react-hooks/refs": "off",
+      "better-tailwindcss/enforce-consistent-line-wrapping": "off",
     },
-  },
+  }
 );
