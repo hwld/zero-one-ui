@@ -80,7 +80,7 @@ export const DateColumn = forwardRef<HTMLDivElement, Props>(function DateColumn(
                   differenceInMinutes(currentDate, startOfDay(currentDate)),
               }}
             >
-              <div className="absolute left-0 size-3 -translate-x-[50%] -translate-y-[50%] rounded-full bg-blue-500" />
+              <div className="absolute left-0 size-3 -translate-[50%] rounded-full bg-blue-500" />
             </div>
           ) : null}
         </EventsColumn>

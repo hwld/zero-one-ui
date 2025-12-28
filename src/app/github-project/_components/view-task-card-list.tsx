@@ -96,7 +96,7 @@ export const ViewTaskCardList: React.FC<Props> = ({
       )}
     >
       <div
-        className="h-full w-full"
+        className="size-full"
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}

@@ -60,7 +60,7 @@ export const TaskDetailPanelContent: React.FC<Props> = ({
             <div className="grid grid-rows-[min-content_1fr]">
               <div className="space-y-2 border-b border-neutral-600 p-4">
                 <TaskDetailPanelMetaRow label="Assignees">
-                  <button className="h-full w-full rounded-sm px-2 text-start text-sm text-neutral-400 transition-colors hover:bg-white/15">
+                  <button className="size-full rounded-sm px-2 text-start text-sm text-neutral-400 transition-colors hover:bg-white/15">
                     Add assigness...
                   </button>
                 </TaskDetailPanelMetaRow>

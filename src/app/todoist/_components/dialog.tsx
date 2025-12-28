@@ -77,7 +77,7 @@ export const DialogHeader: React.FC<
     <header
       className={clsx(
         "flex items-center pb-2",
-        withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4",
+        withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4"
       )}
     >
       {children}
@@ -99,9 +99,7 @@ export const DialogFooter: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 export const DialogTitle: React.FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <RxDialog.Title className="text-md font-bold">{children}</RxDialog.Title>
-  );
+  return <RxDialog.Title className="font-bold">{children}</RxDialog.Title>;
 };
 
 export const DialogClose: React.FC<PropsWithChildren> = ({ children }) => {

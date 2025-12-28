@@ -31,7 +31,7 @@ export const SelectionMenu = forwardRef<HTMLDivElement, Props>(
               </button>
             )}
             <Command.Input
-              className="mx-2 block h-full w-full bg-transparent text-sm placeholder:text-neutral-400 focus-within:outline-hidden"
+              className="mx-2 block size-full bg-transparent text-sm placeholder:text-neutral-400 focus-within:outline-hidden"
               placeholder={placeholder}
               autoFocus
             />

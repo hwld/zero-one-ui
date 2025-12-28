@@ -55,7 +55,7 @@ const LayoutInner: React.FC<PropsWithChildren> = ({ children }) => {
         className="flex grow flex-col items-center overflow-auto px-2 pt-10"
         style={{ backgroundImage: "url(/1-bg.svg)", backgroundSize: "200px" }}
       >
-        <div className="h-full w-full max-w-3xl shrink-0">
+        <div className="size-full max-w-3xl shrink-0">
           <div className="relative flex flex-col gap-4 pb-24">
             <h1 className="flex items-center gap-2 font-bold text-neutral-700">
               <HomeIcon strokeWidth={3} size={20} />

@@ -46,10 +46,10 @@ export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm(
     <Popover.Root open={!!errors.title}>
       <Popover.Anchor asChild>
         <div className="flex h-[50px] w-[300px] max-w-full items-center justify-center overflow-hidden rounded-full bg-neutral-900 shadow-lg shadow-neutral-800/20 ring-neutral-900 transition-all duration-300 ease-in-out focus-within:w-[650px] focus-within:ring-3 focus-within:ring-offset-2 focus-within:ring-offset-neutral-100">
-          <form onSubmit={handleSubmit} className="h-full w-full">
+          <form onSubmit={handleSubmit} className="size-full">
             <input
               ref={inputRef}
-              className="h-full w-full bg-transparent pr-2 pl-5 text-neutral-200 placeholder:text-neutral-400 focus:outline-hidden"
+              className="size-full bg-transparent pr-2 pl-5 text-neutral-200 placeholder:text-neutral-400 focus:outline-hidden"
               placeholder="タスクを入力してください..."
               onBlur={handleBlur}
               aria-invalid={!!errors.title}

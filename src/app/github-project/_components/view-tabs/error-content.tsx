@@ -4,7 +4,7 @@ import { ButtonLink } from "../button";
 
 export const ErrorContent: React.FC = () => {
   return (
-    <div className="grid h-full min-h-fit w-full place-content-center place-items-center gap-6">
+    <div className="grid size-full min-h-fit place-content-center place-items-center gap-6">
       <div className="flex flex-col items-center justify-center gap-2">
         <GhostIcon size={150} />
         <div className="text-center text-sm text-neutral-100">

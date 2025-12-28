@@ -283,7 +283,7 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
               ) : (
                 <span className="size-5" />
               )}
-              <span className="grow overflow-hidden pl-2 text-ellipsis whitespace-nowrap">
+              <span className="grow truncate pl-2">
                 {name}
               </span>
             </div>

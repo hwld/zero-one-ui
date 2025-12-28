@@ -48,7 +48,7 @@ export const AudioPlayerCard: React.FC<Props> = ({
   return (
     <Card className="rounded-none border-0 lg:rounded-lg lg:border">
       <div className="flex h-full flex-col gap-8">
-        <div className="bg-neutl-300 relative min-h-[100px] w-full overflow-hidden rounded-lg text-neutral-900 lg:min-h-[230px]">
+        <div className="relative min-h-[100px] w-full overflow-hidden rounded-lg text-neutral-900 lg:min-h-[230px]">
           <Image
             className="object-cover"
             src={`https://api.dicebear.com/8.x/thumbs/svg?seed=${currentMusic?.fileName}`}

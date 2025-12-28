@@ -118,7 +118,7 @@ const TaskDetail: React.FC<{ taskId: string }> = ({ taskId }) => {
           >
             <button
               className={clsx(
-                "text-start text-lg leading-5 font-bold break-all",
+                "text-start text-lg/5 font-bold break-all",
                 task.done && "line-through",
               )}
             >
@@ -188,7 +188,7 @@ const TaskEditor: React.FC<{ task: Task; onEndEdit: () => void }> = ({
       >
         <input
           autoFocus
-          className="bg-transparent text-lg leading-5 font-bold outline-hidden placeholder:text-stone-400"
+          className="bg-transparent text-lg/5 font-bold outline-hidden placeholder:text-stone-400"
           placeholder="タスク名"
           {...register("title")}
         />

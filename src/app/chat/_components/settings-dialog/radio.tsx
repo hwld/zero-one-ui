@@ -43,10 +43,10 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
   return (
     <div
       className={clsx(
-        "t flex cursor-pointer items-center rounded-sm p-4 transition-colors",
+        "flex cursor-pointer items-center rounded-sm p-4 transition-colors",
         isSelected
           ? "bg-white/20 outline-2 outline-green-400 outline-solid"
-          : "bg-white/10 hover:bg-white/15",
+          : "bg-white/10 hover:bg-white/15"
       )}
       onClick={() => onSelect(item.value)}
     >
@@ -54,7 +54,7 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
         value={item.value}
         className={clsx(
           "grid size-[24px] place-items-center rounded-full border-2",
-          isSelected ? "border-green-400" : "border-neutral-100",
+          isSelected ? "border-green-400" : "border-neutral-100"
         )}
       >
         <AnimatePresence>
@@ -70,7 +70,7 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
           )}
         </AnimatePresence>
       </RadioGroup.Item>
-      <div className="geid gap-1 pl-4">
+      <div className="gap-1 pl-4">
         <label>{item.label}</label>
         {item.description && (
           <div className="text-sm text-neutral-300">{item.description}</div>

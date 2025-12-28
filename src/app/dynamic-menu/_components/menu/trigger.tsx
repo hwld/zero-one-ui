@@ -9,7 +9,7 @@ export const MenuTrigger = forwardRef<
     <button
       ref={ref}
       {...props}
-      className="flex h-[50px] w-[50px] items-center justify-center self-end rounded-full bg-neutral-200 transition-colors hover:bg-neutral-400"
+      className="flex size-[50px] items-center justify-center self-end rounded-full bg-neutral-200 transition-colors hover:bg-neutral-400"
     >
       <IconDots />
     </button>

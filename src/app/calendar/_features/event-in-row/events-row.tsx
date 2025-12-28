@@ -116,7 +116,7 @@ export const EventsRow = forwardRef<HTMLDivElement, Props>(function EventRow(
   return (
     <div
       ref={ref}
-      className="relative h-full w-full"
+      className="relative size-full"
       onMouseDown={handleRowMouseDown}
       onMouseMove={handleRowMouseMove}
     >

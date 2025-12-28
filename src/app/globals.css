@@ -7,8 +7,44 @@
     var(--tw-gradient-stops)
   );
 
+  --animate-toastEnter: toastEnter 0.15s ease-out;
+  --animate-toastExit: toastExit 0.15s ease-out;
+  --animate-zoomIn125: zoomIn125 0.15s ease-out;
+
   --animate-popoverEnter: popoverEnter 0.15s ease-out;
   --animate-popoverExit: popoverExit 0.15s ease-out;
+
+  @keyframes toastEnter {
+    0% {
+      opacity: 0;
+      transform: translateX(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes toastExit {
+    0% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+  @keyframes zoomIn125 {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.25);
+    }
+  }
 
   @keyframes popoverEnter {
     0% {
@@ -20,6 +56,7 @@
       transform: scale(1);
     }
   }
+
   @keyframes popoverExit {
     0% {
       opacity: 1;
