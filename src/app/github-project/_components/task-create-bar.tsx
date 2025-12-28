@@ -68,7 +68,7 @@ export const TaskCreateBar: React.FC<Props> = ({
       {isOpen && (
         <div
           ref={refs.setFloating}
-          className="absolute right-0 bottom-6 left-0 h-12 p-2"
+          className="absolute inset-x-0 bottom-6 h-12 p-2"
           {...getFloatingProps()}
         >
           <motion.div
