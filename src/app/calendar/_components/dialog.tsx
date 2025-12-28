@@ -29,7 +29,7 @@ export const Dialog: React.FC<Props> = ({ children, isOpen, onChangeOpen }) => {
       if (!(event.target instanceof Element)) {
         return true;
       }
-      return !event.target.closest(".toast");
+      return !event.target.closest("[data-toast]");
     },
   });
 
