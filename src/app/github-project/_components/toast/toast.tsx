@@ -15,7 +15,7 @@ const ToastViewport = React.forwardRef<
     ref={ref}
     className={cn(
       "fixed top-auto bottom-16 left-0 z-100 flex w-full max-w-[420px] flex-col p-4",
-      className,
+      className
     )}
     {...props}
   />
@@ -49,15 +49,15 @@ const Toast = React.forwardRef<
       onSwipeCancel={(e) => e.preventDefault()}
       ref={ref}
       className={cn(
-        "group data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-left-full data-[state=open]:slide-in-from-left-10 pointer-events-auto relative flex min-h-16 w-full items-stretch justify-between space-x-2 overflow-hidden rounded-md bg-neutral-600 text-neutral-100 shadow-lg transition-all ease-out data-[state=close]:opacity-0",
-        className,
+        "group pointer-events-auto relative flex min-h-16 w-full items-stretch justify-between space-x-2 overflow-hidden rounded-md bg-neutral-600 text-neutral-100 shadow-lg data-[state=closed]:animate-toastExit data-[state=open]:animate-toastEnter",
+        className
       )}
       {...props}
     >
       <div
         className={cn(
-          "flex shrink-0 items-center px-4 py-4",
-          variantIconBackgroundClass[variant],
+          "flex shrink-0 items-center p-4",
+          variantIconBackgroundClass[variant]
         )}
       >
         <Icon size={20} />

@@ -38,7 +38,7 @@ export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({
       className="border-b border-zinc-600 bg-black/10 p-2 font-medium whitespace-nowrap text-zinc-400"
       style={{ width }}
     >
-      <div className="text-m flex items-center gap-1 p-1">
+      <div className="flex items-center gap-1 p-1">
         {Icon && <Icon size={15} />}
         <div className="mt-px">{text}</div>
       </div>
@@ -48,7 +48,7 @@ export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({
 
 export const getNextSortOrder = (
   sortEntry: SortEntry,
-  field: SortEntry["field"],
+  field: SortEntry["field"]
 ): SortOrder => {
   const isSorted = sortEntry.field === field;
 
@@ -79,7 +79,7 @@ export const SortableTableHeader: React.FC<SortableTableHeaderProps> = ({
       style={{ width }}
     >
       <button
-        className="text-m flex items-center gap-1 rounded-sm p-1 transition-colors hover:bg-white/10"
+        className="flex items-center gap-1 rounded-sm p-1 transition-colors hover:bg-white/10"
         onClick={handleSort}
       >
         {Icon && <Icon size={15} />}

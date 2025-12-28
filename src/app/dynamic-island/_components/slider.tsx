@@ -24,7 +24,7 @@ export const Slider: React.FC<{
         </div>
       </RadixSlider.Track>
       <RadixSlider.Thumb
-        className="focus-visible:ring-ring block size-[30px] rounded-full border border-neutral-300 bg-neutral-200 shadow-sm transition-colors focus-visible:ring-1 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
+        className="block size-[30px] rounded-full border border-neutral-300 bg-neutral-200 shadow-sm transition-colors focus-visible:ring-1 focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50"
         aria-label="Volume"
       />
     </RadixSlider.Root>
@@ -40,5 +40,5 @@ const CustomRange = forwardRef<HTMLSpanElement, RadixSlider.SliderThumbProps>(
     const newRight = `calc(${right}% - (${delta}))`;
 
     return <span ref={ref} {...others} style={{ ...style, right: newRight }} />;
-  },
+  }
 );

@@ -36,9 +36,9 @@ export const TaskCard: React.FC<{
   const titleInputRef = useRef<HTMLInputElement>(null);
   return (
     <Card>
-      <div className="just flex w-full items-center justify-between gap-1">
+      <div className="flex w-full items-center justify-between gap-1">
         <div className="flex w-full items-center gap-2">
-          <div className="relative flex h-[25px] w-[25px] shrink-0 cursor-pointer items-center justify-center">
+          <div className="relative flex size-[25px] shrink-0 cursor-pointer items-center justify-center">
             <AnimatePresence initial={false}>
               {task.done && (
                 <motion.div
@@ -55,14 +55,14 @@ export const TaskCard: React.FC<{
               id={task.id}
               aria-label="完了状態を変更"
               type="checkbox"
-              className="peer absolute h-[25px] w-[25px] cursor-pointer appearance-none rounded-full border-2 border-neutral-300"
+              className="peer absolute size-[25px] cursor-pointer appearance-none rounded-full border-2 border-neutral-300"
               checked={task.done}
               onChange={handleUpdateTaskDone}
             ></input>
             <div
               className={clsx(
                 "pointer-events-none absolute inset-0 flex origin-[50%_70%] items-center justify-center rounded-full bg-neutral-900 text-neutral-100 transition-all duration-200 ease-in-out",
-                task.done ? "opacity-100" : "opacity-0",
+                task.done ? "opacity-100" : "opacity-0"
               )}
             >
               <CheckIcon size="80%" />

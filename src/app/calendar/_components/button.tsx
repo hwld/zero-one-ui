@@ -25,7 +25,7 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>(
       >
         {children}
         {isPending && (
-          <div className="absolute top-1/2 left-1/2 grid aspect-square h-full -translate-x-1/2 -translate-y-1/2 place-items-center">
+          <div className="absolute top-1/2 left-1/2 grid aspect-square h-full -translate-1/2 place-items-center">
             <TbLoader2 className="size-[70%] animate-spin text-neutral-400" />
           </div>
         )}

@@ -14,7 +14,7 @@ export const MusicWavesIndicator: React.FC<Props> = ({ volume, isMuted }) => {
   }
 
   return (
-    <div className="grid h-[15px] w-[15px] grid-cols-4 items-end justify-between gap-px overflow-hidden bg-transparent">
+    <div className="grid size-[15px] grid-cols-4 items-end justify-between gap-px overflow-hidden bg-transparent">
       {[...new Array(4)].map((_, i) => {
         return (
           <motion.div

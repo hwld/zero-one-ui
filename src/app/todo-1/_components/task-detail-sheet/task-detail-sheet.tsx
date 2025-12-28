@@ -152,7 +152,7 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                 >
-                  <div className="relative flex h-full w-full flex-col gap-6 overflow-auto rounded-lg border-neutral-300 bg-neutral-100 p-6 text-neutral-700 **:outline-neutral-900">
+                  <div className="relative flex size-full flex-col gap-6 overflow-auto rounded-lg border-neutral-300 bg-neutral-100 p-6 text-neutral-700 **:outline-neutral-900">
                     <RadixDialog.Close asChild>
                       <button
                         className="absolute top-3 right-3 rounded-sm p-1 text-neutral-700 transition-colors hover:bg-black/5"

@@ -192,18 +192,18 @@ export const EventForm: React.FC<Props> = ({
 type InputProps = { error?: boolean } & ComponentPropsWithoutRef<"input">;
 const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { className, error, ...props },
-  ref,
+  ref
 ) {
   return (
     <input
       ref={ref}
       {...props}
       className={cn(
-        "focus-visible:outline-neu h-8 w-full rounded-sm border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:ring-1 focus-visible:outline-hidden",
+        "h-8 w-full rounded-sm border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:ring-1 focus-visible:outline-hidden",
         error
           ? "border-red-600 ring-red-600"
           : "border-neutral-300 ring-neutral-500",
-        className,
+        className
       )}
     />
   );
@@ -229,7 +229,7 @@ const DateInput = forwardRef<
     const date = parse(
       e.target.value,
       getDateFormatString(isAllDay),
-      new Date(),
+      new Date()
     );
 
     if (isNaN(date.getTime())) {

@@ -26,7 +26,7 @@ export const EventInColCardBase = forwardRef<HTMLButtonElement, Props>(
       >
         <div
           className={cn(
-            "flex h-full w-full flex-col overflow-hidden rounded-sm border border-neutral-500 bg-neutral-700 pl-[10px] text-start text-neutral-100 ring-blue-500 outline-3 transition-colors group-focus-visible:ring-3",
+            "flex size-full flex-col overflow-hidden rounded-sm border border-neutral-500 bg-neutral-700 pl-[10px] text-start text-neutral-100 ring-blue-500 outline-3 transition-colors group-focus-visible:ring-3",
             thin ? "pt-0" : "pt-1",
             className,
           )}

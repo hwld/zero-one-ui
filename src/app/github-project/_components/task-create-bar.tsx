@@ -81,14 +81,14 @@ export const TaskCreateBar: React.FC<Props> = ({
                 <PlusIcon size={18} />
               </button>
               <form
-                className="relative h-full w-full grow"
+                className="relative size-full grow"
                 onSubmit={handleSubmit(handleCreateTask)}
               >
                 <input
                   aria-disabled={createTaskMutation.isPending}
                   autoFocus
                   className={clsx(
-                    "h-full w-full bg-transparent px-4 text-sm text-neutral-100 placeholder:text-neutral-400 focus-visible:outline-hidden",
+                    "size-full bg-transparent px-4 text-sm text-neutral-100 placeholder:text-neutral-400 focus-visible:outline-hidden",
                     createTaskMutation.isPending && "text-neutral-400",
                   )}
                   placeholder="Start typing to create a draft"

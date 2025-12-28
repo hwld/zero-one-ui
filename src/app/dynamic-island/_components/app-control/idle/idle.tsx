@@ -20,7 +20,7 @@ export const Idle: React.FC<{
     >
       <motion.div
         layout="preserve-aspect"
-        className="flex gap-1 [&>.control-item:first-child]:rounded-l-full [&>.control-item:last-child]:rounded-r-full"
+        className="flex gap-1 [&>[data-control-item]:first-child]:rounded-l-full [&>[data-control-item]:last-child]:rounded-r-full"
       >
         <MenuItem icon={SearchIcon} onClick={() => onChangeMode("search")} />
         <MenuItem icon={TimerIcon} onClick={() => onChangeMode("stopwatch")} />

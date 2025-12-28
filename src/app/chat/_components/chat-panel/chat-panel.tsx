@@ -56,7 +56,7 @@ export const ChatPanel: React.FC = () => {
           <input
             name={chatInputName}
             autoComplete="off"
-            className="h-full w-full bg-transparent focus-visible:outline-hidden"
+            className="size-full bg-transparent focus-visible:outline-hidden"
           />
           <SendHorizontalIcon className="text-green-500" />
         </form>

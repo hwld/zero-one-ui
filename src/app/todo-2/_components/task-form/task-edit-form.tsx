@@ -56,7 +56,7 @@ export const TaskEditForm: React.FC<Props> = ({
       </TaskFormErrorTooltip>
       <TaskFormErrorTooltip
         id={descErrorMessageId}
-        className="h-full w-full"
+        className="size-full"
         error={errors.description?.message}
         placement="bottom-start"
       >
