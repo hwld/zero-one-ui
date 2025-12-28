@@ -46,7 +46,7 @@ export const TaskCreateBar: React.FC<Props> = ({
           reset();
           onAfterCreate?.(statusId);
         },
-      },
+      }
     );
   };
 
@@ -89,7 +89,7 @@ export const TaskCreateBar: React.FC<Props> = ({
                   autoFocus
                   className={clsx(
                     "size-full bg-transparent px-4 text-sm text-neutral-100 placeholder:text-neutral-400 focus-visible:outline-hidden",
-                    createTaskMutation.isPending && "text-neutral-400",
+                    createTaskMutation.isPending && "text-neutral-400"
                   )}
                   placeholder="Start typing to create a draft"
                   readOnly={createTaskMutation.isPending}
@@ -99,10 +99,10 @@ export const TaskCreateBar: React.FC<Props> = ({
                   strokeWidth={3}
                   size={25}
                   className={clsx(
-                    "absolute top-0 bottom-0 left-4 my-auto rounded-full",
+                    "absolute inset-y-0 left-4 my-auto rounded-full",
                     createTaskMutation.isPending
                       ? "animate-spin opacity-100"
-                      : "opacity-0",
+                      : "opacity-0"
                   )}
                 />
                 <AnimatePresence>

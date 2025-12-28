@@ -36,7 +36,7 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
 
         updateTaskMutation.mutate({ ...task, description: desc });
       },
-      [task, updateTaskMutation],
+      [task, updateTaskMutation]
     );
 
     const content = useMemo(() => {
@@ -147,7 +147,7 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
               >
                 <motion.div
                   ref={ref}
-                  className="fixed top-0 right-0 bottom-0 z-10 w-[450px] max-w-full p-3"
+                  className="fixed inset-y-0 right-0 z-10 w-[450px] max-w-full p-3"
                   tabIndex={undefined}
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
@@ -172,5 +172,5 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
         </AnimatePresence>
       </RadixDialog.Root>
     );
-  },
+  }
 );

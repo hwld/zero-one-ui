@@ -14,7 +14,7 @@ export const SlicerListItem: React.FC<Props> = ({ active = false, column }) => {
       className={clsx(
         "relative w-full border-b border-neutral-600",
         active &&
-          "before:absolute before:top-2 before:bottom-2 before:-left-3 before:w-1 before:rounded-full before:bg-blue-500 before:content-['']"
+          "before:absolute before:inset-y-2 before:-left-3 before:w-1 before:rounded-full before:bg-blue-500 before:content-['']"
       )}
     >
       <button
