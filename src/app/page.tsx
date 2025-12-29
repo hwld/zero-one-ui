@@ -20,9 +20,9 @@ export default function Home() {
       )}
       style={{ colorScheme: "dark" }}
     >
-      <div className="flex w-[500px] max-w-full flex-col gap-4 px-5 text-center text-neutral-100">
+      <div className="flex w-[500px] max-w-full flex-col items-center gap-6 px-5 text-neutral-100">
         <div className="flex items-center justify-center gap-2">
-          <h1 className="text-3xl font-bold">Zero one ui</h1>
+          <h1 className="text-3xl font-bold">zero one ui</h1>
           <a
             href="https://github.com/hwld/zero-one-ui"
             target="_blank"
@@ -34,13 +34,15 @@ export default function Home() {
             />
           </a>
         </div>
-        <p className="text-center text-sm text-neutral-400">
-          ReactでいろんなUIを作ります。
-          <br />`<kbd className="text-neutral-100">/</kbd>
-          `キーでページの移動やページ毎のコマンドを
-          <br />
-          実行するためのメニューを開くことができます。
-        </p>
+        <div className="grid w-[300px] gap-2 text-center text-sm text-neutral-400">
+          <p>ReactでいろんなUIを作るためのプロジェクト</p>
+          <p>
+            `<kbd className="text-neutral-100">/</kbd>
+            `キーでページの移動やページ毎のコマンドを
+            <br />
+            実行するためのメニューを開くことができる
+          </p>
+        </div>
       </div>
       <div className="mt-[80px] grid max-w-[950px] grid-cols-1 gap-5 p-5 md:grid-cols-2 lg:grid-cols-3">
         {pages.map((p, i) => {

@@ -13,10 +13,10 @@ export const PageCard: React.FC<Props> = (props) => {
     <Link
       href={props.page.href}
       className={clsx(
-        "group flex flex-col gap-2 rounded-lg border bg-neutral-900 px-4 pt-4 pb-2 text-neutral-100 transition-colors hover:bg-neutral-800",
+        "group flex flex-col gap-2 rounded-lg border bg-neutral-900 px-4 pt-4 pb-2 text-neutral-100 transition-all hover:bg-neutral-800 active:bg-neutral-800",
         isPrime
           ? "border-violet-500"
-          : "border-neutral-800 shadow-sm shadow-neutral-700"
+          : "border-neutral-800 shadow-xs shadow-neutral-700 hover:shadow-none"
       )}
     >
       <div className="flex items-center gap-1">
