@@ -5,14 +5,14 @@ import { GlobalCommand } from "./_providers/global-command/global-command";
 import clsx from "clsx";
 
 const NotFoundPage: React.FC = () => {
-  const bgClass = "bg-neutral-900";
+  const bgClass = "bg-neutral-950";
   useBodyBgColor(bgClass);
 
   return (
     <div
       className={clsx(
-        "flex h-dvh w-full flex-col items-center justify-center gap-14 text-zinc-200",
-        bgClass,
+        "flex h-dvh w-full flex-col items-center justify-center gap-14 text-neutral-100",
+        bgClass
       )}
     >
       <div className="flex flex-col items-center gap-2 text-sm">

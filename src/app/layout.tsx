@@ -6,7 +6,7 @@ import { Inter } from "next/font/google";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "Zero one ui",
+  title: "zero one ui",
   description: "page layouts",
 };
 
