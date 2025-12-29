@@ -13,22 +13,24 @@ export const PageCard: React.FC<Props> = (props) => {
     <Link
       href={props.page.href}
       className={clsx(
-        "group flex flex-col gap-2 rounded-lg border bg-zinc-800 px-4 pt-4 pb-2 text-zinc-200 transition-colors hover:bg-zinc-700",
-        isPrime ? "border-violet-400" : "border-zinc-700",
+        "group flex flex-col gap-2 rounded-lg border bg-neutral-900 px-4 pt-4 pb-2 text-neutral-100 transition-colors hover:bg-neutral-800",
+        isPrime
+          ? "border-violet-500"
+          : "border-neutral-800 shadow-sm shadow-neutral-700"
       )}
     >
       <div className="flex items-center gap-1">
-        <p className="text-zinc-400">{props.number}.</p>
+        <p className="text-neutral-400">{props.number}.</p>
         {isPrime && (
-          <SparklesIcon className="fill-violet-400 text-violet-400" size={18} />
+          <SparklesIcon className="fill-violet-500 text-violet-500" size={18} />
         )}
         <p>{props.page.title}</p>
       </div>
-      <div className="grow text-sm whitespace-pre-wrap text-zinc-400">
+      <div className="grow text-sm whitespace-pre-wrap text-neutral-400">
         {props.page.description}
       </div>
-      <div className="h-px bg-zinc-700" />
-      <div className="flex flex-wrap gap-2">
+      <div className="h-px bg-neutral-700" />
+      <div className="flex flex-wrap gap-2 py-1">
         {props.page.tags.map((t) => (
           <PageCardTag key={t}>{t}</PageCardTag>
         ))}

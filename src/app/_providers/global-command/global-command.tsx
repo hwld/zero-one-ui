@@ -20,7 +20,7 @@ export const GlobalCommand: React.FC<Props> = ({ onClickItem }) => {
 
   return (
     <div
-      className="size-full overflow-hidden rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-200"
+      className="size-full overflow-hidden rounded-lg border border-neutral-700 bg-neutral-900 text-neutral-100"
       style={{ colorScheme: "dark" }}
     >
       <Command className="flex h-full flex-col" loop>
