@@ -7,7 +7,6 @@ import clsx from "clsx";
 
 export const metadata: Metadata = {
   title: "zero one ui",
-  description: "page layouts",
 };
 
 const inter = Inter({ subsets: ["latin"] });
