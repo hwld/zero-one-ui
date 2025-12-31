@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { defaultStoryMeta } from "../story-meta";
 import {
   clearAllMocks,
@@ -16,15 +15,19 @@ import {
   createTaskInputSchema,
 } from "../_backend/api";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
 const createTaskMock = fn();
 const handleOpenChangeMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskAddDialog",
   component: TaskAddDialog,
+  afterEach: () => {
+    clearAllMocks();
+  },
   parameters: {
     msw: {
       handlers: [
@@ -38,64 +41,63 @@ const meta = {
     },
   },
   args: { isOpen: true, onOpenChange: handleOpenChangeMock },
-} satisfies Meta<typeof TaskAddDialog>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  play: async ({ canvasElement, step }) => {
+export const Default = meta.story({});
+
+Default.test(
+  "デフォルトでは、作成したあとにダイアログが閉じる",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const title = "タスク";
 
-    await step("デフォルトでは、作成したあとにダイアログが閉じる", async () => {
-      const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
-      await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
+    const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
+    await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
 
-      await waitFor(async () => {
-        await expect(createTaskMock).toHaveBeenCalledTimes(1);
-        await expect(createTaskMock).toHaveBeenCalledWith(
-          expect.objectContaining({
-            title,
-            description: "",
-          } satisfies CreateTaskInput),
-        );
-        await expect(handleOpenChangeMock).toHaveBeenCalledTimes(1);
-        await expect(handleOpenChangeMock).toHaveBeenCalledWith(false);
-      });
-
-      clearAllMocks();
+    await waitFor(async () => {
+      await expect(createTaskMock).toHaveBeenCalledTimes(1);
+      await expect(createTaskMock).toHaveBeenCalledWith(
+        expect.objectContaining({
+          title,
+          description: "",
+        } satisfies CreateTaskInput)
+      );
+      await expect(handleOpenChangeMock).toHaveBeenCalledTimes(1);
+      await expect(handleOpenChangeMock).toHaveBeenCalledWith(false);
     });
+  }
+);
 
-    await step(
-      "トグルを切り替えると、作成したあとにダイアログが閉じない",
-      async () => {
-        const titleInput =
-          await canvas.findByPlaceholderText("タスクのタイトル");
-        const checkbox = await canvas.findByLabelText("続けて作成する");
+Default.test(
+  "トグルを切り替えると、作成したあとにダイアログが閉じない",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const title = "タスク";
 
-        await userEvent.click(checkbox);
-        await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
+    const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
+    const checkbox = await canvas.findByLabelText("続けて作成する");
 
-        await waitFor(async () => {
-          await expect(createTaskMock).toHaveBeenCalledTimes(1);
-          await expect(createTaskMock).toHaveBeenCalledWith(
-            expect.objectContaining({
-              title,
-              description: "",
-            } satisfies CreateTaskInput),
-          );
-          await expect(handleOpenChangeMock).not.toHaveBeenCalled();
-        });
+    await userEvent.click(checkbox);
+    await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
 
-        clearAllMocks();
-      },
-    );
-  },
-};
+    await waitFor(async () => {
+      await expect(createTaskMock).toHaveBeenCalledTimes(1);
+      await expect(createTaskMock).toHaveBeenCalledWith(
+        expect.objectContaining({
+          title,
+          description: "",
+        } satisfies CreateTaskInput)
+      );
+      await expect(handleOpenChangeMock).not.toHaveBeenCalled();
+    });
+  }
+);
 
-export const NoTitleError: Story = {
-  play: async ({ canvasElement }) => {
+Default.test(
+  "タイトル未入力時にエラーが表示される",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
 
@@ -105,8 +107,8 @@ export const NoTitleError: Story = {
       await expect(createTaskMock).not.toHaveBeenCalled();
       await expect(handleOpenChangeMock).not.toHaveBeenCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タイトルの入力は必須です。",
+        "タイトルの入力は必須です。"
       );
     });
-  },
-};
+  }
+);

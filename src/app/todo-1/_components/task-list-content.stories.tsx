@@ -1,22 +1,21 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskListContent } from "./task-list-content";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo1/TaskListContent",
   component: TaskListContent,
-} satisfies Meta<typeof TaskListContent>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   args: { tasks: initialTasks, status: "success" },
-};
+});
 
-export const Empty: Story = {
+export const Empty = meta.story({
   args: { tasks: [], status: "success" },
   decorators: [
     (Story) => {
@@ -27,9 +26,9 @@ export const Empty: Story = {
       );
     },
   ],
-};
+});
 
-export const Error: Story = {
+export const Error = meta.story({
   args: { tasks: [], status: "error" },
   decorators: [
     (Story) => {
@@ -40,4 +39,4 @@ export const Error: Story = {
       );
     },
   ],
-};
+});

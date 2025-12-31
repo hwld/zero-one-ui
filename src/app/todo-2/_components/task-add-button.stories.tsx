@@ -1,24 +1,23 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { defaultStoryMeta } from "../story-meta";
 import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { TaskAddButton } from "./task-add-button";
 import { Todo2API } from "../_backend/api";
 import { HttpResponse, http } from "msw";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
 const createTaskMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskAddButton",
   component: TaskAddButton,
-} satisfies Meta<typeof TaskAddButton>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   parameters: {
     msw: {
       handlers: [
@@ -30,18 +29,20 @@ export const Default: Story = {
       ],
     },
   },
-  play: async ({ canvasElement, step }) => {
-    await step("タイトルのみのタスクをキーボードだけで作成できる", async () => {
-      const canvas = within(canvasElement.parentElement!);
+});
 
-      await userEvent.keyboard("{meta>}k");
+Default.test(
+  "タイトルのみのタスクをキーボードだけで作成できる",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
 
-      const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
-      await userEvent.type(titleInput, "title{enter}", { delay: 50 });
+    await userEvent.keyboard("{meta>}k");
 
-      await waitFor(async () => {
-        await expect(createTaskMock).toHaveBeenCalledTimes(1);
-      });
+    const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
+    await userEvent.type(titleInput, "title{enter}", { delay: 50 });
+
+    await waitFor(async () => {
+      await expect(createTaskMock).toHaveBeenCalledTimes(1);
     });
-  },
-};
+  }
+);

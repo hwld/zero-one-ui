@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskDetailContentCard } from "./task-detail-content-card";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";
@@ -16,15 +15,19 @@ import {
   UpdateTaskInput,
   updateTaskInputSchema,
 } from "../_backend/api";
+import preview from "../../../../.storybook/preview";
 
 const dummyTask = initialTasks[0];
 
 const mockUpdateTask = fn();
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskDetailContentCard",
   component: TaskDetailContentCard,
+  afterEach: () => {
+    clearAllMocks();
+  },
   decorators: [
     ...defaultStoryMeta.decorators,
     (Story) => {
@@ -47,84 +50,73 @@ const meta = {
       ],
     },
   },
-} satisfies Meta<typeof TaskDetailContentCard>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   args: { task: dummyTask },
-  play: async ({ canvasElement, step, args }) => {
+});
+
+Default.test("タスクを編集できる", async ({ canvasElement, args }) => {
+  const task = args.task;
+  const canvas = within(canvasElement.parentElement!);
+
+  await userEvent.click(
+    await canvas.findByRole("button", { name: "編集する" })
+  );
+
+  const newTitle = "title";
+  const newDesc = "desc\ndesc";
+
+  const titleInput = await canvas.findByDisplayValue(task.title);
+  const descInput = await canvas.findByDisplayValue(task.description, {
+    collapseWhitespace: false,
+  });
+
+  await userEvent.clear(titleInput);
+  await userEvent.clear(descInput);
+
+  await userEvent.type(titleInput, newTitle, { delay: 50 });
+  await userEvent.type(descInput, newDesc, { delay: 50 });
+
+  await userEvent.click(
+    await canvas.findByRole("button", { name: "保存する" })
+  );
+
+  await waitFor(async () => {
+    await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateTask).toHaveBeenCalledWith({
+      id: task.id,
+      status: task.status,
+      title: newTitle,
+      description: newDesc,
+    } satisfies { id: string } & UpdateTaskInput);
+  });
+});
+
+Default.test(
+  "タイトルが空の場合はエラーが表示されて、保存されない",
+  async ({ canvasElement, args }) => {
     const task = args.task;
     const canvas = within(canvasElement.parentElement!);
 
-    await step("タスクを編集できる", async () => {
-      await userEvent.click(
-        await canvas.findByRole("button", { name: "編集する" }),
-      );
-
-      const newTitle = "title";
-      const newDesc = "desc\ndesc";
-
-      const titleInput = await canvas.findByDisplayValue(task.title);
-      const descInput = await canvas.findByDisplayValue(task.description, {
-        collapseWhitespace: false,
-      });
-
-      await userEvent.clear(titleInput);
-      await userEvent.clear(descInput);
-
-      await userEvent.type(titleInput, newTitle, { delay: 50 });
-      await userEvent.type(descInput, newDesc, { delay: 50 });
-
-      await userEvent.click(
-        await canvas.findByRole("button", { name: "保存する" }),
-      );
-
-      await waitFor(async () => {
-        await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
-        await expect(mockUpdateTask).toHaveBeenCalledWith({
-          id: task.id,
-          status: task.status,
-          title: newTitle,
-          description: newDesc,
-        } satisfies { id: string } & UpdateTaskInput);
-      });
-
-      clearAllMocks();
-    });
-  },
-};
-
-export const NoTitleError: Story = {
-  args: { task: dummyTask },
-  play: async ({ canvasElement, step, args }) => {
-    const task = args.task;
-    const canvas = within(canvasElement.parentElement!);
-
-    await step(
-      "タイトルが空の場合はエラーが表示されて、保存されない",
-      async () => {
-        await userEvent.click(
-          await canvas.findByRole("button", { name: "編集する" }),
-        );
-
-        const titleInput = await canvas.findByDisplayValue(task.title);
-        await userEvent.clear(titleInput);
-
-        await userEvent.click(
-          await canvas.findByRole("button", { name: "保存する" }),
-        );
-
-        await waitFor(async () => {
-          await expect(mockUpdateTask).not.toBeCalled();
-          await expect(titleInput).toHaveAccessibleErrorMessage(
-            "タイトルの入力は必須です。",
-          );
-        });
-
-        clearAllMocks();
-      },
+    await userEvent.click(
+      await canvas.findByRole("button", { name: "編集する" })
     );
-  },
-};
+
+    const titleInput = await canvas.findByDisplayValue(task.title);
+    await userEvent.clear(titleInput);
+
+    await userEvent.click(
+      await canvas.findByRole("button", { name: "保存する" })
+    );
+
+    await waitFor(async () => {
+      await expect(mockUpdateTask).not.toBeCalled();
+      await expect(titleInput).toHaveAccessibleErrorMessage(
+        "タイトルの入力は必須です。"
+      );
+    });
+  }
+);

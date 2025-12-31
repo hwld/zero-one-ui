@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTableRow } from "./row";
 import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
@@ -24,6 +23,7 @@ import { z } from "zod";
 import { getRouter } from "@storybook/nextjs-vite/router.mock";
 import { Routes } from "../../_lib/routes";
 import { MockTaskTableProvider } from "./provider";
+import preview from "../../../../../.storybook/preview";
 
 const dummyTask = initialTasks[0];
 
@@ -31,10 +31,13 @@ const mockToggleSelection = fn();
 const mockUpdateTask = fn();
 const mockDeleteTask = fn();
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   component: TaskTableRow,
   title: "Todo2/TaskTableRow",
+  afterEach: () => {
+    clearAllMocks();
+  },
   parameters: {
     msw: {
       handlers: [
@@ -65,7 +68,7 @@ const meta = {
         toggleTaskSelection: (id) => {
           mockToggleSelection(id);
           setSelectedIds((ids) =>
-            ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id],
+            ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id]
           );
         },
         unselectAllTasks: () => {},
@@ -85,93 +88,98 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof TaskTableRow>;
+});
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-export const Default: Story = {
+export const Default = meta.story({
   args: { task: dummyTask },
-  play: async ({ canvasElement, step, args }) => {
+});
+
+Default.test(
+  "選択状態を切り替えることができる",
+  async ({ canvasElement, args }) => {
     const canvas = within(canvasElement.parentElement!);
-
-    await step("選択状態を切り替えることができる", async () => {
-      const toggleSelection = await canvas.findByRole("checkbox", {
-        name: "選択状態を切り替える",
-      });
-
-      await userEvent.click(toggleSelection);
-      await userEvent.click(toggleSelection);
-
-      await waitFor(async () => {
-        await expect(mockToggleSelection).toHaveBeenCalledTimes(2);
-        await expect(mockToggleSelection).toHaveBeenNthCalledWith(
-          1,
-          args.task.id,
-        );
-        await expect(mockToggleSelection).toHaveBeenNthCalledWith(
-          2,
-          args.task.id,
-        );
-      });
-
-      clearAllMocks();
+    const toggleSelection = await canvas.findByRole("checkbox", {
+      name: "選択状態を切り替える",
     });
 
-    await step("完了状態を切り替えるAPIが呼ばれる", async () => {
-      const toggleStatus = await canvas.findByRole("button", {
-        name: getTaskStatusLabel(args.task.status),
-      });
+    await userEvent.click(toggleSelection);
+    await userEvent.click(toggleSelection);
 
-      await userEvent.click(toggleStatus);
+    await waitFor(async () => {
+      await expect(mockToggleSelection).toHaveBeenCalledTimes(2);
+      await expect(mockToggleSelection).toHaveBeenNthCalledWith(
+        1,
+        args.task.id
+      );
+      await expect(mockToggleSelection).toHaveBeenNthCalledWith(
+        2,
+        args.task.id
+      );
+    });
+  }
+);
 
-      await waitFor(async () => {
-        await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
-        await expect(mockUpdateTask).toHaveBeenCalledWith(
-          expect.objectContaining({
-            id: args.task.id,
-            ...updateTaskInputSchema.parse(args.task),
-            status: args.task.status === "done" ? "todo" : "done",
-          } satisfies UpdateTaskInput & { id: string }),
-        );
-      });
+Default.test(
+  "完了状態を切り替えるAPIが呼ばれる",
+  async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const toggleStatus = await canvas.findByRole("button", {
+      name: getTaskStatusLabel(args.task.status),
     });
 
-    await step("タスクの詳細ページに遷移できる", async () => {
-      const link = await canvas.findByRole("link", { name: args.task.title });
+    await userEvent.click(toggleStatus);
 
-      await userEvent.click(link);
-
-      await waitFor(async () => {
-        await expect(getRouter().push).toHaveBeenCalledTimes(1);
-        await expect(getRouter().push).toHaveBeenCalledWith(
-          Routes.detail(args.task.id),
-          expect.anything(),
-          expect.anything(),
-        );
-      });
+    await waitFor(async () => {
+      await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
+      await expect(mockUpdateTask).toHaveBeenCalledWith(
+        expect.objectContaining({
+          id: args.task.id,
+          ...updateTaskInputSchema.parse(args.task),
+          status: args.task.status === "done" ? "todo" : "done",
+        } satisfies UpdateTaskInput & { id: string })
+      );
     });
+  }
+);
 
-    await step("タスクの削除APIが呼ばれる", async () => {
-      const openButton = await canvas.findByRole("button", {
-        name: "削除ダイアログを開く",
-      });
+Default.test(
+  "タスクの詳細ページに遷移できる",
+  async ({ canvasElement, args }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const link = await canvas.findByRole("link", { name: args.task.title });
 
-      await userEvent.click(openButton);
+    await userEvent.click(link);
 
-      const deleteButton = await canvas.findByRole("button", {
-        name: "削除する",
-      });
-      const closeButton = await canvas.findByRole("button", {
-        name: "キャンセルする",
-      });
-
-      await userEvent.click(deleteButton);
-      await userEvent.click(closeButton);
-
-      await waitFor(async () => {
-        await expect(mockDeleteTask).toHaveBeenCalledTimes(1);
-        await expect(mockDeleteTask).toHaveBeenCalledWith([args.task.id]);
-      });
+    await waitFor(async () => {
+      await expect(getRouter().push).toHaveBeenCalledTimes(1);
+      await expect(getRouter().push).toHaveBeenCalledWith(
+        Routes.detail(args.task.id),
+        expect.anything(),
+        expect.anything()
+      );
     });
-  },
-};
+  }
+);
+
+Default.test("タスクの削除APIが呼ばれる", async ({ canvasElement, args }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const openButton = await canvas.findByRole("button", {
+    name: "削除ダイアログを開く",
+  });
+
+  await userEvent.click(openButton);
+
+  const deleteButton = await canvas.findByRole("button", { name: "削除する" });
+  const closeButton = await canvas.findByRole("button", {
+    name: "キャンセルする",
+  });
+
+  await userEvent.click(deleteButton);
+  await userEvent.click(closeButton);
+
+  await waitFor(async () => {
+    await expect(mockDeleteTask).toHaveBeenCalledTimes(1);
+    await expect(mockDeleteTask).toHaveBeenCalledWith([args.task.id]);
+  });
+});

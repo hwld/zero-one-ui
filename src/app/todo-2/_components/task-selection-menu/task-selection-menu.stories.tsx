@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskSelectionMenu } from "./task-selection-menu";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTableSelectionContext } from "../task-table/selection-provider";
@@ -21,6 +20,7 @@ import { z } from "zod";
 import { MockTaskTableProvider } from "../task-table/provider";
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 import { waitForAnimation } from "../../../_test/utils";
+import preview from "../../../../../.storybook/preview";
 
 const mockUnselectAll = fn();
 const mockDeleteTasks = fn();
@@ -34,10 +34,13 @@ const mockContext: TaskTableSelectionContext = {
   unselectTaskIds: () => {},
 };
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskSelectionMenu",
   component: TaskSelectionMenu,
+  afterEach: () => {
+    clearAllMocks();
+  },
   parameters: {
     msw: {
       handlers: [
@@ -50,7 +53,7 @@ const meta = {
 
         http.patch(Todo2API.updateTaskStatuses(), async ({ request }) => {
           const input = updateTaskStatusesInputSchema.parse(
-            await request.json(),
+            await request.json()
           );
           mockUpdateTaskStatuses(input);
 
@@ -59,12 +62,11 @@ const meta = {
       ],
     },
   },
-} satisfies Meta<typeof TaskSelectionMenu>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   decorators: [
     (Story) => {
       return (
@@ -76,77 +78,9 @@ export const Default: Story = {
       );
     },
   ],
-  play: async ({ canvasElement, step }) => {
-    const canvas = within(canvasElement.parentElement!);
+});
 
-    await step("タスクが選択されているときはメニューが表示される", async () => {
-      const menu = canvas.queryByRole("toolbar");
-      await expect(menu).toBeInTheDocument();
-    });
-
-    await step("選択したすべてのタスクを選択解除できる", async () => {
-      const clearButton = await canvas.findByRole("button", {
-        name: "選択解除",
-      });
-
-      await userEvent.click(clearButton);
-
-      await waitFor(async () => {
-        await expect(mockUnselectAll).toHaveBeenCalledTimes(1);
-      });
-
-      clearAllMocks();
-    });
-
-    await step("選択すたすべてのタスクを削除できる", async () => {
-      const openDeleteDialogButton = await canvas.findByRole("button", {
-        name: "削除する",
-      });
-
-      await userEvent.click(openDeleteDialogButton);
-
-      const deleteButton = await canvas.findByRole("button", {
-        name: "削除する",
-      });
-
-      await userEvent.click(deleteButton);
-
-      await waitFor(async () => {
-        await expect(mockDeleteTasks).toHaveBeenCalledTimes(1);
-        await expect(mockDeleteTasks).toHaveBeenCalledWith(
-          mockContext.selectedTaskIds,
-        );
-      });
-
-      // Tooltipを閉じる
-      await fireEvent(openDeleteDialogButton, new MouseEvent("mouseleave"));
-
-      clearAllMocks();
-    });
-
-    await step("選択したすべてのタスクを完了状態にできる", async () => {
-      const doneButton = await canvas.findByRole("button", {
-        name: "完了状態にする",
-      });
-
-      await userEvent.click(doneButton);
-
-      await waitFor(async () => {
-        await expect(mockUpdateTaskStatuses).toHaveBeenCalledTimes(1);
-        await expect(mockUpdateTaskStatuses).toHaveBeenCalledWith({
-          status: "done",
-          selectedTaskIds: mockContext.selectedTaskIds,
-        } satisfies UpdateTaskStatusesInput);
-      });
-
-      await fireEvent(doneButton, new MouseEvent("mouseleave"));
-
-      clearAllMocks();
-    });
-  },
-};
-
-export const NoSelect: Story = {
+export const NoSelect = meta.story({
   decorators: [
     (Story) => {
       return (
@@ -160,17 +94,92 @@ export const NoSelect: Story = {
       );
     },
   ],
-  play: async ({ canvasElement, step }) => {
+});
+
+Default.test(
+  "タスクが選択されているときはメニューが表示される",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
 
-    await step(
-      "何も選択されていないときにはメニューは表示されない",
-      async () => {
-        await waitForAnimation();
+    const menu = canvas.queryByRole("toolbar");
+    await expect(menu).toBeInTheDocument();
+  }
+);
 
-        const menu = canvas.queryByRole("toolbar");
-        await expect(menu).not.toBeInTheDocument();
-      },
-    );
-  },
-};
+Default.test(
+  "選択したすべてのタスクを選択解除できる",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const clearButton = await canvas.findByRole("button", {
+      name: "選択解除",
+    });
+
+    await userEvent.click(clearButton);
+
+    await waitFor(async () => {
+      await expect(mockUnselectAll).toHaveBeenCalledTimes(1);
+    });
+  }
+);
+
+Default.test(
+  "選択すたすべてのタスクを削除できる",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const openDeleteDialogButton = await canvas.findByRole("button", {
+      name: "削除する",
+    });
+
+    await userEvent.click(openDeleteDialogButton);
+
+    const deleteButton = await canvas.findByRole("button", {
+      name: "削除する",
+    });
+
+    await userEvent.click(deleteButton);
+
+    await waitFor(async () => {
+      await expect(mockDeleteTasks).toHaveBeenCalledTimes(1);
+      await expect(mockDeleteTasks).toHaveBeenCalledWith(
+        mockContext.selectedTaskIds
+      );
+    });
+
+    // Tooltipを閉じる
+    await fireEvent(openDeleteDialogButton, new MouseEvent("mouseleave"));
+  }
+);
+
+Default.test(
+  "選択したすべてのタスクを完了状態にできる",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const doneButton = await canvas.findByRole("button", {
+      name: "完了状態にする",
+    });
+
+    await userEvent.click(doneButton);
+
+    await waitFor(async () => {
+      await expect(mockUpdateTaskStatuses).toHaveBeenCalledTimes(1);
+      await expect(mockUpdateTaskStatuses).toHaveBeenCalledWith({
+        status: "done",
+        selectedTaskIds: mockContext.selectedTaskIds,
+      } satisfies UpdateTaskStatusesInput);
+    });
+
+    await fireEvent(doneButton, new MouseEvent("mouseleave"));
+  }
+);
+
+NoSelect.test(
+  "何も選択されていないときにはメニューは表示されない",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+
+    await waitForAnimation();
+
+    const menu = canvas.queryByRole("toolbar");
+    await expect(menu).not.toBeInTheDocument();
+  }
+);
