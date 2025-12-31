@@ -44,75 +44,86 @@ export const Default = meta.story({
     },
   },
   args: { task: dummyTask },
-  play: async ({ canvasElement, step, args }) => {
-    const task = args.task;
-    const canvas = within(canvasElement.parentElement!);
-
-    await step("タイトルが正しく表示されている", async () => {
-      await expect(canvas.getByLabelText(task.title)).toBeInTheDocument();
-    });
-
-    await step("完了状態の更新APIが呼ばれる", async () => {
-      const doneChangeCheckbox = canvas.getByRole("checkbox", {
-        name: "完了状態を変更",
-      });
-      await userEvent.click(doneChangeCheckbox);
-
-      await waitFor(async () => {
-        await expect(updateTaskMock).toHaveBeenCalledTimes(1);
-        await expect(updateTaskMock).toHaveBeenCalledWith(
-          expect.objectContaining({
-            id: task.id,
-            done: !task.done,
-          })
-        );
-      });
-
-      clearAllMocks();
-    });
-
-    await step("タイトル更新APIが呼ばれる", async () => {
-      const editTrigger = canvas.getByRole("button", {
-        name: "タイトルを編集",
-      });
-      await userEvent.click(editTrigger);
-
-      const titleInput = canvas.getByRole("textbox", { name: "タイトル" });
-      const updatedTitle = "update";
-
-      await userEvent.clear(titleInput);
-      await userEvent.type(titleInput, `${updatedTitle}{enter}`);
-
-      await waitFor(async () => {
-        await expect(updateTaskMock).toHaveBeenCalledTimes(1);
-        await expect(updateTaskMock).toHaveBeenCalledWith(
-          expect.objectContaining({ id: task.id, title: updatedTitle })
-        );
-      });
-
-      clearAllMocks();
-    });
-
-    await step("削除APIが呼ばれる", async () => {
-      const deleteTrigger = canvas.getByRole("button", {
-        name: "削除ダイアログを開く",
-      });
-      await userEvent.click(deleteTrigger);
-
-      const deleteButton = canvas.getByRole("button", { name: "削除する" });
-      await userEvent.click(deleteButton);
-
-      await waitFor(async () => {
-        await expect(deleteTaskMock).toHaveBeenCalledTimes(1);
-        await expect(deleteTaskMock).toHaveBeenCalledWith(task.id);
-      });
-
-      const closeButton = canvas.getByRole("button", { name: "閉じる" });
-      await userEvent.click(closeButton);
-    });
-  },
 });
 
 export const Done = meta.story({
   args: { task: { ...dummyTask, done: true } },
+});
+
+Default.test(
+  "タイトルが正しく表示されている",
+  async ({ canvasElement, args }) => {
+    const task = args.task;
+    const canvas = within(canvasElement.parentElement!);
+
+    await expect(canvas.getByLabelText(task.title)).toBeInTheDocument();
+  }
+);
+
+Default.test("完了状態の更新APIが呼ばれる", async ({ canvasElement, args }) => {
+  const task = args.task;
+  const canvas = within(canvasElement.parentElement!);
+
+  const doneChangeCheckbox = canvas.getByRole("checkbox", {
+    name: "完了状態を変更",
+  });
+  await userEvent.click(doneChangeCheckbox);
+
+  await waitFor(async () => {
+    await expect(updateTaskMock).toHaveBeenCalledTimes(1);
+    await expect(updateTaskMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: task.id,
+        done: !task.done,
+      })
+    );
+  });
+
+  clearAllMocks();
+});
+
+Default.test("タイトル更新APIが呼ばれる", async ({ canvasElement, args }) => {
+  const task = args.task;
+  const canvas = within(canvasElement.parentElement!);
+
+  const editTrigger = canvas.getByRole("button", {
+    name: "タイトルを編集",
+  });
+  await userEvent.click(editTrigger);
+
+  const titleInput = canvas.getByRole("textbox", { name: "タイトル" });
+  const updatedTitle = "update";
+
+  await userEvent.clear(titleInput);
+  await userEvent.type(titleInput, `${updatedTitle}{enter}`);
+
+  await waitFor(async () => {
+    await expect(updateTaskMock).toHaveBeenCalledTimes(1);
+    await expect(updateTaskMock).toHaveBeenCalledWith(
+      expect.objectContaining({ id: task.id, title: updatedTitle })
+    );
+  });
+
+  clearAllMocks();
+});
+
+Default.test("削除APIが呼ばれる", async ({ canvasElement, args }) => {
+  const task = args.task;
+  const canvas = within(canvasElement.parentElement!);
+
+  const deleteTrigger = canvas.getByRole("button", {
+    name: "削除ダイアログを開く",
+  });
+  await userEvent.click(deleteTrigger);
+
+  const deleteButton = canvas.getByRole("button", { name: "削除する" });
+  await userEvent.click(deleteButton);
+
+  await waitFor(async () => {
+    await expect(deleteTaskMock).toHaveBeenCalledTimes(1);
+    await expect(deleteTaskMock).toHaveBeenCalledWith(task.id);
+  });
+
+  const closeButton = canvas.getByRole("button", { name: "閉じる" });
+  await userEvent.click(closeButton);
 });

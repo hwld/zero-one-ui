@@ -29,26 +29,27 @@ const meta = preview.meta({
 
 export default meta;
 
-export const Default = meta.story({
-  play: async ({ canvasElement }) => {
-    // canvasElementを直接使うと、portalが見えない
-    // https://github.com/storybookjs/storybook/issues/16971
-    const canvas = within(canvasElement.parentElement!);
-    const titleInput = canvas.getByRole("textbox");
-    const title = "たすく";
+export const Default = meta.story({});
 
-    await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
+Default.test("タイトル入力でタスクを作成できる", async ({ canvasElement }) => {
+  // canvasElementを直接使うと、portalが見えない
+  // https://github.com/storybookjs/storybook/issues/16971
+  const canvas = within(canvasElement.parentElement!);
+  const titleInput = canvas.getByRole("textbox");
+  const title = "たすく";
 
-    await waitFor(async () => {
-      await expect(createTaskMock).toHaveBeenCalledTimes(1);
-      await expect(createTaskMock).toHaveBeenCalledWith(title);
-      await expect(titleInput).toHaveValue("");
-    });
-  },
+  await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
+
+  await waitFor(async () => {
+    await expect(createTaskMock).toHaveBeenCalledTimes(1);
+    await expect(createTaskMock).toHaveBeenCalledWith(title);
+    await expect(titleInput).toHaveValue("");
+  });
 });
 
-export const NoTitleError = meta.story({
-  play: async ({ canvasElement }) => {
+Default.test(
+  "タイトル未入力時にエラーを表示する",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = canvas.getByRole("textbox");
 
@@ -57,14 +58,15 @@ export const NoTitleError = meta.story({
     await waitFor(async () => {
       await expect(createTaskMock).not.toHaveBeenCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タスクのタイトルを入力してください",
+        "タスクのタイトルを入力してください"
       );
     });
-  },
-});
+  }
+);
 
-export const MaxLengthError = meta.story({
-  play: async ({ canvasElement }) => {
+Default.test(
+  "タイトルが長すぎるとエラーを表示する",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = canvas.getByRole("textbox");
 
@@ -75,8 +77,8 @@ export const MaxLengthError = meta.story({
     await waitFor(async () => {
       await expect(createTaskMock).not.toHaveBeenCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タスクのタイトルは100文字以内で入力してください",
+        "タスクのタイトルは100文字以内で入力してください"
       );
     });
-  },
-});
+  }
+);

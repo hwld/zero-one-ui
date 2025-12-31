@@ -41,51 +41,63 @@ const meta = preview.meta({
       );
     },
   ],
+  beforeEach: () => {
+    clearAllMocks();
+  },
 });
 
 export default meta;
 
-export const Default = meta.story({
-  play: async ({ canvasElement, step }) => {
+export const Default = meta.story({});
+
+Default.test(
+  "フィルターを設定すると、ページが1に設定される",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const filterOpenButton = await canvas.findByRole("button", {
       name: "絞り込み",
     });
 
-    await step("フィルターを設定すると、ページが1に設定される", async () => {
-      await userEvent.click(filterOpenButton);
+    await userEvent.click(filterOpenButton);
 
-      await userEvent.click(
-        await canvas.findByRole("menuitem", { name: "Todo" }),
-      );
-      await userEvent.click(
-        await canvas.findByRole("menuitem", { name: "Done" }),
-      );
-      await userEvent.click(
-        await canvas.findByRole("menuitem", { name: "未選択" }),
-      );
+    await userEvent.click(
+      await canvas.findByRole("menuitem", { name: "Todo" })
+    );
+    await userEvent.click(
+      await canvas.findByRole("menuitem", { name: "Done" })
+    );
+    await userEvent.click(
+      await canvas.findByRole("menuitem", { name: "未選択" })
+    );
 
-      await waitFor(async () => {
-        await expect(mockSetPage).toHaveBeenCalledTimes(3);
-        for (let i = 0; i < 3; i++) {
-          await expect(mockSetPage).toHaveBeenNthCalledWith(i + 1, 1);
-        }
-      });
+    await waitFor(async () => {
+      await expect(mockSetPage).toHaveBeenCalledTimes(3);
+      for (let i = 0; i < 3; i++) {
+        await expect(mockSetPage).toHaveBeenNthCalledWith(i + 1, 1);
+      }
+    });
+  }
+);
 
-      clearAllMocks();
+Default.test(
+  "フィルターを解除すると、ページが1に設定される",
+  async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+    const filterOpenButton = await canvas.findByRole("button", {
+      name: "絞り込み",
     });
 
-    await step("フィルターを解除すると、ページが1に設定される", async () => {
-      await userEvent.click(
-        await canvas.findByRole("menuitem", { name: "絞り込みを解除する" }),
-      );
+    await userEvent.click(filterOpenButton);
+    await userEvent.click(
+      await canvas.findByRole("menuitem", { name: "Todo" })
+    );
+    await userEvent.click(
+      await canvas.findByRole("menuitem", { name: "絞り込みを解除する" })
+    );
 
-      await waitFor(async () => {
-        await expect(mockSetPage).toHaveBeenCalledTimes(1);
-        await expect(mockSetPage).toHaveBeenCalledWith(1);
-      });
-
-      clearAllMocks();
+    await waitFor(async () => {
+      await expect(mockSetPage).toHaveBeenCalledTimes(2);
+      await expect(mockSetPage).toHaveBeenCalledWith(1);
     });
-  },
-});
+  }
+);
