@@ -62,12 +62,12 @@ Default.test(
         expect.objectContaining({
           title,
           description: "",
-        } satisfies CreateTaskInput)
+        } satisfies CreateTaskInput),
       );
       await expect(handleOpenChangeMock).toHaveBeenCalledTimes(1);
       await expect(handleOpenChangeMock).toHaveBeenCalledWith(false);
     });
-  }
+  },
 );
 
 Default.test(
@@ -88,11 +88,11 @@ Default.test(
         expect.objectContaining({
           title,
           description: "",
-        } satisfies CreateTaskInput)
+        } satisfies CreateTaskInput),
       );
       await expect(handleOpenChangeMock).not.toHaveBeenCalled();
     });
-  }
+  },
 );
 
 Default.test(
@@ -107,8 +107,8 @@ Default.test(
       await expect(createTaskMock).not.toHaveBeenCalled();
       await expect(handleOpenChangeMock).not.toHaveBeenCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タイトルの入力は必須です。"
+        "タイトルの入力は必須です。",
       );
     });
-  }
+  },
 );

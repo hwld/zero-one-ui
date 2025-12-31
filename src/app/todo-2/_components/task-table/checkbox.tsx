@@ -13,7 +13,7 @@ export const TaskTableCheckbox: React.FC<Props> = ({
     <div
       className={clsx(
         "relative block size-[18px] overflow-hidden rounded-sm border border-zinc-500 outline-[#4c84e5] transition-colors has-focus-visible:outline-2 has-focus-visible:outline-solid",
-        checked ? "border-zinc-300 bg-zinc-300" : "hover:bg-white/10"
+        checked ? "border-zinc-300 bg-zinc-300" : "hover:bg-white/10",
       )}
     >
       <input

@@ -77,7 +77,7 @@ export const DialogHeader: React.FC<
     <header
       className={clsx(
         "flex items-center pb-2",
-        withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4"
+        withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4",
       )}
     >
       {children}

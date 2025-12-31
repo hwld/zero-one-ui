@@ -48,7 +48,7 @@ export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({
 
 export const getNextSortOrder = (
   sortEntry: SortEntry,
-  field: SortEntry["field"]
+  field: SortEntry["field"],
 ): SortOrder => {
   const isSorted = sortEntry.field === field;
 

@@ -17,5 +17,6 @@
   "tailwindCSS.classFunctions": ["tv", "clsx"],
   "editor.codeLens": true,
   "typescript.referencesCodeLens.enabled": true,
-  "tailwindCSS.lint.suggestCanonicalClasses": "ignore"
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+  "prettier.trailingComma": "all"
 }

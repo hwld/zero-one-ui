@@ -60,7 +60,7 @@ Default.test(
     const canvas = within(canvasElement.parentElement!);
 
     await expect(canvas.getByLabelText(task.title)).toBeInTheDocument();
-  }
+  },
 );
 
 Default.test("完了状態の更新APIが呼ばれる", async ({ canvasElement, args }) => {
@@ -78,7 +78,7 @@ Default.test("完了状態の更新APIが呼ばれる", async ({ canvasElement, 
       expect.objectContaining({
         id: task.id,
         done: !task.done,
-      })
+      }),
     );
   });
 });
@@ -101,7 +101,7 @@ Default.test("タイトル更新APIが呼ばれる", async ({ canvasElement, arg
   await waitFor(async () => {
     await expect(updateTaskMock).toHaveBeenCalledTimes(1);
     await expect(updateTaskMock).toHaveBeenCalledWith(
-      expect.objectContaining({ id: task.id, title: updatedTitle })
+      expect.objectContaining({ id: task.id, title: updatedTitle }),
     );
   });
 });

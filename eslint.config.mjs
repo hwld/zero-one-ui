@@ -50,5 +50,5 @@ export default defineConfig(
       "react-hooks/refs": "off",
       "better-tailwindcss/enforce-consistent-line-wrapping": "off",
     },
-  }
+  },
 );

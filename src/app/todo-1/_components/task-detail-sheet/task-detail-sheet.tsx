@@ -36,7 +36,7 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
 
         updateTaskMutation.mutate({ ...task, description: desc });
       },
-      [task, updateTaskMutation]
+      [task, updateTaskMutation],
     );
 
     const content = useMemo(() => {
@@ -172,5 +172,5 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
         </AnimatePresence>
       </RadixDialog.Root>
     );
-  }
+  },
 );

@@ -61,13 +61,13 @@ Default.test(
     await userEvent.click(filterOpenButton);
 
     await userEvent.click(
-      await canvas.findByRole("menuitem", { name: "Todo" })
+      await canvas.findByRole("menuitem", { name: "Todo" }),
     );
     await userEvent.click(
-      await canvas.findByRole("menuitem", { name: "Done" })
+      await canvas.findByRole("menuitem", { name: "Done" }),
     );
     await userEvent.click(
-      await canvas.findByRole("menuitem", { name: "未選択" })
+      await canvas.findByRole("menuitem", { name: "未選択" }),
     );
 
     await waitFor(async () => {
@@ -76,7 +76,7 @@ Default.test(
         await expect(mockSetPage).toHaveBeenNthCalledWith(i + 1, 1);
       }
     });
-  }
+  },
 );
 
 Default.test(
@@ -89,15 +89,15 @@ Default.test(
 
     await userEvent.click(filterOpenButton);
     await userEvent.click(
-      await canvas.findByRole("menuitem", { name: "Todo" })
+      await canvas.findByRole("menuitem", { name: "Todo" }),
     );
     await userEvent.click(
-      await canvas.findByRole("menuitem", { name: "絞り込みを解除する" })
+      await canvas.findByRole("menuitem", { name: "絞り込みを解除する" }),
     );
 
     await waitFor(async () => {
       await expect(mockSetPage).toHaveBeenCalledTimes(2);
       await expect(mockSetPage).toHaveBeenCalledWith(1);
     });
-  }
+  },
 );

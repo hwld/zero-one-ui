@@ -95,7 +95,7 @@ export const ToastProvider: React.FC<PropsWithChildren> = ({ children }) => {
                 <motion.div
                   layout
                   className={clsx(
-                    "relative flex min-h-[80px] w-[320px] gap-2 rounded-sm border border-neutral-300 bg-neutral-50 p-2 text-neutral-700 shadow-sm"
+                    "relative flex min-h-[80px] w-[320px] gap-2 rounded-sm border border-neutral-300 bg-neutral-50 p-2 text-neutral-700 shadow-sm",
                   )}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -162,21 +162,21 @@ export const useToast = () => {
 
       return { close };
     },
-    [setToasts]
+    [setToasts],
   );
 
   const infoToast = useCallback(
     (input: OmitDistributive<CreateToastInput, "type">) => {
       toast({ ...input, type: "info" });
     },
-    [toast]
+    [toast],
   );
 
   const errorToast = useCallback(
     (input: OmitDistributive<CreateToastInput, "type">) => {
       toast({ ...input, type: "error" });
     },
-    [toast]
+    [toast],
   );
 
   return { toast: { info: infoToast, error: errorToast } };

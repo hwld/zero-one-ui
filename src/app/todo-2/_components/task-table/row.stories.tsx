@@ -68,7 +68,7 @@ const meta = preview.meta({
         toggleTaskSelection: (id) => {
           mockToggleSelection(id);
           setSelectedIds((ids) =>
-            ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id]
+            ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id],
           );
         },
         unselectAllTasks: () => {},
@@ -110,14 +110,14 @@ Default.test(
       await expect(mockToggleSelection).toHaveBeenCalledTimes(2);
       await expect(mockToggleSelection).toHaveBeenNthCalledWith(
         1,
-        args.task.id
+        args.task.id,
       );
       await expect(mockToggleSelection).toHaveBeenNthCalledWith(
         2,
-        args.task.id
+        args.task.id,
       );
     });
-  }
+  },
 );
 
 Default.test(
@@ -137,10 +137,10 @@ Default.test(
           id: args.task.id,
           ...updateTaskInputSchema.parse(args.task),
           status: args.task.status === "done" ? "todo" : "done",
-        } satisfies UpdateTaskInput & { id: string })
+        } satisfies UpdateTaskInput & { id: string }),
       );
     });
-  }
+  },
 );
 
 Default.test(
@@ -156,10 +156,10 @@ Default.test(
       await expect(getRouter().push).toHaveBeenCalledWith(
         Routes.detail(args.task.id),
         expect.anything(),
-        expect.anything()
+        expect.anything(),
       );
     });
-  }
+  },
 );
 
 Default.test("タスクの削除APIが呼ばれる", async ({ canvasElement, args }) => {

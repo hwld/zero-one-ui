@@ -12,7 +12,7 @@ const NotFoundPage: React.FC = () => {
     <div
       className={clsx(
         "flex h-dvh w-full flex-col items-center justify-center gap-14 text-neutral-100",
-        bgClass
+        bgClass,
       )}
     >
       <div className="flex flex-col items-center gap-2 text-sm">

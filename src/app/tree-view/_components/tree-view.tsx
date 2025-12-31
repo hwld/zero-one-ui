@@ -283,9 +283,7 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
               ) : (
                 <span className="size-5" />
               )}
-              <span className="grow truncate pl-2">
-                {name}
-              </span>
+              <span className="grow truncate pl-2">{name}</span>
             </div>
           </div>
         </div>

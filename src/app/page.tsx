@@ -16,7 +16,7 @@ export default function Home() {
         "flex h-dvh flex-col items-center overflow-auto pt-[200px] pb-6",
         // chromeでキーボードを操作しているとなぜかfocus-visibleがあたることがあるので
         "focus-visible:outline-hidden",
-        bgClass
+        bgClass,
       )}
       style={{ colorScheme: "dark" }}
     >

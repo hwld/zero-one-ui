@@ -18,7 +18,7 @@ export const TaskCheckbox: React.FC<Props> = ({
       onCheckedChange={onChange}
       className={cn(
         "group/checkbox size-5 shrink-0 rounded-full border border-stone-400 focus-visible:ring-2 focus-visible:ring-offset-1 focus-visible:outline-hidden disabled:cursor-not-allowed disabled:opacity-50",
-        checked && "animate-zoomIn125 bg-stone-400 text-stone-100"
+        checked && "animate-zoomIn125 bg-stone-400 text-stone-100",
       )}
       {...props}
     >

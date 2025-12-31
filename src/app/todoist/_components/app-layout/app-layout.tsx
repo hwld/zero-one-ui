@@ -38,7 +38,7 @@ export const AppLayout: React.FC<Props> = ({
     }
 
     const appHeaderHeight = getComputedStyle(titleRef.current).getPropertyValue(
-      appHeaderHeightName
+      appHeaderHeightName,
     );
     if (appHeaderHeight === "") {
       throw new Error(`${appHeaderHeightName} が設定されていない`);
@@ -50,7 +50,7 @@ export const AppLayout: React.FC<Props> = ({
           setIsTitlteHiddenByHeader(!e.isIntersecting);
         });
       },
-      { rootMargin: `-${appHeaderHeight} 0px 0px 0px`, threshold: 0.9 }
+      { rootMargin: `-${appHeaderHeight} 0px 0px 0px`, threshold: 0.9 },
     );
     observer.observe(titleRef.current);
 
@@ -64,7 +64,7 @@ export const AppLayout: React.FC<Props> = ({
       <div
         className={clsx(
           "sticky top-0 z-10 grid w-full grid-cols-[auto_1fr_auto] place-items-center justify-end bg-stone-50 px-4 transition-all",
-          isTitleHiddenByHeader ? "border-b border-stone-200" : ""
+          isTitleHiddenByHeader ? "border-b border-stone-200" : "",
         )}
         style={{ height: `var(${appHeaderHeightName})` }}
       >

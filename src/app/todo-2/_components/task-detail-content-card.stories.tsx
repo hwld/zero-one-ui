@@ -63,7 +63,7 @@ Default.test("タスクを編集できる", async ({ canvasElement, args }) => {
   const canvas = within(canvasElement.parentElement!);
 
   await userEvent.click(
-    await canvas.findByRole("button", { name: "編集する" })
+    await canvas.findByRole("button", { name: "編集する" }),
   );
 
   const newTitle = "title";
@@ -81,7 +81,7 @@ Default.test("タスクを編集できる", async ({ canvasElement, args }) => {
   await userEvent.type(descInput, newDesc, { delay: 50 });
 
   await userEvent.click(
-    await canvas.findByRole("button", { name: "保存する" })
+    await canvas.findByRole("button", { name: "保存する" }),
   );
 
   await waitFor(async () => {
@@ -102,21 +102,21 @@ Default.test(
     const canvas = within(canvasElement.parentElement!);
 
     await userEvent.click(
-      await canvas.findByRole("button", { name: "編集する" })
+      await canvas.findByRole("button", { name: "編集する" }),
     );
 
     const titleInput = await canvas.findByDisplayValue(task.title);
     await userEvent.clear(titleInput);
 
     await userEvent.click(
-      await canvas.findByRole("button", { name: "保存する" })
+      await canvas.findByRole("button", { name: "保存する" }),
     );
 
     await waitFor(async () => {
       await expect(mockUpdateTask).not.toBeCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タイトルの入力は必須です。"
+        "タイトルの入力は必須です。",
       );
     });
-  }
+  },
 );

@@ -58,10 +58,10 @@ Default.test(
     await waitFor(async () => {
       await expect(createTaskMock).not.toHaveBeenCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タスクのタイトルを入力してください"
+        "タスクのタイトルを入力してください",
       );
     });
-  }
+  },
 );
 
 Default.test(
@@ -77,8 +77,8 @@ Default.test(
     await waitFor(async () => {
       await expect(createTaskMock).not.toHaveBeenCalled();
       await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タスクのタイトルは100文字以内で入力してください"
+        "タスクのタイトルは100文字以内で入力してください",
       );
     });
-  }
+  },
 );

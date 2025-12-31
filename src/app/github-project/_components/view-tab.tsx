@@ -58,7 +58,7 @@ const ViewTabContent: React.FC<ViewTabProps> = ({
         "flex w-full items-center gap-3 overflow-hidden rounded-md border-2 border-transparent px-2 py-[6px] transition-colors group-focus-visible:border-blue-300",
         interactive
           ? "text-neutral-400 group-hover:bg-neutral-700 group-hover:text-neutral-100"
-          : "text-neutral-100"
+          : "text-neutral-100",
       )}
     >
       <div className={clsx("flex items-center gap-2 overflow-hidden")}>
@@ -67,7 +67,7 @@ const ViewTabContent: React.FC<ViewTabProps> = ({
           className={clsx(
             "w-full min-w-0 text-sm whitespace-nowrap",
             isOverflow &&
-              "bg-linear-to-r from-neutral-400 from-85% to-transparent bg-clip-text text-transparent group-hover:from-neutral-100"
+              "bg-linear-to-r from-neutral-400 from-85% to-transparent bg-clip-text text-transparent group-hover:from-neutral-100",
           )}
         >
           {children}
@@ -92,7 +92,7 @@ const viewTabWrapperClass = (active: boolean = false) =>
     "group relative flex min-w-[100px] shrink-0 items-start gap-1 border-x border-t px-1 focus-visible:outline-hidden",
     active
       ? "rounded-t-md border-neutral-600 bg-neutral-800 text-neutral-100"
-      : "max-w-[200px] rounded-md border-transparent"
+      : "max-w-[200px] rounded-md border-transparent",
   );
 
 type ViewTabButtonProps = ViewTabProps & { active?: boolean } & Omit<
@@ -107,7 +107,7 @@ export const ViewTabButton = forwardRef<HTMLButtonElement, ViewTabButtonProps>(
         <ViewTabContent icon={icon}>{children}</ViewTabContent>
       </button>
     );
-  }
+  },
 );
 
 type ViewTabLinkProps = ViewTabProps & {
@@ -158,7 +158,7 @@ const OuterBottomCorner: React.FC<{
     <div
       className={clsx(
         "absolute bottom-0 size-2 bg-neutral-800 before:absolute before:top-0 before:left-0 before:size-2 before:border-b before:border-neutral-600 before:bg-neutral-900 before:content-['']",
-        positionClass[position]
+        positionClass[position],
       )}
     />
   );

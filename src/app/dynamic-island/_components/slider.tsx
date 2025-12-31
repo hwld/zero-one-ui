@@ -40,5 +40,5 @@ const CustomRange = forwardRef<HTMLSpanElement, RadixSlider.SliderThumbProps>(
     const newRight = `calc(${right}% - (${delta}))`;
 
     return <span ref={ref} {...others} style={{ ...style, right: newRight }} />;
-  }
+  },
 );

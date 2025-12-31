@@ -64,7 +64,7 @@ Default.test("タスクの情報が表示される", async ({ canvasElement }) =
   await expect(
     await canvas.findByDisplayValue(dummyTask.description, {
       collapseWhitespace: false,
-    })
+    }),
   ).toBeInTheDocument();
 });
 
@@ -83,7 +83,7 @@ Default.test("タスクの状態を更新できる", async ({ canvasElement }) =
   await waitFor(async () => {
     await expect(updateTaskMock).toHaveBeenCalledTimes(1);
     await expect(updateTaskMock).toHaveBeenCalledWith(
-      expect.objectContaining({ id: dummyTask.id, done: !dummyTask.done })
+      expect.objectContaining({ id: dummyTask.id, done: !dummyTask.done }),
     );
   });
 });
@@ -105,7 +105,7 @@ Default.test("タスクの説明を変更できる", async ({ canvasElement }) =
   await waitFor(async () => {
     await expect(updateTaskMock).toHaveBeenCalledTimes(1);
     await expect(updateTaskMock).toHaveBeenCalledWith(
-      expect.objectContaining({ id: dummyTask.id, description: newDesc })
+      expect.objectContaining({ id: dummyTask.id, description: newDesc }),
     );
   });
 

@@ -26,10 +26,7 @@ export const CalendarDate: React.FC<Props> = ({ calendarYearMonth, date }) => {
       )}
     >
       <div
-        className={clsx(
-          "size-full",
-          isDraggedDate ? "bg-neutral-700/5" : "",
-        )}
+        className={clsx("size-full", isDraggedDate ? "bg-neutral-700/5" : "")}
       >
         <div
           className="h-10 w-full p-1"

@@ -14,13 +14,13 @@ export const SlicerListItem: React.FC<Props> = ({ active = false, column }) => {
       className={clsx(
         "relative w-full border-b border-neutral-600",
         active &&
-          "before:absolute before:inset-y-2 before:-left-3 before:w-1 before:rounded-full before:bg-blue-500 before:content-['']"
+          "before:absolute before:inset-y-2 before:-left-3 before:w-1 before:rounded-full before:bg-blue-500 before:content-['']",
       )}
     >
       <button
         className={clsx(
           "flex w-full items-start justify-between rounded-md p-2 text-start transition-colors hover:bg-white/10",
-          column.status.description ? "min-h-14" : ""
+          column.status.description ? "min-h-14" : "",
         )}
       >
         <div className="flex items-start gap-2">

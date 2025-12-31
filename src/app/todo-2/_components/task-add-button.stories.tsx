@@ -44,5 +44,5 @@ Default.test(
     await waitFor(async () => {
       await expect(createTaskMock).toHaveBeenCalledTimes(1);
     });
-  }
+  },
 );

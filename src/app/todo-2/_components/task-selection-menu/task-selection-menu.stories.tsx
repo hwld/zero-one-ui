@@ -53,7 +53,7 @@ const meta = preview.meta({
 
         http.patch(Todo2API.updateTaskStatuses(), async ({ request }) => {
           const input = updateTaskStatusesInputSchema.parse(
-            await request.json()
+            await request.json(),
           );
           mockUpdateTaskStatuses(input);
 
@@ -103,7 +103,7 @@ Default.test(
 
     const menu = canvas.queryByRole("toolbar");
     await expect(menu).toBeInTheDocument();
-  }
+  },
 );
 
 Default.test(
@@ -119,7 +119,7 @@ Default.test(
     await waitFor(async () => {
       await expect(mockUnselectAll).toHaveBeenCalledTimes(1);
     });
-  }
+  },
 );
 
 Default.test(
@@ -141,13 +141,13 @@ Default.test(
     await waitFor(async () => {
       await expect(mockDeleteTasks).toHaveBeenCalledTimes(1);
       await expect(mockDeleteTasks).toHaveBeenCalledWith(
-        mockContext.selectedTaskIds
+        mockContext.selectedTaskIds,
       );
     });
 
     // Tooltipを閉じる
     await fireEvent(openDeleteDialogButton, new MouseEvent("mouseleave"));
-  }
+  },
 );
 
 Default.test(
@@ -169,7 +169,7 @@ Default.test(
     });
 
     await fireEvent(doneButton, new MouseEvent("mouseleave"));
-  }
+  },
 );
 
 NoSelect.test(
@@ -181,5 +181,5 @@ NoSelect.test(
 
     const menu = canvas.queryByRole("toolbar");
     await expect(menu).not.toBeInTheDocument();
-  }
+  },
 );

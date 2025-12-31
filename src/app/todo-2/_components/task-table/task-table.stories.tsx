@@ -123,12 +123,12 @@ Default.test(
     await waitFor(async () => {
       await expect(mockSelectTasks).toHaveBeenCalledTimes(1);
       await expect(mockSelectTasks).toHaveBeenCalledWith(
-        dummyTasks.map((t) => t.id)
+        dummyTasks.map((t) => t.id),
       );
       await expect(mockUnselectTasks).toHaveBeenCalledTimes(1);
       await expect(mockUnselectTasks).toHaveBeenCalledWith(
-        dummyTasks.map((t) => t.id)
+        dummyTasks.map((t) => t.id),
       );
     });
-  }
+  },
 );
