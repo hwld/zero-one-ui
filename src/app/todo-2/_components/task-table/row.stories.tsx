@@ -35,6 +35,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   component: TaskTableRow,
   title: "Todo2/TaskTableRow",
+  afterEach: () => {
+    clearAllMocks();
+  },
   parameters: {
     msw: {
       handlers: [
@@ -114,8 +117,6 @@ Default.test(
         args.task.id
       );
     });
-
-    clearAllMocks();
   }
 );
 

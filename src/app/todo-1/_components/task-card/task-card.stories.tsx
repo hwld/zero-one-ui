@@ -21,6 +21,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo1/TaskCard",
   component: TaskCard,
+  afterEach: () => {
+    clearAllMocks();
+  },
 });
 
 export default meta;
@@ -78,8 +81,6 @@ Default.test("完了状態の更新APIが呼ばれる", async ({ canvasElement, 
       })
     );
   });
-
-  clearAllMocks();
 });
 
 Default.test("タイトル更新APIが呼ばれる", async ({ canvasElement, args }) => {
@@ -103,8 +104,6 @@ Default.test("タイトル更新APIが呼ばれる", async ({ canvasElement, arg
       expect.objectContaining({ id: task.id, title: updatedTitle })
     );
   });
-
-  clearAllMocks();
 });
 
 Default.test("削除APIが呼ばれる", async ({ canvasElement, args }) => {

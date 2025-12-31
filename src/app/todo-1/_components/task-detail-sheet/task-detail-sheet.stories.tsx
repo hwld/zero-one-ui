@@ -22,6 +22,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo1/TaskDetailSheet",
   component: TaskDetailSheet,
+  afterEach: () => {
+    clearAllMocks();
+  },
 });
 
 export default meta;
@@ -83,8 +86,6 @@ Default.test("タスクの状態を更新できる", async ({ canvasElement }) =
       expect.objectContaining({ id: dummyTask.id, done: !dummyTask.done })
     );
   });
-
-  clearAllMocks();
 });
 
 Default.test("タスクの説明を変更できる", async ({ canvasElement }) => {
@@ -113,8 +114,6 @@ Default.test("タスクの説明を変更できる", async ({ canvasElement }) =
     name: "変更を取り消す",
   });
   await userEvent.click(cancelButton);
-
-  clearAllMocks();
 });
 
 Default.test("シートを閉じることができる", async ({ canvasElement }) => {

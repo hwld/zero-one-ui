@@ -33,6 +33,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskTable",
   component: TaskTable,
+  afterEach: () => {
+    clearAllMocks();
+  },
   decorators: [
     ...defaultStoryMeta.decorators,
     (Story) => {
@@ -104,8 +107,6 @@ Default.test("各項目でソートすることができる", async ({ canvasEle
       } satisfies SortEntry);
     }
   });
-
-  clearAllMocks();
 });
 
 Default.test(

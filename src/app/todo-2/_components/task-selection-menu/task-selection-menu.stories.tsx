@@ -38,6 +38,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskSelectionMenu",
   component: TaskSelectionMenu,
+  afterEach: () => {
+    clearAllMocks();
+  },
   parameters: {
     msw: {
       handlers: [
@@ -116,8 +119,6 @@ Default.test(
     await waitFor(async () => {
       await expect(mockUnselectAll).toHaveBeenCalledTimes(1);
     });
-
-    clearAllMocks();
   }
 );
 
@@ -146,8 +147,6 @@ Default.test(
 
     // Tooltipを閉じる
     await fireEvent(openDeleteDialogButton, new MouseEvent("mouseleave"));
-
-    clearAllMocks();
   }
 );
 
@@ -170,8 +169,6 @@ Default.test(
     });
 
     await fireEvent(doneButton, new MouseEvent("mouseleave"));
-
-    clearAllMocks();
   }
 );
 

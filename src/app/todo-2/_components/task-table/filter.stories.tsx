@@ -41,7 +41,7 @@ const meta = preview.meta({
       );
     },
   ],
-  beforeEach: () => {
+  afterEach: () => {
     clearAllMocks();
   },
 });

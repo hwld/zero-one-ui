@@ -25,6 +25,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskAddDialog",
   component: TaskAddDialog,
+  afterEach: () => {
+    clearAllMocks();
+  },
   parameters: {
     msw: {
       handlers: [
@@ -64,8 +67,6 @@ Default.test(
       await expect(handleOpenChangeMock).toHaveBeenCalledTimes(1);
       await expect(handleOpenChangeMock).toHaveBeenCalledWith(false);
     });
-
-    clearAllMocks();
   }
 );
 
@@ -91,8 +92,6 @@ Default.test(
       );
       await expect(handleOpenChangeMock).not.toHaveBeenCalled();
     });
-
-    clearAllMocks();
   }
 );
 

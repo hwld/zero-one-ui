@@ -25,6 +25,9 @@ const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskDetailContentCard",
   component: TaskDetailContentCard,
+  afterEach: () => {
+    clearAllMocks();
+  },
   decorators: [
     ...defaultStoryMeta.decorators,
     (Story) => {
@@ -90,8 +93,6 @@ Default.test("タスクを編集できる", async ({ canvasElement, args }) => {
       description: newDesc,
     } satisfies { id: string } & UpdateTaskInput);
   });
-
-  clearAllMocks();
 });
 
 Default.test(
@@ -117,7 +118,5 @@ Default.test(
         "タイトルの入力は必須です。"
       );
     });
-
-    clearAllMocks();
   }
 );
