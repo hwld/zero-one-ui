@@ -1,10 +1,10 @@
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 import { defaultStoryMeta } from "../../story-meta";
 import { ErrorTaskTable } from "./error-task-table";
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTableProvider } from "./provider";
+import preview from "../../../../../.storybook/preview";
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/ErrorTaskTable",
   component: ErrorTaskTable,
@@ -22,9 +22,8 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof ErrorTaskTable>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default = meta.story({});

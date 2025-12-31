@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTableFilter } from "./filter";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTablePagingContext } from "./paging-provider";
@@ -13,10 +12,11 @@ import {
 } from "storybook/test";
 import { MockTaskTableProvider } from "./provider";
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
+import preview from "../../../../../.storybook/preview";
 
 const mockSetPage = fn();
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskTableFilter",
   component: TaskTableFilter,
@@ -41,12 +41,11 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof TaskTableFilter>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement.parentElement!);
     const filterOpenButton = await canvas.findByRole("button", {
@@ -89,4 +88,4 @@ export const Default: Story = {
       clearAllMocks();
     });
   },
-};
+});

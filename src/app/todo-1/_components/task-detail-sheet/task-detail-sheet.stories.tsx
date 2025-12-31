@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskDetailSheet } from "./task-detail-sheet";
 import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
@@ -13,21 +12,21 @@ import {
 import { HttpResponse, http } from "msw";
 import { Todo1API, updateTaskInputSchema } from "../../_backend/api";
 import { waitForAnimation } from "../../../_test/utils";
+import preview from "../../../../../.storybook/preview";
 
 const updateTaskMock = fn();
 const handleOpenChangeMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo1/TaskDetailSheet",
   component: TaskDetailSheet,
-} satisfies Meta<typeof TaskDetailSheet>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   parameters: {
     msw: {
       handlers: [
@@ -57,13 +56,13 @@ export const Default: Story = {
 
     await step("タスクの情報が表示される", async () => {
       await expect(
-        await canvas.findByText(dummyTask.title),
+        await canvas.findByText(dummyTask.title)
       ).toBeInTheDocument();
       await expect(await canvas.findByText(statusText)).toBeInTheDocument();
       await expect(
         await canvas.findByDisplayValue(dummyTask.description, {
           collapseWhitespace: false,
-        }),
+        })
       ).toBeInTheDocument();
     });
 
@@ -77,7 +76,7 @@ export const Default: Story = {
       await waitFor(async () => {
         await expect(updateTaskMock).toHaveBeenCalledTimes(1);
         await expect(updateTaskMock).toHaveBeenCalledWith(
-          expect.objectContaining({ id: dummyTask.id, done: !dummyTask.done }),
+          expect.objectContaining({ id: dummyTask.id, done: !dummyTask.done })
         );
       });
 
@@ -97,7 +96,7 @@ export const Default: Story = {
       await waitFor(async () => {
         await expect(updateTaskMock).toHaveBeenCalledTimes(1);
         await expect(updateTaskMock).toHaveBeenCalledWith(
-          expect.objectContaining({ id: dummyTask.id, description: newDesc }),
+          expect.objectContaining({ id: dummyTask.id, description: newDesc })
         );
       });
 
@@ -123,4 +122,4 @@ export const Default: Story = {
       });
     });
   },
-};
+});

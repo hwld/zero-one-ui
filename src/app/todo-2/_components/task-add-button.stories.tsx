@@ -1,24 +1,23 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { defaultStoryMeta } from "../story-meta";
 import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { TaskAddButton } from "./task-add-button";
 import { Todo2API } from "../_backend/api";
 import { HttpResponse, http } from "msw";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
 const createTaskMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskAddButton",
   component: TaskAddButton,
-} satisfies Meta<typeof TaskAddButton>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   parameters: {
     msw: {
       handlers: [
@@ -44,4 +43,4 @@ export const Default: Story = {
       });
     });
   },
-};
+});

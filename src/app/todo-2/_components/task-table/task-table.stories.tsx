@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTable } from "./task-table";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTableSelectionContext } from "./selection-provider";
@@ -17,6 +16,7 @@ import { SortEntry } from "../../_backend/api";
 import { getNextSortOrder } from "./header";
 import { useState } from "react";
 import { MockTaskTableProvider } from "./provider";
+import preview from "../../../../../.storybook/preview";
 
 const dummyTasks = initialTasks.slice(0, 10);
 
@@ -29,7 +29,7 @@ const mockSortContext: TaskTableSortContext = {
   sort: mockSort,
 };
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskTable",
   component: TaskTable,
@@ -64,12 +64,11 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof TaskTable>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   args: { paginatedTasks: dummyTasks, totalPages: 2 },
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement.parentElement!);
@@ -129,8 +128,8 @@ export const Default: Story = {
       });
     });
   },
-};
+});
 
-export const Empty: Story = {
+export const Empty = meta.story({
   args: { paginatedTasks: [], totalPages: 1 },
-};
+});

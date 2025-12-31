@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { defaultStoryMeta } from "../story-meta";
 import {
   clearAllMocks,
@@ -16,12 +15,13 @@ import {
   createTaskInputSchema,
 } from "../_backend/api";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
 const createTaskMock = fn();
 const handleOpenChangeMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskAddDialog",
   component: TaskAddDialog,
@@ -38,12 +38,11 @@ const meta = {
     },
   },
   args: { isOpen: true, onOpenChange: handleOpenChangeMock },
-} satisfies Meta<typeof TaskAddDialog>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   play: async ({ canvasElement, step }) => {
     const canvas = within(canvasElement.parentElement!);
     const title = "タスク";
@@ -92,9 +91,9 @@ export const Default: Story = {
       },
     );
   },
-};
+});
 
-export const NoTitleError: Story = {
+export const NoTitleError = meta.story({
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
@@ -109,4 +108,4 @@ export const NoTitleError: Story = {
       );
     });
   },
-};
+});

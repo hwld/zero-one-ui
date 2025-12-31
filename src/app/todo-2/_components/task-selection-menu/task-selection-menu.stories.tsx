@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskSelectionMenu } from "./task-selection-menu";
 import { defaultStoryMeta } from "../../story-meta";
 import { TaskTableSelectionContext } from "../task-table/selection-provider";
@@ -21,6 +20,7 @@ import { z } from "zod";
 import { MockTaskTableProvider } from "../task-table/provider";
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 import { waitForAnimation } from "../../../_test/utils";
+import preview from "../../../../../.storybook/preview";
 
 const mockUnselectAll = fn();
 const mockDeleteTasks = fn();
@@ -34,7 +34,7 @@ const mockContext: TaskTableSelectionContext = {
   unselectTaskIds: () => {},
 };
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskSelectionMenu",
   component: TaskSelectionMenu,
@@ -59,12 +59,11 @@ const meta = {
       ],
     },
   },
-} satisfies Meta<typeof TaskSelectionMenu>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   decorators: [
     (Story) => {
       return (
@@ -144,9 +143,9 @@ export const Default: Story = {
       clearAllMocks();
     });
   },
-};
+});
 
-export const NoSelect: Story = {
+export const NoSelect = meta.story({
   decorators: [
     (Story) => {
       return (
@@ -173,4 +172,4 @@ export const NoSelect: Story = {
       },
     );
   },
-};
+});

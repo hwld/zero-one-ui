@@ -1,6 +1,6 @@
-import type { StorybookConfig } from "@storybook/nextjs-vite";
+import { defineMain } from "@storybook/nextjs-vite/node";
 
-const config: StorybookConfig = {
+export default defineMain({
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
 
   addons: [
@@ -23,5 +23,4 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: "react-docgen-typescript",
   },
-};
-export default config;
+});

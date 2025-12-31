@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskDetailContentCard } from "./task-detail-content-card";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";
@@ -16,12 +15,13 @@ import {
   UpdateTaskInput,
   updateTaskInputSchema,
 } from "../_backend/api";
+import preview from "../../../../.storybook/preview";
 
 const dummyTask = initialTasks[0];
 
 const mockUpdateTask = fn();
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo2/TaskDetailContentCard",
   component: TaskDetailContentCard,
@@ -47,12 +47,11 @@ const meta = {
       ],
     },
   },
-} satisfies Meta<typeof TaskDetailContentCard>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   args: { task: dummyTask },
   play: async ({ canvasElement, step, args }) => {
     const task = args.task;
@@ -94,9 +93,9 @@ export const Default: Story = {
       clearAllMocks();
     });
   },
-};
+});
 
-export const NoTitleError: Story = {
+export const NoTitleError = meta.story({
   args: { task: dummyTask },
   play: async ({ canvasElement, step, args }) => {
     const task = args.task;
@@ -127,4 +126,4 @@ export const NoTitleError: Story = {
       },
     );
   },
-};
+});

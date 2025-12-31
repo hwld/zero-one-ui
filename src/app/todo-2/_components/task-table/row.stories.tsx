@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskTableRow } from "./row";
 import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
@@ -24,6 +23,7 @@ import { z } from "zod";
 import { getRouter } from "@storybook/nextjs-vite/router.mock";
 import { Routes } from "../../_lib/routes";
 import { MockTaskTableProvider } from "./provider";
+import preview from "../../../../../.storybook/preview";
 
 const dummyTask = initialTasks[0];
 
@@ -31,7 +31,7 @@ const mockToggleSelection = fn();
 const mockUpdateTask = fn();
 const mockDeleteTask = fn();
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   component: TaskTableRow,
   title: "Todo2/TaskTableRow",
@@ -85,11 +85,10 @@ const meta = {
       );
     },
   ],
-} satisfies Meta<typeof TaskTableRow>;
+});
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-export const Default: Story = {
+export const Default = meta.story({
   args: { task: dummyTask },
   play: async ({ canvasElement, step, args }) => {
     const canvas = within(canvasElement.parentElement!);
@@ -174,4 +173,4 @@ export const Default: Story = {
       });
     });
   },
-};
+});

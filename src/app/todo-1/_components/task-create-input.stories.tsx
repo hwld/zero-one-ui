@@ -1,15 +1,15 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskCreateInput } from "./task-create-input";
 import { defaultStoryMeta } from "../story-meta";
 import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { Todo1API, createTaskInputSchema } from "../_backend/api";
 import { HttpResponse, http } from "msw";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
 const createTaskMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   parameters: {
     msw: {
@@ -25,12 +25,11 @@ const meta = {
   },
   title: "Todo1/TaskCreateInput",
   component: TaskCreateInput,
-} satisfies Meta<typeof TaskCreateInput>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   play: async ({ canvasElement }) => {
     // canvasElementを直接使うと、portalが見えない
     // https://github.com/storybookjs/storybook/issues/16971
@@ -46,9 +45,9 @@ export const Default: Story = {
       await expect(titleInput).toHaveValue("");
     });
   },
-};
+});
 
-export const NoTitleError: Story = {
+export const NoTitleError = meta.story({
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = canvas.getByRole("textbox");
@@ -62,9 +61,9 @@ export const NoTitleError: Story = {
       );
     });
   },
-};
+});
 
-export const MaxLengthError: Story = {
+export const MaxLengthError = meta.story({
   play: async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = canvas.getByRole("textbox");
@@ -80,4 +79,4 @@ export const MaxLengthError: Story = {
       );
     });
   },
-};
+});

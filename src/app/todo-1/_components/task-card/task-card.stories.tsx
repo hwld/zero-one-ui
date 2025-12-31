@@ -1,4 +1,3 @@
-import { Meta, StoryObj } from "@storybook/nextjs-vite";
 import { TaskCard } from "./task-card";
 import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
@@ -12,21 +11,21 @@ import {
 } from "storybook/test";
 import { HttpResponse, http } from "msw";
 import { Todo1API, updateTaskInputSchema } from "../../_backend/api";
+import preview from "../../../../../.storybook/preview";
 
 const updateTaskMock = fn();
 const deleteTaskMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   title: "Todo1/TaskCard",
   component: TaskCard,
-} satisfies Meta<typeof TaskCard>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   parameters: {
     msw: {
       handlers: [
@@ -65,7 +64,7 @@ export const Default: Story = {
           expect.objectContaining({
             id: task.id,
             done: !task.done,
-          }),
+          })
         );
       });
 
@@ -87,7 +86,7 @@ export const Default: Story = {
       await waitFor(async () => {
         await expect(updateTaskMock).toHaveBeenCalledTimes(1);
         await expect(updateTaskMock).toHaveBeenCalledWith(
-          expect.objectContaining({ id: task.id, title: updatedTitle }),
+          expect.objectContaining({ id: task.id, title: updatedTitle })
         );
       });
 
@@ -112,8 +111,8 @@ export const Default: Story = {
       await userEvent.click(closeButton);
     });
   },
-};
+});
 
-export const Done: Story = {
+export const Done = meta.story({
   args: { task: { ...dummyTask, done: true } },
-};
+});
