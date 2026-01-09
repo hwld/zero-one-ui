@@ -10,7 +10,7 @@ jobs:
   build_and_deploy:
     # ubuntu 24.04 だと以下のエラーが出ることがあるのでダウングレードする
     # https://github.com/microsoft/playwright/issues/30368
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
