@@ -12,7 +12,7 @@ jobs:
     # https://github.com/microsoft/playwright/issues/30368
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - uses: pnpm/action-setup@v4
         with:
