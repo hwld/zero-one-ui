@@ -5,25 +5,21 @@ on:
 
 jobs:
   sync:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
-      contents: write
+      contents: read
       pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: main
 
       - name: "Create PR from main to develop"
-        uses: peter-evans/create-pull-request@v7
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          base: develop
-          branch: sync/main-to-develop
-          title: "mainをdevelopに取り込み"
-          body: |
-            mainの変更をdevelopに反映します。
-          commit-message: "chore: sync main to develop"
-          labels: "sync"
-          delete-branch: true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh pr create \
+            --base develop \
+            --head main \
+            --title "mainをdevelopに取り込む" \
+            --body "mainの変更をdevelopに反映します。"
