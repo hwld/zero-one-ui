@@ -4,6 +4,7 @@ name: CI
     branches:
       - develop
       - main
+  workflow_dispatch:
   workflow_call:
 
 jobs:
