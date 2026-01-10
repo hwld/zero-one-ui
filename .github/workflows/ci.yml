@@ -1,0 +1,48 @@
+name: CI
+"on":
+  pull_request:
+    branches:
+      - develop
+  workflow_call:
+
+jobs:
+  ci:
+    # ubuntu 24.04 だと以下のエラーが出ることがあるのでダウングレードする
+    # https://github.com/microsoft/playwright/issues/30368
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - name: "Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      - name: "Install Playwright"
+        run: pnpx playwright install --with-deps chromium
+
+      - name: "Run vitest tests"
+        run: pnpm run test
+
+      - name: "Lint"
+        run: pnpm run lint
+
+      - name: "Build"
+        run: pnpm run build
+
+      - name: "Upload hosting artifact"
+        uses: actions/upload-artifact@v4
+        with:
+          name: hosting-out
+          path: out
+          if-no-files-found: error
+          retention-days: 7
