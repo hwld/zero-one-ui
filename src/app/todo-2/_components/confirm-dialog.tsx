@@ -3,8 +3,9 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@radix-ui/react-dialog";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { ReactNode } from "react";
 import { Button } from "./button";
 
@@ -40,14 +41,14 @@ export const ConfirmDialog: React.FC<Props> = ({
                 exit={{ opacity: 0 }}
               />
             </DialogOverlay>
-            <DialogContent asChild>
+            <DialogContent asChild aria-describedby={undefined}>
               <motion.div
-                className="fixed left-1/2 top-1/2 w-full max-w-[500px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
+                className="fixed top-1/2 left-1/2 w-full max-w-[500px] overflow-hidden rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-100"
                 initial={{ opacity: 0, x: "-50%", y: "-60%" }}
                 animate={{ opacity: 1, x: "-50%", y: "-50%" }}
                 exit={{ opacity: 0, x: "-50%", y: "-60%" }}
               >
-                <div className="p-4">{title}</div>
+                <DialogTitle className="p-4">{title}</DialogTitle>
                 <div className="min-h-[100px] px-4 pb-4 text-sm">
                   {children}
                 </div>

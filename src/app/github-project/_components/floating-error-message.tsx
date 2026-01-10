@@ -5,7 +5,7 @@ import {
   useMergeRefs,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { ReactNode, RefObject } from "react";
 import { RefCallBack } from "react-hook-form";
 
@@ -13,7 +13,7 @@ type Props = {
   message?: string | undefined;
   messageId: string;
   offset?: number;
-  anchorRef: RefObject<HTMLElement> | RefCallBack;
+  anchorRef: RefObject<HTMLElement | null> | RefCallBack;
   anchor: ReactNode;
 };
 
@@ -41,7 +41,7 @@ export const FloatingErrorMessage: React.FC<Props> = ({
           <div ref={refs.setFloating} style={floatingStyles}>
             <motion.p
               id={messageId}
-              className="rounded bg-neutral-900 px-1 py-1 text-xs text-red-400"
+              className="rounded-sm bg-neutral-900 p-1 text-xs text-red-400"
               initial={{ opacity: 0, y: 2 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 2 }}

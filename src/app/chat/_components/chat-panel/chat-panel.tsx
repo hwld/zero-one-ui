@@ -50,13 +50,13 @@ export const ChatPanel: React.FC = () => {
       <div className="flex items-center bg-transparent px-10">
         <form
           onSubmit={handleSubmit}
-          className="flex h-[45px] w-full items-center gap-2 rounded-md bg-neutral-600 px-3 ring-neutral-400 ring-offset-2 ring-offset-neutral-700 transition-shadow focus-within:ring-2"
+          className="flex h-[45px] w-full items-center gap-2 rounded-md bg-neutral-600 px-3 transition-shadow focus-within:ring-2 focus-within:ring-neutral-400 focus-within:ring-offset-2 focus-within:ring-offset-neutral-700"
         >
           <PlusCircleIcon className="text-green-500" />
           <input
             name={chatInputName}
             autoComplete="off"
-            className="h-full w-full bg-transparent focus-visible:outline-none"
+            className="size-full bg-transparent focus-visible:outline-hidden"
           />
           <SendHorizontalIcon className="text-green-500" />
         </form>

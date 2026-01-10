@@ -21,7 +21,10 @@ export const DragPreviewEventInRowCard = forwardRef<HTMLButtonElement, Props>(
       const newEvent = getEventFromMoveEventPreview(draggingEvent);
       return convertEventToEventInRow(newEvent, {
         top: 0,
-        rowDateRange: { start: eventsRowDates.at(0)!, end: eventsRowDates.at(-1)! },
+        rowDateRange: {
+          start: eventsRowDates.at(0)!,
+          end: eventsRowDates.at(-1)!,
+        },
       });
     }, [draggingEvent, eventsRowDates]);
 
@@ -30,7 +33,7 @@ export const DragPreviewEventInRowCard = forwardRef<HTMLButtonElement, Props>(
     }
 
     return (
-      <div className="absolute left-0 top-0 w-full">
+      <div className="absolute top-0 left-0 w-full">
         <EventInRowCardBase
           ref={ref}
           height={height}

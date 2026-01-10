@@ -12,12 +12,12 @@ export const SideBar: React.FC = () => {
   const path = usePathname();
 
   return (
-    <div className="hidden w-[300px]  shrink-0 flex-col gap-5 rounded-e-md bg-neutral-800 p-5 lg:flex">
+    <div className="hidden w-[300px] shrink-0 flex-col gap-5 rounded-e-md bg-neutral-800 p-5 lg:flex">
       <div className="flex items-center gap-2 px-3 font-bold text-neutral-100">
         <CircleIcon strokeWidth={3} />
         TODODO
       </div>
-      <div className="h-[1px] w-full bg-neutral-600" />
+      <div className="h-px w-full bg-neutral-600" />
       <div className="flex flex-col items-start gap-2">
         <SideBarItem
           href="/todo-1"

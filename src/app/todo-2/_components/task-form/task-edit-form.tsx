@@ -31,7 +31,7 @@ export const TaskEditForm: React.FC<Props> = ({
   });
 
   const inputBaseClass =
-    "rounded bg-transparent outline outline-1 outline-zinc-500 focus-visible:outline-1 focus-visible:outline-zinc-100";
+    "rounded-sm bg-transparent outline-solid outline-1 outline-zinc-500 focus-visible:outline-1 focus-visible:outline-zinc-100";
 
   const componentId = useId();
   const titleErrorMessageId = `${componentId}-title-errormessage`;
@@ -56,7 +56,7 @@ export const TaskEditForm: React.FC<Props> = ({
       </TaskFormErrorTooltip>
       <TaskFormErrorTooltip
         id={descErrorMessageId}
-        className="h-full w-full"
+        className="size-full"
         error={errors.description?.message}
         placement="bottom-start"
       >

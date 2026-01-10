@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import * as RadixDialog from "@radix-ui/react-dialog";
 import { ActivityIcon, CircleAlertIcon, TextIcon, XIcon } from "lucide-react";
 import { TaskStatusBadge } from "../task-status-badge";
@@ -7,6 +7,7 @@ import { useUpdateTask } from "../../_queries/use-update-task";
 import { forwardRef, useCallback, useMemo } from "react";
 import { useTask } from "../../_queries/use-task";
 import { BounceDot } from "../task-list-loading";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 type Props = {
   taskId: string;
@@ -41,32 +42,42 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
     const content = useMemo(() => {
       if (taskStatus === "pending") {
         return (
-          <motion.div
-            className="flex h-full items-center justify-center gap-2"
-            exit={{ opacity: 0 }}
-            key="loading"
-          >
-            <BounceDot delay={0} />
-            <BounceDot delay={0.2} />
-            <BounceDot delay={0.4} />
-          </motion.div>
+          <>
+            <VisuallyHidden>
+              <RadixDialog.Title>読み込み中</RadixDialog.Title>
+            </VisuallyHidden>
+            <motion.div
+              className="flex h-full items-center justify-center gap-2"
+              exit={{ opacity: 0 }}
+              key="loading"
+            >
+              <BounceDot delay={0} />
+              <BounceDot delay={0.2} />
+              <BounceDot delay={0.4} />
+            </motion.div>
+          </>
         );
       } else if (taskStatus === "error" || !task) {
         return (
-          <div className="grid h-full place-content-center place-items-center gap-2">
-            <CircleAlertIcon size={50} className="text-red-500" />
-            <div className="font-bold">
-              タスクを読み込むことができませんでした。
+          <>
+            <VisuallyHidden>
+              <RadixDialog.Title>読み込みエラー</RadixDialog.Title>
+            </VisuallyHidden>
+            <div className="grid h-full place-content-center place-items-center gap-2">
+              <CircleAlertIcon size={50} className="text-red-500" />
+              <div className="font-bold">
+                タスクを読み込むことができませんでした。
+              </div>
+              <button
+                className="rounded-sm bg-neutral-700 px-3 py-2 text-sm text-neutral-100 transition-colors hover:bg-neutral-600"
+                onClick={() => {
+                  onOpenChange(false);
+                }}
+              >
+                詳細ページを閉じる
+              </button>
             </div>
-            <button
-              className="rounded bg-neutral-700 px-3 py-2 text-sm text-neutral-100 transition-colors hover:bg-neutral-600"
-              onClick={() => {
-                onOpenChange(false);
-              }}
-            >
-              詳細ページを閉じる
-            </button>
-          </div>
+          </>
         );
       }
 
@@ -74,7 +85,9 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
         <>
           <div className="space-y-1">
             <div className="text-xs text-neutral-500">title</div>
-            <div className="text-2xl font-bold">{task.title}</div>
+            <RadixDialog.Title className="text-2xl font-bold">
+              {task.title}
+            </RadixDialog.Title>
             <div className="text-xs text-neutral-500">ID: {task.id}</div>
           </div>
           <div className="space-y-2">
@@ -127,18 +140,22 @@ export const TaskDetailSheet = forwardRef<HTMLDivElement, Props>(
                 />
               </RadixDialog.Overlay>
 
-              <RadixDialog.Content forceMount asChild>
+              <RadixDialog.Content
+                forceMount
+                asChild
+                aria-describedby={undefined}
+              >
                 <motion.div
                   ref={ref}
-                  className="fixed bottom-0 right-0 top-0 z-10 w-[450px] max-w-full p-3"
+                  className="fixed inset-y-0 right-0 z-10 w-[450px] max-w-full p-3"
                   tabIndex={undefined}
                   initial={{ x: 20, opacity: 0 }}
                   animate={{ x: 0, opacity: 1 }}
                 >
-                  <div className="relative flex h-full w-full flex-col gap-6 overflow-auto rounded-lg border-neutral-300 bg-neutral-100 p-6 text-neutral-700 [&_*]:outline-neutral-900">
+                  <div className="relative flex size-full flex-col gap-6 overflow-auto rounded-lg border-neutral-300 bg-neutral-100 p-6 text-neutral-700 **:outline-neutral-900">
                     <RadixDialog.Close asChild>
                       <button
-                        className="absolute right-3 top-3 rounded p-1 text-neutral-700 transition-colors hover:bg-black/5"
+                        className="absolute top-3 right-3 rounded-sm p-1 text-neutral-700 transition-colors hover:bg-black/5"
                         aria-label="シートを閉じる"
                       >
                         <XIcon />

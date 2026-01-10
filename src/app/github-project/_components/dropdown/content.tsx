@@ -4,7 +4,7 @@ import {
   AnimatePresence,
   AnimatePresenceProps,
   useIsPresent,
-} from "framer-motion";
+} from "motion/react";
 import {
   FloatingFocusManager,
   FloatingOverlay,
@@ -52,7 +52,7 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
                   },
                 })}
                 style={{ ...floatingStyles }}
-                className="focus-visible:outline-none"
+                className="focus-visible:outline-hidden"
               >
                 {children}
               </div>

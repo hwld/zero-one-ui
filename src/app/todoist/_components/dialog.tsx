@@ -1,6 +1,6 @@
 import * as RxDialog from "@radix-ui/react-dialog";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { PropsWithChildren, ReactNode, useRef } from "react";
 import { IconButton } from "./icon-button";
 import { PiXLight } from "@react-icons/all-files/pi/PiXLight";
@@ -40,7 +40,7 @@ export const Dialog: React.FC<DialogProps> = ({
           <RxDialog.Portal forceMount>
             <RxDialog.Overlay asChild>
               <motion.div
-                className="fixed inset-0  z-30 bg-black/20"
+                className="fixed inset-0 z-30 bg-black/20"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -54,7 +54,7 @@ export const Dialog: React.FC<DialogProps> = ({
               onOpenAutoFocus={handleOpenAutoFocus}
             >
               <motion.div
-                className="fixed inset-[50%] z-40 flex h-min max-h-[90%] w-[500px] flex-col rounded-lg bg-stone-50 text-stone-700 shadow-md outline-none"
+                className="fixed inset-[50%] z-40 flex h-min max-h-[90%] w-[500px] flex-col rounded-lg bg-stone-50 text-stone-700 shadow-md outline-hidden"
                 initial={{ opacity: 0, y: "-55%", x: "-50%" }}
                 animate={{ opacity: 1, y: "-50%", x: "-50%" }}
                 exit={{ opacity: 0, y: "-55%", x: "-50%" }}
@@ -77,7 +77,7 @@ export const DialogHeader: React.FC<
     <header
       className={clsx(
         "flex items-center pb-2",
-        withClose ? "pl-4 pr-2 pt-2" : "px-4 pt-4",
+        withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4",
       )}
     >
       {children}
@@ -99,9 +99,7 @@ export const DialogFooter: React.FC<PropsWithChildren> = ({ children }) => {
 };
 
 export const DialogTitle: React.FC<PropsWithChildren> = ({ children }) => {
-  return (
-    <RxDialog.Title className="text-md font-bold">{children}</RxDialog.Title>
-  );
+  return <RxDialog.Title className="font-bold">{children}</RxDialog.Title>;
 };
 
 export const DialogClose: React.FC<PropsWithChildren> = ({ children }) => {

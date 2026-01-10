@@ -3,13 +3,15 @@ import {
   DialogContent,
   DialogOverlay,
   DialogPortal,
+  DialogTitle,
 } from "@radix-ui/react-dialog";
 import { PiPlusCircleFill } from "@react-icons/all-files/pi/PiPlusCircleFill";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { forwardRef, useState } from "react";
 import { TaskForm } from "./task-form";
 import { useCreateTask } from "./use-create-task";
 import type { TaskFormData } from "../../_backend/task/schema";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 export const TaskCreateButton: React.FC = forwardRef<HTMLButtonElement>(
   function TaskCreateButton(props, ref) {
@@ -20,7 +22,7 @@ export const TaskCreateButton: React.FC = forwardRef<HTMLButtonElement>(
         <button
           ref={ref}
           {...props}
-          className="flex h-9 w-full items-center gap-1 rounded p-2 text-rose-700 transition-colors hover:bg-black/5"
+          className="flex h-9 w-full items-center gap-1 rounded-sm p-2 text-rose-700 transition-colors hover:bg-black/5"
           onClick={() => setIsOpen(true)}
         >
           <div className="grid size-7 place-items-center">
@@ -58,14 +60,17 @@ const TaskCreateDialog: React.FC<{
             <DialogOverlay asChild>
               <motion.div className="fixed inset-0 z-40" />
             </DialogOverlay>
-            <DialogContent asChild>
+            <DialogContent asChild aria-describedby={undefined}>
               <motion.div
-                className="fixed left-1/2 top-[120px] z-50 w-[550px] -translate-x-1/2 rounded-lg border border-stone-300 bg-stone-50 shadow-2xl"
+                className="fixed top-[120px] left-1/2 z-50 w-[550px] rounded-lg border border-stone-300 bg-stone-50 shadow-2xl"
                 initial={{ opacity: 0, y: 40, x: "-50%", scale: 0.8 }}
                 animate={{ opacity: 1, y: 0, x: "-50%", scale: 1 }}
                 exit={{ opacity: 0, y: 40, x: "-50%", scale: 0.8 }}
                 transition={{ duration: 0.1 }}
               >
+                <VisuallyHidden asChild>
+                  <DialogTitle>タスクの作成</DialogTitle>
+                </VisuallyHidden>
                 <TaskForm
                   submitText="作成する"
                   onSubmit={handleCreateTask}

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import * as RxToast from "@radix-ui/react-toast";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { TbAlertCircle } from "@react-icons/all-files/tb/TbAlertCircle";
 import { TbInfoCircle } from "@react-icons/all-files/tb/TbInfoCircle";
 import { TbX } from "@react-icons/all-files/tb/TbX";
@@ -95,12 +95,13 @@ export const ToastProvider: React.FC<PropsWithChildren> = ({ children }) => {
                 <motion.div
                   layout
                   className={clsx(
-                    // dialogのoutside clickの判定から除外するためにtoastクラスをつけている
-                    "toast relative flex min-h-[80px] w-[320px] gap-2 rounded border border-neutral-300 bg-neutral-50 p-2 text-neutral-700 shadow",
+                    "relative flex min-h-[80px] w-[320px] gap-2 rounded-sm border border-neutral-300 bg-neutral-50 p-2 text-neutral-700 shadow-sm",
                   )}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8, transition: { duration: 0.1 } }}
+                  // dialogのoutside clickの判定から除外するためにdata属性を付与
+                  data-toast
                 >
                   <div className="mt-1 shrink-0">{icon[toast.type]}</div>
                   <div className="flex grow flex-col justify-between gap-1">
@@ -133,7 +134,7 @@ export const ToastProvider: React.FC<PropsWithChildren> = ({ children }) => {
             );
           })}
         </AnimatePresence>
-        <RxToast.Viewport className="fixed bottom-4 right-4 z-[100] flex flex-col gap-1" />
+        <RxToast.Viewport className="fixed right-4 bottom-4 z-100 flex flex-col gap-1" />
       </RxToast.Provider>
     </ToastContext.Provider>
   );

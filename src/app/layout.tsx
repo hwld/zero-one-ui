@@ -6,8 +6,7 @@ import { Inter } from "next/font/google";
 import clsx from "clsx";
 
 export const metadata: Metadata = {
-  title: "Zero one ui",
-  description: "page layouts",
+  title: "zero one ui",
 };
 
 const inter = Inter({ subsets: ["latin"] });

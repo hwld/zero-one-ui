@@ -31,7 +31,7 @@ export const TaskDetailContent: React.FC<Props> = ({ taskId }) => {
   if (status === "error") {
     return (
       <Card>
-        <div className="flex h-full w-full justify-center">
+        <div className="flex size-full justify-center">
           <div className="mt-20 flex w-fit flex-col items-center">
             <GhostIcon size={100} />
             <div className="mt-2 text-center text-sm">
@@ -51,7 +51,7 @@ export const TaskDetailContent: React.FC<Props> = ({ taskId }) => {
   if (!task) {
     return (
       <Card>
-        <div className="flex h-full w-full justify-center">
+        <div className="flex size-full justify-center">
           <div className="mt-20 flex w-fit flex-col items-center">
             <CircleSlashIcon size={100} />
             <div className="mt-2 text-sm">存在しないタスクです</div>

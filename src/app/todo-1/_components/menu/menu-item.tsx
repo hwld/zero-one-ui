@@ -6,7 +6,7 @@ export const MenuItem: React.FC<{ icon: ReactNode; children: ReactNode }> = ({
   children,
 }) => {
   return (
-    <DropdownMenu.Item className="flex cursor-pointer items-center gap-2 rounded p-2 text-sm text-neutral-200 outline-none transition-all duration-200 hover:bg-white/20 hover:outline-none focus:bg-white/20 focus:outline-none">
+    <DropdownMenu.Item className="flex cursor-pointer items-center gap-2 rounded-sm p-2 text-sm text-neutral-200 outline-hidden transition-all duration-200 hover:bg-white/20 hover:outline-hidden focus:bg-white/20 focus:outline-hidden">
       {icon}
       {children}
     </DropdownMenu.Item>

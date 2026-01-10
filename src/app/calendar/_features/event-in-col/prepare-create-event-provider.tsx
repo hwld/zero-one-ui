@@ -19,7 +19,7 @@ import { useScrollableElement } from "./scrollable-provider";
 
 type PrepareCreateEventState = {
   dragDateRange: DragDateRange | undefined;
-  defaultCreateEventValues: Omit<CreateEventInput, "title"> | undefined;
+  defaultCreateEventValues: CreateEventInput | undefined;
 };
 
 type PrepareCreateEventActions = {
@@ -57,7 +57,7 @@ export const PrepareCreateEventInColProvider: React.FC<PropsWithChildren> = ({
 
   // マウスイベントが発生したときのyとscrollableのscrollTopを保存して、スクロールされたときに
   // これを使用してdragDateRangeを更新する
-  const mouseHistoryRef = useRef<MouseHistory>();
+  const mouseHistoryRef = useRef<MouseHistory>(undefined);
 
   const startDrag: PrepareCreateEventActions["startDrag"] = useCallback(
     (day, y) => {
@@ -113,15 +113,15 @@ export const PrepareCreateEventInColProvider: React.FC<PropsWithChildren> = ({
     [dragDateRange, updateDragEnd],
   );
 
+  const [defaultCreateEventValues, setDefaultCreateEventValues] =
+    useState<PrepareCreateEventState["defaultCreateEventValues"]>();
+
   const clearState: PrepareCreateEventActions["clearState"] =
     useCallback(() => {
       setDragDateRange(undefined);
       setDefaultCreateEventValues(undefined);
       mouseHistoryRef.current = undefined;
     }, []);
-
-  const [defaultCreateEventValues, setDefaultCreateEventValues] =
-    useState<PrepareCreateEventState["defaultCreateEventValues"]>();
 
   const setDefaultValues: PrepareCreateEventActions["setDefaultValues"] =
     useCallback(() => {
@@ -136,6 +136,7 @@ export const PrepareCreateEventInColProvider: React.FC<PropsWithChildren> = ({
         const eventEnd = max([dragStartDate, dragEndDate]);
 
         setDefaultCreateEventValues({
+          title: "",
           allDay: false,
           start: eventStart,
           end: eventEnd,

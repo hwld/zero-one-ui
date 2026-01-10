@@ -8,7 +8,7 @@ export const Sidebar: React.FC = () => {
 
   return (
     <div className="flex w-[200px] flex-col gap-4">
-      <div className="flex items-center gap-1 whitespace-nowrap text-sm font-bold">
+      <div className="flex items-center gap-1 text-sm font-bold whitespace-nowrap">
         <CircleIcon size={18} />
         <p>todo</p>
       </div>

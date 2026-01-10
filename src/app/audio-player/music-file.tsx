@@ -70,7 +70,7 @@ export const MusicFile: React.FC<Props> = ({
         )}
         <div
           className={clsx(
-            "break-all text-sm",
+            "text-sm break-all",
             isCurrentMusic ? "text-sky-400" : "text-neutral-100",
           )}
         >

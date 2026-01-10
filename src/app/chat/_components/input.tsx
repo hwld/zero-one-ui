@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
 export const INPUT_BASE_CLASS =
-  "rounded bg-neutral-800 px-3 py-2 text-neutral-100 focus-visible:outline-none";
+  "rounded-sm bg-neutral-800 px-3 py-2 text-neutral-100 focus-visible:outline-hidden";
 
 type Props = { label: string };
 

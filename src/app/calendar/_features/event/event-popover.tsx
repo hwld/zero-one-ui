@@ -11,9 +11,9 @@ import {
   useInteractions,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { ReactNode, useMemo, useState } from "react";
+import { ReactNode, useEffect, useMemo, useState } from "react";
 import { Event } from "../../_backend/event-store";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { TbClockHour5 } from "@react-icons/all-files/tb/TbClockHour5";
 import { TbPencilMinus } from "@react-icons/all-files/tb/TbPencilMinus";
 import { TbTrash } from "@react-icons/all-files/tb/TbTrash";
@@ -78,7 +78,7 @@ export const EventPopover: React.FC<Props> = ({
           <FloatingPortal>
             <FloatingOverlay
               lockScroll
-              className="z-[100]"
+              className="z-100"
               onMouseDown={(e) => e.stopPropagation()}
               onClick={(e) => e.stopPropagation()}
             >
@@ -93,7 +93,7 @@ export const EventPopover: React.FC<Props> = ({
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
                     transition={{ duration: 0.1 }}
-                    className="w-[320px] space-y-2 rounded-lg border border-neutral-300 bg-neutral-50 text-neutral-700 shadow"
+                    className="w-[320px] space-y-2 rounded-lg border border-neutral-300 bg-neutral-50 text-neutral-700 shadow-sm"
                   >
                     <div className="flex items-center justify-between px-2 pt-2">
                       <div className="text-xs text-neutral-400">
@@ -140,10 +140,17 @@ export const EventPopover: React.FC<Props> = ({
 };
 
 const EventPeriod: React.FC<{ event: Event }> = ({ event }) => {
+  const [now, setNow] = useState(() => Date.now());
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setNow(Date.now());
+    }, 60 * 1000);
+    return () => clearInterval(id);
+  });
+
   const content = useMemo(() => {
     const { start, end } = event;
-
-    const now = Date.now();
 
     // どちらかが今年ではなければどちらの年月も表示する
     const showYear = !(isSameYear(now, start) && isSameYear(now, end));
@@ -189,7 +196,7 @@ const EventPeriod: React.FC<{ event: Event }> = ({ event }) => {
         </>
       );
     }
-  }, [event]);
+  }, [event, now]);
 
   return <div className="tabular-nums">{content}</div>;
 };

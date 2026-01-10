@@ -1,4 +1,4 @@
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "motion/react";
 import { useView } from "../../_queries/use-view";
 import { ViewTaskBoardPanel } from "../view-task-board-panel";
 import { ErrorContent } from "./error-content";
@@ -22,7 +22,7 @@ export const ViewContent: React.FC<Props> = ({ viewId }) => {
   return (
     <>
       {view && (
-        <div className="grid grid-cols-[auto,1fr] grid-rows-1">
+        <div className="grid grid-cols-[auto_1fr] grid-rows-1">
           <ResizableViewSlicerPanel view={view} />
           <ViewTaskBoardPanel view={view} />
         </div>

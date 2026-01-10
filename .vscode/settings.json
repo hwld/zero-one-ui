@@ -2,6 +2,9 @@
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
   "tailwindCSS.classAttributes": [
     ".*Class",
     "class",
@@ -9,18 +12,11 @@
     "classNames",
     "ngClass",
     ".*ClassMap",
-    ".*CLASS_NAMES",
+    ".*CLASS_NAMES"
   ],
-  "tailwindCSS.experimental.classRegex": [
-    [
-      "clsx\\(.*?\\)(?!\\])",
-      "(?:'|\"|`)([^\"'`]*)(?:'|\"|`)"
-    ],
-    [
-      "([\"'`][^\"'`]*.*?[\"'`])",
-      "[\"'`]([^\"'`]*).*?[\"'`]"
-    ]
-  ],
+  "tailwindCSS.classFunctions": ["tv", "clsx"],
   "editor.codeLens": true,
   "typescript.referencesCodeLens.enabled": true,
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
+  "prettier.trailingComma": "all"
 }

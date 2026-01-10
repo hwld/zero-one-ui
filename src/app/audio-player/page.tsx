@@ -125,13 +125,13 @@ const Page: React.FC = () => {
     <AudioProvider src={currentMusic?.url}>
       <div
         className={clsx(
-          "grid h-[100dvh] w-full place-items-center  text-neutral-100",
+          "grid h-dvh w-full place-items-center text-neutral-100",
           bgClass,
         )}
         style={{ colorScheme: "dark" }}
       >
-        <div className="grid h-full min-h-0 w-full grid-cols-[1fr] grid-rows-[1fr_300px] place-content-center gap-4 lg:grid-cols-[400px_400px] lg:grid-rows-[500px]">
-          <div className="order-2 h-full min-h-0 w-full lg:order-1">
+        <div className="grid size-full min-h-0 grid-cols-[1fr] grid-rows-[1fr_300px] place-content-center gap-4 lg:grid-cols-[400px_400px] lg:grid-rows-[500px]">
+          <div className="order-2 size-full min-h-0 lg:order-1">
             <AudioPlayerCard
               currentMusic={currentMusic}
               hasPrev={!!prevMusic}
@@ -139,7 +139,7 @@ const Page: React.FC = () => {
               onMusicChange={handleMusicChange}
             />
           </div>
-          <div className="order-1 h-full min-h-0 w-full lg:order-2">
+          <div className="order-1 size-full min-h-0 lg:order-2">
             <MusicListCard
               musics={musics}
               prevMusicId={prevMusic?.id}

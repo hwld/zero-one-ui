@@ -101,14 +101,14 @@ export const TaskForm: React.FC<Props> = ({
             onClick={(e) => e.stopPropagation()}
             placeholder="タスク名"
             className={clsx(
-              "border-none bg-transparent font-bold tracking-wide text-stone-700 outline-none placeholder:font-bold placeholder:text-stone-400",
+              "border-none bg-transparent font-bold tracking-wide text-stone-700 outline-hidden placeholder:font-bold placeholder:text-stone-400",
               { md: "text-lg", sm: "" }[size],
             )}
           />
           <textarea
             {...register("description")}
             placeholder="説明"
-            className="resize-none bg-transparent text-stone-700 outline-none placeholder:text-stone-400"
+            className="resize-none bg-transparent text-stone-700 outline-hidden placeholder:text-stone-400"
             rows={3}
             onClick={(e) => e.stopPropagation()}
           />
@@ -160,7 +160,7 @@ export const TaskForm: React.FC<Props> = ({
 };
 
 const buttonClass =
-  "border border-stone-300 text-stone-500 hover:bg-stone-500/10 rounded transition-colors";
+  "border border-stone-300 text-stone-500 hover:bg-stone-500/10 rounded-sm transition-colors";
 
 const Select: React.FC<PropsWithChildren & { icon: IconType }> = ({
   children,
@@ -234,10 +234,10 @@ const TaskBoxSelectPopover: React.FC<{
           <Command.Input
             onValueChange={handleFilterValueChange}
             placeholder="プロジェクト名を入力"
-            className="h-8 rounded border border-stone-300 bg-transparent px-2 outline-none focus-visible:border-stone-400"
+            className="h-8 rounded-sm border border-stone-300 bg-transparent px-2 outline-hidden focus-visible:border-stone-400"
           />
         </div>
-        <div className="h-[1px] w-full bg-stone-200" />
+        <div className="h-px w-full bg-stone-200" />
         <div className="flex min-h-0 flex-col overflow-auto">
           <Command.Empty className="p-2">
             プロジェクトが見つかりません

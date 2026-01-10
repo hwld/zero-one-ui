@@ -31,7 +31,10 @@ const TreeViewCard: React.FC<TreeViewCardProps> = ({
 
   return (
     <div
-      className={cn("h-[500px] w-[300px] overflow-auto rounded p-3", className)}
+      className={cn(
+        "h-[500px] w-[300px] overflow-auto rounded-sm p-3",
+        className,
+      )}
       {...props}
     >
       <TreeView
@@ -56,9 +59,9 @@ const Page = () => {
   const [expandOnlyOnIconClick, setExpandOnlyOnIconClick] = useState(false);
 
   return (
-    <div className={clsx(bgClass, "grid h-screen place-items-center ")}>
+    <div className={clsx(bgClass, "grid h-screen place-items-center")}>
       <div className="space-y-4">
-        <div className="flex w-full items-center gap-1 rounded border  border-slate-300 p-2">
+        <div className="flex w-full items-center gap-1 rounded-sm border border-slate-300 p-2">
           <input
             type="checkbox"
             id="1"
@@ -66,7 +69,7 @@ const Page = () => {
             checked={expandOnlyOnIconClick}
             onChange={(e) => setExpandOnlyOnIconClick(e.target.checked)}
           />
-          <label htmlFor="1" className="select-none text-sm">
+          <label htmlFor="1" className="text-sm select-none">
             アイコンクリックでのみ開閉する
           </label>
         </div>
@@ -79,7 +82,7 @@ const Page = () => {
               selected: "bg-slate-300",
               groupFocus: "group-focus:border-slate-400",
               hover: "hover:bg-slate-300/40",
-              hoverIcon: "hover:outline outline-1 outline-slate-500",
+              hoverIcon: "hover:outline-solid outline-1 outline-slate-500",
             }}
           />
           <TreeViewCard
@@ -91,7 +94,7 @@ const Page = () => {
               selected: "bg-slate-600",
               groupFocus: "group-focus:border-slate-500",
               hover: "hover:bg-slate-600/40",
-              hoverIcon: "hover:outline outline-1 outline-slate-300",
+              hoverIcon: "hover:outline-solid outline-1 outline-slate-300",
             }}
           />
         </div>

@@ -1,6 +1,6 @@
 import type { IconType } from "@react-icons/all-files";
 import { PiSpinnerGapBold } from "@react-icons/all-files/pi/PiSpinnerGapBold";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import type { LinkProps } from "next/link";
 import Link from "next/link";
 import { ComponentPropsWithoutRef, forwardRef, type ReactNode } from "react";
@@ -8,22 +8,22 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 const button = tv({
   slots: {
-    base: "relative select-none text-nowrap rounded ring-offset-2 transition-all focus-visible:outline-none focus-visible:ring-2 active:scale-95 flex items-center",
+    base: "relative flex items-center rounded-sm text-nowrap ring-offset-2 transition-all select-none focus-visible:ring-2 focus-visible:outline-hidden active:scale-95",
   },
   variants: {
     size: {
       md: { base: "h-8 px-3 text-sm font-medium" },
-      sm: { base: "h-6 text-xs px-2" },
+      sm: { base: "h-6 px-2 text-xs" },
     },
     color: {
       primary: {
-        base: "bg-rose-700 text-stone-100 hover:bg-rose-800 ring-rose-400",
+        base: "bg-rose-700 text-stone-100 ring-rose-400 hover:bg-rose-800",
       },
       secondary: {
-        base: "bg-stone-200 text-stone-700 hover:bg-stone-300 ring-stone-500",
+        base: "bg-stone-200 text-stone-700 ring-stone-500 hover:bg-stone-300",
       },
       transparent: {
-        base: "hover:bg-stone-500/10 text-stone-500 hover:text-stone-900 ring-stone-500",
+        base: "text-stone-500 ring-stone-500 hover:bg-stone-500/10 hover:text-stone-900",
       },
     },
     loading: {

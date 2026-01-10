@@ -1,13 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import {
-  PropsWithChildren,
-  ReactNode,
-  Suspense,
-  useEffect,
-  useRef,
-} from "react";
+import { PropsWithChildren, Suspense, useEffect, useRef } from "react";
 import { SideBar } from "./_components/side-bar/side-bar";
 import { HomeIcon } from "lucide-react";
 import { TaskCreateInput } from "./_components/task-create-input";
@@ -22,8 +16,7 @@ import { Toaster } from "sonner";
 // Static ExportでParallel Routesが動かないっぽいので、page.tsxにnullを返させて
 // layoutでページをレンダリングする
 
-type Props = { children: ReactNode };
-const LayoutInner: React.FC<Props> = ({ children }) => {
+const LayoutInner: React.FC<PropsWithChildren> = ({ children }) => {
   const { data: tasks = [], status: tasksStatus } = useTasks();
   const inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -56,13 +49,13 @@ const LayoutInner: React.FC<Props> = ({ children }) => {
   useBodyBgColor(bgColor);
 
   return (
-    <div className={clsx("flex h-[100dvh] text-neutral-700", bgColor)}>
+    <div className={clsx("flex h-dvh text-neutral-700", bgColor)}>
       <SideBar />
       <div
         className="flex grow flex-col items-center overflow-auto px-2 pt-10"
         style={{ backgroundImage: "url(/1-bg.svg)", backgroundSize: "200px" }}
       >
-        <div className="h-full w-full max-w-3xl shrink-0 ">
+        <div className="size-full max-w-3xl shrink-0">
           <div className="relative flex flex-col gap-4 pb-24">
             <h1 className="flex items-center gap-2 font-bold text-neutral-700">
               <HomeIcon strokeWidth={3} size={20} />
@@ -83,7 +76,7 @@ const LayoutInner: React.FC<Props> = ({ children }) => {
   );
 };
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+const Layout: React.FC<LayoutProps<"/todo-1">> = ({ children }) => {
   return (
     <DefaultQueryClientProvider>
       <LayoutInner>{children}</LayoutInner>

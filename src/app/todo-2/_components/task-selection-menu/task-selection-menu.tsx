@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { CircleDotIcon, LucideIcon, Trash2Icon, XIcon } from "lucide-react";
 import { ConfirmDialog } from "../confirm-dialog";
 import { useState } from "react";
@@ -34,12 +34,12 @@ export const TaskSelectionMenu: React.FC = () => {
       {selectedTaskIds.length > 0 && (
         <motion.div
           role="toolbar"
-          className="fixed inset-x-0 bottom-4 m-auto flex h-[40px]  w-fit items-center gap-2 rounded-lg bg-zinc-300 px-2 text-sm text-zinc-700 shadow"
+          className="fixed inset-x-0 bottom-4 m-auto flex h-[40px] w-fit items-center gap-2 rounded-lg bg-zinc-300 px-2 text-sm text-zinc-700 shadow-sm"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
         >
-          <div className="flex h-[25px] gap-1 overflow-hidden rounded border border-dashed border-zinc-500">
+          <div className="flex h-[25px] gap-1 overflow-hidden rounded-sm border border-dashed border-zinc-500">
             <div className="flex items-center px-2">
               <span className="mr-[2px] font-bold">
                 {selectedTaskIds.length}
@@ -55,7 +55,7 @@ export const TaskSelectionMenu: React.FC = () => {
             </button>
           </div>
 
-          <div className="h-[25px] w-[1px] bg-zinc-400" />
+          <div className="h-[25px] w-px bg-zinc-400" />
 
           <TaskSelectionMenuButton
             icon={Trash2Icon}
@@ -110,7 +110,7 @@ const TaskSelectionMenuButton: React.FC<{
       <button
         ref={refs.setReference}
         {...getReferenceProps()}
-        className="flex h-[25px] items-center gap-1 rounded bg-zinc-900 px-2 text-xs text-zinc-100 transition-colors hover:bg-zinc-700"
+        className="flex h-[25px] items-center gap-1 rounded-sm bg-zinc-900 px-2 text-xs text-zinc-100 transition-colors hover:bg-zinc-700"
         onClick={onClick}
         aria-label={label}
       >
@@ -124,7 +124,7 @@ const TaskSelectionMenuButton: React.FC<{
             {...getFloatingProps()}
           >
             <motion.div
-              className="rounded border border-zinc-600 bg-zinc-900 p-2 text-xs text-zinc-100"
+              className="rounded-sm border border-zinc-600 bg-zinc-900 p-2 text-xs text-zinc-100"
               initial={{ opacity: 0, y: 3 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 3 }}

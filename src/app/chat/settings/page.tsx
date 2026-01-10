@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { SettingsDialog } from "../_components/settings-dialog/settings-dialog";
-import { useAnimate } from "framer-motion";
+import { useAnimate } from "motion/react";
 
 const SettingModalPage: React.FC = () => {
   const router = useRouter();

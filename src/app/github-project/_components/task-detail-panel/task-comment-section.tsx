@@ -31,7 +31,7 @@ export const TaskCommentSection: React.FC<Props> = ({ task }) => {
               Edit
             </Button>
           </div>
-          <div className="whitespace-pre text-sm">{task.comment}</div>
+          <div className="text-sm whitespace-pre">{task.comment}</div>
         </>
       )}
     </div>

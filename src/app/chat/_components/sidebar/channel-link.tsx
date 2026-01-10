@@ -7,7 +7,7 @@ export const ChannelLink: React.FC<Props> = ({ active }) => {
   return (
     <button
       className={clsx(
-        "flex w-full items-center gap-1 rounded p-2 transition-colors",
+        "flex w-full items-center gap-1 rounded-sm p-2 transition-colors",
         active ? "bg-green-500/25" : "hover:bg-green-500/10",
       )}
     >

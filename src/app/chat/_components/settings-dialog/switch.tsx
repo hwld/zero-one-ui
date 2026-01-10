@@ -1,7 +1,7 @@
 import { useId, useState } from "react";
 import * as Switch from "@radix-ui/react-switch";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { CheckIcon, XIcon } from "lucide-react";
 
 export const SettingSwitch: React.FC<{ label: string }> = ({ label }) => {

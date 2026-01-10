@@ -2,12 +2,10 @@ import { useIsFetching } from "@tanstack/react-query";
 import { DayPicker } from "./day-picker";
 import { useAppState } from "./use-app-state";
 import { eventsQueryOption } from "../_features/event/use-events";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { TbLoader2 } from "@react-icons/all-files/tb/TbLoader2";
 
-type Props = {};
-
-export const Sidebar: React.FC<Props> = () => {
+export const Sidebar: React.FC = () => {
   const { calendarInfo, selectDate, dayPickerMonth, setDayPickerMonth } =
     useAppState();
 
@@ -18,7 +16,7 @@ export const Sidebar: React.FC<Props> = () => {
 
   return (
     <div className="flex flex-col items-center gap-4 border-r border-neutral-300 bg-neutral-100 p-2">
-      <div className="h-8 w-full rounded border border-neutral-300  bg-neutral-200 px-2 text-xs text-neutral-500 shadow-inner">
+      <div className="h-8 w-full rounded-sm border border-neutral-300 bg-neutral-200 px-2 text-xs text-neutral-500 shadow-inner">
         <AnimatePresence>
           {isFetchingEvents && (
             <motion.div

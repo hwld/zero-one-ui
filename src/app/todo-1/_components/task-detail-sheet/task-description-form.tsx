@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { AlertCircleIcon } from "lucide-react";
 import { useState } from "react";
 
@@ -14,7 +14,7 @@ export const TaskDescriptionForm: React.FC<{
     <div className="space-y-1">
       <textarea
         id={id}
-        className="h-[300px] w-full resize-none rounded border border-neutral-300 bg-transparent p-3 focus-visible:border-neutral-400 focus-visible:outline-neutral-900"
+        className="h-[300px] w-full resize-none rounded-sm border border-neutral-300 bg-transparent p-3 focus-visible:border-neutral-400 focus-visible:outline-neutral-900"
         value={desc}
         onChange={(e) => setDesc(e.target.value)}
       />
@@ -32,13 +32,13 @@ export const TaskDescriptionForm: React.FC<{
             </div>
             <div className="flex gap-1">
               <button
-                className="whitespace-nowrap rounded border border-neutral-300 px-3 py-1 text-sm text-neutral-700 transition-colors hover:bg-black/10"
+                className="rounded-sm border border-neutral-300 px-3 py-1 text-sm whitespace-nowrap text-neutral-700 transition-colors hover:bg-black/10"
                 onClick={() => setDesc(defaultDescription)}
               >
                 変更を取り消す
               </button>
               <button
-                className="whitespace-nowrap rounded bg-neutral-900 px-3 py-1 text-sm text-neutral-100 transition-colors hover:bg-neutral-700"
+                className="rounded-sm bg-neutral-900 px-3 py-1 text-sm whitespace-nowrap text-neutral-100 transition-colors hover:bg-neutral-700"
                 onClick={() => onChangeDescription(desc)}
               >
                 保存

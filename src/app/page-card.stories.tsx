@@ -1,27 +1,26 @@
-import type { Meta, StoryObj } from "@storybook/react";
 import { PageCard } from "./page-card";
 import { pages } from "./pages";
+import preview from "../../.storybook/preview";
 
-const meta = {
+const meta = preview.meta({
   title: "Home/PageCard",
   component: PageCard,
   tags: ["autodocs"],
   parameters: { backgrounds: { default: "dark" } },
-} satisfies Meta<typeof PageCard>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
+export const Default = meta.story({
   args: {
     number: 1,
     page: { ...pages[0], tags: ["LAYOUT", "MOBILE"] },
   },
-};
+});
 
-export const Prime: Story = {
+export const Prime = meta.story({
   args: {
     number: 1,
     page: { ...pages[0], tags: ["PRIME"] },
   },
-};
+});

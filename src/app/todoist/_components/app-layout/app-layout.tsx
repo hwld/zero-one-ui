@@ -10,9 +10,9 @@ import { IconButton } from "../icon-button";
 import { PiSidebarSimpleLight } from "@react-icons/all-files/pi/PiSidebarSimpleLight";
 import { useSidebarContext } from "../sidebar/provider";
 import { Tooltip } from "../tooltip";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import clsx from "clsx";
-import { appHeaderHeightName } from "../../layout";
+import { appHeaderHeightName } from "../../lib";
 
 type Props = {
   title: string;
@@ -63,7 +63,7 @@ export const AppLayout: React.FC<Props> = ({
     <div className="grid h-full grid-rows-[auto_1fr] justify-items-center overflow-auto">
       <div
         className={clsx(
-          "sticky top-0 z-10 grid w-full grid-cols-[auto_1fr_auto] items-center justify-end justify-items-center bg-stone-50 px-4 transition-all",
+          "sticky top-0 z-10 grid w-full grid-cols-[auto_1fr_auto] place-items-center justify-end bg-stone-50 px-4 transition-all",
           isTitleHiddenByHeader ? "border-b border-stone-200" : "",
         )}
         style={{ height: `var(${appHeaderHeightName})` }}

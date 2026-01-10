@@ -1,10 +1,11 @@
 import "../src/app/globals.css";
-import type { Preview } from "@storybook/react";
+import { definePreview } from "@storybook/nextjs-vite";
 import { initialize, mswLoader } from "msw-storybook-addon";
 
 initialize();
 
-const preview: Preview = {
+export default definePreview({
+  addons: [],
   parameters: {
     controls: {
       matchers: {
@@ -13,9 +14,6 @@ const preview: Preview = {
       },
     },
   },
-
   loaders: [mswLoader],
   tags: [],
-};
-
-export default preview;
+});

@@ -48,14 +48,14 @@ export const AudioPlayerCard: React.FC<Props> = ({
   return (
     <Card className="rounded-none border-0 lg:rounded-lg lg:border">
       <div className="flex h-full flex-col gap-8">
-        <div className="bg-neutl-300 relative min-h-[100px]  w-full overflow-hidden rounded-lg text-neutral-900 lg:min-h-[230px]">
+        <div className="relative min-h-[100px] w-full overflow-hidden rounded-lg text-neutral-900 lg:min-h-[230px]">
           <Image
             className="object-cover"
             src={`https://api.dicebear.com/8.x/thumbs/svg?seed=${currentMusic?.fileName}`}
             alt="thumbnail"
             fill
           />
-          <div className="absolute bottom-2 right-2 max-w-[60%] items-center truncate rounded border border-neutral-300 bg-neutral-300 px-2 text-sm shadow">
+          <div className="absolute right-2 bottom-2 max-w-[60%] items-center truncate rounded-sm border border-neutral-300 bg-neutral-300 px-2 text-sm shadow-sm">
             {currentMusic?.fileName}
           </div>
         </div>
@@ -187,7 +187,7 @@ const Time: React.FC<{ total: number }> = ({ total }) => {
     .toString()
     .padStart(2, "0");
   return (
-    <div className="text-sm tabular-nums text-neutral-400">
+    <div className="text-sm text-neutral-400 tabular-nums">
       {minuts}:{seconds}
     </div>
   );

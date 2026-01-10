@@ -11,7 +11,7 @@ import { IconType } from "@react-icons/all-files/lib";
 import { TbTextCaption } from "@react-icons/all-files/tb/TbTextCaption";
 import { TbClockHour5 } from "@react-icons/all-files/tb/TbClockHour5";
 import { TbAlertCircle } from "@react-icons/all-files/tb/TbAlertCircle";
-import { EventInput, eventInputSchema } from "../../_backend/api";
+import { EventInput, eventInputFormSchema } from "../../_backend/api";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -40,7 +40,7 @@ type Props = {
     SetStateAction<DragDateRange | undefined>
   >;
   onSubmit: (input: EventInput) => void;
-  defaultValues: Omit<EventInput, "title">;
+  defaultValues: EventInput;
   isPending?: boolean;
 };
 
@@ -59,13 +59,13 @@ export const EventForm: React.FC<Props> = ({
     getValues,
     setValue,
     formState: { errors },
-  } = useForm<EventInput>({
+  } = useForm({
     defaultValues,
-    resolver: zodResolver(eventInputSchema),
+    resolver: zodResolver(eventInputFormSchema),
   });
   const isAllDay = useWatch({ control, name: "allDay" });
 
-  const handleSubmitEvent = (data: EventInput) => {
+  const handleSubmitEvent = handleSubmit((data) => {
     if (isPending) {
       return;
     }
@@ -78,7 +78,7 @@ export const EventForm: React.FC<Props> = ({
       start: startDate,
       end: endDate,
     });
-  };
+  });
 
   const handleChangePeriodStart = (newStart: Date) => {
     const oldStart = getValues("start");
@@ -128,7 +128,7 @@ export const EventForm: React.FC<Props> = ({
   return (
     <form
       id={EVENT_FORM_ID}
-      onSubmit={handleSubmit(handleSubmitEvent)}
+      onSubmit={handleSubmitEvent}
       className="flex flex-col gap-4"
     >
       <FormField icon={TbTextCaption} error={errors.title?.message}>
@@ -145,7 +145,7 @@ export const EventForm: React.FC<Props> = ({
         option={
           <div className="flex shrink-0 gap-1">
             <input id="allDay" type="checkbox" {...register("allDay")} />
-            <label htmlFor="allDay" className="select-none text-sm">
+            <label htmlFor="allDay" className="text-sm select-none">
               終日
             </label>
           </div>
@@ -199,7 +199,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       ref={ref}
       {...props}
       className={cn(
-        "focus-visible:outline-neu h-8 w-full rounded border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:outline-none focus-visible:ring-1",
+        "h-8 w-full rounded-sm border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:ring-1 focus-visible:outline-hidden",
         error
           ? "border-red-600 ring-red-600"
           : "border-neutral-300 ring-neutral-500",

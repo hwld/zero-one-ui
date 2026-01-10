@@ -9,7 +9,7 @@ import {
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
 import clsx from "clsx";
-import { AnimatePresence, AnimationProps, motion } from "framer-motion";
+import { AnimatePresence, MotionProps, motion } from "motion/react";
 import { ReactNode } from "react";
 
 type Position = "left" | "right";
@@ -55,9 +55,9 @@ export const Drawer: React.FC<Props> = ({
   } as const satisfies Record<
     Position,
     {
-      initial: AnimationProps["initial"];
-      animate: AnimationProps["animate"];
-      exit: AnimationProps["exit"];
+      initial: MotionProps["initial"];
+      animate: MotionProps["animate"];
+      exit: MotionProps["exit"];
     }
   >;
 
@@ -84,7 +84,7 @@ export const Drawer: React.FC<Props> = ({
                   >
                     <motion.div
                       className={clsx(
-                        "fixed bottom-0 top-0 m-2 flex w-[320px] flex-col overflow-hidden rounded-lg border border-neutral-600 bg-neutral-800 text-neutral-200",
+                        "fixed inset-y-0 m-2 flex w-[320px] flex-col overflow-hidden rounded-lg border border-neutral-600 bg-neutral-800 text-neutral-200",
                         positionClass[position],
                       )}
                       initial={animationClass[position].initial}

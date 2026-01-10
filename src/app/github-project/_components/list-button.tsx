@@ -15,7 +15,7 @@ export const ListButtonBase = forwardRef<
       ref={ref}
       {...props}
       className={clsx(
-        "h-8 w-full cursor-pointer rounded-md px-2 transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50",
+        "h-8 w-full cursor-pointer rounded-md px-2 transition-colors focus-visible:outline-hidden disabled:pointer-events-none disabled:opacity-50",
         red
           ? "text-red-500 hover:bg-red-500/15 focus-visible:bg-red-500/15"
           : "text-neutral-100 hover:bg-white/15 focus-visible:bg-white/15",

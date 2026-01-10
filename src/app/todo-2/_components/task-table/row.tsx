@@ -66,7 +66,7 @@ export const TaskTableRow: React.FC<{
           <Tooltip label="削除">
             <button
               aria-label="削除ダイアログを開く"
-              className="grid size-[25px] place-items-center rounded text-xs text-zinc-300 transition-colors hover:bg-zinc-500"
+              className="grid size-[25px] place-items-center rounded-sm text-xs text-zinc-300 transition-colors hover:bg-zinc-500"
               onClick={() => setIsDeleteConfirmOpen(true)}
             >
               <IconTrash size={20} />

@@ -60,7 +60,7 @@ const MonthlyCalendarImpl: React.FC<Props> = ({ yearMonth, events }) => {
 
   return (
     <>
-      <div className="grid h-full w-full grid-rows-[min-content,1fr] gap-2">
+      <div className="grid size-full grid-rows-[min-content_1fr] gap-2">
         <div className="grid w-full grid-cols-7">
           {WEEK_DAY_LABELS.map((weekDay) => {
             return (

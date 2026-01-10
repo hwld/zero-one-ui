@@ -51,7 +51,7 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
           ),
         }}
       >
-        <div className="flex select-none flex-col">
+        <div className="flex flex-col select-none">
           <div style={{ height: DAY_TITLE_HEIGHT }} />
           <div
             className="flex grow items-start justify-end border-y border-r border-neutral-200 py-1 pr-1 text-xs text-neutral-400"
@@ -73,7 +73,7 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
             <div className="flex flex-col" key={`${date}`}>
               <div
                 className={clsx(
-                  "flex select-none items-center justify-center gap-1 pb-1 text-xs",
+                  "flex items-center justify-center gap-1 pb-1 text-xs select-none",
                   isSameMonth(date, calendarYearMonth)
                     ? "opacity-100"
                     : "opacity-50",
@@ -83,7 +83,7 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
                 <div>{WEEK_DAY_LABELS[date.getDay()]}</div>
                 <div
                   className={clsx(
-                    "grid size-5 place-items-center rounded",
+                    "grid size-5 place-items-center rounded-sm",
                     isSameDay(currentDate, date) &&
                       "bg-blue-500 text-neutral-100",
                   )}

@@ -1,7 +1,7 @@
 "use client";
 import { useClickOutside } from "@mantine/hooks";
 import clsx from "clsx";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   BookIcon,
   HomeIcon,
@@ -21,10 +21,6 @@ const Page: React.FC = () => {
   const searchParams = useSearchParams();
   const isMenuOpen = !!z.string().nullable().parse(searchParams.get("isOpen"));
 
-  const ref = useClickOutside(() => {
-    onCloseMenu();
-  });
-
   const onOpenMenu = () => {
     router.replace(`${pathname}?isOpen=true`, { scroll: false });
   };
@@ -32,6 +28,10 @@ const Page: React.FC = () => {
   const onCloseMenu = () => {
     router.replace(`${pathname}`, { scroll: false });
   };
+
+  const ref = useClickOutside(() => {
+    onCloseMenu();
+  });
 
   const bgClass = "bg-neutral-100";
   useBodyBgColor(bgClass);
@@ -41,7 +41,7 @@ const Page: React.FC = () => {
       <div
         className={clsx("grid h-full min-h-screen place-items-center", bgClass)}
       >
-        <div className="relative flex min-h-screen w-full max-w-screen-lg flex-wrap justify-center gap-4 px-2 pt-10">
+        <div className="relative flex min-h-screen w-full max-w-(--breakpoint-lg) flex-wrap justify-center gap-4 px-2 pt-10">
           {[...new Array(30)].map((_, i) => {
             return (
               <div
@@ -53,7 +53,7 @@ const Page: React.FC = () => {
         </div>
       </div>
       <div className="fixed bottom-6 w-full">
-        <div className="m-auto flex w-full max-w-screen-lg justify-end px-6">
+        <div className="m-auto flex w-full max-w-(--breakpoint-lg) justify-end px-6">
           {isMenuOpen ? (
             <motion.div
               ref={ref}
@@ -70,7 +70,7 @@ const Page: React.FC = () => {
                       <ItemIcon icon={BookIcon} className="bg-orange-500" />
                       <motion.span
                         layoutId="button"
-                        className="absolute left-0 top-0 opacity-0"
+                        className="absolute top-0 left-0 opacity-0"
                       />
                     </span>
                   }
@@ -133,7 +133,7 @@ const Item: React.FC<{
         {icon}
         <div className="flex flex-col">
           <div className="font-bold">{title}</div>
-          <div className="break-all text-sm text-neutral-300">{children}</div>
+          <div className="text-sm break-all text-neutral-300">{children}</div>
         </div>
       </Link>
     </motion.span>

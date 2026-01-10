@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { DropPreviewLine } from "./drop-preview-line";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { z } from "zod";
 import { DRAG_TYPE } from "../consts";
 import { ViewTaskCard } from "./view-task-card";
@@ -96,7 +96,7 @@ export const ViewTaskCardList: React.FC<Props> = ({
       )}
     >
       <div
-        className="h-full w-full"
+        className="size-full"
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}

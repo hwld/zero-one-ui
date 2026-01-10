@@ -25,7 +25,7 @@ export const ChatCardMenuItem: React.FC<Props> = ({
           <Tooltip.Content
             side="top"
             sideOffset={3}
-            className="rounded bg-neutral-900 px-2 py-1 text-xs text-neutral-200"
+            className="rounded-sm bg-neutral-900 px-2 py-1 text-xs text-neutral-200"
           >
             {label}
           </Tooltip.Content>

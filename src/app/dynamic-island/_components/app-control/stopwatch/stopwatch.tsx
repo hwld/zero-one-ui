@@ -7,7 +7,7 @@ import {
   TimerIcon,
   TimerResetIcon,
 } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { APP_CONTROL_LAYOUT_ID } from "../app-control";
 
 const maxSeconds = 359_999;
@@ -83,7 +83,7 @@ export const Stopwatch: React.FC = () => {
         </motion.span>
         <motion.div
           layoutId="display"
-          className="text-sm tabular-nums text-neutral-300"
+          className="text-sm text-neutral-300 tabular-nums"
         >
           {timerDisplay}
         </motion.div>
@@ -109,7 +109,7 @@ export const Stopwatch: React.FC = () => {
                 exit={{ opacity: 0 }}
               >
                 <StopwatchButton onClick={handleClearTimer} secondary>
-                  <TimerResetIcon className="pb-[1px] pr-[2px]" />
+                  <TimerResetIcon className="pr-[2px] pb-px" />
                 </StopwatchButton>
               </motion.div>
             )}
@@ -117,14 +117,14 @@ export const Stopwatch: React.FC = () => {
         </div>
         <div className="flex flex-col items-end gap-1">
           <button
-            className="rounded p-1 transition-colors hover:bg-white/20"
+            className="rounded-sm p-1 transition-colors hover:bg-white/20"
             onClick={() => setIsMin(true)}
           >
             <Minimize2 size={15} />
           </button>
           <motion.div
             layoutId="display"
-            className="select-none text-xl font-bold tabular-nums"
+            className="text-xl font-bold tabular-nums select-none"
           >
             {timerDisplay}
           </motion.div>

@@ -88,7 +88,7 @@ export const ViewTaskMenuTrigger: React.FC<Props> = ({
         <button
           key="trigger"
           className={clsx(
-            "grid size-5 place-items-center rounded transition-all hover:bg-white/15 focus:bg-white/15 focus:opacity-100 focus-visible:bg-white/15 focus-visible:opacity-100",
+            "grid size-5 place-items-center rounded-sm transition-all hover:bg-white/15 focus:bg-white/15 focus:opacity-100 focus-visible:bg-white/15 focus-visible:opacity-100",
             mode != "close"
               ? "bg-white/15 opacity-100"
               : "opacity-0 group-hover:opacity-100",

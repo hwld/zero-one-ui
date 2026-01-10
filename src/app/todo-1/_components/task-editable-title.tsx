@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMergeRefs } from "@floating-ui/react";
 import * as Popover from "@radix-ui/react-popover";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { AlertCircleIcon } from "lucide-react";
 import { Task } from "../_backend/task-store";
 import { UpdateTaskInput, updateTaskInputSchema } from "../_backend/api";
@@ -72,7 +72,7 @@ export const TaskEditableTitle = forwardRef<
               onOpenAutoFocus={(e) => e.preventDefault()}
             >
               <motion.div
-                className="flex gap-1 rounded bg-neutral-900 p-2 text-xs text-red-300"
+                className="flex gap-1 rounded-sm bg-neutral-900 p-2 text-xs text-red-300"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
@@ -87,7 +87,7 @@ export const TaskEditableTitle = forwardRef<
     </Popover.Root>
   ) : (
     <label
-      className="cursor-pointer select-none break-all checked:line-through"
+      className="cursor-pointer break-all select-none checked:line-through"
       htmlFor={task.id}
     >
       {task.title}

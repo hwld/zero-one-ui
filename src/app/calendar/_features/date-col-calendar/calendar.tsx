@@ -120,7 +120,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
               }).map((h, i) => {
                 return (
                   <div
-                    className="relative select-none whitespace-nowrap border-r border-neutral-200 pr-3 text-end tabular-nums text-neutral-400"
+                    className="relative border-r border-neutral-200 pr-3 text-end whitespace-nowrap text-neutral-400 tabular-nums select-none"
                     key={i}
                     style={{
                       height:
@@ -144,7 +144,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
               );
             })}
             <div
-              className="absolute grid h-[1px] w-full"
+              className="absolute grid h-px w-full"
               style={{
                 gridTemplateColumns: `${DATE_COLUMN_CALENDAR_GRID_FIRST_COL_SIZE}px 1fr`,
                 top:
@@ -161,7 +161,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
               >
                 {format(currentDate, "hh:mm a")}
               </div>
-              <div className="h-[1px] w-full bg-blue-300" />
+              <div className="h-px w-full bg-blue-300" />
             </div>
           </div>
         </div>

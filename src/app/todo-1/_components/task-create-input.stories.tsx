@@ -1,15 +1,15 @@
-import { Meta, StoryObj } from "@storybook/react";
 import { TaskCreateInput } from "./task-create-input";
 import { defaultStoryMeta } from "../story-meta";
-import { expect, fn, userEvent, waitFor, within } from "@storybook/test";
+import { expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { Todo1API, createTaskInputSchema } from "../_backend/api";
 import { HttpResponse, http } from "msw";
 import { initialTasks } from "../_backend/data";
+import preview from "../../../../.storybook/preview";
 
 const createTaskMock = fn();
 const dummyTask = initialTasks[0];
 
-const meta = {
+const meta = preview.meta({
   ...defaultStoryMeta,
   parameters: {
     msw: {
@@ -25,31 +25,31 @@ const meta = {
   },
   title: "Todo1/TaskCreateInput",
   component: TaskCreateInput,
-} satisfies Meta<typeof TaskCreateInput>;
+});
 
 export default meta;
-type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  play: async ({ canvasElement }) => {
-    // canvasElementを直接使うと、portalが見えない
-    // https://github.com/storybookjs/storybook/issues/16971
-    const canvas = within(canvasElement.parentElement!);
-    const titleInput = canvas.getByRole("textbox");
-    const title = "たすく";
+export const Default = meta.story({});
 
-    await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
+Default.test("タイトル入力でタスクを作成できる", async ({ canvasElement }) => {
+  // canvasElementを直接使うと、portalが見えない
+  // https://github.com/storybookjs/storybook/issues/16971
+  const canvas = within(canvasElement.parentElement!);
+  const titleInput = canvas.getByRole("textbox");
+  const title = "たすく";
 
-    await waitFor(async () => {
-      await expect(createTaskMock).toHaveBeenCalledTimes(1);
-      await expect(createTaskMock).toHaveBeenCalledWith(title);
-      await expect(titleInput).toHaveValue("");
-    });
-  },
-};
+  await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
 
-export const NoTitleError: Story = {
-  play: async ({ canvasElement }) => {
+  await waitFor(async () => {
+    await expect(createTaskMock).toHaveBeenCalledTimes(1);
+    await expect(createTaskMock).toHaveBeenCalledWith(title);
+    await expect(titleInput).toHaveValue("");
+  });
+});
+
+Default.test(
+  "タイトル未入力時にエラーを表示する",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = canvas.getByRole("textbox");
 
@@ -62,10 +62,11 @@ export const NoTitleError: Story = {
       );
     });
   },
-};
+);
 
-export const MaxLengthError: Story = {
-  play: async ({ canvasElement }) => {
+Default.test(
+  "タイトルが長すぎるとエラーを表示する",
+  async ({ canvasElement }) => {
     const canvas = within(canvasElement.parentElement!);
     const titleInput = canvas.getByRole("textbox");
 
@@ -80,4 +81,4 @@ export const MaxLengthError: Story = {
       );
     });
   },
-};
+);

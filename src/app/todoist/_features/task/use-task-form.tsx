@@ -5,7 +5,6 @@ import {
   type TaskFormData,
 } from "../../_backend/task/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
 import { useRef } from "react";
 
 type Params = { defaultValues?: TaskFormData; onCancel?: () => void };
@@ -23,23 +22,23 @@ export const useTaskForm = ({ defaultValues, onCancel }: Params) => {
     defaultValues,
     mode: "all",
     resolver: zodResolver(taskFormSchema, {
-      errorMap: (issue, ctx) => {
-        if (issue.code === z.ZodIssueCode.too_big && issue.type === "string") {
-          const field = issue.path[0];
-
+      error: (issue) => {
+        const field = issue.path?.[0];
+        const length =
+          typeof issue.input === "string" ? issue.input.length : undefined;
+        if (issue.code === "too_big" && field && length) {
           return {
-            message: `${taskFormFieldMap[field]}の文字数制限: ${Number(ctx.data?.length)} / ${issue.maximum}`,
+            message: `${taskFormFieldMap[field.toString()]}の文字数制限: ${length} / ${issue.maximum}`,
           };
         }
-
-        return { message: ctx.defaultError };
+        return;
       },
     }),
   });
 
   const errorMessagesWithoutTooSmall = [errors.title, errors.description]
     .filter((e) => {
-      return e?.type !== z.ZodIssueCode.too_small;
+      return e?.type !== "too_small";
     })
     .map((e) => e?.message)
     .filter((m) => m !== undefined);

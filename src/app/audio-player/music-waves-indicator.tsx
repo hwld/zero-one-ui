@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { TbVolumeOff } from "@react-icons/all-files/tb/TbVolumeOff";
 
 const delays = [0.1, 0.3, 0.2, 0.4];
@@ -14,7 +14,7 @@ export const MusicWavesIndicator: React.FC<Props> = ({ volume, isMuted }) => {
   }
 
   return (
-    <div className="grid h-[15px] w-[15px] grid-cols-4 items-end justify-between gap-[1px] overflow-hidden bg-transparent">
+    <div className="grid size-[15px] grid-cols-4 items-end justify-between gap-px overflow-hidden bg-transparent">
       {[...new Array(4)].map((_, i) => {
         return (
           <motion.div

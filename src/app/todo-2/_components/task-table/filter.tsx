@@ -5,7 +5,7 @@ import {
   DropdownMenuPortal,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import {
   BoxSelectIcon,
   CheckIcon,
@@ -68,7 +68,7 @@ export const TaskTableFilter: React.FC = () => {
       <DropdownMenuTrigger asChild>
         <Button>
           <FilterIcon size={15} />
-          <p className="mt-[1px] whitespace-nowrap">絞り込み</p>
+          <p className="mt-px whitespace-nowrap">絞り込み</p>
           {filtered && (
             <div className="size-[16px] rounded-full bg-white/30 text-zinc-100">
               {filterCount}
@@ -86,7 +86,7 @@ export const TaskTableFilter: React.FC = () => {
               sideOffset={4}
             >
               <motion.div
-                className="flex w-[200px] flex-col gap-1 rounded border border-zinc-600 bg-zinc-700 p-1 text-zinc-200"
+                className="flex w-[200px] flex-col gap-1 rounded-sm border border-zinc-600 bg-zinc-700 p-1 text-zinc-200"
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -5 }}
@@ -137,7 +137,7 @@ export const TaskTableFilter: React.FC = () => {
                 </FilterGroup>
 
                 <div className="w-full space-y-1">
-                  <div className="h-[1px] w-full bg-zinc-600" />
+                  <div className="h-px w-full bg-zinc-600" />
                   <Button
                     role="menuitem"
                     variant="ghost"
@@ -190,17 +190,17 @@ const FilterItem: React.FC<FilterItemProps> = ({
   return (
     <DropdownMenuItem
       asChild
-      className="focus-visible:bg-white/15 focus-visible:outline-none"
+      className="focus-visible:bg-white/15 focus-visible:outline-hidden"
       onSelect={handleSelect}
     >
       <Button variant="ghost" className="w-full">
-        <div className="flex grow select-none items-center gap-1">
+        <div className="flex grow items-center gap-1 select-none">
           <Icon size={12} />
           <p>{label}</p>
         </div>
         <div
           className={clsx(
-            "grid size-[16px] appearance-none place-items-center overflow-hidden rounded border border-zinc-500",
+            "grid size-[16px] appearance-none place-items-center overflow-hidden rounded-sm border border-zinc-500",
             isSelected ? "bg-zinc-100" : "bg-transparent",
           )}
         >

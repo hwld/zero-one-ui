@@ -25,7 +25,7 @@ export const UpdateTaskStatusMenuTrigger: React.FC<Props> = ({ task }) => {
     <DropdownProvider isOpen={isOpen} onOpenChange={setIsOpen}>
       <DropdownTrigger>
         <button
-          className="h-full w-full rounded px-2 text-start text-sm transition-colors hover:bg-white/15 disabled:opacity-50"
+          className="size-full rounded-sm px-2 text-start text-sm transition-colors hover:bg-white/15 disabled:opacity-50"
           disabled={updateTaskMutation.isPending}
         >
           <TaskStatusBadge status={task.status} />

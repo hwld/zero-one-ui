@@ -33,7 +33,7 @@ export const MoreEventInrowCard: React.FC<Props> = ({
       onClick={onClick}
       topMargin={topMargin}
     >
-      <div className="flex h-full w-full items-center rounded px-1 text-xs text-neutral-700 ring-blue-500 transition-colors hover:bg-neutral-900/10">
+      <div className="flex size-full items-center rounded-sm px-1 text-xs text-neutral-700 ring-blue-500 transition-colors hover:bg-neutral-900/10">
         他<span className="mx-1">{count}</span>件
       </div>
     </EventInRowCardBase>

@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { TaskListEmpty } from "./task-list-empty";
 import { TaskListError } from "./task-list-error";
 import { TaskListLoading } from "./task-list-loading";

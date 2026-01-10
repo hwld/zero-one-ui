@@ -2,7 +2,7 @@ import { PropsWithChildren, useEffect, useRef } from "react";
 import { DATE_EVENT_MIN_HEIGHT } from "./utils";
 import { EventInCol } from "./type";
 import { startOfDay, endOfDay, areIntervalsOverlapping } from "date-fns";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { EventInColCardProps, EventInColCard } from "./card/event-in-col-card";
 import { DragPreviewEventInColCard } from "./card/drag-preview";
 import { EventInColPreview } from "./event-in-col-preview";

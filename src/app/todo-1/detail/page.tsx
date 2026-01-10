@@ -1,5 +1,5 @@
 "use client";
-import { useAnimate } from "framer-motion";
+import { useAnimate } from "motion/react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { z } from "zod";
 import { TaskDetailSheet } from "../_components/task-detail-sheet/task-detail-sheet";

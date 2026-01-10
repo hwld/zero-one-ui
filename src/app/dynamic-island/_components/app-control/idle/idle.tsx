@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { APP_CONTROL_LAYOUT_ID, AppControlMode } from "../app-control";
 import { MenuItem } from "./item";
 import { SearchIcon, SettingsIcon, TimerIcon, Volume2Icon } from "lucide-react";
@@ -10,7 +10,7 @@ export const Idle: React.FC<{
     <motion.div
       layout
       layoutId={APP_CONTROL_LAYOUT_ID}
-      className="flex h-[40px] w-fit min-w-[150px] items-center justify-between bg-neutral-900 px-[5px] shadow"
+      className="flex h-[40px] w-fit min-w-[150px] items-center justify-between bg-neutral-900 px-[5px] shadow-sm"
       transition={{
         type: "spring",
         damping: 30,
@@ -20,7 +20,7 @@ export const Idle: React.FC<{
     >
       <motion.div
         layout="preserve-aspect"
-        className="flex gap-1 [&>.control-item:first-child]:rounded-l-full [&>.control-item:last-child]:rounded-r-full"
+        className="flex gap-1 [&>[data-control-item]:first-child]:rounded-l-full [&>[data-control-item]:last-child]:rounded-r-full"
       >
         <MenuItem icon={SearchIcon} onClick={() => onChangeMode("search")} />
         <MenuItem icon={TimerIcon} onClick={() => onChangeMode("stopwatch")} />

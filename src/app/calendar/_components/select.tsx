@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 import { Button } from "./button";
 import { TbCheck } from "@react-icons/all-files/tb/TbCheck";
 import { TbChevronDown } from "@react-icons/all-files/tb/TbChevronDown";
@@ -141,13 +141,13 @@ const SelectComponent = forwardRef<HTMLButtonElement, SelectComponentProps>(
                     returnFocus={!isNested}
                   >
                     <div
-                      className="z-30 focus:outline-none"
+                      className="z-30 focus:outline-hidden"
                       ref={refs.setFloating}
                       style={floatingStyles}
                       {...getFloatingProps()}
                     >
                       <motion.div
-                        className="flex min-w-[150px] flex-col rounded border border-neutral-300 bg-zinc-50 p-[2px] text-sm text-neutral-700 shadow focus:outline-none"
+                        className="flex min-w-[150px] flex-col rounded-sm border border-neutral-300 bg-zinc-50 p-[2px] text-sm text-neutral-700 shadow-sm focus:outline-hidden"
                         initial={
                           isNested
                             ? { opacity: 0, x: -4 }
@@ -191,7 +191,7 @@ const SelectItemBase = forwardRef(function SelectItemBase(
     <button
       ref={forwardRef}
       {...props}
-      className="grid h-[28px] grid-cols-[15px,1fr,20px] place-content-center gap-1 rounded px-2 transition-colors focus:bg-neutral-200 focus-visible:outline-none"
+      className="grid h-[28px] grid-cols-[15px_1fr_20px] place-content-center gap-1 rounded-sm px-2 transition-colors focus:bg-neutral-200 focus-visible:outline-hidden"
     >
       <div className="grid size-full place-items-center">
         {selected ? <TbCheck /> : null}

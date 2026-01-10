@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as RadioGroup from "@radix-ui/react-radio-group";
 import clsx from "clsx";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion } from "motion/react";
 
 export type SettingRadioItem = {
   value: string;
@@ -43,9 +43,9 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
   return (
     <div
       className={clsx(
-        "t flex cursor-pointer items-center rounded p-4 transition-colors",
+        "flex cursor-pointer items-center rounded-sm p-4 transition-colors",
         isSelected
-          ? "bg-white/20 outline outline-2 outline-green-400"
+          ? "bg-white/20 outline-2 outline-green-400 outline-solid"
           : "bg-white/10 hover:bg-white/15",
       )}
       onClick={() => onSelect(item.value)}
@@ -70,7 +70,7 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
           )}
         </AnimatePresence>
       </RadioGroup.Item>
-      <div className="geid gap-1 pl-4">
+      <div className="gap-1 pl-4">
         <label>{item.label}</label>
         {item.description && (
           <div className="text-sm text-neutral-300">{item.description}</div>

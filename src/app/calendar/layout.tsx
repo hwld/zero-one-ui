@@ -1,5 +1,4 @@
 "use client";
-import { PropsWithChildren } from "react";
 import { ToastProvider } from "./_components/toast";
 import { DeleteEventProvider } from "./_features/event/use-delete-event";
 import { QueryClientProvider } from "./_providers/query-client-provider";
@@ -14,7 +13,7 @@ const MinuteClockProviderCC = dynamic(
   { ssr: false },
 );
 
-const Layout: React.FC<PropsWithChildren> = ({ children }) => {
+const Layout: React.FC<LayoutProps<"/calendar">> = ({ children }) => {
   return (
     <ToastProvider>
       <MinuteClockProviderCC>

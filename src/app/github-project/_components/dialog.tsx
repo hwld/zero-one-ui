@@ -9,7 +9,7 @@ import {
   useRole,
 } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
-import { AnimatePresence, motion, useIsPresent } from "framer-motion";
+import { AnimatePresence, motion, useIsPresent } from "motion/react";
 import { ReactNode } from "react";
 import { IconButton } from "./icon-button";
 import { XIcon } from "lucide-react";
@@ -71,14 +71,14 @@ export const Dialog: React.FC<Props> = ({
                     style={{ colorScheme: "dark" }}
                   >
                     <motion.div
-                      className="fixed left-1/2 top-1/2 flex flex-col gap-2 rounded-lg border border-neutral-600 bg-neutral-800 p-4 text-neutral-100"
+                      className="fixed top-1/2 left-1/2 flex flex-col gap-2 rounded-lg border border-neutral-600 bg-neutral-800 p-4 text-neutral-100"
                       style={{ width }}
                       initial={{ x: "-50%", y: "-60%", opacity: 0 }}
                       animate={{ x: "-50%", y: "-50%", opacity: 1 }}
                       exit={{ x: "-50%", y: "-60%", opacity: 0 }}
                     >
                       <h2 className="text-lg font-bold">{title}</h2>
-                      <div className="absolute right-2 top-2">
+                      <div className="absolute top-2 right-2">
                         <IconButton
                           icon={XIcon}
                           onClick={() => onOpenChange(false)}

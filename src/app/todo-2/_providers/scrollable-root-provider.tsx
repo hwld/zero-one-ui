@@ -8,7 +8,7 @@ import {
 } from "react";
 
 type ScrollableRootContext = {
-  scrollableRootRef: RefObject<HTMLDivElement>;
+  scrollableRootRef: RefObject<HTMLDivElement | null>;
 };
 
 const ScrollableRootContext = createContext<ScrollableRootContext | undefined>(

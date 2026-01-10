@@ -17,15 +17,15 @@ const ButtonBase = forwardRef<HTMLButtonElement, ButtonBaseProps>(
       <button
         ref={ref}
         className={cn(
-          "relative flex select-none items-center rounded transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-400",
-          isPending && "pointer-events-none !text-transparent",
+          "relative flex items-center rounded-sm transition-colors select-none focus-visible:ring-1 focus-visible:ring-neutral-400 focus-visible:outline-hidden",
+          isPending && "pointer-events-none text-transparent!",
           className,
         )}
         {...props}
       >
         {children}
         {isPending && (
-          <div className="absolute left-1/2 top-1/2 grid aspect-square h-full -translate-x-1/2 -translate-y-1/2 place-items-center">
+          <div className="absolute top-1/2 left-1/2 grid aspect-square h-full -translate-1/2 place-items-center">
             <TbLoader2 className="size-[70%] animate-spin text-neutral-400" />
           </div>
         )}

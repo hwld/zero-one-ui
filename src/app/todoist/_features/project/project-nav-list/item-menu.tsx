@@ -71,7 +71,7 @@ export const ProjectNavItemMenu: React.FC<Props> = ({
         label={
           <div className="flex items-center gap-1">
             テンプレートとして保存する
-            <span className="flex h-5 items-center rounded bg-green-100 px-[5px] text-xs font-bold tracking-wider text-green-600">
+            <span className="flex h-5 items-center rounded-sm bg-green-100 px-[5px] text-xs font-bold tracking-wider text-green-600">
               NEW
             </span>
           </div>
