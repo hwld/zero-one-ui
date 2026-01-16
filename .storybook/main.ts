@@ -6,7 +6,6 @@ export default defineMain({
   addons: [
     "@storybook/addon-onboarding",
     "@storybook/addon-links",
-    "@chromatic-com/storybook",
     "@storybook/addon-docs",
     "@storybook/addon-vitest",
   ],
