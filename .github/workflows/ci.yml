@@ -28,7 +28,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: "Install Playwright"
-        run: pnpx playwright install --with-deps chromium
+        run: pnpm exec playwright install --with-deps chromium
 
       - name: "Run vitest tests"
         run: pnpm run test
