@@ -3,7 +3,6 @@ import { useGlobalCommandConfig } from "../_providers/global-command/global-comm
 import { useEffect, useMemo, useState } from "react";
 import {
   BoxSelectIcon,
-  DatabaseIcon,
   DatabaseZapIcon,
   RefreshCcwIcon,
   TriangleAlertIcon,
