@@ -3,6 +3,7 @@ import { eq } from "drizzle-orm";
 import { pgliteManager } from "../../../../lib/pglite-manager";
 import { todo1Tasks } from "./schema";
 import type { CreateTaskInput, UpdateTaskInput } from "../api";
+import { errorSimulator } from "../error-simulator";
 
 /**
  * Todo-1タスクリポジトリ
@@ -15,6 +16,7 @@ class Todo1TaskRepository {
   }
 
   public async getAll() {
+    errorSimulator.throwIfActive();
     const db = await this.getDb();
     const tasks = await db.select().from(todo1Tasks).orderBy(todo1Tasks.createdAt);
 
@@ -29,6 +31,7 @@ class Todo1TaskRepository {
   }
 
   public async get(id: string) {
+    errorSimulator.throwIfActive();
     const db = await this.getDb();
     const tasks = await db
       .select()
@@ -52,6 +55,7 @@ class Todo1TaskRepository {
   }
 
   public async add(input: CreateTaskInput) {
+    errorSimulator.throwIfActive();
     const db = await this.getDb();
     const now = new Date();
 
@@ -78,6 +82,7 @@ class Todo1TaskRepository {
   }
 
   public async update(input: UpdateTaskInput & { id: string }) {
+    errorSimulator.throwIfActive();
     const db = await this.getDb();
     const now = new Date();
 
@@ -108,6 +113,7 @@ class Todo1TaskRepository {
   }
 
   public async remove(id: string) {
+    errorSimulator.throwIfActive();
     const db = await this.getDb();
     await db.delete(todo1Tasks).where(eq(todo1Tasks.id, id));
   }
