@@ -1,4 +1,4 @@
-import { Task } from "./task-store";
+import { Task } from "./types";
 
 export const initialTasks: Task[] = [
   {

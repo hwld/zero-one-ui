@@ -40,3 +40,5 @@ firebase-debug.log
 *storybook.log
 
 storybook-static
+
+src/lib/db/migrations
