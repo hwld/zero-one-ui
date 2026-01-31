@@ -1,7 +1,8 @@
 import { HttpResponse, delay, http } from "msw";
 import { z } from "zod";
-import { Task, taskSchema, taskStore } from "./task-store";
+import { Task, taskSchema } from "./types";
 import { fetcher } from "../../../lib/fetcher";
+import { todo1TaskRepository } from "./db/repository";
 
 export const createTaskInputSchema = z.object({
   title: z
@@ -72,7 +73,7 @@ export const deleteTask = async (id: string) => {
 export const todo1Handlers = [
   http.get(Todo1API.tasks(), async () => {
     await delay();
-    const tasks = taskStore.getAll();
+    const tasks = await todo1TaskRepository.getAll();
 
     return HttpResponse.json(tasks);
   }),
@@ -80,7 +81,7 @@ export const todo1Handlers = [
   http.get(Todo1API.task(), async ({ params }) => {
     await delay();
     const id = z.string().parse(params.id);
-    const task = taskStore.get(id);
+    const task = await todo1TaskRepository.get(id);
 
     return HttpResponse.json(task);
   }),
@@ -88,7 +89,7 @@ export const todo1Handlers = [
   http.post(Todo1API.tasks(), async ({ request }) => {
     await delay();
     const input = createTaskInputSchema.parse(await request.json());
-    const createdTask = taskStore.add(input);
+    const createdTask = await todo1TaskRepository.add(input);
 
     return HttpResponse.json(createdTask);
   }),
@@ -97,7 +98,7 @@ export const todo1Handlers = [
     await delay();
     const id = z.string().parse(params.id);
     const input = updateTaskInputSchema.parse(await request.json());
-    const updatedTask = taskStore.update({ ...input, id });
+    const updatedTask = await todo1TaskRepository.update({ ...input, id });
 
     return HttpResponse.json(updatedTask);
   }),
@@ -105,7 +106,7 @@ export const todo1Handlers = [
   http.delete(Todo1API.task(), async ({ params }) => {
     await delay();
     const id = z.string().parse(params.id);
-    taskStore.remove(id);
+    await todo1TaskRepository.remove(id);
 
     return HttpResponse.json({});
   }),
