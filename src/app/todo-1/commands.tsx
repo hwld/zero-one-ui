@@ -3,11 +3,15 @@ import { useGlobalCommandConfig } from "../_providers/global-command/global-comm
 import { useEffect, useMemo, useState } from "react";
 import {
   BoxSelectIcon,
+  DatabaseZapIcon,
   RefreshCcwIcon,
-  TriangleAlert,
+  TriangleAlertIcon,
   TriangleIcon,
 } from "lucide-react";
-import { taskStore } from "./_backend/task-store";
+import { resetTodo1Data } from "./_backend/db/reset";
+import { resetAllData } from "../../lib/db/reset";
+import { errorSimulator } from "./_backend/error-simulator";
+import { todo1TaskRepository } from "./_backend/db/repository";
 
 export const useTodo1HomeCommands = () => {
   const client = useQueryClient();
@@ -18,33 +22,40 @@ export const useTodo1HomeCommands = () => {
       return {
         newCommands: [
           {
-            icon: isSimulatingError ? TriangleIcon : TriangleAlert,
+            icon: isSimulatingError ? TriangleIcon : TriangleAlertIcon,
             label: `エラーを${isSimulatingError ? "止める" : "発生させる"}`,
             action: async () => {
               setIsSimulatingError((s) => !s);
               if (isSimulatingError) {
-                taskStore.stopErrorSimulation();
+                errorSimulator.stop();
               } else {
-                taskStore.startErrorSimulation();
+                errorSimulator.start();
               }
-
               client.refetchQueries();
             },
           },
           {
             icon: BoxSelectIcon,
             label: "タスク一覧を空にする",
-            action: () => {
-              taskStore.clear();
+            action: async () => {
+              await todo1TaskRepository.clear();
               client.refetchQueries();
             },
           },
           {
             icon: RefreshCcwIcon,
             label: "タスク一覧を初期化する",
-            action: () => {
-              taskStore.reset();
+            action: async () => {
+              await resetTodo1Data();
               client.refetchQueries();
+            },
+          },
+          {
+            icon: DatabaseZapIcon,
+            label: "全プロジェクトのデータをリセット",
+            action: async () => {
+              await resetAllData();
+              window.location.reload();
             },
           },
         ],
@@ -53,9 +64,9 @@ export const useTodo1HomeCommands = () => {
   );
 
   useEffect(() => {
-    taskStore.stopErrorSimulation();
+    errorSimulator.stop();
     return () => {
-      taskStore.stopErrorSimulation();
+      errorSimulator.stop();
     };
   }, []);
 };
