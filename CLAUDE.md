@@ -112,6 +112,15 @@ pnpm db:generate         # DBスキーマを生成・更新
 
 スキーマファイル (`src/lib/db/schema.ts`) は実際には各アプリのスキーマをre-exportしているだけ（現在は `src/app/todo-1/_backend/db/schema.ts`）。スキーマを編集する際は、実際のスキーマファイルを編集してから `pnpm db:generate` を実行する。
 
+## PR作成の手順
+
+PRを作成する前に、ベースブランチの最新の変更を取り込むこと。
+
+```bash
+git fetch origin
+git rebase origin/main  # またはベースブランチ名
+```
+
 ## バグ修正の進め方
 
 バグを修正する際は、まず失敗するテストを書いてバグを再現し、その後に修正を行う。テストが通ることで修正の正しさを確認する。
