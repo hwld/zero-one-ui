@@ -22,6 +22,17 @@ export const TaskCard: React.FC<{
   const [editable, setEditable] = useState(false);
   const [isConfirmDeleteOpen, setIsConfirmDeleteOpen] = useState(false);
 
+  // React QueryのonMutateによる楽観的更新はマイクロタスクで非同期に実行されるため、
+  // 同期的なsetEditable(false)による再レンダーに間に合わず、古いタイトルが一瞬表示される。
+  // これを防ぐために、mutate()と同じ同期ブロックで即座に反映できるローカルstateで楽観的更新を行う。
+  const [optimisticTitle, setOptimisticTitle] = useState<string | null>(null);
+
+  const displayTitle =
+    optimisticTitle !== null && task.title !== optimisticTitle
+      ? optimisticTitle
+      : task.title;
+  const displayTask = { ...task, title: displayTitle };
+
   const updateTaskMutation = useUpdateTask();
   const deleteTaskMutation = useDeleteTask();
 
@@ -69,13 +80,17 @@ export const TaskCard: React.FC<{
             </div>
           </div>
           <TaskEditableTitle
-            key={`${task.title}-${editable}`}
+            key={`${displayTask.title}-${editable}`}
             ref={titleInputRef}
-            task={task}
+            task={displayTask}
             editable={editable}
             onChangeEditable={setEditable}
             onChangeTitle={(title) => {
-              updateTaskMutation.mutate({ ...task, title });
+              setOptimisticTitle(title);
+              updateTaskMutation.mutate(
+                { ...task, title },
+                { onError: () => setOptimisticTitle(null) },
+              );
             }}
           />
         </div>

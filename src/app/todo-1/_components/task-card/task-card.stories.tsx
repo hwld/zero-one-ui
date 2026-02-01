@@ -36,7 +36,7 @@ export const Default = meta.story({
           const input = updateTaskInputSchema.parse(await request.json());
           updateTaskMock({ id: params.id as string, ...input });
 
-          return HttpResponse.json(dummyTask);
+          return HttpResponse.json({ ...dummyTask, ...input });
         }),
         http.delete(Todo1API.task(), async ({ params }) => {
           deleteTaskMock(params.id);
@@ -105,6 +105,66 @@ Default.test("タイトル更新APIが呼ばれる", async ({ canvasElement, arg
     );
   });
 });
+
+Default.test(
+  "タイトル編集確定後に古いタイトルが表示されない",
+  async ({ canvasElement, args }) => {
+    const task = args.task;
+    const canvas = within(canvasElement.parentElement!);
+
+    const editTrigger = canvas.getByRole("button", {
+      name: "タイトルを編集",
+    });
+    await userEvent.click(editTrigger);
+
+    const titleInput = canvas.getByRole("textbox", { name: "タイトル" });
+    const updatedTitle = "updated-title";
+
+    await userEvent.clear(titleInput);
+    await userEvent.type(titleInput, `${updatedTitle}{enter}`);
+
+    // 編集確定後、入力欄が閉じてラベル表示に切り替わった時点で
+    // 古いタイトルではなく新しいタイトルが表示されていること
+    await expect(canvas.queryByText(task.title)).not.toBeInTheDocument();
+    await expect(canvas.getByText(updatedTitle)).toBeInTheDocument();
+  },
+);
+
+export const UpdateError = meta.story({
+  parameters: {
+    msw: {
+      handlers: [
+        http.put(Todo1API.task(), () => {
+          return HttpResponse.json(null, { status: 500 });
+        }),
+      ],
+    },
+  },
+  args: { task: dummyTask },
+});
+
+UpdateError.test(
+  "タイトル更新が失敗したら元のタイトルに戻る",
+  async ({ canvasElement, args }) => {
+    const task = args.task;
+    const canvas = within(canvasElement.parentElement!);
+
+    const editTrigger = canvas.getByRole("button", {
+      name: "タイトルを編集",
+    });
+    await userEvent.click(editTrigger);
+
+    const titleInput = canvas.getByRole("textbox", { name: "タイトル" });
+    await userEvent.clear(titleInput);
+    await userEvent.type(titleInput, `error-title{enter}`);
+
+    // エラー後、元のタイトルに戻ること
+    await waitFor(() => {
+      expect(canvas.getByText(task.title)).toBeInTheDocument();
+    });
+    await expect(canvas.queryByText("error-title")).not.toBeInTheDocument();
+  },
+);
 
 Default.test("削除APIが呼ばれる", async ({ canvasElement, args }) => {
   const task = args.task;
