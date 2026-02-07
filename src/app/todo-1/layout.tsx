@@ -8,7 +8,6 @@ import { TaskCreateInput } from "./_components/task-create-input";
 import { Menu } from "./_components/menu/menu";
 import { useTodo1HomeCommands } from "./commands";
 import { DefaultQueryClientProvider } from "../_providers/default-query-client-provider";
-import { PGliteProvider } from "../_providers/pglite-provider";
 import { TaskListContent } from "./_components/task-list-content";
 import { useTasks } from "./_queries/use-tasks";
 import { useBodyBgColor } from "../../lib/useBodyBgColor";
@@ -79,12 +78,10 @@ const LayoutInner: React.FC<PropsWithChildren> = ({ children }) => {
 
 const Layout: React.FC<LayoutProps<"/todo-1">> = ({ children }) => {
   return (
-    <PGliteProvider>
-      <DefaultQueryClientProvider>
-        <LayoutInner>{children}</LayoutInner>
-        <Toaster expand gap={8} duration={3000} />
-      </DefaultQueryClientProvider>
-    </PGliteProvider>
+    <DefaultQueryClientProvider>
+      <LayoutInner>{children}</LayoutInner>
+      <Toaster expand gap={8} duration={3000} />
+    </DefaultQueryClientProvider>
   );
 };
 
