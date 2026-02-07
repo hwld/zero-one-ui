@@ -1,8 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":timezone(Asia/Tokyo)"],
-  "baseBranches": ["renovate-base"],
-  "schedule": ["after 6pm on Friday"],
+  "extends": [
+    "config:recommended",
+    ":timezone(Asia/Tokyo)"
+  ],
+  "baseBranchPatterns": [
+    "renovate-base"
+  ],
+  "schedule": [
+    "after 6pm on Friday"
+  ],
   "minimumReleaseAge": "14 days",
   "lockFileMaintenance": {
     "enabled": true,
@@ -10,7 +17,9 @@
   },
   "packageRules": [
     {
-      "matchUpdateTypes": ["patch"],
+      "matchUpdateTypes": [
+        "patch"
+      ],
       "automerge": true
     }
   ]
