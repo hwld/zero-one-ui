@@ -6,6 +6,8 @@ import { PGlite } from "@electric-sql/pglite";
  * 全アプリで共有する単一のPGliteインスタンスを管理する。
  * IndexedDBに永続化され、非同期で初期化される。
  */
+const DB_NAME = "zero-one-ui-db";
+
 class PGliteManager {
   private db: PGlite | null = null;
   private initializationPromise: Promise<void> | null = null;
@@ -101,37 +103,22 @@ class PGliteManager {
   }
 
   /**
-   * DBをリセットする（IndexedDBを削除し、内部状態をリセット）
+   * publicスキーマの全テーブルをDROPしてDBをリセットする
    */
   public async resetDb(): Promise<void> {
-    if (typeof window === "undefined") {
-      return;
+    await this.waitForReady();
+    if (!this.db) {
+      throw new Error("DB is not initialized.");
     }
 
-    if (this.db) {
-      await this.db.close();
-      this.db = null;
-    }
+    const result = await this.db.query<{ tablename: string }>(
+      `SELECT tablename FROM pg_tables WHERE schemaname = 'public'`,
+    );
 
-    const dbName = "zero-one-ui-db";
-    await new Promise<void>((resolve, reject) => {
-      const request = indexedDB.deleteDatabase(dbName);
-      request.onsuccess = () => resolve();
-      request.onerror = () => reject(request.error);
-      request.onblocked = () => {
-        console.warn("IndexedDB deletion is blocked. Please close other tabs.");
-        reject(new Error("Database deletion blocked"));
-      };
-    });
-
-    this.isReady = false;
-    this.initializationPromise = null;
-
-    this.schemaReady = false;
-
-    // ここで待機中の処理を解決せず、スキーマ準備完了まで待たせる
-    if (!this.schemaReadyPromise) {
-      this.schemaReadyResolve = null;
+    for (const row of result.rows) {
+      await this.db.exec(
+        `DROP TABLE IF EXISTS "${row.tablename}" CASCADE`,
+      );
     }
   }
 
@@ -141,7 +128,7 @@ class PGliteManager {
     }
 
     try {
-      this.db = new PGlite(`idb://zero-one-ui-db`);
+      this.db = new PGlite(`idb://${DB_NAME}`);
       await this.db.query("SELECT 1");
       this.isReady = true;
       console.log("PGlite initialized successfully");
