@@ -2,6 +2,7 @@ onlyBuiltDependencies:
   - "@swc/core"
   - core-js-pure
   - esbuild
+  - lefthook
   - msw
   - sharp
   - unrs-resolver
