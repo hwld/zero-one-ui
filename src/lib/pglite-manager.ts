@@ -116,9 +116,7 @@ class PGliteManager {
     );
 
     for (const row of result.rows) {
-      await this.db.exec(
-        `DROP TABLE IF EXISTS "${row.tablename}" CASCADE`,
-      );
+      await this.db.exec(`DROP TABLE IF EXISTS "${row.tablename}" CASCADE`);
     }
   }
 
