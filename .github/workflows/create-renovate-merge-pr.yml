@@ -1,9 +1,9 @@
-name: Merge Renovate Updates
+name: Create Renovate Merge PR
 on:
   workflow_dispatch:
 
 jobs:
-  merge-renovate-updates:
+  create-renovate-merge-pr:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
