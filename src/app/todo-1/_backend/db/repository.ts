@@ -18,7 +18,10 @@ class Todo1TaskRepository {
   public async getAll() {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
-    const tasks = await db.select().from(todo1Tasks).orderBy(todo1Tasks.createdAt);
+    const tasks = await db
+      .select()
+      .from(todo1Tasks)
+      .orderBy(todo1Tasks.createdAt);
 
     return tasks.map((task) => ({
       id: task.id,

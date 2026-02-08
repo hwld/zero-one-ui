@@ -40,6 +40,7 @@ pnpm db:generate         # DBスキーマを生成・更新
 ```
 
 スキーマ変更時の手順:
+
 1. `src/app/xxx/_backend/db/schema.ts` を編集
 2. `pnpm db:generate` を実行
 3. 自動的に `src/lib/db/schema.sql.ts` が更新される
@@ -63,6 +64,7 @@ pnpm db:generate         # DBスキーマを生成・更新
 - **スキーマバージョニング**: `DB_SCHEMA_VERSION` がローカルストレージに保存され、スキーマ変更時に自動でDBをリセット
 
 初期化フロー:
+
 1. `PGliteProvider` (`src/app/_providers/pglite-provider.tsx`) がマウント時に実行
 2. `pgliteManager.startInitialization()` でPGliteインスタンスを初期化
 3. `ensureSchema()` でスキーマバージョンをチェック
@@ -70,6 +72,7 @@ pnpm db:generate         # DBスキーマを生成・更新
 5. `pgliteManager.markSchemaReady()` で初期化完了を通知
 
 各アプリのDBアクセス:
+
 - `await pgliteManager.getDb()` でPGliteインスタンスを取得（スキーマ初期化完了を待機）
 - Drizzleのクエリビルダーを使用して型安全なクエリを実行
 
@@ -130,6 +133,7 @@ git rebase origin/main  # またはベースブランチ名
 Use `agent-browser` for web automation. Run `agent-browser --help` for all commands.
 
 Core workflow:
+
 1. `agent-browser open <url>` - Navigate to page
 2. `agent-browser snapshot -i` - Get interactive elements with refs (@e1, @e2)
 3. `agent-browser click @e1` / `fill @e2 "text"` - Interact using refs
