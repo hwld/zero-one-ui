@@ -6,8 +6,10 @@ import {
   TriangleAlertIcon,
   TriangleIcon,
 } from "lucide-react";
-import { taskStore } from "./_backend/task-store";
 import { useQueryClient } from "@tanstack/react-query";
+import { todo2TaskRepository } from "./_backend/db/repository";
+import { resetTodo2Data } from "./_backend/db/reset";
+import { todo2ErrorSimulator } from "./_backend/error-simulator";
 
 export const useTodo2HomeCommands = () => {
   const client = useQueryClient();
@@ -23,9 +25,9 @@ export const useTodo2HomeCommands = () => {
             action: async () => {
               setIsErrorMode((s) => !s);
               if (isErrorMode) {
-                taskStore.removeErrorSimulationScope("getAll");
+                todo2ErrorSimulator.removeErrorSimulationScope("getAll");
               } else {
-                taskStore.addErrorSimulationScope("getAll");
+                todo2ErrorSimulator.addErrorSimulationScope("getAll");
               }
 
               client.refetchQueries();
@@ -35,7 +37,7 @@ export const useTodo2HomeCommands = () => {
             icon: BoxSelectIcon,
             label: "タスク一覧を空にする",
             action: async () => {
-              taskStore.clear();
+              await todo2TaskRepository.clear();
               client.refetchQueries();
             },
           },
@@ -43,7 +45,7 @@ export const useTodo2HomeCommands = () => {
             icon: RefreshCcwIcon,
             label: "タスク一覧を初期化する",
             action: async () => {
-              taskStore.reset();
+              await resetTodo2Data();
               client.refetchQueries();
             },
           },
@@ -53,9 +55,9 @@ export const useTodo2HomeCommands = () => {
   );
 
   useEffect(() => {
-    taskStore.stopErrorSimulation();
+    todo2ErrorSimulator.stopErrorSimulation();
     return () => {
-      taskStore.stopErrorSimulation();
+      todo2ErrorSimulator.stopErrorSimulation();
     };
   }, []);
 };
@@ -73,9 +75,9 @@ export const useTodo2DetailCommands = () => {
             action: async () => {
               setIsErrorMode((s) => !s);
               if (isErrorMode) {
-                taskStore.removeErrorSimulationScope("get");
+                todo2ErrorSimulator.removeErrorSimulationScope("get");
               } else {
-                taskStore.addErrorSimulationScope("get");
+                todo2ErrorSimulator.addErrorSimulationScope("get");
               }
 
               client.refetchQueries();
@@ -87,9 +89,9 @@ export const useTodo2DetailCommands = () => {
   );
 
   useEffect(() => {
-    taskStore.stopErrorSimulation();
+    todo2ErrorSimulator.stopErrorSimulation();
     return () => {
-      taskStore.stopErrorSimulation();
+      todo2ErrorSimulator.stopErrorSimulation();
     };
   }, []);
 };

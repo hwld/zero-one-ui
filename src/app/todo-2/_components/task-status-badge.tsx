@@ -1,6 +1,6 @@
 import { CircleDashedIcon, CircleDotIcon } from "lucide-react";
 import clsx from "clsx";
-import { Task, getTaskStatusLabel } from "../_backend/task-store";
+import { Task, getTaskStatusLabel } from "../_backend/models";
 
 type TaskStatusBadgeProps = {
   status: Task["status"];

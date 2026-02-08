@@ -9,7 +9,7 @@ import { TaskTableCheckbox } from "./checkbox";
 import Link from "next/link";
 import { useUpdateTask } from "../../_queries/use-update-task";
 import { useDeleteTasks } from "../../_queries/use-delete-tasks";
-import { Task } from "../../_backend/task-store";
+import { Task } from "../../_backend/models";
 import { useTaskTableSelection } from "./selection-provider";
 import { Routes } from "../../_lib/routes";
 
