@@ -1,0 +1,53 @@
+name: Merge Renovate Updates
+on:
+  workflow_dispatch:
+
+jobs:
+  merge-renovate-updates:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Check for new commits
+        id: diff
+        run: |
+          git fetch origin main renovate-base
+          count=$(git rev-list --count origin/main..origin/renovate-base)
+          echo "commit_count=$count" >> "$GITHUB_OUTPUT"
+
+      - name: Build PR description
+        if: steps.diff.outputs.commit_count != '0'
+        id: desc
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          pr_numbers=$(git log origin/main..origin/renovate-base --pretty=format:"%s" | grep -oE '#[0-9]+' | sort -u -t'#' -k2 -n)
+          body="## Included PRs"$'\n'
+          for pr in $pr_numbers; do
+            number=${pr#\#}
+            title=$(gh pr view "$number" --json title --jq '.title' 2>/dev/null || echo "")
+            if [ -n "$title" ]; then
+              body+="- ${pr} ${title}"$'\n'
+            fi
+          done
+          {
+            echo "body<<EOF"
+            echo "$body"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create PR to merge renovate-base into main
+        if: steps.diff.outputs.commit_count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GHA_TOKEN }}
+        run: |
+          gh pr create \
+            --base main \
+            --head renovate-base \
+            --title "chore(deps): merge renovate updates" \
+            --body "${{ steps.desc.outputs.body }}"
