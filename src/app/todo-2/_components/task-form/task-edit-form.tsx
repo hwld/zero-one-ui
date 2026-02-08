@@ -4,7 +4,7 @@ import { taskDetailViewClass } from "../task-detail-content-card";
 import clsx from "clsx";
 import { TaskFormErrorTooltip } from "./error-tooltip";
 import { UpdateTaskInput, updateTaskInputSchema } from "../../_backend/api";
-import { Task } from "../../_backend/task-store";
+import { Task } from "../../_backend/models";
 import { useId } from "react";
 
 type Props = {

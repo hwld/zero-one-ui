@@ -1,8 +1,9 @@
 import { drizzle } from "drizzle-orm/pglite";
 import { eq } from "drizzle-orm";
 import { pgliteManager } from "../../../../lib/pglite-manager";
-import { todo1Tasks } from "./schema";
+import { todo1Tasks, type Todo1TaskRow } from "./schema";
 import type { CreateTaskInput, UpdateTaskInput } from "../api";
+import type { Task } from "../models";
 import { errorSimulator } from "../error-simulator";
 
 /**
@@ -15,7 +16,18 @@ class Todo1TaskRepository {
     return drizzle(await pgliteManager.getDb());
   }
 
-  public async getAll() {
+  private toTask(task: Todo1TaskRow): Task {
+    return {
+      id: task.id,
+      title: task.title,
+      description: task.description,
+      done: task.done,
+      createdAt: task.createdAt.toISOString(),
+      updatedAt: task.updatedAt.toISOString(),
+    };
+  }
+
+  public async getAll(): Promise<Task[]> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
     const tasks = await db
@@ -23,17 +35,10 @@ class Todo1TaskRepository {
       .from(todo1Tasks)
       .orderBy(todo1Tasks.createdAt);
 
-    return tasks.map((task) => ({
-      id: task.id,
-      title: task.title,
-      description: task.description,
-      done: task.done,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString(),
-    }));
+    return tasks.map((task) => this.toTask(task));
   }
 
-  public async get(id: string) {
+  public async get(id: string): Promise<Task | undefined> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
     const tasks = await db
@@ -46,18 +51,10 @@ class Todo1TaskRepository {
       return undefined;
     }
 
-    const task = tasks[0];
-    return {
-      id: task.id,
-      title: task.title,
-      description: task.description,
-      done: task.done,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString(),
-    };
+    return this.toTask(tasks[0]);
   }
 
-  public async add(input: CreateTaskInput) {
+  public async add(input: CreateTaskInput): Promise<Task> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
     const now = new Date();
@@ -73,18 +70,12 @@ class Todo1TaskRepository {
       })
       .returning();
 
-    const task = newTasks[0];
-    return {
-      id: task.id,
-      title: task.title,
-      description: task.description,
-      done: task.done,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString(),
-    };
+    return this.toTask(newTasks[0]);
   }
 
-  public async update(input: UpdateTaskInput & { id: string }) {
+  public async update(
+    input: UpdateTaskInput & { id: string },
+  ): Promise<Task | undefined> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
     const now = new Date();
@@ -104,24 +95,16 @@ class Todo1TaskRepository {
       return undefined;
     }
 
-    const task = updatedTasks[0];
-    return {
-      id: task.id,
-      title: task.title,
-      description: task.description,
-      done: task.done,
-      createdAt: task.createdAt.toISOString(),
-      updatedAt: task.updatedAt.toISOString(),
-    };
+    return this.toTask(updatedTasks[0]);
   }
 
-  public async remove(id: string) {
+  public async remove(id: string): Promise<void> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
     await db.delete(todo1Tasks).where(eq(todo1Tasks.id, id));
   }
 
-  public async clear() {
+  public async clear(): Promise<void> {
     const db = await this.getDb();
     await db.delete(todo1Tasks);
   }

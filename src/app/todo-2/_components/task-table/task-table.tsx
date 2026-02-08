@@ -3,7 +3,7 @@ import { TaskTableRow } from "./row";
 import { Pagination } from "../pagination";
 import { useMemo } from "react";
 import { TaskTableShell } from "./shell";
-import { Task } from "../../_backend/task-store";
+import { Task } from "../../_backend/models";
 import { useTaskTableSelection } from "./selection-provider";
 import { useTaskTablePaging } from "./paging-provider";
 
