@@ -100,7 +100,7 @@ importers:
         version: 19.2.4
       react-day-picker:
         specifier: ^9.13.0
-        version: 9.13.1(react@19.2.4)
+        version: 9.13.2(react@19.2.4)
       react-dom:
         specifier: ^19.2.3
         version: 19.2.4(react@19.2.4)
@@ -1626,7 +1626,7 @@ packages:
     resolution: {integrity: sha512-HPwpGIzkl28mWyZqG52jiqDJ12waP11Pa1lGoiyUkIEuMLBP0oeK/C89esbXrxsky5we7dfd8U58nm0SgAWpVw==}
 
   '@react-icons/all-files@https://github.com/react-icons/react-icons/releases/download/v5.2.1/react-icons-all-files-5.2.1.tgz':
-    resolution: {integrity: sha512-GWFOoiXrh/PE7El1qrHcdHkLay6kyvzxch6SLlSlIzfp574qfyrFgYOu3zPn8Rc/7mERKiClYEUMdUzdFwN9OQ==, tarball: https://github.com/react-icons/react-icons/releases/download/v5.2.1/react-icons-all-files-5.2.1.tgz}
+    resolution: {tarball: https://github.com/react-icons/react-icons/releases/download/v5.2.1/react-icons-all-files-5.2.1.tgz}
     version: 5.2.1
     peerDependencies:
       react: '*'
@@ -3978,8 +3978,8 @@ packages:
       react: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
       react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
-  react-day-picker@9.13.1:
-    resolution: {integrity: sha512-9nx2lBBJ0VZw5jJekId3DishwnJLiqY1Me1JvCrIyqbWwcflBTVaEkiK+w1bre5oMNWYo722eu+8UAMXWMqktw==}
+  react-day-picker@9.13.2:
+    resolution: {integrity: sha512-IMPiXfXVIAuR5Yk58DDPBC8QKClrhdXV+Tr/alBrwrHUw0qDDYB1m5zPNuTnnPIr/gmJ4ChMxmtqPdxm8+R4Eg==}
     engines: {node: '>=18'}
     peerDependencies:
       react: '>=16.8.0'
@@ -8294,7 +8294,7 @@ snapshots:
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
 
-  react-day-picker@9.13.1(react@19.2.4):
+  react-day-picker@9.13.2(react@19.2.4):
     dependencies:
       '@date-fns/tz': 1.4.1
       date-fns: 4.1.0
