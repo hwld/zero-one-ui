@@ -40,8 +40,10 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GHA_TOKEN }}
         run: |
-          gh pr create \
+          pr_url=$(gh pr create \
             --base main \
             --head renovate-base \
             --title "chore(deps): merge renovate updates" \
-            --body "${{ steps.desc.outputs.body }}"
+            --body "${{ steps.desc.outputs.body }}")
+          echo "## Created PR" >> "$GITHUB_STEP_SUMMARY"
+          echo "$pr_url" >> "$GITHUB_STEP_SUMMARY"
