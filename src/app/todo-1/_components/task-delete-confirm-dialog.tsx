@@ -1,4 +1,4 @@
-import { Task } from "../_backend/types";
+import { Task } from "../_backend/models";
 import { Dialog } from "./dialog";
 
 export const TaskDeleteConfirmDialog: React.FC<{

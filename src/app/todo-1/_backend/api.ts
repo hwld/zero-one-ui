@@ -1,6 +1,6 @@
 import { HttpResponse, delay, http } from "msw";
 import { z } from "zod";
-import { Task, taskSchema } from "./types";
+import { Task, taskSchema } from "./models";
 import { fetcher } from "../../../lib/fetcher";
 import { todo1TaskRepository } from "./db/repository";
 

@@ -27,14 +27,8 @@ jobs:
       - name: "Install Playwright"
         run: pnpm exec playwright install --with-deps chromium
 
-      - name: "Run vitest tests"
-        run: pnpm run test
-
-      - name: "Lint"
-        run: pnpm run lint
-
-      - name: "Build"
-        run: pnpm run build
+      - name: "Run frontend CI"
+        run: pnpm run ci:frontend
 
       - name: "Upload hosting artifact"
         uses: actions/upload-artifact@v6

@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import { TaskEditForm } from "./task-form/task-edit-form";
 import { useUpdateTask } from "../_queries/use-update-task";
 import { Button } from "./button";
-import { Task } from "../_backend/task-store";
+import { Task } from "../_backend/models";
 import { CreateTaskInput } from "../_backend/api";
 
 export const taskDetailViewClass = {

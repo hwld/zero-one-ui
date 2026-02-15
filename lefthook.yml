@@ -1,0 +1,6 @@
+pre-commit:
+  jobs:
+    - name: format
+      glob: "*.{js,ts,jsx,tsx,json,css,md,yml,yaml}"
+      run: pnpm exec prettier --write {staged_files}
+      stage_fixed: true

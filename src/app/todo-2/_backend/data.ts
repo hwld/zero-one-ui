@@ -1,4 +1,4 @@
-import { Task } from "./task-store";
+import { Task } from "./models";
 
 export const initialTasks: Task[] = [
   {

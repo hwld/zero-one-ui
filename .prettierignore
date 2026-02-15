@@ -1,0 +1,5 @@
+pnpm-lock.yaml
+.next
+out
+coverage
+public/mockServiceWorker.js

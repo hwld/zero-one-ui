@@ -12,7 +12,7 @@ import {
   within,
 } from "storybook/test";
 import { useState } from "react";
-import { getTaskStatusLabel } from "../../_backend/task-store";
+import { getTaskStatusLabel } from "../../_backend/models";
 import { HttpResponse, http } from "msw";
 import {
   Todo2API,
