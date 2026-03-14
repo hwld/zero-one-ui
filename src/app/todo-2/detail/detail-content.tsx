@@ -1,11 +1,7 @@
 import { ReactNode } from "react";
 import { Card } from "../_components/card";
 import { TaskDetailContentCard } from "../_components/task-detail-content-card";
-import {
-  IconCheckbox,
-  IconClockHour5,
-  IconClockCheck,
-} from "@tabler/icons-react";
+import { IconCheckbox, IconClockHour5, IconClockCheck } from "@tabler/icons-react";
 import { TaskStatusBadge } from "../_components/task-status-badge";
 import { useUpdateTask } from "../_queries/use-update-task";
 import { useTask } from "../_queries/use-task";
@@ -84,17 +80,9 @@ export const TaskDetailContent: React.FC<Props> = ({ taskId }) => {
               />
             }
           />
-          <Row
-            icon={IconClockHour5}
-            title="作成日"
-            value={task.createdAt.toLocaleString()}
-          />
+          <Row icon={IconClockHour5} title="作成日" value={task.createdAt.toLocaleString()} />
           {task.completedAt && (
-            <Row
-              icon={IconClockCheck}
-              title="完了日"
-              value={task.completedAt.toLocaleString()}
-            />
+            <Row icon={IconClockCheck} title="完了日" value={task.completedAt.toLocaleString()} />
           )}
         </div>
       </Card>

@@ -4,16 +4,9 @@ import { TbArrowsDiagonalMinimize } from "@react-icons/all-files/tb/TbArrowsDiag
 import { cn } from "../../../lib/utils";
 
 export const CollapseIcon: IconType = ({ className, ...props }) => {
-  return (
-    <TbArrowsDiagonalMinimize
-      {...props}
-      className={cn("rotate-45", className)}
-    />
-  );
+  return <TbArrowsDiagonalMinimize {...props} className={cn("rotate-45", className)} />;
 };
 
 export const ExpandIcon: IconType = ({ className, ...props }) => {
-  return (
-    <TbArrowsDiagonal2 {...props} className={cn("rotate-45", className)} />
-  );
+  return <TbArrowsDiagonal2 {...props} className={cn("rotate-45", className)} />;
 };

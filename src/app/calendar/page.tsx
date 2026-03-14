@@ -21,18 +21,12 @@ const Page = () => {
   useCalendarCommands();
 
   const { events } = useEvents();
-  const { calendarInfo, goTodayCalendarPage, changeCalendarType } =
-    useAppState();
+  const { calendarInfo, goTodayCalendarPage, changeCalendarType } = useAppState();
 
   const calendar = useMemo(() => {
     switch (calendarInfo.type.kind) {
       case "month": {
-        return (
-          <MonthlyCalendar
-            yearMonth={calendarInfo.selectedDate}
-            events={events}
-          />
-        );
+        return <MonthlyCalendar yearMonth={calendarInfo.selectedDate} events={events} />;
       }
       case "range": {
         return (

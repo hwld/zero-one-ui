@@ -25,10 +25,7 @@ class Todo2TaskRepository {
   public async getAll(): Promise<Task[]> {
     todo2ErrorSimulator.throwIfScopeActive("getAll");
     const db = await this.getDb();
-    const tasks = await db
-      .select()
-      .from(todo2Tasks)
-      .orderBy(todo2Tasks.createdAt);
+    const tasks = await db.select().from(todo2Tasks).orderBy(todo2Tasks.createdAt);
 
     return tasks.map((task) => this.toTask(task));
   }
@@ -36,11 +33,7 @@ class Todo2TaskRepository {
   public async get(id: string): Promise<Task | undefined> {
     todo2ErrorSimulator.throwIfScopeActive("get");
     const db = await this.getDb();
-    const tasks = await db
-      .select()
-      .from(todo2Tasks)
-      .where(eq(todo2Tasks.id, id))
-      .limit(1);
+    const tasks = await db.select().from(todo2Tasks).where(eq(todo2Tasks.id, id)).limit(1);
 
     if (tasks.length === 0) {
       return undefined;
@@ -67,9 +60,7 @@ class Todo2TaskRepository {
     return this.toTask(insertedTasks[0]);
   }
 
-  public async update(
-    input: UpdateTaskInput & { id: string },
-  ): Promise<Task | undefined> {
+  public async update(input: UpdateTaskInput & { id: string }): Promise<Task | undefined> {
     const db = await this.getDb();
     const completedAt = input.status === "done" ? new Date() : null;
 
@@ -109,10 +100,7 @@ class Todo2TaskRepository {
         completedAt: completedAt,
       })
       .where(
-        and(
-          inArray(todo2Tasks.id, input.selectedTaskIds),
-          ne(todo2Tasks.status, input.status),
-        ),
+        and(inArray(todo2Tasks.id, input.selectedTaskIds), ne(todo2Tasks.status, input.status)),
       );
   }
 

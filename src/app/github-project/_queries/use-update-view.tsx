@@ -33,8 +33,7 @@ export const useUpdateView = () => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "ビューを更新することができませんでした。もう一度試してみてください。",
+        description: "ビューを更新することができませんでした。もう一度試してみてください。",
       });
     },
   });

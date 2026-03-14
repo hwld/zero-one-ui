@@ -49,9 +49,7 @@ export const ConfirmDialog: React.FC<Props> = ({
                 exit={{ opacity: 0, x: "-50%", y: "-60%" }}
               >
                 <DialogTitle className="p-4">{title}</DialogTitle>
-                <div className="min-h-[100px] px-4 pb-4 text-sm">
-                  {children}
-                </div>
+                <div className="min-h-[100px] px-4 pb-4 text-sm">{children}</div>
                 <div className="flex items-center justify-end gap-2 border-t border-zinc-700 bg-black/30 p-4">
                   <Button variant="ghost" onClick={() => onOpenChange(false)}>
                     キャンセルする

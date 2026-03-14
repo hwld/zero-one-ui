@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogAction,
-  DialogContent,
-  DialogTitle,
-} from "../../_components/dialog";
+import { Dialog, DialogAction, DialogContent, DialogTitle } from "../../_components/dialog";
 import { CreateEventInput } from "../../_backend/api";
 import { useCreateEvent } from "./use-create-event";
 import { EVENT_FORM_ID, EventForm } from "./event-form";
@@ -14,9 +9,7 @@ import { Button } from "../../_components/button";
 type Props = {
   isOpen: boolean;
   defaultFormValues: CreateEventInput | undefined;
-  onChangeEventPeriodPreview: Dispatch<
-    SetStateAction<DragDateRange | undefined>
-  >;
+  onChangeEventPeriodPreview: Dispatch<SetStateAction<DragDateRange | undefined>>;
   onClose: () => void;
 };
 export const CreateEventFormDialog: React.FC<Props> = ({
@@ -57,11 +50,7 @@ export const CreateEventFormDialog: React.FC<Props> = ({
           <Button variant="ghost" onClick={onClose}>
             キャンセル
           </Button>
-          <Button
-            type="submit"
-            form={EVENT_FORM_ID}
-            isPending={createEventMutation.isPending}
-          >
+          <Button type="submit" form={EVENT_FORM_ID} isPending={createEventMutation.isPending}>
             作成する
           </Button>
         </DialogAction>

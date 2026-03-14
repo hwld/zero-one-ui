@@ -1,10 +1,5 @@
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import {
-  CalendarIcon,
-  HomeIcon,
-  LayoutListIcon,
-  MoreHorizontalIcon,
-} from "lucide-react";
+import { CalendarIcon, HomeIcon, LayoutListIcon, MoreHorizontalIcon } from "lucide-react";
 import { MenuItem } from "./menu-item";
 
 export const Menu: React.FC = () => {

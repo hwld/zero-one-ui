@@ -8,14 +8,7 @@ import {
   DialogTitle,
 } from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "motion/react";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useEffect, useMemo, useState } from "react";
 import { LucideIcon } from "lucide-react";
 import { GlobalCommand } from "./global-command";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
@@ -29,9 +22,7 @@ export type CommandItem = {
 
 type GlobalCommandData = { commands: CommandItem[] };
 
-const GlobalCommandDataContext = createContext<GlobalCommandData | undefined>(
-  undefined,
-);
+const GlobalCommandDataContext = createContext<GlobalCommandData | undefined>(undefined);
 export const useGlobalCommandData = (): GlobalCommandData => {
   const context = useContext(GlobalCommandDataContext);
   if (context === undefined) {
@@ -45,9 +36,7 @@ type GlobalCommandAction = {
   removeCommandItems: (ids: string[]) => void;
 };
 
-const GlobalCommandActionContext = createContext<
-  GlobalCommandAction | undefined
->(undefined);
+const GlobalCommandActionContext = createContext<GlobalCommandAction | undefined>(undefined);
 const useGlobalCommandAction = (): GlobalCommandAction => {
   const context = useContext(GlobalCommandActionContext);
   if (context === undefined) {
@@ -56,9 +45,7 @@ const useGlobalCommandAction = (): GlobalCommandAction => {
   return context;
 };
 
-export const GlobalCommandProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const GlobalCommandProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [data, setData] = useState<GlobalCommandData>({
     commands: [],
   });
@@ -97,9 +84,7 @@ type GlobalCommandConfig = {
   newCommands: Omit<CommandItem, "id">[];
 };
 
-export const useGlobalCommandConfig = ({
-  newCommands,
-}: GlobalCommandConfig) => {
+export const useGlobalCommandConfig = ({ newCommands }: GlobalCommandConfig) => {
   const { addCommandItems, removeCommandItems } = useGlobalCommandAction();
 
   useEffect(() => {
@@ -127,10 +112,7 @@ export const GlobalCommandDialog: React.FC = () => {
     const handleKeydown = (event: KeyboardEvent) => {
       if (
         event.key === "/" &&
-        !(
-          event.target instanceof HTMLInputElement ||
-          event.target instanceof HTMLTextAreaElement
-        )
+        !(event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement)
       ) {
         setIsOpen(true);
         event.preventDefault();

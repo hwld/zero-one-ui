@@ -16,19 +16,10 @@ import { Event } from "../../_backend/event-store";
 export const DATE_EVENT_MIN_HEIGHT = 17;
 export const DATE_EVENT_MIN_MINUTES = 15;
 
-export const getEventsInCol = ({
-  date,
-  events,
-}: {
-  date: Date;
-  events: Event[];
-}): EventInCol[] => {
+export const getEventsInCol = ({ date, events }: { date: Date; events: Event[] }): EventInCol[] => {
   const sortedEvents = events
     .filter((event) =>
-      areIntervalsOverlapping(
-        { start: startOfDay(date), end: endOfDay(date) },
-        event,
-      ),
+      areIntervalsOverlapping({ start: startOfDay(date), end: endOfDay(date) }, event),
     )
     .sort((event1, event2) => {
       if (event1.start.getTime() > event2.start.getTime()) {
@@ -63,9 +54,7 @@ export const getEventsInCol = ({
       }
     }
 
-    overlappingEvents.forEach((e) =>
-      e.totalOverlappingsList.push(prevOverlappings),
-    );
+    overlappingEvents.forEach((e) => e.totalOverlappingsList.push(prevOverlappings));
 
     eventsInCol.push({
       ...event,
@@ -94,8 +83,7 @@ export const calcEventInColCardStyle = ({
       ? 0
       : (93 / (event.totalOverlappings + 1)) * event.prevOverlappings;
 
-  const lastEventWidth =
-    event.totalOverlappings === 0 ? 93 : 93 / (event.totalOverlappings + 1);
+  const lastEventWidth = event.totalOverlappings === 0 ? 93 : 93 / (event.totalOverlappings + 1);
 
   const width =
     event.totalOverlappings === 0
@@ -144,18 +132,14 @@ export const getDateFromY = (
 /**
  *  指定した期間が、指定された日付のカラムに表示されるときのtopを取得する
  */
-export const getTopFromDate = (
-  interval: { start: Date; end: Date },
-  day: Date,
-): number => {
+export const getTopFromDate = (interval: { start: Date; end: Date }, day: Date): number => {
   if (startOfDay(day).getTime() > interval.start.getTime()) {
     return 0;
   }
 
   const top =
     Math.floor(
-      (interval.start.getHours() * 60 + interval.start.getMinutes()) /
-        DATE_EVENT_MIN_MINUTES,
+      (interval.start.getHours() * 60 + interval.start.getMinutes()) / DATE_EVENT_MIN_MINUTES,
     ) * DATE_EVENT_MIN_HEIGHT;
 
   return top;
@@ -164,10 +148,7 @@ export const getTopFromDate = (
 /**
  * 指定した期間が、指定された日付のカラムに表示されるheightを取得する
  */
-export const getHeightFromInterval = (
-  interval: Interval,
-  day: Date,
-): number => {
+export const getHeightFromInterval = (interval: Interval, day: Date): number => {
   const startDay = startOfDay(day);
   const endDay = endOfDay(day);
 
@@ -181,8 +162,7 @@ export const getHeightFromInterval = (
   const end = min([endDay, interval.end]);
 
   const height =
-    Math.ceil(differenceInMinutes(end, start) / DATE_EVENT_MIN_MINUTES) *
-    DATE_EVENT_MIN_HEIGHT;
+    Math.ceil(differenceInMinutes(end, start) / DATE_EVENT_MIN_MINUTES) * DATE_EVENT_MIN_HEIGHT;
 
   return height;
 };

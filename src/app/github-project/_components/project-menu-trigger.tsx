@@ -4,11 +4,7 @@ import { Tooltip } from "./tooltip";
 import { DropdownTrigger } from "./dropdown/trigger";
 import { DropdownCard } from "./dropdown/card";
 import { DropdownContent } from "./dropdown/content";
-import {
-  DropdownItem,
-  DropdownItemGroup,
-  DropdownItemList,
-} from "./dropdown/item";
+import { DropdownItem, DropdownItemGroup, DropdownItemList } from "./dropdown/item";
 import {
   ArchiveIcon,
   BookOpenIcon,
@@ -25,11 +21,7 @@ export const ProjectMenuTrigger: React.FC<Props> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <DropdownProvider
-      isOpen={isOpen}
-      onOpenChange={setIsOpen}
-      placement="bottom-end"
-    >
+    <DropdownProvider isOpen={isOpen} onOpenChange={setIsOpen} placement="bottom-end">
       <Tooltip label="View more options">
         <DropdownTrigger>{children}</DropdownTrigger>
       </Tooltip>

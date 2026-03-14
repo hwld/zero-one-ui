@@ -27,9 +27,7 @@ export const ViewContent: React.FC<Props> = ({ viewId }) => {
           <ViewTaskBoardPanel view={view} />
         </div>
       )}
-      <AnimatePresence>
-        {viewStatus === "pending" && <LoadingContent />}
-      </AnimatePresence>
+      <AnimatePresence>{viewStatus === "pending" && <LoadingContent />}</AnimatePresence>
     </>
   );
 };

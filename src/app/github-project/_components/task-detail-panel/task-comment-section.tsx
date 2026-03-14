@@ -19,11 +19,7 @@ export const TaskCommentSection: React.FC<Props> = ({ task }) => {
   return (
     <div className="flex w-full flex-col gap-2">
       {isEditable ? (
-        <TaskCommentForm
-          task={task}
-          onCancel={disableEditing}
-          onAfterSubmit={disableEditing}
-        />
+        <TaskCommentForm task={task} onCancel={disableEditing} onAfterSubmit={disableEditing} />
       ) : (
         <>
           <div className="flex w-full justify-end">

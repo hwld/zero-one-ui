@@ -23,11 +23,7 @@ type Props = {
   onOpenChange: (open: boolean) => void;
 };
 
-export const ProjectUpdateDialog: React.FC<Props> = ({
-  project,
-  isOpen,
-  onOpenChange,
-}) => {
+export const ProjectUpdateDialog: React.FC<Props> = ({ project, isOpen, onOpenChange }) => {
   const formId = useId();
   const updateProject = useUpdateProject();
 
@@ -64,11 +60,7 @@ export const ProjectUpdateDialog: React.FC<Props> = ({
           <DialogClose>
             <Button color="secondary">キャンセル</Button>
           </DialogClose>
-          <Button
-            type="submit"
-            form={formId}
-            disabled={updateProject.isPending}
-          >
+          <Button type="submit" form={formId} disabled={updateProject.isPending}>
             保存
           </Button>
         </DialogActions>

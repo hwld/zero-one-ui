@@ -7,10 +7,7 @@ import { endOfDay, isWithinInterval, startOfDay } from "date-fns";
 export const LONG_TERM_EVENT_DISPLAY_LIMIT = 2;
 export const CELL_Y_MARGIN = 4;
 
-const calcCellHeight = (
-  events: number,
-  { expanded }: { expanded: boolean },
-): number => {
+const calcCellHeight = (events: number, { expanded }: { expanded: boolean }): number => {
   // "制限を超えている数"を表示する高さを確保する
   if (events > LONG_TERM_EVENT_DISPLAY_LIMIT && !expanded) {
     return (

@@ -2,13 +2,7 @@
 import { useClickOutside } from "@mantine/hooks";
 import clsx from "clsx";
 import { motion } from "motion/react";
-import {
-  BookIcon,
-  HomeIcon,
-  LucideIcon,
-  MapIcon,
-  PlusIcon,
-} from "lucide-react";
+import { BookIcon, HomeIcon, LucideIcon, MapIcon, PlusIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { ReactNode } from "react";
@@ -38,17 +32,10 @@ const Page: React.FC = () => {
 
   return (
     <>
-      <div
-        className={clsx("grid h-full min-h-screen place-items-center", bgClass)}
-      >
+      <div className={clsx("grid h-full min-h-screen place-items-center", bgClass)}>
         <div className="relative flex min-h-screen w-full max-w-(--breakpoint-lg) flex-wrap justify-center gap-4 px-2 pt-10">
           {[...new Array(30)].map((_, i) => {
-            return (
-              <div
-                key={i}
-                className="h-[150px] w-[300px] rounded-lg bg-black/5"
-              />
-            );
+            return <div key={i} className="h-[150px] w-[300px] rounded-lg bg-black/5" />;
           })}
         </div>
       </div>
@@ -68,10 +55,7 @@ const Page: React.FC = () => {
                   icon={
                     <span className="relative">
                       <ItemIcon icon={BookIcon} className="bg-orange-500" />
-                      <motion.span
-                        layoutId="button"
-                        className="absolute top-0 left-0 opacity-0"
-                      />
+                      <motion.span layoutId="button" className="absolute top-0 left-0 opacity-0" />
                     </span>
                   }
                   title="Book"
@@ -140,17 +124,9 @@ const Item: React.FC<{
   );
 };
 
-const ItemIcon: React.FC<{ icon: LucideIcon; className: string }> = ({
-  icon: Icon,
-  className,
-}) => {
+const ItemIcon: React.FC<{ icon: LucideIcon; className: string }> = ({ icon: Icon, className }) => {
   return (
-    <div
-      className={clsx(
-        "grid size-[30px] shrink-0 place-items-center rounded-full",
-        className,
-      )}
-    >
+    <div className={clsx("grid size-[30px] shrink-0 place-items-center rounded-full", className)}>
       <Icon size={18} />
     </div>
   );

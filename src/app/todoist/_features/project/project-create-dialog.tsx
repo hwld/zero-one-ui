@@ -14,18 +14,12 @@ import { Button } from "../../_components/button";
 import { ProjectForm } from "./project-form";
 import { useCreateProject } from "./use-create-project";
 import { useId } from "react";
-import {
-  CreateProjectInput,
-  ProjectFormData,
-} from "../../_backend/taskbox/project/schema";
+import { CreateProjectInput, ProjectFormData } from "../../_backend/taskbox/project/schema";
 
 type Props = {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
-} & (
-  | { createType: "default" }
-  | { createType: "before" | "after"; referenceProjectId: string }
-);
+} & ({ createType: "default" } | { createType: "before" | "after"; referenceProjectId: string });
 
 export const ProjectCreateDialog: React.FC<Props> = (props) => {
   const { isOpen, onOpenChange } = props;
@@ -69,11 +63,7 @@ export const ProjectCreateDialog: React.FC<Props> = (props) => {
           <DialogClose>
             <Button color="secondary">キャンセル</Button>
           </DialogClose>
-          <Button
-            type="submit"
-            form={formId}
-            disabled={createProject.isPending}
-          >
+          <Button type="submit" form={formId} disabled={createProject.isPending}>
             追加
           </Button>
         </DialogActions>

@@ -78,8 +78,7 @@ class ProjectRepository {
   };
 
   public add = (input: ValidatedCreateInput) => {
-    const newOrder =
-      input.order ?? this.getMaxOrderByParentId(input.parentId) + 1;
+    const newOrder = input.order ?? this.getMaxOrderByParentId(input.parentId) + 1;
 
     const newRecord: ProjectRecord = {
       taskboxId: crypto.randomUUID(),
@@ -108,11 +107,7 @@ class ProjectRepository {
     });
   };
 
-  public updatePosition = ({
-    projectId,
-    order,
-    parentProjectId,
-  }: ValidatedUpdatePositionInput) => {
+  public updatePosition = ({ projectId, order, parentProjectId }: ValidatedUpdatePositionInput) => {
     this.projectRecords = this.projectRecords.map((record): ProjectRecord => {
       if (projectId === record.taskboxId) {
         return { ...record, order, parentId: parentProjectId };
@@ -122,9 +117,7 @@ class ProjectRepository {
   };
 
   public remove = ({ projectId }: ValidatedDeleteInput) => {
-    const targetProject = this.projectRecords.find(
-      (p) => p.taskboxId === projectId,
-    );
+    const targetProject = this.projectRecords.find((p) => p.taskboxId === projectId);
     if (!targetProject) {
       throw new Error("プロジェクトが存在しない");
     }
@@ -147,10 +140,7 @@ class ProjectRepository {
     this.projectRecords = this.projectRecords
       .filter((p) => !targetIds.includes(p.taskboxId))
       .map((project) => {
-        if (
-          project.parentId === targetProject.parentId &&
-          project.order < targetProject.order
-        ) {
+        if (project.parentId === targetProject.parentId && project.order < targetProject.order) {
           return { ...project, order: project.order - 1 };
         }
 
@@ -195,9 +185,7 @@ const recordsToProjects = (projectRecords: ProjectRecord[]): Project[] => {
     parent.subProjects.sort((a, b) => a.order - b.order);
   });
 
-  const result = projects
-    .filter((project) => !project.parentId)
-    .sort((a, b) => a.order - b.order);
+  const result = projects.filter((project) => !project.parentId).sort((a, b) => a.order - b.order);
 
   return result;
 };

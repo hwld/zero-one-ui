@@ -39,9 +39,7 @@ export const useMoveEventInCol = (): MoveEventContext => {
   return ctx;
 };
 
-export const MoveEventInColProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const MoveEventInColProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { scrollableElement } = useScrollableElement();
   const updateEventMutation = useUpdateEvent();
 
@@ -95,10 +93,7 @@ export const MoveEventInColProvider: React.FC<PropsWithChildren> = ({
         };
       }
 
-      const diffMinutes = differenceInMinutes(
-        moveDest,
-        moveEventPreview.prevMouseOverDate,
-      );
+      const diffMinutes = differenceInMinutes(moveDest, moveEventPreview.prevMouseOverDate);
 
       setState((prev) => ({
         ...prev,
@@ -166,14 +161,7 @@ export const MoveEventInColProvider: React.FC<PropsWithChildren> = ({
       moveEventPreview,
       moveEventActions: { startMove, updateMoveDest, scroll, move },
     };
-  }, [
-    isEventMoving,
-    move,
-    moveEventPreview,
-    scroll,
-    startMove,
-    updateMoveDest,
-  ]);
+  }, [isEventMoving, move, moveEventPreview, scroll, startMove, updateMoveDest]);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

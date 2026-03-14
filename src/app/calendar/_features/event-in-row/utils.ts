@@ -135,12 +135,8 @@ export const convertEventToEventInRow = (
     ...event,
     top,
     eventsRowCols: rowDates.length,
-    displayStartCol: rowDates.findIndex((d) =>
-      isSameDay(d, eventDatesInRow.at(0)!),
-    ),
-    displayEndCol: rowDates.findIndex((d) =>
-      isSameDay(d, eventDatesInRow.at(-1)!),
-    ),
+    displayStartCol: rowDates.findIndex((d) => isSameDay(d, eventDatesInRow.at(0)!)),
+    displayEndCol: rowDates.findIndex((d) => isSameDay(d, eventDatesInRow.at(-1)!)),
   };
 
   return eventsInRow;
@@ -190,9 +186,7 @@ export const getExceededEventCountByIndex = ({
     }, new Map<Index, ExceededEventCount>());
 };
 
-export const getEventFromMoveEventPreview = (
-  draggingEvent: MoveEventInRowPreview,
-): Event => {
+export const getEventFromMoveEventPreview = (draggingEvent: MoveEventInRowPreview): Event => {
   const { dragStartDate, dragEndDate, ...event } = draggingEvent;
   const diffDay = differenceInDays(dragEndDate, dragStartDate);
 

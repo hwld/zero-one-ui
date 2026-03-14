@@ -31,12 +31,7 @@ export const ViewCreateDialogTrigger: React.FC<Props> = ({ children }) => {
           <Button size="lg" onClick={() => setIsOpen(false)}>
             Cancel
           </Button>
-          <Button
-            size="lg"
-            color="primary"
-            form={formId}
-            disabled={createViewMutation.isPending}
-          >
+          <Button size="lg" color="primary" form={formId} disabled={createViewMutation.isPending}>
             Create
           </Button>
         </>

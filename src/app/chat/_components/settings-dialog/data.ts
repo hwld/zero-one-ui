@@ -27,14 +27,12 @@ export const switchSettings: SwitchSetting[] = [
 export const radioSettings: RadioSetting[] = [
   {
     name: "不適切な画像のフィルター",
-    description:
-      "不適切な画像を含む可能性のあるダイレクトメッセージを自動的にブロックします。",
+    description: "不適切な画像を含む可能性のあるダイレクトメッセージを自動的にブロックします。",
     items: [
       {
         value: "1",
         label: "全てのダイレクトメッセージに対してフィルターする",
-        description:
-          "全てのダイレクトメッセージに対して不適切な画像がフィルターされます",
+        description: "全てのダイレクトメッセージに対して不適切な画像がフィルターされます",
       },
       {
         value: "2",
@@ -45,8 +43,7 @@ export const radioSettings: RadioSetting[] = [
       {
         value: "3",
         label: "ダイレクトメッセージに対してフィルターしない",
-        description:
-          "ダイレクトメッセージに対して不適切な画像はフィルターされません。",
+        description: "ダイレクトメッセージに対して不適切な画像はフィルターされません。",
       },
     ],
   },
@@ -58,8 +55,7 @@ export const radioSettings: RadioSetting[] = [
       {
         value: "1",
         label: "全てのダイレクトメッセージに対してフィルターする",
-        description:
-          "全てのダイレクトメッセージに対して不適切な画像がフィルターされます",
+        description: "全てのダイレクトメッセージに対して不適切な画像がフィルターされます",
       },
       {
         value: "2",
@@ -70,8 +66,7 @@ export const radioSettings: RadioSetting[] = [
       {
         value: "3",
         label: "ダイレクトメッセージに対してフィルターしない",
-        description:
-          "ダイレクトメッセージに対して不適切な画像はフィルターされません。",
+        description: "ダイレクトメッセージに対して不適切な画像はフィルターされません。",
       },
     ],
   },

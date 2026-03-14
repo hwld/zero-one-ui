@@ -1,15 +1,8 @@
 "use client";
-import {
-  LineChartIcon,
-  MoreHorizontalIcon,
-  PanelRightOpenIcon,
-} from "lucide-react";
+import { LineChartIcon, MoreHorizontalIcon, PanelRightOpenIcon } from "lucide-react";
 import React, { Suspense } from "react";
 import { Tooltip } from "./_components/tooltip";
-import {
-  AppHeader,
-  appHeaderHeightPx,
-} from "./_components/app-header/app-header";
+import { AppHeader, appHeaderHeightPx } from "./_components/app-header/app-header";
 import { ButtonGroupItem } from "./_components/button-group-item";
 import { ProjectMenuTrigger } from "./_components/project-menu-trigger";
 import { Toaster } from "./_components/toast/toaster";
@@ -64,10 +57,7 @@ const GitHubProjectPage: React.FC = () => {
                     <ButtonGroupItem icon={PanelRightOpenIcon} />
                   </Tooltip>
                   <ProjectMenuTrigger>
-                    <ButtonGroupItem
-                      position="right"
-                      icon={MoreHorizontalIcon}
-                    />
+                    <ButtonGroupItem position="right" icon={MoreHorizontalIcon} />
                   </ProjectMenuTrigger>
                 </div>
               </div>
@@ -77,10 +67,7 @@ const GitHubProjectPage: React.FC = () => {
             </Suspense>
           </div>
           <Suspense>
-            <TaskDetailPanel
-              isPinned={isDetailPinned}
-              onTogglePin={handleTogglePin}
-            />
+            <TaskDetailPanel isPinned={isDetailPinned} onTogglePin={handleTogglePin} />
           </Suspense>
         </div>
       </div>

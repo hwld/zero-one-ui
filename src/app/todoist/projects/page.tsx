@@ -18,9 +18,7 @@ const ProjectPage: React.FC = () => {
   const projectId = z.string().parse(useSearchParams().get("id"));
   const { data: project, status } = useProject(projectId);
 
-  const taskbox = project
-    ? { tasks: project.tasks, taskboxId: project.taskboxId }
-    : undefined;
+  const taskbox = project ? { tasks: project.tasks, taskboxId: project.taskboxId } : undefined;
 
   return (
     <AppLayout

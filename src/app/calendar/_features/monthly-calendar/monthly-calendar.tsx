@@ -42,8 +42,7 @@ const MonthlyCalendarImpl: React.FC<Props> = ({ yearMonth, events }) => {
       const eventSpaceHeight =
         eventSpace.getBoundingClientRect().height - MONTHLY_DATE_HEADER_HEIGHT;
       // read moreを表示するため、-1する
-      const eventLimit =
-        Math.floor(eventSpaceHeight / MONTHLY_EVENT_ROW_SIZE) - 1;
+      const eventLimit = Math.floor(eventSpaceHeight / MONTHLY_EVENT_ROW_SIZE) - 1;
       setEventLimit(eventLimit);
     };
 
@@ -55,8 +54,7 @@ const MonthlyCalendarImpl: React.FC<Props> = ({ yearMonth, events }) => {
     };
   }, [yearMonth]);
 
-  const { prepareCreateEventState, prepareCreateEventActions } =
-    usePrepareCreateEventInRow();
+  const { prepareCreateEventState, prepareCreateEventActions } = usePrepareCreateEventInRow();
 
   return (
     <>

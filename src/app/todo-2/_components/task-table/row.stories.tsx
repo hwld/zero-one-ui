@@ -3,22 +3,11 @@ import { defaultStoryMeta } from "../../story-meta";
 import { initialTasks } from "../../_backend/data";
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 import { TaskTableSelectionContext } from "./selection-provider";
-import {
-  clearAllMocks,
-  expect,
-  fn,
-  userEvent,
-  waitFor,
-  within,
-} from "storybook/test";
+import { clearAllMocks, expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { useState } from "react";
 import { getTaskStatusLabel } from "../../_backend/models";
 import { HttpResponse, http } from "msw";
-import {
-  Todo2API,
-  UpdateTaskInput,
-  updateTaskInputSchema,
-} from "../../_backend/api";
+import { Todo2API, UpdateTaskInput, updateTaskInputSchema } from "../../_backend/api";
 import { z } from "zod";
 import { getRouter } from "@storybook/nextjs-vite/router.mock";
 import { Routes } from "../../_lib/routes";
@@ -67,9 +56,7 @@ const meta = preview.meta({
         selectTaskIds: () => {},
         toggleTaskSelection: (id) => {
           mockToggleSelection(id);
-          setSelectedIds((ids) =>
-            ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id],
-          );
+          setSelectedIds((ids) => (ids.includes(id) ? ids.filter((i) => i !== id) : [...ids, id]));
         },
         unselectAllTasks: () => {},
         unselectTaskIds: () => {},
@@ -95,72 +82,57 @@ export const Default = meta.story({
   args: { task: dummyTask },
 });
 
-Default.test(
-  "選択状態を切り替えることができる",
-  async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const toggleSelection = await canvas.findByRole("checkbox", {
-      name: "選択状態を切り替える",
-    });
+Default.test("選択状態を切り替えることができる", async ({ canvasElement, args }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const toggleSelection = await canvas.findByRole("checkbox", {
+    name: "選択状態を切り替える",
+  });
 
-    await userEvent.click(toggleSelection);
-    await userEvent.click(toggleSelection);
+  await userEvent.click(toggleSelection);
+  await userEvent.click(toggleSelection);
 
-    await waitFor(async () => {
-      await expect(mockToggleSelection).toHaveBeenCalledTimes(2);
-      await expect(mockToggleSelection).toHaveBeenNthCalledWith(
-        1,
-        args.task.id,
-      );
-      await expect(mockToggleSelection).toHaveBeenNthCalledWith(
-        2,
-        args.task.id,
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(mockToggleSelection).toHaveBeenCalledTimes(2);
+    await expect(mockToggleSelection).toHaveBeenNthCalledWith(1, args.task.id);
+    await expect(mockToggleSelection).toHaveBeenNthCalledWith(2, args.task.id);
+  });
+});
 
-Default.test(
-  "完了状態を切り替えるAPIが呼ばれる",
-  async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const toggleStatus = await canvas.findByRole("button", {
-      name: getTaskStatusLabel(args.task.status),
-    });
+Default.test("完了状態を切り替えるAPIが呼ばれる", async ({ canvasElement, args }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const toggleStatus = await canvas.findByRole("button", {
+    name: getTaskStatusLabel(args.task.status),
+  });
 
-    await userEvent.click(toggleStatus);
+  await userEvent.click(toggleStatus);
 
-    await waitFor(async () => {
-      await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
-      await expect(mockUpdateTask).toHaveBeenCalledWith(
-        expect.objectContaining({
-          id: args.task.id,
-          ...updateTaskInputSchema.parse(args.task),
-          status: args.task.status === "done" ? "todo" : "done",
-        } satisfies UpdateTaskInput & { id: string }),
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
+    await expect(mockUpdateTask).toHaveBeenCalledWith(
+      expect.objectContaining({
+        id: args.task.id,
+        ...updateTaskInputSchema.parse(args.task),
+        status: args.task.status === "done" ? "todo" : "done",
+      } satisfies UpdateTaskInput & { id: string }),
+    );
+  });
+});
 
-Default.test(
-  "タスクの詳細ページに遷移できる",
-  async ({ canvasElement, args }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const link = await canvas.findByRole("link", { name: args.task.title });
+Default.test("タスクの詳細ページに遷移できる", async ({ canvasElement, args }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const link = await canvas.findByRole("link", { name: args.task.title });
 
-    await userEvent.click(link);
+  await userEvent.click(link);
 
-    await waitFor(async () => {
-      await expect(getRouter().push).toHaveBeenCalledTimes(1);
-      await expect(getRouter().push).toHaveBeenCalledWith(
-        Routes.detail(args.task.id),
-        expect.anything(),
-        expect.anything(),
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(getRouter().push).toHaveBeenCalledTimes(1);
+    await expect(getRouter().push).toHaveBeenCalledWith(
+      Routes.detail(args.task.id),
+      expect.anything(),
+      expect.anything(),
+    );
+  });
+});
 
 Default.test("タスクの削除APIが呼ばれる", async ({ canvasElement, args }) => {
   const canvas = within(canvasElement.parentElement!);

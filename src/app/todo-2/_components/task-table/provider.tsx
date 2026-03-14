@@ -26,9 +26,7 @@ import {
 } from "./search-provider";
 import { errorIfProduction } from "../../../_test/utils";
 
-export const TaskTableProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const TaskTableProvider: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <TaskTablePagingProvider>
       <TaskTableSearchProvider>

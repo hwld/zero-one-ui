@@ -74,11 +74,7 @@ const ViewTabContent: React.FC<ViewTabProps> = ({
         </div>
 
         {/* テキストがoverflowしているかを判定するために使用する */}
-        <div
-          ref={contentRef}
-          className="invisible fixed top-full text-sm"
-          aria-hidden
-        >
+        <div ref={contentRef} className="invisible fixed top-full text-sm" aria-hidden>
           {children}
         </div>
       </div>
@@ -130,9 +126,7 @@ export const ViewTabLink: React.FC<ViewTabLinkProps> = ({
       <ViewTabContent
         icon={icon}
         interactive={!active}
-        rightIcon={
-          active && <ViewOptionMenuTrigger viewSummary={viewSummary} />
-        }
+        rightIcon={active && <ViewOptionMenuTrigger viewSummary={viewSummary} />}
       >
         {children}
         {active && (

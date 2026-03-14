@@ -44,11 +44,7 @@ export const UserMenuTrigger: React.FC = () => {
       <MenuButtonItem icon={PiGearLight} label="設定" right="O + S" />
       <MenuButtonItem icon={PiPlusLight} label="チームを追加" />
       <MenuSeparator />
-      <MenuButtonItem
-        icon={PiPulseLight}
-        label="アクティビティログ"
-        right="G + A"
-      />
+      <MenuButtonItem icon={PiPulseLight} label="アクティビティログ" right="G + A" />
       <MenuButtonItem
         icon={PiPrinterLight}
         label="印刷"
@@ -59,22 +55,13 @@ export const UserMenuTrigger: React.FC = () => {
         }
       />
 
-      <Menu
-        trigger={<SubMenuTrigger icon={PiBookOpenLight} label="リソース" />}
-      >
+      <Menu trigger={<SubMenuTrigger icon={PiBookOpenLight} label="リソース" />}>
         <MenuButtonItem icon={PiQuestionLight} label="ヘルプセンター" />
         <MenuButtonItem icon={PiLightbulbLight} label="インスピレーション" />
         <MenuButtonItem icon={PiPuzzlePieceLight} label="連携機能" />
-        <MenuButtonItem
-          icon={PiKeyboardLight}
-          label="キーボードショートカット"
-          right="?"
-        />
+        <MenuButtonItem icon={PiKeyboardLight} label="キーボードショートカット" right="?" />
         <MenuButtonItem icon={PiGraduationCapLight} label="始め方ガイド" />
-        <MenuButtonItem
-          icon={PiDeviceMobileLight}
-          label="アプリをダウンロード"
-        />
+        <MenuButtonItem icon={PiDeviceMobileLight} label="アプリをダウンロード" />
       </Menu>
 
       <MenuSeparator />
@@ -82,11 +69,7 @@ export const UserMenuTrigger: React.FC = () => {
       <MenuSeparator />
       <MenuButtonItem icon={StarIcon} label="プロにアップグレード" />
       <MenuSeparator />
-      <MenuButtonItem
-        icon={PiArrowsClockwiseLight}
-        label="同期"
-        right="1時間前"
-      />
+      <MenuButtonItem icon={PiArrowsClockwiseLight} label="同期" right="1時間前" />
       <MenuSeparator />
       <MenuButtonItem icon={PiSignOutLight} label="ログアウト" />
       <MenuSeparator />
@@ -100,7 +83,5 @@ export const UserMenuTrigger: React.FC = () => {
 };
 
 const StarIcon: IconType = ({ className, ...props }) => {
-  return (
-    <PiStarDuotone className={cn(className, "fill-yellow-500")} {...props} />
-  );
+  return <PiStarDuotone className={cn(className, "fill-yellow-500")} {...props} />;
 };

@@ -8,10 +8,7 @@ import { useForm } from "react-hook-form";
 import { useAddTask } from "../_queries/use-add-task";
 import { CreateTaskInput, createTaskInputSchema } from "../_backend/api";
 
-export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm(
-  {},
-  _inputRef,
-) {
+export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm({}, _inputRef) {
   const {
     register,
     formState: { errors },
@@ -61,25 +58,15 @@ export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm(
             <motion.div
               className="absolute grid size-full place-items-center text-neutral-100"
               initial={{ opacity: 0, y: -10 }}
-              animate={
-                addTaskMutation.isPending
-                  ? { opacity: 1, y: 0 }
-                  : { opacity: 0 }
-              }
+              animate={addTaskMutation.isPending ? { opacity: 1, y: 0 } : { opacity: 0 }}
               exit={{ opacity: 0, y: -10 }}
             >
               <Loader2Icon className="size-5 animate-spin" />
             </motion.div>
             <motion.div
               className="absolute inset-0 flex size-full items-center justify-center text-neutral-50"
-              initial={
-                addTaskMutation.isPending ? { opacity: 0, y: 10 } : false
-              }
-              animate={
-                addTaskMutation.isPending
-                  ? { opacity: 0 }
-                  : { opacity: 1, y: 0 }
-              }
+              initial={addTaskMutation.isPending ? { opacity: 0, y: 10 } : false}
+              animate={addTaskMutation.isPending ? { opacity: 0 } : { opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
             >
               <CommandIcon size={15} />

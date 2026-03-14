@@ -4,9 +4,7 @@ import { useEffect } from "react";
 import { pgliteManager } from "../../lib/pglite-manager";
 import { ensureSchema } from "../../lib/db/migrate";
 
-export const PGliteProvider: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => {
+export const PGliteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {

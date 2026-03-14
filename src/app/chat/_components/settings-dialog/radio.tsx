@@ -15,11 +15,7 @@ export const SettingRadioGroup: React.FC<Props> = ({ items }) => {
   const [selectedValue, setSelectedValue] = useState(items[0]?.value ?? "");
 
   return (
-    <RadioGroup.Root
-      className="grid gap-2"
-      value={selectedValue}
-      onValueChange={setSelectedValue}
-    >
+    <RadioGroup.Root className="grid gap-2" value={selectedValue} onValueChange={setSelectedValue}>
       {items.map((item) => {
         return (
           <SettingRadio
@@ -72,9 +68,7 @@ const SettingRadio: React.FC<RadioProps> = ({ isSelected, item, onSelect }) => {
       </RadioGroup.Item>
       <div className="gap-1 pl-4">
         <label>{item.label}</label>
-        {item.description && (
-          <div className="text-sm text-neutral-300">{item.description}</div>
-        )}
+        {item.description && <div className="text-sm text-neutral-300">{item.description}</div>}
       </div>
     </div>
   );

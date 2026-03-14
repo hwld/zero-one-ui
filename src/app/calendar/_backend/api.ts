@@ -26,9 +26,7 @@ const eventInputBaseSchema = z.object({
 
 type EventInputBase = z.infer<typeof eventInputBaseSchema>;
 
-const withEventPeriodRefinements = <T extends z.ZodType<EventInputBase>>(
-  schema: T,
-) => {
+const withEventPeriodRefinements = <T extends z.ZodType<EventInputBase>>(schema: T) => {
   return schema
     .refine((input) => input.start.getTime() <= input.end.getTime(), {
       path: ["start"] satisfies EventInputSchemaKeys[],
@@ -40,8 +38,7 @@ const withEventPeriodRefinements = <T extends z.ZodType<EventInputBase>>(
     });
 };
 
-export const eventInputSchema =
-  withEventPeriodRefinements(eventInputBaseSchema);
+export const eventInputSchema = withEventPeriodRefinements(eventInputBaseSchema);
 export type EventInput = z.infer<typeof eventInputSchema>;
 
 // API境界ではstring -> Dateの変換が必要だが、フォーム(フロントエンド内)ではDate型に限定する

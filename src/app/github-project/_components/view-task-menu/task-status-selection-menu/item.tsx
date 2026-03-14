@@ -6,10 +6,7 @@ import { TaskStatus } from "../../../_backend/task-status/store";
 type Props = { status: TaskStatus; active?: boolean };
 
 export const TaskStatusSelectionMenuItem = forwardRef<HTMLButtonElement, Props>(
-  function TaskStatusSelectionMenuItem(
-    { status, active = false, ...props },
-    ref,
-  ) {
+  function TaskStatusSelectionMenuItem({ status, active = false, ...props }, ref) {
     return (
       <button
         {...props}

@@ -26,14 +26,8 @@ export const SidebarNavList: React.FC<Props> = ({ currentRoute }) => {
             <TaskCreateButton />
           </Tooltip>
         </li>
-        <Tooltip
-          label="クイック検索を開く"
-          keys={["Cmd", "K"]}
-          placement="right"
-        >
-          <SidebarListButton icon={PiMagnifyingGlassLight}>
-            検索
-          </SidebarListButton>
+        <Tooltip label="クイック検索を開く" keys={["Cmd", "K"]} placement="right">
+          <SidebarListButton icon={PiMagnifyingGlassLight}>検索</SidebarListButton>
         </Tooltip>
 
         <Tooltip label="インボックスに移動" keys={["G", "I"]} placement="right">
@@ -70,11 +64,7 @@ export const SidebarNavList: React.FC<Props> = ({ currentRoute }) => {
           </SidebarListLink>
         </Tooltip>
 
-        <Tooltip
-          label="フィルター&ラベルに移動"
-          keys={["G", "V"]}
-          placement="right"
-        >
+        <Tooltip label="フィルター&ラベルに移動" keys={["G", "V"]} placement="right">
           <SidebarListLink
             href={Routes.filtersLabels()}
             currentRoute={currentRoute}

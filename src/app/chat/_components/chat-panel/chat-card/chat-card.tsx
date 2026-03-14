@@ -1,10 +1,4 @@
-import {
-  MoreHorizontalIcon,
-  ReplyIcon,
-  SmileIcon,
-  TrashIcon,
-  UserIcon,
-} from "lucide-react";
+import { MoreHorizontalIcon, ReplyIcon, SmileIcon, TrashIcon, UserIcon } from "lucide-react";
 import { ReactNode } from "react";
 import { ChatCardMenuItem } from "./menu-item";
 

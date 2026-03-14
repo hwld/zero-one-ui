@@ -38,17 +38,14 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
     events: longTermEvents,
   });
 
-  const { prepareCreateEventState, prepareCreateEventActions } =
-    usePrepareCreateEventInRow();
+  const { prepareCreateEventState, prepareCreateEventActions } = usePrepareCreateEventInRow();
 
   return (
     <>
       <div
         className={clsx("relative grid")}
         style={{
-          gridTemplateColumns: DATE_COLUMN_CALENDAR_GRID_TEMPLATE_COLUMNS(
-            dates.length,
-          ),
+          gridTemplateColumns: DATE_COLUMN_CALENDAR_GRID_TEMPLATE_COLUMNS(dates.length),
         }}
       >
         <div className="flex flex-col select-none">
@@ -74,9 +71,7 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
               <div
                 className={clsx(
                   "flex items-center justify-center gap-1 pb-1 text-xs select-none",
-                  isSameMonth(date, calendarYearMonth)
-                    ? "opacity-100"
-                    : "opacity-50",
+                  isSameMonth(date, calendarYearMonth) ? "opacity-100" : "opacity-50",
                 )}
                 style={{ height: DAY_TITLE_HEIGHT }}
               >
@@ -84,8 +79,7 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
                 <div
                   className={clsx(
                     "grid size-5 place-items-center rounded-sm",
-                    isSameDay(currentDate, date) &&
-                      "bg-blue-500 text-neutral-100",
+                    isSameDay(currentDate, date) && "bg-blue-500 text-neutral-100",
                   )}
                 >
                   {date.getDate()}

@@ -6,10 +6,7 @@ import Link from "next/link";
 import { HomeIcon, LucideIcon } from "lucide-react";
 import { Command } from "cmdk";
 import { usePathname, useRouter } from "next/navigation";
-import {
-  CommandItem as CommandItemType,
-  useGlobalCommandData,
-} from "./global-command-provider";
+import { CommandItem as CommandItemType, useGlobalCommandData } from "./global-command-provider";
 
 type Props = { onClickItem?: () => void };
 export const GlobalCommand: React.FC<Props> = ({ onClickItem }) => {
@@ -42,12 +39,7 @@ export const GlobalCommand: React.FC<Props> = ({ onClickItem }) => {
           </Command.Empty>
           <div className="space-y-2">
             <Group heading="pages">
-              <PageItem
-                icon={HomeIcon}
-                label="ホーム"
-                href="/"
-                onBeforeNavigate={onClickItem}
-              />
+              <PageItem icon={HomeIcon} label="ホーム" href="/" onBeforeNavigate={onClickItem} />
               {pages.map((p) => {
                 return (
                   <PageItem
@@ -64,11 +56,7 @@ export const GlobalCommand: React.FC<Props> = ({ onClickItem }) => {
               <Group heading="commands">
                 {commands.map((command) => {
                   return (
-                    <CommandItem
-                      key={command.id}
-                      command={command}
-                      onAfterAction={onClickItem}
-                    />
+                    <CommandItem key={command.id} command={command} onAfterAction={onClickItem} />
                   );
                 })}
               </Group>
@@ -80,10 +68,7 @@ export const GlobalCommand: React.FC<Props> = ({ onClickItem }) => {
   );
 };
 
-const Group: React.FC<{ heading: string; children: ReactNode }> = ({
-  heading,
-  children,
-}) => {
+const Group: React.FC<{ heading: string; children: ReactNode }> = ({ heading, children }) => {
   return (
     <Command.Group
       heading={heading}
@@ -100,12 +85,7 @@ type PageItemProps = {
   label: string;
   onBeforeNavigate?: () => void;
 };
-const PageItem: React.FC<PageItemProps> = ({
-  icon: Icon,
-  href,
-  label,
-  onBeforeNavigate,
-}) => {
+const PageItem: React.FC<PageItemProps> = ({ icon: Icon, href, label, onBeforeNavigate }) => {
   const router = useRouter();
 
   const handleNavigate = () => {
@@ -138,10 +118,7 @@ type CommandItemProps = {
   command: CommandItemType;
   onAfterAction?: () => void;
 };
-const CommandItem: React.FC<CommandItemProps> = ({
-  command,
-  onAfterAction,
-}) => {
+const CommandItem: React.FC<CommandItemProps> = ({ command, onAfterAction }) => {
   const Icon = command.icon;
 
   return (

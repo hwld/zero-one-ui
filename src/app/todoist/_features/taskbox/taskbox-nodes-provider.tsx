@@ -8,9 +8,7 @@ export const TaskboxNodesProvider: React.FC<{
   children: ReactNode;
 }> = ({ taskboxNodes, children }) => {
   return (
-    <TaskboxNodesContext.Provider value={taskboxNodes}>
-      {children}
-    </TaskboxNodesContext.Provider>
+    <TaskboxNodesContext.Provider value={taskboxNodes}>{children}</TaskboxNodesContext.Provider>
   );
 };
 

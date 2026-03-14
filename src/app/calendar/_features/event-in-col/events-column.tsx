@@ -16,17 +16,10 @@ type Props = {
   displayedDay: Date;
 } & PropsWithChildren;
 
-export const EventsColumn: React.FC<Props> = ({
-  children,
-  displayedDay,
-  eventsInCol,
-}) => {
-  const { prepareCreateEventState, prepareCreateEventActions } =
-    usePrepareCreateEventInCol();
-  const { isEventResizing, resizeEventActions, resizeEventPreview } =
-    useResizeEventInCol();
-  const { isEventMoving, moveEventActions, moveEventPreview } =
-    useMoveEventInCol();
+export const EventsColumn: React.FC<Props> = ({ children, displayedDay, eventsInCol }) => {
+  const { prepareCreateEventState, prepareCreateEventActions } = usePrepareCreateEventInCol();
+  const { isEventResizing, resizeEventActions, resizeEventPreview } = useResizeEventInCol();
+  const { isEventMoving, moveEventActions, moveEventPreview } = useMoveEventInCol();
 
   const dragDateRangeForCreate = prepareCreateEventState.dragDateRange;
   const isDraggingForCreate = dragDateRangeForCreate !== undefined;
@@ -99,10 +92,7 @@ export const EventsColumn: React.FC<Props> = ({
     }
   };
 
-  const handleEventDragStart = (
-    event: React.DragEvent,
-    eventInCol: EventInCol,
-  ) => {
+  const handleEventDragStart = (event: React.DragEvent, eventInCol: EventInCol) => {
     event.preventDefault();
 
     const columnBasedY = getColumnBasedY(event.clientY);
@@ -112,10 +102,7 @@ export const EventsColumn: React.FC<Props> = ({
     });
   };
 
-  const handleStartResizeEvent: EventInColCardProps["onStartResize"] = (
-    e,
-    { event, origin },
-  ) => {
+  const handleStartResizeEvent: EventInColCardProps["onStartResize"] = (e, { event, origin }) => {
     const columnBasedY = getColumnBasedY(e.clientY);
     resizeEventActions.startResize({ event, origin, y: columnBasedY });
   };
@@ -130,8 +117,7 @@ export const EventsColumn: React.FC<Props> = ({
   }, []);
 
   const isEventPreviewVisible =
-    dragDateRangeForCreate &&
-    areDragDateRangeOverlapping(displayedDay, dragDateRangeForCreate);
+    dragDateRangeForCreate && areDragDateRangeOverlapping(displayedDay, dragDateRangeForCreate);
 
   return (
     <div
@@ -144,10 +130,7 @@ export const EventsColumn: React.FC<Props> = ({
     >
       {children}
       {isEventPreviewVisible && (
-        <EventInColPreview
-          date={displayedDay}
-          eventCreationDragData={dragDateRangeForCreate}
-        />
+        <EventInColPreview date={displayedDay} eventCreationDragData={dragDateRangeForCreate} />
       )}
       <AnimatePresence>
         {eventsInCol.map((event) => {
@@ -158,10 +141,7 @@ export const EventsColumn: React.FC<Props> = ({
           const isResizing = isEventResizing && isResizePreview;
 
           return (
-            <motion.div
-              key={event.id}
-              exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            >
+            <motion.div key={event.id} exit={{ opacity: 0, transition: { duration: 0.1 } }}>
               <EventInColCard
                 displayedDate={displayedDay}
                 event={event}
@@ -181,12 +161,7 @@ export const EventsColumn: React.FC<Props> = ({
         areIntervalsOverlapping(moveEventPreview, {
           start: startOfDay(displayedDay),
           end: endOfDay(displayedDay),
-        }) && (
-          <DragPreviewEventInColCard
-            date={displayedDay}
-            event={moveEventPreview}
-          />
-        )}
+        }) && <DragPreviewEventInColCard date={displayedDay} event={moveEventPreview} />}
     </div>
   );
 };

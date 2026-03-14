@@ -27,9 +27,7 @@ async function main() {
 
   // 生成された SQL を読み込む
   console.log("\n📖 Reading generated SQL...");
-  const sqlFiles = readdirSync(MIGRATIONS_DIR).filter((f) =>
-    f.endsWith(".sql"),
-  );
+  const sqlFiles = readdirSync(MIGRATIONS_DIR).filter((f) => f.endsWith(".sql"));
   if (sqlFiles.length === 0) {
     console.error("❌ No SQL file generated");
     process.exit(1);
@@ -52,16 +50,11 @@ async function main() {
   }
 
   // SQLに変更がある場合のみバージョンをインクリメント
-  const newVersion =
-    currentSql === newSql ? currentVersion : currentVersion + 1;
+  const newVersion = currentSql === newSql ? currentVersion : currentVersion + 1;
   if (currentSql === newSql) {
-    console.log(
-      `ℹ️  No schema changes detected, keeping version ${currentVersion}`,
-    );
+    console.log(`ℹ️  No schema changes detected, keeping version ${currentVersion}`);
   } else {
-    console.log(
-      `✅ Schema changed, version: ${currentVersion} → ${newVersion}`,
-    );
+    console.log(`✅ Schema changed, version: ${currentVersion} → ${newVersion}`);
   }
 
   // schema.sql.ts に書き込む

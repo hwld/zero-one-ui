@@ -8,9 +8,7 @@ class InboxRepository {
   private inbox: InboxRecord = initialData;
 
   public get = (): Inbox => {
-    const taskCount = taskRepository.getManyByTaskboxId(
-      this.inbox.taskboxId,
-    ).length;
+    const taskCount = taskRepository.getManyByTaskboxId(this.inbox.taskboxId).length;
 
     return { taskboxId: this.inbox.taskboxId, taskCount: taskCount };
   };

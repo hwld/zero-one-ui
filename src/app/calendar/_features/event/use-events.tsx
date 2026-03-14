@@ -15,9 +15,7 @@ export const useEvents = () => {
 
   const { data: events = [] } = useQuery(eventsQueryOption);
 
-  const filteredEvents = events.filter(
-    (e) => !pendingDeleteEventIds.includes(e.id),
-  );
+  const filteredEvents = events.filter((e) => !pendingDeleteEventIds.includes(e.id));
 
   return { events: filteredEvents };
 };

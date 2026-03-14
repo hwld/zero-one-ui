@@ -61,10 +61,7 @@ export const MusicFile: React.FC<Props> = ({
         ) : (
           <MusicFileButton hoverIcon={TbPlayerPlayFilled} onClick={handlePlay}>
             <TbMusic
-              className={clsx(
-                "text-[16px]",
-                isCurrentMusic ? "text-sky-400" : "text-neutral-100",
-              )}
+              className={clsx("text-[16px]", isCurrentMusic ? "text-sky-400" : "text-neutral-100")}
             />
           </MusicFileButton>
         )}

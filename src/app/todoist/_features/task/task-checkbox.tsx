@@ -7,11 +7,7 @@ type Props = Omit<CheckboxPrimitive.CheckboxProps, "onChange"> & {
   onChange: (checked: boolean) => void;
 };
 
-export const TaskCheckbox: React.FC<Props> = ({
-  checked,
-  onChange,
-  ...props
-}) => {
+export const TaskCheckbox: React.FC<Props> = ({ checked, onChange, ...props }) => {
   return (
     <CheckboxPrimitive.Root
       checked={checked}

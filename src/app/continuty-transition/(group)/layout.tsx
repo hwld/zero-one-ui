@@ -5,9 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { z } from "zod";
 
-const Layout: React.FC<LayoutProps<"/continuty-transition">> = ({
-  children,
-}) => {
+const Layout: React.FC<LayoutProps<"/continuty-transition">> = ({ children }) => {
   const searchParams = useSearchParams();
   const isMenuOpen = !!z.string().nullable().parse(searchParams.get("isOpen"));
 
@@ -21,10 +19,7 @@ const Layout: React.FC<LayoutProps<"/continuty-transition">> = ({
       >
         <div className="max-h-screen min-h-screen overflow-auto">
           <div className="relative m-auto flex max-w-(--breakpoint-lg) px-3 pt-6">
-            <motion.span
-              layoutId="menu-items"
-              className="absolute top-0 left-0 size-1 opacity-0"
-            />
+            <motion.span layoutId="menu-items" className="absolute top-0 left-0 size-1 opacity-0" />
             <Link
               href={`/continuty-transition${isMenuOpen ? "?isOpen=true" : ""}`}
               className="absolute top-6 right-6"

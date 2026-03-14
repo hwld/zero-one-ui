@@ -2,16 +2,12 @@ import { Resizable, ResizableProps } from "re-resizable";
 import { Ref } from "react";
 import { cn } from "../../../lib/utils";
 
-type Props = Omit<
-  ResizableProps,
-  "handleClasses" | "handleComponent" | "enable" | "className"
-> & { direction: "left" | "right"; resizableRef?: Ref<Resizable> };
+type Props = Omit<ResizableProps, "handleClasses" | "handleComponent" | "enable" | "className"> & {
+  direction: "left" | "right";
+  resizableRef?: Ref<Resizable>;
+};
 
-export const ResizablePanel: React.FC<Props> = ({
-  direction,
-  resizableRef,
-  ...props
-}) => {
+export const ResizablePanel: React.FC<Props> = ({ direction, resizableRef, ...props }) => {
   const directionClass = { left: "border-l", right: "border-r" };
 
   const handleClass = "z-100 flex justify-center group";

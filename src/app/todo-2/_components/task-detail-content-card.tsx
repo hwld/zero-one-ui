@@ -56,17 +56,11 @@ export const TaskDetailContentCard: React.FC<Props> = ({ task }) => {
           )}
         </div>
         {isEditing ? (
-          <TaskEditForm
-            defaultTask={task}
-            formId={editFormId}
-            onUpdateTask={handleUpdateTask}
-          />
+          <TaskEditForm defaultTask={task} formId={editFormId} onUpdateTask={handleUpdateTask} />
         ) : (
           <div className={taskDetailViewClass.wrapper}>
             <h2 className={taskDetailViewClass.title}>{task.title}</h2>
-            <div className={taskDetailViewClass.description}>
-              {task.description}
-            </div>
+            <div className={taskDetailViewClass.description}>{task.description}</div>
           </div>
         )}
       </div>

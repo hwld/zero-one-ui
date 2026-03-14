@@ -80,10 +80,7 @@ export const TaskCreateBar: React.FC<Props> = ({
               <button className="grid size-12 shrink-0 place-items-center border-r-2 border-blue-600 transition-colors hover:bg-white/15 focus-visible:bg-white/15 focus-visible:outline-hidden">
                 <PlusIcon size={18} />
               </button>
-              <form
-                className="relative size-full grow"
-                onSubmit={handleSubmit(handleCreateTask)}
-              >
+              <form className="relative size-full grow" onSubmit={handleSubmit(handleCreateTask)}>
                 <input
                   aria-disabled={createTaskMutation.isPending}
                   autoFocus
@@ -100,9 +97,7 @@ export const TaskCreateBar: React.FC<Props> = ({
                   size={25}
                   className={clsx(
                     "absolute inset-y-0 left-4 my-auto rounded-full",
-                    createTaskMutation.isPending
-                      ? "animate-spin opacity-100"
-                      : "opacity-0",
+                    createTaskMutation.isPending ? "animate-spin opacity-100" : "opacity-0",
                   )}
                 />
                 <AnimatePresence>
@@ -114,11 +109,7 @@ export const TaskCreateBar: React.FC<Props> = ({
                       exit={{ opacity: 0, y: 4 }}
                     >
                       {errors.title.message}
-                      <svg
-                        width="12"
-                        height="8"
-                        className="absolute top-full fill-red-300"
-                      >
+                      <svg width="12" height="8" className="absolute top-full fill-red-300">
                         <path d="M 0 0 L 12 0 L 6 8 z" />
                       </svg>
                     </motion.div>

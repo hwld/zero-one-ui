@@ -18,12 +18,8 @@ type Props = {
   acceptBottomDrop?: boolean;
   onMove: (input: MoveTaskInput) => void;
   onMoveToColumn: (input: { taskId: string; statusId: string }) => void;
-  onMoveTop:
-    | ((input: { taskId: string; statusId: string }) => void)
-    | undefined;
-  onMoveBottom:
-    | ((input: { taskId: string; statusId: string }) => void)
-    | undefined;
+  onMoveTop: ((input: { taskId: string; statusId: string }) => void) | undefined;
+  onMoveBottom: ((input: { taskId: string; statusId: string }) => void) | undefined;
 };
 
 export const ViewTaskCard: React.FC<Props> = ({
@@ -38,9 +34,7 @@ export const ViewTaskCard: React.FC<Props> = ({
   onMoveTop,
   onMoveBottom,
 }) => {
-  const [acceptDrop, setAcceptDrop] = useState<"none" | "top" | "bottom">(
-    "none",
-  );
+  const [acceptDrop, setAcceptDrop] = useState<"none" | "top" | "bottom">("none");
 
   const handleMoveToColumn = (statusId: string) => {
     onMoveToColumn({ taskId: task.id, statusId });
@@ -108,8 +102,7 @@ export const ViewTaskCard: React.FC<Props> = ({
       <DropPreviewLine
         className={clsx("w-full opacity-0", {
           "bottom-[calc(100%-2px)] opacity-100": acceptDrop === "top",
-          "top-[calc(100%-2px)] opacity-100":
-            acceptDrop === "bottom" || acceptBottomDrop,
+          "top-[calc(100%-2px)] opacity-100": acceptDrop === "bottom" || acceptBottomDrop,
         })}
       />
       <div

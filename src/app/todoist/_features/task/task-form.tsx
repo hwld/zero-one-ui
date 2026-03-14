@@ -113,28 +113,21 @@ export const TaskForm: React.FC<Props> = ({
             onClick={(e) => e.stopPropagation()}
           />
           {errorMessagesWithoutTooSmall.length > 0 && (
-            <p className="text-xs text-red-600">
-              {errorMessagesWithoutTooSmall[0]}
-            </p>
+            <p className="text-xs text-red-600">{errorMessagesWithoutTooSmall[0]}</p>
           )}
         </div>
         <div className="flex gap-2">
           <Select icon={PiCalendarBlank}>予定日</Select>
           <Select icon={PiFlag}>優先度</Select>
           <Select icon={PiAlarm}>リマインダー</Select>
-          <button
-            className={clsx(buttonClass, "grid size-7 place-items-center")}
-          >
+          <button className={clsx(buttonClass, "grid size-7 place-items-center")}>
             <PiDotsThreeBold className="size-5 text-stone-900" />
           </button>
         </div>
       </div>
       <hr />
       <div
-        className={clsx(
-          "flex items-center justify-between gap-2",
-          { sm: "p-2", md: "p-4" }[size],
-        )}
+        className={clsx("flex items-center justify-between gap-2", { sm: "p-2", md: "p-4" }[size])}
       >
         <TaskBoxSelectPopover
           taskboxNodes={taskboxNodes}
@@ -162,10 +155,7 @@ export const TaskForm: React.FC<Props> = ({
 const buttonClass =
   "border border-stone-300 text-stone-500 hover:bg-stone-500/10 rounded-sm transition-colors";
 
-const Select: React.FC<PropsWithChildren & { icon: IconType }> = ({
-  children,
-  icon: Icon,
-}) => {
+const Select: React.FC<PropsWithChildren & { icon: IconType }> = ({ children, icon: Icon }) => {
   return (
     <button
       className={clsx(
@@ -205,9 +195,7 @@ const TaskBoxSelectPopover: React.FC<{
       return { label: "インボックス", icon: PiTrayLight };
     }
 
-    const project = taskboxNodes.projectNodes.find(
-      (p) => p.taskboxId === selectedTaskboxId,
-    );
+    const project = taskboxNodes.projectNodes.find((p) => p.taskboxId === selectedTaskboxId);
     if (project) {
       return { label: project.label, icon: PiHashLight };
     }
@@ -220,11 +208,7 @@ const TaskBoxSelectPopover: React.FC<{
       isOpen={isOpen}
       onOpenChange={setIsOpen}
       trigger={
-        <Button
-          color="transparent"
-          leftIcon={triggerInfo.icon}
-          rightIcon={PiCaretDownLight}
-        >
+        <Button color="transparent" leftIcon={triggerInfo.icon} rightIcon={PiCaretDownLight}>
           {triggerInfo.label}
         </Button>
       }
@@ -239,9 +223,7 @@ const TaskBoxSelectPopover: React.FC<{
         </div>
         <div className="h-px w-full bg-stone-200" />
         <div className="flex min-h-0 flex-col overflow-auto">
-          <Command.Empty className="p-2">
-            プロジェクトが見つかりません
-          </Command.Empty>
+          <Command.Empty className="p-2">プロジェクトが見つかりません</Command.Empty>
 
           <Command.List>
             {taskboxNodes ? (
@@ -252,9 +234,7 @@ const TaskBoxSelectPopover: React.FC<{
                     label="インボックス"
                     depth={0}
                     value={taskboxNodes.inbox.taskboxId}
-                    selected={
-                      taskboxNodes.inbox.taskboxId === selectedTaskboxId
-                    }
+                    selected={taskboxNodes.inbox.taskboxId === selectedTaskboxId}
                     onSelect={handleSelect}
                   />
                 </Command.Group>

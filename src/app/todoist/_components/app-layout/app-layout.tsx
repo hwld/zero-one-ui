@@ -1,11 +1,5 @@
 "use client";
-import {
-  useEffect,
-  useRef,
-  useState,
-  type PropsWithChildren,
-  type ReactNode,
-} from "react";
+import { useEffect, useRef, useState, type PropsWithChildren, type ReactNode } from "react";
 import { IconButton } from "../icon-button";
 import { PiSidebarSimpleLight } from "@react-icons/all-files/pi/PiSidebarSimpleLight";
 import { useSidebarContext } from "../sidebar/provider";
@@ -20,14 +14,8 @@ type Props = {
   rightHeader?: ReactNode;
 } & PropsWithChildren;
 
-export const AppLayout: React.FC<Props> = ({
-  title,
-  rightHeader,
-  leftHeader,
-  children,
-}) => {
-  const { isOpen: isSidebarOpen, setIsOpen: setIsSidebarOpen } =
-    useSidebarContext();
+export const AppLayout: React.FC<Props> = ({ title, rightHeader, leftHeader, children }) => {
+  const { isOpen: isSidebarOpen, setIsOpen: setIsSidebarOpen } = useSidebarContext();
 
   const [isTitleHiddenByHeader, setIsTitlteHiddenByHeader] = useState(false);
   const titleRef = useRef<HTMLHeadingElement>(null);
@@ -77,11 +65,7 @@ export const AppLayout: React.FC<Props> = ({
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                 >
-                  <Tooltip
-                    label="サイドバーを開く"
-                    keys={["M"]}
-                    placement="bottom-start"
-                  >
+                  <Tooltip label="サイドバーを開く" keys={["M"]} placement="bottom-start">
                     <IconButton
                       icon={PiSidebarSimpleLight}
                       onClick={() => {
@@ -118,11 +102,7 @@ export const AppLayout: React.FC<Props> = ({
           <h1 ref={titleRef} className="h-8 text-2xl font-bold">
             <AnimatePresence initial={false}>
               {!isTitleHiddenByHeader && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
+                <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                   {title}
                 </motion.div>
               )}

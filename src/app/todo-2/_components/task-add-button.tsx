@@ -36,10 +36,7 @@ export const TaskAddButton: React.FC = () => {
           <p className="text-[10px]">K</p>
         </div>
       </Button>
-      <TaskAddDialog
-        isOpen={isAddDialogOpen}
-        onOpenChange={setIsAddDialogOpen}
-      />
+      <TaskAddDialog isOpen={isAddDialogOpen} onOpenChange={setIsAddDialogOpen} />
     </>
   );
 };

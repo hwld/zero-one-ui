@@ -37,11 +37,7 @@ export const TaskTableShell: React.FC<Props> = ({
               />
             </TableHeader>
             <LabelTableHeader icon={IconCheckbox} width={80} text="状況" />
-            <SortableTableHeader
-              icon={IconClipboardText}
-              text="タスク名"
-              fieldName="title"
-            />
+            <SortableTableHeader icon={IconClipboardText} text="タスク名" fieldName="title" />
             <SortableTableHeader
               icon={IconClockHour5}
               width={200}

@@ -70,16 +70,12 @@ export const Dialog: React.FC<DialogProps> = ({
   );
 };
 
-export const DialogHeader: React.FC<
-  { withClose?: boolean } & PropsWithChildren
-> = ({ children, withClose }) => {
+export const DialogHeader: React.FC<{ withClose?: boolean } & PropsWithChildren> = ({
+  children,
+  withClose,
+}) => {
   return (
-    <header
-      className={clsx(
-        "flex items-center pb-2",
-        withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4",
-      )}
-    >
+    <header className={clsx("flex items-center pb-2", withClose ? "pt-2 pr-2 pl-4" : "px-4 pt-4")}>
       {children}
       {withClose && (
         <DialogClose>

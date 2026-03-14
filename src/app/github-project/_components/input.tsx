@@ -2,10 +2,7 @@ import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 type Props = {} & Omit<ComponentPropsWithoutRef<"input">, "className">;
 
-export const Input = forwardRef<HTMLInputElement, Props>(function Input(
-  { ...props },
-  ref,
-) {
+export const Input = forwardRef<HTMLInputElement, Props>(function Input({ ...props }, ref) {
   return (
     <input
       ref={ref}

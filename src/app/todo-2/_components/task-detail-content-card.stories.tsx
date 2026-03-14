@@ -1,20 +1,9 @@
 import { TaskDetailContentCard } from "./task-detail-content-card";
 import { defaultStoryMeta } from "../story-meta";
 import { initialTasks } from "../_backend/data";
-import {
-  clearAllMocks,
-  expect,
-  fn,
-  userEvent,
-  waitFor,
-  within,
-} from "storybook/test";
+import { clearAllMocks, expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { HttpResponse, http } from "msw";
-import {
-  Todo2API,
-  UpdateTaskInput,
-  updateTaskInputSchema,
-} from "../_backend/api";
+import { Todo2API, UpdateTaskInput, updateTaskInputSchema } from "../_backend/api";
 import preview from "../../../../.storybook/preview";
 
 const dummyTask = initialTasks[0];
@@ -62,9 +51,7 @@ Default.test("タスクを編集できる", async ({ canvasElement, args }) => {
   const task = args.task;
   const canvas = within(canvasElement.parentElement!);
 
-  await userEvent.click(
-    await canvas.findByRole("button", { name: "編集する" }),
-  );
+  await userEvent.click(await canvas.findByRole("button", { name: "編集する" }));
 
   const newTitle = "title";
   const newDesc = "desc\ndesc";
@@ -80,9 +67,7 @@ Default.test("タスクを編集できる", async ({ canvasElement, args }) => {
   await userEvent.type(titleInput, newTitle, { delay: 50 });
   await userEvent.type(descInput, newDesc, { delay: 50 });
 
-  await userEvent.click(
-    await canvas.findByRole("button", { name: "保存する" }),
-  );
+  await userEvent.click(await canvas.findByRole("button", { name: "保存する" }));
 
   await waitFor(async () => {
     await expect(mockUpdateTask).toHaveBeenCalledTimes(1);
@@ -101,22 +86,16 @@ Default.test(
     const task = args.task;
     const canvas = within(canvasElement.parentElement!);
 
-    await userEvent.click(
-      await canvas.findByRole("button", { name: "編集する" }),
-    );
+    await userEvent.click(await canvas.findByRole("button", { name: "編集する" }));
 
     const titleInput = await canvas.findByDisplayValue(task.title);
     await userEvent.clear(titleInput);
 
-    await userEvent.click(
-      await canvas.findByRole("button", { name: "保存する" }),
-    );
+    await userEvent.click(await canvas.findByRole("button", { name: "保存する" }));
 
     await waitFor(async () => {
       await expect(mockUpdateTask).not.toBeCalled();
-      await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タイトルの入力は必須です。",
-      );
+      await expect(titleInput).toHaveAccessibleErrorMessage("タイトルの入力は必須です。");
     });
   },
 );

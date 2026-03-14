@@ -29,10 +29,7 @@ export const markStoryReady = () => {
  * テスト用のContextProviderを公開するときなどに使用する
  */
 export const errorIfProduction = () => {
-  if (
-    process.env.NODE_ENV === "production" &&
-    process.env.STORYBOOK === undefined
-  ) {
+  if (process.env.NODE_ENV === "production" && process.env.STORYBOOK === undefined) {
     throw new Error(
       `本番環境で使用することができません。 ${JSON.stringify(process.env.STORYBOOK)}`,
     );

@@ -34,15 +34,8 @@ export const TaskCreateForm: React.FC<Props> = ({ onAddTask, id }) => {
   const descErrorMessageId = `${componentId}-desc-errormessage`;
 
   return (
-    <form
-      id={id}
-      onSubmit={handleSubmit(onAddTask)}
-      className="flex flex-col gap-2 px-4"
-    >
-      <TaskFormErrorTooltip
-        id={titleErrorMessageId}
-        error={errors.title?.message}
-      >
+    <form id={id} onSubmit={handleSubmit(onAddTask)} className="flex flex-col gap-2 px-4">
+      <TaskFormErrorTooltip id={titleErrorMessageId} error={errors.title?.message}>
         <input
           ref={titleRef}
           placeholder="タスクのタイトル"

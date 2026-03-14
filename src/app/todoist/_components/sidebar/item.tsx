@@ -5,8 +5,7 @@ import { IconType } from "@react-icons/all-files/lib";
 
 const mutedTextClass = "text-stone-500";
 const activeTextClass = "text-rose-700";
-const wrapperChildClass =
-  "flex h-full w-full items-center pl-(--padding-x) overflow-hidden";
+const wrapperChildClass = "flex h-full w-full items-center pl-(--padding-x) overflow-hidden";
 
 type WrapperProps = {
   active?: boolean;
@@ -40,12 +39,7 @@ const ItemWrapper: React.FC<WrapperProps> = ({
     >
       {children}
       {right && (
-        <span
-          className={clsx(
-            "pr-(--padding-x) pl-1",
-            active ? activeTextClass : mutedTextClass,
-          )}
-        >
+        <span className={clsx("pr-(--padding-x) pl-1", active ? activeTextClass : mutedTextClass)}>
           {right}
         </span>
       )}
@@ -59,20 +53,11 @@ type ContentProps = {
   children: ReactNode;
 };
 
-const ItemContent: React.FC<ContentProps> = ({
-  icon: Icon,
-  active,
-  children,
-}) => {
+const ItemContent: React.FC<ContentProps> = ({ icon: Icon, active, children }) => {
   return (
     <span className="flex min-w-0 items-center gap-1">
       <span className="grid size-7 shrink-0 place-items-center">
-        <Icon
-          className={clsx(
-            "size-6 shrink-0",
-            active ? activeTextClass : mutedTextClass,
-          )}
-        />
+        <Icon className={clsx("size-6 shrink-0", active ? activeTextClass : mutedTextClass)} />
       </span>
       <div className="truncate">{children}</div>
     </span>
@@ -89,10 +74,7 @@ type ListButtonProps = {
 };
 
 export const SidebarListButton = forwardRef<HTMLLIElement, ListButtonProps>(
-  function SidebarListButton(
-    { icon, right, children, isDragging, depth, ...props },
-    ref,
-  ) {
+  function SidebarListButton({ icon, right, children, isDragging, depth, ...props }, ref) {
     return (
       <li ref={ref}>
         <ItemWrapper right={right} isDragging={isDragging} depth={depth}>
@@ -123,69 +105,67 @@ type ListLinkProps = LinkProps & {
   onDragEnter?: () => void;
 } & Omit<ComponentPropsWithoutRef<"a">, "onPointerEnter" | "onPointerLeave">;
 
-export const SidebarListLink = forwardRef<HTMLLIElement, ListLinkProps>(
-  function SidebarListLink(
-    {
-      icon,
-      activeIcon,
-      currentRoute,
-      right,
-      children,
-      onPointerEnter,
-      onPointerLeave,
-      depth,
-      isDragging,
-      isAnyDragging,
-      onDragStart,
-      onDragOver,
-      onDragLeave,
-      onDragEnter,
-      ...props
-    },
-    ref,
-  ) {
-    const active = currentRoute === props.href;
-    const actualIcon = (active ? activeIcon : icon) ?? icon;
-
-    return (
-      <li
-        ref={ref}
-        onPointerMove={(e) => {
-          if (isAnyDragging) {
-            onDragOver?.(e);
-          }
-        }}
-        onDragStart={(e) => {
-          e.preventDefault();
-          onDragStart?.(e);
-        }}
-        onPointerLeave={(e) => {
-          e.preventDefault();
-          if (isAnyDragging) {
-            onDragLeave?.();
-          }
-        }}
-        onPointerEnter={() => {
-          if (isAnyDragging) {
-            onDragEnter?.();
-          }
-        }}
-      >
-        <ItemWrapper
-          active={active}
-          isDragging={isDragging}
-          right={right}
-          depth={depth}
-          onPointerEnter={onPointerEnter}
-          onPointerLeave={onPointerLeave}
-        >
-          <Link {...props} className={wrapperChildClass}>
-            <ItemContent icon={actualIcon} active={active}>
-              {children}
-            </ItemContent>
-          </Link>
-        </ItemWrapper>
-      </li>
-    );
+export const SidebarListLink = forwardRef<HTMLLIElement, ListLinkProps>(function SidebarListLink(
+  {
+    icon,
+    activeIcon,
+    currentRoute,
+    right,
+    children,
+    onPointerEnter,
+    onPointerLeave,
+    depth,
+    isDragging,
+    isAnyDragging,
+    onDragStart,
+    onDragOver,
+    onDragLeave,
+    onDragEnter,
+    ...props
   },
-);
+  ref,
+) {
+  const active = currentRoute === props.href;
+  const actualIcon = (active ? activeIcon : icon) ?? icon;
+
+  return (
+    <li
+      ref={ref}
+      onPointerMove={(e) => {
+        if (isAnyDragging) {
+          onDragOver?.(e);
+        }
+      }}
+      onDragStart={(e) => {
+        e.preventDefault();
+        onDragStart?.(e);
+      }}
+      onPointerLeave={(e) => {
+        e.preventDefault();
+        if (isAnyDragging) {
+          onDragLeave?.();
+        }
+      }}
+      onPointerEnter={() => {
+        if (isAnyDragging) {
+          onDragEnter?.();
+        }
+      }}
+    >
+      <ItemWrapper
+        active={active}
+        isDragging={isDragging}
+        right={right}
+        depth={depth}
+        onPointerEnter={onPointerEnter}
+        onPointerLeave={onPointerLeave}
+      >
+        <Link {...props} className={wrapperChildClass}>
+          <ItemContent icon={actualIcon} active={active}>
+            {children}
+          </ItemContent>
+        </Link>
+      </ItemWrapper>
+    </li>
+  );
+});

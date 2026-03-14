@@ -14,12 +14,7 @@ type Props = {
   errorMessage: string;
 };
 
-export const TasksContent: React.FC<Props> = ({
-  emptyContent,
-  status,
-  taskbox,
-  errorMessage,
-}) => {
+export const TasksContent: React.FC<Props> = ({ emptyContent, status, taskbox, errorMessage }) => {
   if (status === "error") {
     return (
       <div className="flex flex-col gap-2 text-red-600">

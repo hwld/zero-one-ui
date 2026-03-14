@@ -25,10 +25,7 @@ export const Idle: React.FC<{
         <MenuItem icon={SearchIcon} onClick={() => onChangeMode("search")} />
         <MenuItem icon={TimerIcon} onClick={() => onChangeMode("stopwatch")} />
         <MenuItem icon={Volume2Icon} onClick={() => onChangeMode("sound")} />
-        <MenuItem
-          icon={SettingsIcon}
-          onClick={() => onChangeMode("settings")}
-        />
+        <MenuItem icon={SettingsIcon} onClick={() => onChangeMode("settings")} />
       </motion.div>
     </motion.div>
   );

@@ -11,11 +11,7 @@ import {
   UploadIcon,
 } from "lucide-react";
 import { DropdownCard } from "../dropdown/card";
-import {
-  DropdownItem,
-  DropdownItemGroup,
-  DropdownItemList,
-} from "../dropdown/item";
+import { DropdownItem, DropdownItemGroup, DropdownItemList } from "../dropdown/item";
 import { ViewOptionMenuMode } from "./trigger";
 import { Divider } from "../divider";
 import { ViewConfigMenuItem } from "./item";
@@ -28,10 +24,7 @@ type Props = {
   onChangeMode: (mode: ViewOptionMenuMode) => void;
 };
 
-export const ViewOptionMenu: React.FC<Props> = ({
-  viewSummary,
-  onChangeMode,
-}) => {
+export const ViewOptionMenu: React.FC<Props> = ({ viewSummary, onChangeMode }) => {
   return (
     <DropdownCard width={320}>
       <DropdownItemGroup group="configuration">
@@ -93,10 +86,7 @@ export const ViewOptionMenu: React.FC<Props> = ({
         <ViewUpdateDialogTrigger viewSummary={viewSummary}>
           <DropdownItem icon={PenIcon} label="Rename view" />
         </ViewUpdateDialogTrigger>
-        <DropdownItem
-          icon={GalleryHorizontalEndIcon}
-          label="Save changes to new view"
-        />
+        <DropdownItem icon={GalleryHorizontalEndIcon} label="Save changes to new view" />
         <DeleteViewItem viewSummary={viewSummary} />
       </DropdownItemList>
       <Divider />

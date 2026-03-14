@@ -14,19 +14,14 @@ import {
   startOfWeek,
 } from "date-fns";
 
-export type OmitDistributive<T, K extends PropertyKey> = T extends unknown
-  ? Omit<T, K>
-  : never;
+export type OmitDistributive<T, K extends PropertyKey> = T extends unknown ? Omit<T, K> : never;
 
 export type DragDateRange = {
   dragStartDate: Date;
   dragEndDate: Date;
 };
 
-export const isDayWithinDragDateRange = (
-  yearMonthDay: Date,
-  range: DragDateRange,
-) => {
+export const isDayWithinDragDateRange = (yearMonthDay: Date, range: DragDateRange) => {
   const dragStart = startOfDay(range.dragStartDate);
   const dragEnd = startOfDay(range.dragEndDate);
 
@@ -36,10 +31,7 @@ export const isDayWithinDragDateRange = (
   });
 };
 
-export const areDragDateRangeOverlapping = (
-  date: Date,
-  range: DragDateRange,
-) => {
+export const areDragDateRangeOverlapping = (date: Date, range: DragDateRange) => {
   return areIntervalsOverlapping(
     { start: startOfDay(date), end: endOfDay(date) },
     { start: range.dragStartDate, end: range.dragEndDate },

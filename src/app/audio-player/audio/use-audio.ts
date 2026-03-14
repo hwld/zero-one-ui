@@ -13,10 +13,7 @@ type UseAudioParams = {
   initialVolume?: number;
 };
 
-export const useAudio = ({
-  src,
-  initialVolume: _initialVolume = 1,
-}: UseAudioParams) => {
+export const useAudio = ({ src, initialVolume: _initialVolume = 1 }: UseAudioParams) => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isReady, setIsReady] = useState(false);
   const [playing, setPlaying] = useState(false);
@@ -219,15 +216,7 @@ export const useAudio = ({
       changeVolume,
       changeMute,
     };
-  }, [
-    changeCurrentTime,
-    changeDuration,
-    changeMute,
-    changePlaying,
-    changeVolume,
-    seek,
-    seekEnd,
-  ]);
+  }, [changeCurrentTime, changeDuration, changeMute, changePlaying, changeVolume, seek, seekEnd]);
 
   const handlers = useMemo((): ComponentPropsWithoutRef<"audio"> => {
     return {

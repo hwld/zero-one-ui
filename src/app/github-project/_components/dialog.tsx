@@ -43,11 +43,7 @@ export const Dialog: React.FC<Props> = ({
   const role = useRole(context);
   const dismiss = useDismiss(context);
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    role,
-    dismiss,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, role, dismiss]);
 
   return (
     <>
@@ -79,15 +75,10 @@ export const Dialog: React.FC<Props> = ({
                     >
                       <h2 className="text-lg font-bold">{title}</h2>
                       <div className="absolute top-2 right-2">
-                        <IconButton
-                          icon={XIcon}
-                          onClick={() => onOpenChange(false)}
-                        />
+                        <IconButton icon={XIcon} onClick={() => onOpenChange(false)} />
                       </div>
                       {children}
-                      <div className="flex w-full justify-end gap-2">
-                        {action}
-                      </div>
+                      <div className="flex w-full justify-end gap-2">{action}</div>
                     </motion.div>
                   </div>
                 </FloatingFocusManager>

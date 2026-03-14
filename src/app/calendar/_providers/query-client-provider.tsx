@@ -7,9 +7,7 @@ import { PropsWithChildren, useState } from "react";
 import { useToast } from "../_components/toast";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-export const QueryClientProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const QueryClientProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { toast } = useToast();
 
   const [queryClient] = useState(() => {

@@ -36,11 +36,7 @@ export const WeekRow: React.FC<Props> = ({
     <div className="relative grid min-h-[80px] min-w-[560px] grid-cols-7 select-none">
       {week.map((date) => {
         return (
-          <CalendarDate
-            calendarYearMonth={calendarYearMonth}
-            key={date.getTime()}
-            date={date}
-          />
+          <CalendarDate calendarYearMonth={calendarYearMonth} key={date.getTime()} date={date} />
         );
       })}
       <div className="absolute inset-0">

@@ -39,9 +39,7 @@ export function useRovingTabindex(id: string) {
   return {
     getOrderedItems,
     isFocusable: focusableId === id,
-    getRovingProps: <T extends ElementType>(
-      props: ComponentPropsWithoutRef<T>,
-    ) => ({
+    getRovingProps: <T extends ElementType>(props: ComponentPropsWithoutRef<T>) => ({
       ...props,
       ref: (element: HTMLElement | null) => {
         if (element) {
@@ -80,9 +78,8 @@ type RovingTabindexRootBaseProps<T> = {
   valueId?: string;
 };
 
-type RovingTabindexRootProps<T extends ElementType> =
-  RovingTabindexRootBaseProps<T> &
-    Omit<ComponentPropsWithoutRef<T>, keyof RovingTabindexRootBaseProps<T>>;
+type RovingTabindexRootProps<T extends ElementType> = RovingTabindexRootBaseProps<T> &
+  Omit<ComponentPropsWithoutRef<T>, keyof RovingTabindexRootBaseProps<T>>;
 
 export function RovingTabindexRoot<T extends ElementType>({
   children,
@@ -106,9 +103,7 @@ export function RovingTabindexRoot<T extends ElementType>({
 
     return Array.from(elements.current)
       .filter((a) => elementsFromDOM.indexOf(a[1]) > -1)
-      .sort(
-        (a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]),
-      )
+      .sort((a, b) => elementsFromDOM.indexOf(a[1]) - elementsFromDOM.indexOf(b[1]))
       .map(([id, element]) => ({ id, element }));
   }
 
@@ -159,9 +154,7 @@ export function getNextFocusableId(
   id: string,
 ): RovingTabindexItem | undefined {
   const currIndex = orderedItems.findIndex((item) => item.id === id);
-  return orderedItems.at(
-    currIndex === orderedItems.length - 1 ? 0 : currIndex + 1,
-  );
+  return orderedItems.at(currIndex === orderedItems.length - 1 ? 0 : currIndex + 1);
 }
 
 export function getPrevFocusableId(
@@ -223,8 +216,7 @@ export function getNextFocusableIdByTypeahead(
     const nextItem = wrappedItems.at(index + 1);
 
     if (
-      nextItem?.element?.textContent?.charAt(0).toLowerCase() ===
-      keyPressed.charAt(0).toLowerCase()
+      nextItem?.element?.textContent?.charAt(0).toLowerCase() === keyPressed.charAt(0).toLowerCase()
     ) {
       typeaheadMatchItem = nextItem;
     }

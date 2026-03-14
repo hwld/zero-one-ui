@@ -47,13 +47,7 @@ export const TaskDetailPanel: React.FC<Props> = ({ isPinned, onTogglePin }) => {
     );
   }
 
-  return (
-    <TaskDetailPanelDialog
-      onTogglePin={onTogglePin}
-      taskId={taskId}
-      onClose={closePanel}
-    />
-  );
+  return <TaskDetailPanelDialog onTogglePin={onTogglePin} taskId={taskId} onClose={closePanel} />;
 };
 
 const ResizableTaskDetailPanel: React.FC<{

@@ -37,9 +37,7 @@ class PGliteManager {
     }
 
     if (!this.initializationPromise) {
-      throw new Error(
-        "DB initialization has not started. Call startInitialization() first.",
-      );
+      throw new Error("DB initialization has not started. Call startInitialization() first.");
     }
 
     await this.initializationPromise;

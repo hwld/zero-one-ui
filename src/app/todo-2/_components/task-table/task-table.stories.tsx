@@ -4,14 +4,7 @@ import { TaskTableSelectionContext } from "./selection-provider";
 import { ScrollableRootProvider } from "../../_providers/scrollable-root-provider";
 import { initialTasks } from "../../_backend/data";
 import { TaskTableSortContext } from "./sort-provider";
-import {
-  clearAllMocks,
-  expect,
-  fn,
-  userEvent,
-  waitFor,
-  within,
-} from "storybook/test";
+import { clearAllMocks, expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { SortEntry } from "../../_backend/api";
 import { getNextSortOrder } from "./header";
 import { useState } from "react";
@@ -57,10 +50,7 @@ const meta = preview.meta({
 
       return (
         <ScrollableRootProvider>
-          <MockTaskTableProvider
-            mockSelection={mockSelectionContext}
-            mockSort={mockSortContext}
-          >
+          <MockTaskTableProvider mockSelection={mockSelectionContext} mockSort={mockSortContext}>
             <Story />
           </MockTaskTableProvider>
         </ScrollableRootProvider>
@@ -109,26 +99,19 @@ Default.test("各項目でソートすることができる", async ({ canvasEle
   });
 });
 
-Default.test(
-  "現在のページのタスクを全選択・選択解除できる",
-  async ({ canvasElement }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const selectInput = await canvas.findByRole("checkbox", {
-      name: "すべてを選択・選択解除",
-    });
+Default.test("現在のページのタスクを全選択・選択解除できる", async ({ canvasElement }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const selectInput = await canvas.findByRole("checkbox", {
+    name: "すべてを選択・選択解除",
+  });
 
-    await userEvent.click(selectInput);
-    await userEvent.click(selectInput);
+  await userEvent.click(selectInput);
+  await userEvent.click(selectInput);
 
-    await waitFor(async () => {
-      await expect(mockSelectTasks).toHaveBeenCalledTimes(1);
-      await expect(mockSelectTasks).toHaveBeenCalledWith(
-        dummyTasks.map((t) => t.id),
-      );
-      await expect(mockUnselectTasks).toHaveBeenCalledTimes(1);
-      await expect(mockUnselectTasks).toHaveBeenCalledWith(
-        dummyTasks.map((t) => t.id),
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(mockSelectTasks).toHaveBeenCalledTimes(1);
+    await expect(mockSelectTasks).toHaveBeenCalledWith(dummyTasks.map((t) => t.id));
+    await expect(mockUnselectTasks).toHaveBeenCalledTimes(1);
+    await expect(mockUnselectTasks).toHaveBeenCalledWith(dummyTasks.map((t) => t.id));
+  });
+});

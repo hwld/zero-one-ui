@@ -7,13 +7,7 @@ export const useDeleteTask = () => {
   const client = useQueryClient();
 
   return useMutation({
-    mutationFn: ({
-      taskId,
-      taskboxId: _,
-    }: {
-      taskId: string;
-      taskboxId: string;
-    }) => {
+    mutationFn: ({ taskId, taskboxId: _ }: { taskId: string; taskboxId: string }) => {
       return deleteTask(taskId);
     },
     onMutate: async (input) => {

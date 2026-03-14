@@ -18,11 +18,7 @@ type Props = {
   onOpenChange: (open: boolean) => void;
 };
 
-export const ProjectDeleteDialog: React.FC<Props> = ({
-  project,
-  isOpen,
-  onOpenChange,
-}) => {
+export const ProjectDeleteDialog: React.FC<Props> = ({ project, isOpen, onOpenChange }) => {
   const deleteProject = useDeleteProject();
 
   const handleDelete = () => {

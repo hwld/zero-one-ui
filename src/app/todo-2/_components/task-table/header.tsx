@@ -1,18 +1,11 @@
-import {
-  ChevronDownIcon,
-  ChevronUpIcon,
-  ChevronsUpDownIcon,
-} from "lucide-react";
+import { ChevronDownIcon, ChevronUpIcon, ChevronsUpDownIcon } from "lucide-react";
 import { ReactNode } from "react";
 import { SortEntry, SortOrder } from "../../_backend/api";
 import { useTaskTableSort } from "./sort-provider";
 
 type TableHeaderProps = { children: ReactNode; width?: number };
 
-export const TableHeader: React.FC<TableHeaderProps> = ({
-  children,
-  width,
-}) => {
+export const TableHeader: React.FC<TableHeaderProps> = ({ children, width }) => {
   return (
     <th
       className="border-b border-zinc-600 bg-black/10 p-2 font-medium whitespace-nowrap text-zinc-400"
@@ -28,11 +21,7 @@ type LabelTableHeaderProps = {
   text: string;
   width?: number;
 };
-export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({
-  icon: Icon,
-  text,
-  width,
-}) => {
+export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({ icon: Icon, text, width }) => {
   return (
     <th
       className="border-b border-zinc-600 bg-black/10 p-2 font-medium whitespace-nowrap text-zinc-400"
@@ -46,10 +35,7 @@ export const LabelTableHeader: React.FC<LabelTableHeaderProps> = ({
   );
 };
 
-export const getNextSortOrder = (
-  sortEntry: SortEntry,
-  field: SortEntry["field"],
-): SortOrder => {
+export const getNextSortOrder = (sortEntry: SortEntry, field: SortEntry["field"]): SortOrder => {
   const isSorted = sortEntry.field === field;
 
   return isSorted ? (sortEntry.order === "desc" ? "asc" : "desc") : "desc";

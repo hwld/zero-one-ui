@@ -1,12 +1,6 @@
 import { useMemo, useRef, useState } from "react";
 import { StopwatchButton } from "./button";
-import {
-  Minimize2,
-  PauseIcon,
-  PlayIcon,
-  TimerIcon,
-  TimerResetIcon,
-} from "lucide-react";
+import { Minimize2, PauseIcon, PlayIcon, TimerIcon, TimerResetIcon } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { APP_CONTROL_LAYOUT_ID } from "../app-control";
 
@@ -53,10 +47,7 @@ export const Stopwatch: React.FC = () => {
 
   const actionButtons = {
     stopped: (
-      <StopwatchButton
-        onClick={handleStartTimer}
-        disabled={seconds >= maxSeconds}
-      >
+      <StopwatchButton onClick={handleStartTimer} disabled={seconds >= maxSeconds}>
         <PlayIcon className="pl-[2px]" />
       </StopwatchButton>
     ),
@@ -74,17 +65,11 @@ export const Stopwatch: React.FC = () => {
       className="w-[200px] overflow-hidden bg-neutral-900 px-3 py-2 text-neutral-100"
       style={{ borderRadius: "20px" }}
     >
-      <motion.div
-        layout="preserve-aspect"
-        className="flex items-center justify-between"
-      >
+      <motion.div layout="preserve-aspect" className="flex items-center justify-between">
         <motion.span layoutId="action">
           <TimerIcon size={20} />
         </motion.span>
-        <motion.div
-          layoutId="display"
-          className="text-sm text-neutral-300 tabular-nums"
-        >
+        <motion.div layoutId="display" className="text-sm text-neutral-300 tabular-nums">
           {timerDisplay}
         </motion.div>
       </motion.div>
@@ -95,19 +80,12 @@ export const Stopwatch: React.FC = () => {
       className="relative w-[250px] overflow-hidden bg-neutral-900 p-4 text-neutral-100"
       style={{ borderRadius: "20px" }}
     >
-      <motion.div
-        layout="preserve-aspect"
-        className="flex items-center justify-between"
-      >
+      <motion.div layout="preserve-aspect" className="flex items-center justify-between">
         <div className="flex gap-2">
           <motion.span layoutId="action">{actionButtons[state]}</motion.span>
           <AnimatePresence>
             {seconds > 0 && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-              >
+              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
                 <StopwatchButton onClick={handleClearTimer} secondary>
                   <TimerResetIcon className="pr-[2px] pb-px" />
                 </StopwatchButton>
@@ -122,10 +100,7 @@ export const Stopwatch: React.FC = () => {
           >
             <Minimize2 size={15} />
           </button>
-          <motion.div
-            layoutId="display"
-            className="text-xl font-bold tabular-nums select-none"
-          >
+          <motion.div layoutId="display" className="text-xl font-bold tabular-nums select-none">
             {timerDisplay}
           </motion.div>
         </div>

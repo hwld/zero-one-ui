@@ -32,9 +32,7 @@ type TreeViewContextType = {
   expandOnlyOnIconClick: boolean;
 };
 
-const TreeViewContext = createContext<TreeViewContextType | undefined>(
-  undefined,
-);
+const TreeViewContext = createContext<TreeViewContextType | undefined>(undefined);
 
 const useTreeViewContext = () => {
   const ctx = useContext(TreeViewContext);
@@ -118,11 +116,7 @@ function Arrow({ open, className }: IconProps) {
       className={clsx("origin-center", className)}
       animate={{ rotate: open ? 90 : 0 }}
     >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-      />
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
     </motion.svg>
   );
 }
@@ -172,15 +166,9 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
   classNames,
   node: { id, children, name },
 }) => {
-  const {
-    nodeStates,
-    toggleNode,
-    selectId,
-    selectedId,
-    expandOnlyOnIconClick,
-  } = useTreeViewContext();
-  const { isFocusable, getRovingProps, getOrderedItems } =
-    useRovingTabindex(id);
+  const { nodeStates, toggleNode, selectId, selectedId, expandOnlyOnIconClick } =
+    useTreeViewContext();
+  const { isFocusable, getRovingProps, getOrderedItems } = useRovingTabindex(id);
   const isOpen = nodeStates.get(id);
 
   const handleClickNode = () => {
@@ -200,8 +188,7 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
   return (
     <li
       {...getRovingProps<"li">({
-        className:
-          "flex flex-col cursor-pointer select-none focus:outline-hidden group",
+        className: "flex flex-col cursor-pointer select-none focus:outline-hidden group",
         onKeyDown: function (e: KeyboardEvent) {
           e.stopPropagation();
 
@@ -289,18 +276,9 @@ export const TreeViewNode: React.FC<TreeViewNodeProps> = ({
         </div>
         <AnimatePresence initial={false}>
           {children?.length && isOpen && (
-            <motion.ul
-              {...treeAnimation}
-              key={"ul"}
-              role="group"
-              className="relative pl-4"
-            >
+            <motion.ul {...treeAnimation} key={"ul"} role="group" className="relative pl-4">
               {children.map((node) => (
-                <TreeViewNode
-                  classNames={classNames}
-                  node={node}
-                  key={node.id}
-                />
+                <TreeViewNode classNames={classNames} node={node} key={node.id} />
               ))}
             </motion.ul>
           )}

@@ -10,12 +10,7 @@ const Page: NextPage = () => {
   useBodyBgColor(bgClass);
 
   return (
-    <div
-      className={clsx(
-        "flex h-dvh justify-center pt-[50px] text-neutral-900",
-        bgClass,
-      )}
-    >
+    <div className={clsx("flex h-dvh justify-center pt-[50px] text-neutral-900", bgClass)}>
       <div className="mt-[500px]">
         <Menu />
       </div>

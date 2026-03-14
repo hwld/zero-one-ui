@@ -16,10 +16,7 @@ const TaskDetailPage: NextPage = () => {
   return (
     <>
       <h1 className="ml-1 text-sm">
-        <Link
-          href="/todo-2"
-          className="rounded-sm px-2 py-1 transition-colors hover:bg-zinc-700"
-        >
+        <Link href="/todo-2" className="rounded-sm px-2 py-1 transition-colors hover:bg-zinc-700">
           home
         </Link>
         <span className="mx-1">/</span>

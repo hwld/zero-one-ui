@@ -12,11 +12,7 @@ type Props = {
   formId: string;
   onUpdateTask: (data: UpdateTaskInput) => void;
 };
-export const TaskEditForm: React.FC<Props> = ({
-  defaultTask,
-  formId,
-  onUpdateTask,
-}) => {
+export const TaskEditForm: React.FC<Props> = ({ defaultTask, formId, onUpdateTask }) => {
   const {
     register,
     handleSubmit,
@@ -38,15 +34,8 @@ export const TaskEditForm: React.FC<Props> = ({
   const descErrorMessageId = `${componentId}-desc-errormessage`;
 
   return (
-    <form
-      className={taskDetailViewClass.wrapper}
-      id={formId}
-      onSubmit={handleSubmit(onUpdateTask)}
-    >
-      <TaskFormErrorTooltip
-        id={titleErrorMessageId}
-        error={errors.title?.message}
-      >
+    <form className={taskDetailViewClass.wrapper} id={formId} onSubmit={handleSubmit(onUpdateTask)}>
+      <TaskFormErrorTooltip id={titleErrorMessageId} error={errors.title?.message}>
         <input
           className={clsx(taskDetailViewClass.title, inputBaseClass)}
           {...register("title")}
@@ -61,11 +50,7 @@ export const TaskEditForm: React.FC<Props> = ({
         placement="bottom-start"
       >
         <textarea
-          className={clsx(
-            taskDetailViewClass.description,
-            inputBaseClass,
-            "resize-none",
-          )}
+          className={clsx(taskDetailViewClass.description, inputBaseClass, "resize-none")}
           {...register("description")}
           aria-invalid={!!errors.description}
           aria-errormessage={descErrorMessageId}

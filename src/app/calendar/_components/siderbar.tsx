@@ -6,8 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { TbLoader2 } from "@react-icons/all-files/tb/TbLoader2";
 
 export const Sidebar: React.FC = () => {
-  const { calendarInfo, selectDate, dayPickerMonth, setDayPickerMonth } =
-    useAppState();
+  const { calendarInfo, selectDate, dayPickerMonth, setDayPickerMonth } = useAppState();
 
   const isFetchingEvents =
     useIsFetching({

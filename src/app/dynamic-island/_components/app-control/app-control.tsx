@@ -6,12 +6,7 @@ import { Sound } from "./sound";
 import { Stopwatch } from "./stopwatch/stopwatch";
 import { Settings } from "./settings/settings";
 
-export type AppControlMode =
-  | "idle"
-  | "settings"
-  | "sound"
-  | "search"
-  | "stopwatch";
+export type AppControlMode = "idle" | "settings" | "sound" | "search" | "stopwatch";
 
 export const APP_CONTROL_LAYOUT_ID = "controls";
 

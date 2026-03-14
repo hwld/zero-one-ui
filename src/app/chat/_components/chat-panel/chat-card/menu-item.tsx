@@ -7,11 +7,7 @@ type Props = {
   onClick?: () => void;
 };
 
-export const ChatCardMenuItem: React.FC<Props> = ({
-  icon: Icon,
-  label,
-  onClick,
-}) => {
+export const ChatCardMenuItem: React.FC<Props> = ({ icon: Icon, label, onClick }) => {
   return (
     <Tooltip.Provider delayDuration={0}>
       <Tooltip.Root>

@@ -19,9 +19,7 @@ type PrepareCreateEventState = {
 };
 
 type PrepareCreateEventActions = {
-  setDragDateRange: Dispatch<
-    SetStateAction<PrepareCreateEventState["dragDateRange"]>
-  >;
+  setDragDateRange: Dispatch<SetStateAction<PrepareCreateEventState["dragDateRange"]>>;
   startDrag: (dragStart: Date) => void;
   updateDragEnd: (dragEnd: Date) => void;
   setDefaultValues: () => void;
@@ -43,18 +41,12 @@ export const usePrepareCreateEventInRow = (): PrepareCreateEventContext => {
   return ctx;
 };
 
-export const PrepareCreateEventInRowProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
-  const [dragDateRange, setDragDateRange] =
-    useState<PrepareCreateEventState["dragDateRange"]>();
+export const PrepareCreateEventInRowProvider: React.FC<PropsWithChildren> = ({ children }) => {
+  const [dragDateRange, setDragDateRange] = useState<PrepareCreateEventState["dragDateRange"]>();
 
-  const startDrag: PrepareCreateEventActions["startDrag"] = useCallback(
-    (dragStart) => {
-      setDragDateRange({ dragStartDate: dragStart, dragEndDate: dragStart });
-    },
-    [],
-  );
+  const startDrag: PrepareCreateEventActions["startDrag"] = useCallback((dragStart) => {
+    setDragDateRange({ dragStartDate: dragStart, dragEndDate: dragStart });
+  }, []);
 
   const updateDragEnd: PrepareCreateEventActions["updateDragEnd"] = useCallback(
     (dragEnd) => {
@@ -69,30 +61,28 @@ export const PrepareCreateEventInRowProvider: React.FC<PropsWithChildren> = ({
   const [defaultCreateEventValues, setDefaultCreateEventValues] =
     useState<PrepareCreateEventState["defaultCreateEventValues"]>();
 
-  const setDefaultValues: PrepareCreateEventActions["setDefaultValues"] =
-    useCallback(() => {
-      if (!dragDateRange) {
-        return;
-      }
+  const setDefaultValues: PrepareCreateEventActions["setDefaultValues"] = useCallback(() => {
+    if (!dragDateRange) {
+      return;
+    }
 
-      const { dragStartDate, dragEndDate } = dragDateRange;
+    const { dragStartDate, dragEndDate } = dragDateRange;
 
-      const eventStart = min([dragStartDate, dragEndDate]);
-      const eventEnd = max([dragStartDate, dragEndDate]);
+    const eventStart = min([dragStartDate, dragEndDate]);
+    const eventEnd = max([dragStartDate, dragEndDate]);
 
-      setDefaultCreateEventValues({
-        title: "",
-        allDay: true,
-        start: eventStart,
-        end: eventEnd,
-      });
-    }, [dragDateRange]);
+    setDefaultCreateEventValues({
+      title: "",
+      allDay: true,
+      start: eventStart,
+      end: eventEnd,
+    });
+  }, [dragDateRange]);
 
-  const clearState: PrepareCreateEventActions["clearState"] =
-    useCallback(() => {
-      setDragDateRange(undefined);
-      setDefaultCreateEventValues(undefined);
-    }, []);
+  const clearState: PrepareCreateEventActions["clearState"] = useCallback(() => {
+    setDragDateRange(undefined);
+    setDefaultCreateEventValues(undefined);
+  }, []);
 
   const prepareCreateEventState: PrepareCreateEventState = useMemo(() => {
     return { dragDateRange, defaultCreateEventValues };
@@ -122,13 +112,7 @@ export const PrepareCreateEventInRowProvider: React.FC<PropsWithChildren> = ({
         clearState,
       },
     }),
-    [
-      clearState,
-      prepareCreateEventState,
-      setDefaultValues,
-      startDrag,
-      updateDragEnd,
-    ],
+    [clearState, prepareCreateEventState, setDefaultValues, startDrag, updateDragEnd],
   );
 
   return <Context.Provider value={value}>{children}</Context.Provider>;

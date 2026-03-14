@@ -1,10 +1,4 @@
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useEffect, useState } from "react";
 
 type MinuteClockContext = Date;
 
@@ -22,9 +16,7 @@ export const useMinuteClock = () => {
   return { currentDate };
 };
 
-export const MinuteClockProvider: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const MinuteClockProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {

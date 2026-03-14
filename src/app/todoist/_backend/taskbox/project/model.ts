@@ -67,9 +67,7 @@ export const getOrderBasedOnProject = ({
 type CreateInput = { label: string; parentId: string | null; order?: number };
 export type ValidatedCreateInput = CreateInput & BRAND<"CreateInput">;
 
-export const validateCreateInput = (
-  input: CreateInput,
-): ValidatedCreateInput => {
+export const validateCreateInput = (input: CreateInput): ValidatedCreateInput => {
   return input as ValidatedCreateInput;
 };
 
@@ -93,8 +91,7 @@ type UpdatePositionInput = {
   parentProjectId: string | null;
   order: number;
 };
-export type ValidatedUpdatePositionInput = UpdatePositionInput &
-  BRAND<"UpdatePositionInput">;
+export type ValidatedUpdatePositionInput = UpdatePositionInput & BRAND<"UpdatePositionInput">;
 
 export const validateUpdatePositionInputs = (
   inputs: UpdatePositionInput[],

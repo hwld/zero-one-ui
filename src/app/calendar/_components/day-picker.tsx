@@ -115,11 +115,7 @@ const Empty = () => <></>;
 const Day = ({ day: _, modifiers, children, ...props }: DayProps) => {
   const content = useMemo(() => {
     if (modifiers.today) {
-      return (
-        <div className="rounded-sm bg-blue-500 text-neutral-100">
-          {children}
-        </div>
-      );
+      return <div className="rounded-sm bg-blue-500 text-neutral-100">{children}</div>;
     }
     return children;
   }, [children, modifiers.today]);

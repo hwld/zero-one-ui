@@ -95,14 +95,8 @@ export const ViewTaskBoardPanel: React.FC<Props> = ({ view }) => {
                   allColumns={view.columns}
                   onMoveToColumn={handleMoveToColumn}
                   onClickAddItem={handleClickAddItem}
-                  previousOrder={
-                    view.columns[i - 1] ? view.columns[i - 1].order : 0
-                  }
-                  nextOrder={
-                    view.columns[i + 1]
-                      ? view.columns[i + 1].order
-                      : column.order + 1
-                  }
+                  previousOrder={view.columns[i - 1] ? view.columns[i - 1].order : 0}
+                  nextOrder={view.columns[i + 1] ? view.columns[i + 1].order : column.order + 1}
                   onSetScrollBottomRef={handleSetScrollColumnBottomRef}
                 />
               </motion.div>

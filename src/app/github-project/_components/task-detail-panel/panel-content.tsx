@@ -46,10 +46,7 @@ export const TaskDetailPanelContent: React.FC<Props> = ({
           <motion.div className="grid size-full grid-cols-1 grid-rows-[min-content_1fr] @3xl:grid-cols-[1fr_400px]">
             <div className="space-y-2 border-b border-neutral-600 p-4 @3xl:col-span-2">
               <div className="flex items-center justify-end gap-2">
-                <IconButton
-                  icon={isPinned ? PinOffIcon : PinIcon}
-                  onClick={onTogglePin}
-                />
+                <IconButton icon={isPinned ? PinOffIcon : PinIcon} onClick={onTogglePin} />
                 <IconButton icon={XIcon} onClick={onClose} />
               </div>
               <TaskTitleSection task={task} />
@@ -84,39 +81,38 @@ export const TaskDetailPanelContent: React.FC<Props> = ({
   return <AnimatePresence mode="popLayout">{content}</AnimatePresence>;
 };
 
-const LoadingContent = forwardRef<HTMLDivElement, unknown>(
-  function LoadingContent(_, ref) {
-    return (
-      <motion.div
-        ref={ref}
-        key="loading"
-        className="grid size-full place-content-center place-items-center text-neutral-400"
-        exit={{ opacity: 0 }}
-      >
-        <LoadingAnimation />
-      </motion.div>
-    );
-  },
-);
+const LoadingContent = forwardRef<HTMLDivElement, unknown>(function LoadingContent(_, ref) {
+  return (
+    <motion.div
+      ref={ref}
+      key="loading"
+      className="grid size-full place-content-center place-items-center text-neutral-400"
+      exit={{ opacity: 0 }}
+    >
+      <LoadingAnimation />
+    </motion.div>
+  );
+});
 
-const ErrorContent = forwardRef<HTMLDivElement, { onClose: () => void }>(
-  function ErrorContent({ onClose }, ref) {
-    return (
-      <div
-        ref={ref}
-        className="grid size-full place-content-center place-items-center gap-4 text-red-400"
-      >
-        <div className="flex flex-col items-center gap-2">
-          <AlertCircleIcon size={50} />
-          <p className="font-bold">タスクが存在しません</p>
-          <p className="text-sm">
-            このタスクはすでに削除されているか、URLが間違っている可能性があります。
-            <br />
-            ※このアプリでは、更新すると作成したすべてのタスクが削除されます。
-          </p>
-        </div>
-        <Button onClick={onClose}>詳細ページを閉じる</Button>
+const ErrorContent = forwardRef<HTMLDivElement, { onClose: () => void }>(function ErrorContent(
+  { onClose },
+  ref,
+) {
+  return (
+    <div
+      ref={ref}
+      className="grid size-full place-content-center place-items-center gap-4 text-red-400"
+    >
+      <div className="flex flex-col items-center gap-2">
+        <AlertCircleIcon size={50} />
+        <p className="font-bold">タスクが存在しません</p>
+        <p className="text-sm">
+          このタスクはすでに削除されているか、URLが間違っている可能性があります。
+          <br />
+          ※このアプリでは、更新すると作成したすべてのタスクが削除されます。
+        </p>
       </div>
-    );
-  },
-);
+      <Button onClick={onClose}>詳細ページを閉じる</Button>
+    </div>
+  );
+});

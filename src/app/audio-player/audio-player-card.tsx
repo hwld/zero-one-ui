@@ -90,11 +90,7 @@ export const AudioPlayerCard: React.FC<Props> = ({
                   controls.changePlaying(!state.playing);
                 }}
               >
-                {state.playing ? (
-                  <TbPlayerPauseFilled />
-                ) : (
-                  <TbPlayerPlayFilled />
-                )}
+                {state.playing ? <TbPlayerPauseFilled /> : <TbPlayerPlayFilled />}
               </button>
               <SubButton
                 disabled={!state.isReady}
@@ -142,11 +138,7 @@ export const AudioPlayerCard: React.FC<Props> = ({
                   controls.changeMute(!state.isMuted);
                 }}
               >
-                {state.volume === 0 || state.isMuted ? (
-                  <TbVolumeOff />
-                ) : (
-                  <TbVolume />
-                )}
+                {state.volume === 0 || state.isMuted ? <TbVolumeOff /> : <TbVolume />}
               </SubButton>
               <div className="w-[120px]">
                 <Slider

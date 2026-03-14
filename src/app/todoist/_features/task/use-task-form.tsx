@@ -1,9 +1,5 @@
 import { useForm } from "react-hook-form";
-import {
-  taskFormFieldMap,
-  taskFormSchema,
-  type TaskFormData,
-} from "../../_backend/task/schema";
+import { taskFormFieldMap, taskFormSchema, type TaskFormData } from "../../_backend/task/schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef } from "react";
 
@@ -24,8 +20,7 @@ export const useTaskForm = ({ defaultValues, onCancel }: Params) => {
     resolver: zodResolver(taskFormSchema, {
       error: (issue) => {
         const field = issue.path?.[0];
-        const length =
-          typeof issue.input === "string" ? issue.input.length : undefined;
+        const length = typeof issue.input === "string" ? issue.input.length : undefined;
         if (issue.code === "too_big" && field && length) {
           return {
             message: `${taskFormFieldMap[field.toString()]}の文字数制限: ${length} / ${issue.maximum}`,

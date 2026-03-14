@@ -26,10 +26,7 @@ type Toast = {
   title: string;
   description?: string;
   onClose?: () => void;
-} & (
-  | { action?: undefined }
-  | { action: (params: { close: CloseFn }) => void; actionText: string }
-);
+} & ({ action?: undefined } | { action: (params: { close: CloseFn }) => void; actionText: string });
 
 type CreateToastInput = OmitDistributive<Toast, "id">;
 
@@ -108,22 +105,13 @@ export const ToastProvider: React.FC<PropsWithChildren> = ({ children }) => {
                     <div className="flex items-center justify-between">
                       <div className="text-sm">{toast.title}</div>
                       <div className="shrink-0">
-                        <IconButton
-                          size="sm"
-                          icon={TbX}
-                          onClick={() => handleClickClose(toast)}
-                        />
+                        <IconButton size="sm" icon={TbX} onClick={() => handleClickClose(toast)} />
                       </div>
                     </div>
-                    {toast.description && (
-                      <div className="text-xs">{toast.description}</div>
-                    )}
+                    {toast.description && <div className="text-xs">{toast.description}</div>}
                     {toast.action && (
                       <div className="flex w-full justify-end">
-                        <Button
-                          size="sm"
-                          onClick={() => handleClickAction(toast)}
-                        >
+                        <Button size="sm" onClick={() => handleClickAction(toast)}>
                           {toast.actionText}
                         </Button>
                       </div>

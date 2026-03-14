@@ -17,9 +17,7 @@ export const ProjectNavList: React.FC<Props> = ({ currentRoute }) => {
 
   const { projects, updateProjectsCache } = useProjects();
 
-  const [projectExpansionMap, setProjectExpansionMap] = useState(
-    new ProjectExpansionMap(),
-  );
+  const [projectExpansionMap, setProjectExpansionMap] = useState(new ProjectExpansionMap());
 
   const projectNodes = toProjectNodes(projects, projectExpansionMap);
 
@@ -67,9 +65,7 @@ export const ProjectNavList: React.FC<Props> = ({ currentRoute }) => {
                         dragContext={dragContext}
                         currentRoute={currentRoute}
                         project={projectNode}
-                        expanded={projectExpansionMap.isExpanded(
-                          projectNode.taskboxId,
-                        )}
+                        expanded={projectExpansionMap.isExpanded(projectNode.taskboxId)}
                         onChangeExpanded={handleChangeExpanded}
                       />
                     </motion.div>

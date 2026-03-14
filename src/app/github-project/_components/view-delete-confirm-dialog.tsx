@@ -26,12 +26,7 @@ export const ViewDeleteConfirmDialogTrigger: React.FC<Props> = ({
           <Button size="lg" onClick={() => setIsOpen(false)}>
             Cancel
           </Button>
-          <Button
-            size="lg"
-            color="destructive"
-            onClick={onDelete}
-            disabled={isDeleting}
-          >
+          <Button size="lg" color="destructive" onClick={onDelete} disabled={isDeleting}>
             Delete
           </Button>
         </>

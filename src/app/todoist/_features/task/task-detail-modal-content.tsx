@@ -29,10 +29,7 @@ import { PiWarningCircle } from "@react-icons/all-files/pi/PiWarningCircle";
 
 type Props = { taskId: string | null; onClose?: () => void };
 
-export const TaskDetailModalContent: React.FC<Props> = ({
-  taskId,
-  onClose,
-}) => {
+export const TaskDetailModalContent: React.FC<Props> = ({ taskId, onClose }) => {
   return (
     <TooltipDelayGroup>
       <div className="grid h-12 grid-cols-[1fr_auto] items-center gap-4 border-b border-stone-200 px-2">
@@ -59,9 +56,7 @@ export const TaskDetailModalContent: React.FC<Props> = ({
         </div>
       </div>
       <div className="grid h-[750px] grid-cols-[1fr_auto]">
-        <div className="overflow-auto">
-          {taskId ? <TaskDetail taskId={taskId} /> : null}
-        </div>
+        <div className="overflow-auto">{taskId ? <TaskDetail taskId={taskId} /> : null}</div>
         <div className="w-[250px] rounded-br-lg bg-stone-100">
           <Sidebar />
         </div>
@@ -97,9 +92,7 @@ const TaskDetail: React.FC<{ taskId: string }> = ({ taskId }) => {
         <PiWarningCircle className="size-7" />
         <div className="flex w-full flex-col items-center gap-1">
           <p className="text-sm">タスクが見つかりませんでした</p>
-          <p className="text-xs">
-            ※このアプリでは更新すると作成したデータは削除されます
-          </p>
+          <p className="text-xs">※このアプリでは更新すると作成したデータは削除されます</p>
         </div>
       </div>
     );
@@ -156,10 +149,7 @@ const TaskDetail: React.FC<{ taskId: string }> = ({ taskId }) => {
   );
 };
 
-const TaskEditor: React.FC<{ task: Task; onEndEdit: () => void }> = ({
-  task,
-  onEndEdit,
-}) => {
+const TaskEditor: React.FC<{ task: Task; onEndEdit: () => void }> = ({ task, onEndEdit }) => {
   const updateTask = useUpdateTask();
   const {
     register,
@@ -200,9 +190,7 @@ const TaskEditor: React.FC<{ task: Task; onEndEdit: () => void }> = ({
         />
       </div>
       <div className="flex w-full items-center justify-between gap-4">
-        <p className="text-xs text-red-600">
-          {errorMessagesWithoutTooSmall[0]}
-        </p>
+        <p className="text-xs text-red-600">{errorMessagesWithoutTooSmall[0]}</p>
         <div className="flex items-center gap-2">
           <Button color="secondary" onClick={onEndEdit}>
             キャンセル
@@ -225,11 +213,7 @@ const Sidebar: React.FC = () => {
   return (
     <div className="p-4 text-xs">
       <div className="flex flex-col gap-2">
-        <SidebarSelect
-          title="プロジェクト"
-          icon={PiTrayLight}
-          label="インボックス"
-        />
+        <SidebarSelect title="プロジェクト" icon={PiTrayLight} label="インボックス" />
         <Separator />
         <SidebarSelect title="予定日" icon={PiCalendarLight} label="9月26日" />
         <Separator />
@@ -279,10 +263,7 @@ const SidebarSelect: React.FC<{
   );
 };
 
-const SidebarItem: React.FC<{ label: ReactNode; icon: IconType }> = ({
-  label,
-  icon: Icon,
-}) => {
+const SidebarItem: React.FC<{ label: ReactNode; icon: IconType }> = ({ label, icon: Icon }) => {
   return (
     <button className={clsx(sidebarItemClass)}>
       {label}

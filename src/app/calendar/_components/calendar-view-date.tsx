@@ -35,10 +35,7 @@ export const CalendarViewDate: React.FC = () => {
     <div className="flex items-center gap-2">
       <IconButton icon={TbChevronLeft} onClick={prevCalendarPage} />
       <div className="flex items-center select-none">
-        <div className="mx-1 text-lg tabular-nums">
-          {calendarInfo.selectedDate.getFullYear()}
-        </div>
-        年
+        <div className="mx-1 text-lg tabular-nums">{calendarInfo.selectedDate.getFullYear()}</div>年
         <div className="mx-1 w-6 text-center text-lg tabular-nums">
           {calendarInfo.selectedDate.getMonth() + 1}
         </div>

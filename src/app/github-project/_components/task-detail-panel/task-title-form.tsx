@@ -4,10 +4,7 @@ import { useId } from "react";
 import { Input } from "../input";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  UpdateTaskInput,
-  updateTaskInputSchema,
-} from "../../_backend/task/api";
+import { UpdateTaskInput, updateTaskInputSchema } from "../../_backend/task/api";
 import { useUpdateTask } from "../../_queries/use-update-task";
 import { FloatingErrorMessage } from "../floating-error-message";
 

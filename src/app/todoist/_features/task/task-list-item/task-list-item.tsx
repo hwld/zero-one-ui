@@ -51,11 +51,7 @@ export const TaskListItem: React.FC<Props> = ({ task }) => {
           onClick={stopPropagation}
         >
           <div className="opacity-0 transition-all group-hover:opacity-100">
-            <ActionButton
-              size="sm"
-              icon={PiDotsSixVerticalBold}
-              tabIndex={-1}
-            />
+            <ActionButton size="sm" icon={PiDotsSixVerticalBold} tabIndex={-1} />
           </div>
           {task.subTasks.length > 0 && (
             <Tooltip label="サブタスクを広げる" placement="top">
@@ -80,9 +76,7 @@ export const TaskListItem: React.FC<Props> = ({ task }) => {
           >
             {task.title}
           </Link>
-          <div className="truncate text-xs text-stone-500">
-            {task.description}
-          </div>
+          <div className="truncate text-xs text-stone-500">{task.description}</div>
         </div>
 
         <div
@@ -92,10 +86,7 @@ export const TaskListItem: React.FC<Props> = ({ task }) => {
           {!task.done && (
             <>
               <Tooltip placement="top" label="タスクを編集" keys={["Cmd", "E"]}>
-                <ActionButton
-                  icon={PiPencilSimpleLineLight}
-                  onClick={() => setIsEditing(true)}
-                />
+                <ActionButton icon={PiPencilSimpleLineLight} onClick={() => setIsEditing(true)} />
               </Tooltip>
               <Tooltip placement="top" label="予定日を設定" keys={["T"]}>
                 <ActionButton icon={PiCalendarPlusLight} />

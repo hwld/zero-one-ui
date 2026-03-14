@@ -2,13 +2,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { CircleDotIcon, LucideIcon, Trash2Icon, XIcon } from "lucide-react";
 import { ConfirmDialog } from "../confirm-dialog";
 import { useState } from "react";
-import {
-  autoUpdate,
-  offset,
-  useFloating,
-  useHover,
-  useInteractions,
-} from "@floating-ui/react";
+import { autoUpdate, offset, useFloating, useHover, useInteractions } from "@floating-ui/react";
 import { useUpdateTaskStatuses } from "../../_queries/use-update-task-statuses";
 import { useDeleteTasks } from "../../_queries/use-delete-tasks";
 import { useTaskTableSelection } from "../task-table/selection-provider";
@@ -41,9 +35,7 @@ export const TaskSelectionMenu: React.FC = () => {
         >
           <div className="flex h-[25px] gap-1 overflow-hidden rounded-sm border border-dashed border-zinc-500">
             <div className="flex items-center px-2">
-              <span className="mr-[2px] font-bold">
-                {selectedTaskIds.length}
-              </span>
+              <span className="mr-[2px] font-bold">{selectedTaskIds.length}</span>
               selected
             </div>
             <button
@@ -118,11 +110,7 @@ const TaskSelectionMenuButton: React.FC<{
       </button>
       <AnimatePresence>
         {isOpen && (
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            {...getFloatingProps()}
-          >
+          <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
             <motion.div
               className="rounded-sm border border-zinc-600 bg-zinc-900 p-2 text-xs text-zinc-100"
               initial={{ opacity: 0, y: 3 }}

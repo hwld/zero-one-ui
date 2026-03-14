@@ -1,10 +1,4 @@
-import {
-  ArchiveIcon,
-  TrashIcon,
-  Settings2Icon,
-  PenIcon,
-  EyeOffIcon,
-} from "lucide-react";
+import { ArchiveIcon, TrashIcon, Settings2Icon, PenIcon, EyeOffIcon } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { TaskStatus } from "../_backend/task-status/store";
 import { Divider } from "./divider";
@@ -20,18 +14,11 @@ type Props = {
   children: ReactNode;
 };
 
-export const ViewColumnMenuTrigger: React.FC<Props> = ({
-  status,
-  children,
-}) => {
+export const ViewColumnMenuTrigger: React.FC<Props> = ({ status, children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <DropdownProvider
-      isOpen={isOpen}
-      onOpenChange={setIsOpen}
-      placement="bottom-end"
-    >
+    <DropdownProvider isOpen={isOpen} onOpenChange={setIsOpen} placement="bottom-end">
       <Tooltip label={`Actions for column: ${status.name}`}>
         <DropdownTrigger>{children}</DropdownTrigger>
       </Tooltip>

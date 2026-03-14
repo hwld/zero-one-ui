@@ -44,10 +44,7 @@ export const ViewTaskCardList: React.FC<Props> = ({
     });
   };
 
-  const handleMoveTaskBottom = (input: {
-    taskId: string;
-    statusId: string;
-  }) => {
+  const handleMoveTaskBottom = (input: { taskId: string; statusId: string }) => {
     const bottomItem = tasks.at(-1);
 
     moveTaskMutation.mutate({
@@ -90,20 +87,14 @@ export const ViewTaskCardList: React.FC<Props> = ({
 
   const showDropPreview = acceptDrop || isAddingTask;
   return (
-    <div
-      className={clsx(
-        "relative flex grow scroll-p-2 flex-col overflow-auto scroll-auto p-2",
-      )}
-    >
+    <div className={clsx("relative flex grow scroll-p-2 flex-col overflow-auto scroll-auto p-2")}>
       <div
         className="size-full"
         onDragOver={handleDragOver}
         onDragLeave={handleDragLeave}
         onDrop={handleDrop}
       >
-        {tasks.length === 0 && showDropPreview && (
-          <DropPreviewLine className="inset-x-2 w-auto" />
-        )}
+        {tasks.length === 0 && showDropPreview && <DropPreviewLine className="inset-x-2 w-auto" />}
         <AnimatePresence mode="popLayout" initial={false}>
           {tasks.map((task, i) => {
             const isTop = i === 0;

@@ -62,11 +62,7 @@ export const TaskAddDialog: React.FC<Props> = ({ isOpen, onOpenChange }) => {
                     <XIcon size={20} />
                   </DialogClose>
                 </div>
-                <TaskCreateForm
-                  key={formkey}
-                  id={taskFormId}
-                  onAddTask={handleAddTask}
-                />
+                <TaskCreateForm key={formkey} id={taskFormId} onAddTask={handleAddTask} />
                 <div className="h-px w-full bg-zinc-700" />
                 <div className="flex justify-end gap-4 p-3">
                   <div className="flex items-center gap-2">

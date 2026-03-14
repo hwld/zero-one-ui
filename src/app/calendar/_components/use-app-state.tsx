@@ -81,9 +81,7 @@ export const AppStateProvider: React.FC<{
     }),
   });
 
-  const [dayPickerMonth, setDayPickerMonth] = useState(
-    calendarInfo.selectedDate,
-  );
+  const [dayPickerMonth, setDayPickerMonth] = useState(calendarInfo.selectedDate);
 
   const changeCalendarType = useCallback(
     (type: CalendarType) => {
@@ -232,10 +230,7 @@ export const AppStateProvider: React.FC<{
 
   useEffect(() => {
     const handleKeydown = (event: KeyboardEvent) => {
-      if (
-        event.target instanceof HTMLInputElement ||
-        event.target instanceof HTMLTextAreaElement
-      ) {
+      if (event.target instanceof HTMLInputElement || event.target instanceof HTMLTextAreaElement) {
         return false;
       }
 

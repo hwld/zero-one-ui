@@ -31,18 +31,15 @@ export const Default = meta.story({
   },
 });
 
-Default.test(
-  "タイトルのみのタスクをキーボードだけで作成できる",
-  async ({ canvasElement }) => {
-    const canvas = within(canvasElement.parentElement!);
+Default.test("タイトルのみのタスクをキーボードだけで作成できる", async ({ canvasElement }) => {
+  const canvas = within(canvasElement.parentElement!);
 
-    await userEvent.keyboard("{meta>}k");
+  await userEvent.keyboard("{meta>}k");
 
-    const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
-    await userEvent.type(titleInput, "title{enter}", { delay: 50 });
+  const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
+  await userEvent.type(titleInput, "title{enter}", { delay: 50 });
 
-    await waitFor(async () => {
-      await expect(createTaskMock).toHaveBeenCalledTimes(1);
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(createTaskMock).toHaveBeenCalledTimes(1);
+  });
+});

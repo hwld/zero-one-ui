@@ -1,9 +1,6 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
-import {
-  EventStoreErrorSimulationScope,
-  eventStore,
-} from "./_backend/event-store";
+import { EventStoreErrorSimulationScope, eventStore } from "./_backend/event-store";
 import { useGlobalCommandConfig } from "../_providers/global-command/global-command-provider";
 import { TriangleAlertIcon, TriangleIcon } from "lucide-react";
 
@@ -22,32 +19,20 @@ export const useCalendarCommands = () => {
         newCommands: [
           {
             icon: errorSimulationScope.query ? TriangleIcon : TriangleAlertIcon,
-            label: `イベント取得エラーを${
-              errorSimulationScope.query ? "止める" : "発生させる"
-            }`,
+            label: `イベント取得エラーを${errorSimulationScope.query ? "止める" : "発生させる"}`,
             action: () => {
               setErrorSimulationScope((s) => ({ ...s, query: !s.query }));
-              eventStore.setErrorSimulationScope(
-                "query",
-                !errorSimulationScope.query,
-              );
+              eventStore.setErrorSimulationScope("query", !errorSimulationScope.query);
 
               client.refetchQueries();
             },
           },
           {
-            icon: errorSimulationScope.mutation
-              ? TriangleIcon
-              : TriangleAlertIcon,
-            label: `イベント更新エラーを${
-              errorSimulationScope.mutation ? "止める" : "発生させる"
-            }`,
+            icon: errorSimulationScope.mutation ? TriangleIcon : TriangleAlertIcon,
+            label: `イベント更新エラーを${errorSimulationScope.mutation ? "止める" : "発生させる"}`,
             action: () => {
               setErrorSimulationScope((s) => ({ ...s, mutation: !s.mutation }));
-              eventStore.setErrorSimulationScope(
-                "mutation",
-                !errorSimulationScope.mutation,
-              );
+              eventStore.setErrorSimulationScope("mutation", !errorSimulationScope.mutation);
 
               client.refetchQueries();
             },

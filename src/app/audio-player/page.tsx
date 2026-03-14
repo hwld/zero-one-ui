@@ -30,9 +30,7 @@ const Page: React.FC = () => {
     },
   ]);
 
-  const [currentMusicId, setCurrentMusicId] = useState<string | undefined>(
-    musics[0].id,
-  );
+  const [currentMusicId, setCurrentMusicId] = useState<string | undefined>(musics[0].id);
   const currentMusic = useMemo(() => {
     const music = musics.find((m) => m.id === currentMusicId);
     if (!music) {
@@ -124,10 +122,7 @@ const Page: React.FC = () => {
   return (
     <AudioProvider src={currentMusic?.url}>
       <div
-        className={clsx(
-          "grid h-dvh w-full place-items-center text-neutral-100",
-          bgClass,
-        )}
+        className={clsx("grid h-dvh w-full place-items-center text-neutral-100", bgClass)}
         style={{ colorScheme: "dark" }}
       >
         <div className="grid size-full min-h-0 grid-cols-[1fr] grid-rows-[1fr_300px] place-content-center gap-4 lg:grid-cols-[400px_400px] lg:grid-rows-[500px]">

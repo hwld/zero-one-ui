@@ -1,11 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useGlobalCommandConfig } from "../_providers/global-command/global-command-provider";
-import {
-  BoxSelectIcon,
-  RefreshCcwIcon,
-  TriangleAlertIcon,
-  TriangleIcon,
-} from "lucide-react";
+import { BoxSelectIcon, RefreshCcwIcon, TriangleAlertIcon, TriangleIcon } from "lucide-react";
 import { useQueryClient } from "@tanstack/react-query";
 import { todo2TaskRepository } from "./_backend/db/repository";
 import { resetTodo2Data } from "./_backend/db/reset";

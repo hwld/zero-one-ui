@@ -1,12 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import {
-  TreeNodeType,
-  TreeView,
-  TreeViewNode,
-  TreeViewNodeProps,
-} from "./_components/tree-view";
+import { TreeNodeType, TreeView, TreeViewNode, TreeViewNodeProps } from "./_components/tree-view";
 import { ComponentPropsWithoutRef, useState } from "react";
 import { createData } from "./_lib/data";
 import { cn } from "../../lib/utils";
@@ -30,13 +25,7 @@ const TreeViewCard: React.FC<TreeViewCardProps> = ({
   const [selected, setSelected] = useState<string | null>(null);
 
   return (
-    <div
-      className={cn(
-        "h-[500px] w-[300px] overflow-auto rounded-sm p-3",
-        className,
-      )}
-      {...props}
-    >
+    <div className={cn("h-[500px] w-[300px] overflow-auto rounded-sm p-3", className)} {...props}>
       <TreeView
         value={selected}
         onChange={setSelected}

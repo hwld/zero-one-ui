@@ -57,9 +57,7 @@ export const useDeleteEvent = () => {
       await queryClient.refetchQueries({
         queryKey: eventsQueryOption.queryKey,
       });
-      setPendingDeleteEventIds((pendingIds) =>
-        pendingIds.filter((pendingId) => pendingId !== id),
-      );
+      setPendingDeleteEventIds((pendingIds) => pendingIds.filter((pendingId) => pendingId !== id));
     },
   });
 
@@ -99,12 +97,8 @@ export const useDeleteEvent = () => {
   );
 };
 
-export const DeleteEventProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const DeleteEventProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const pendingDeleteState = useState<string[]>([]);
 
-  return (
-    <_Context.Provider value={pendingDeleteState}>{children}</_Context.Provider>
-  );
+  return <_Context.Provider value={pendingDeleteState}>{children}</_Context.Provider>;
 };

@@ -27,11 +27,7 @@ export const Sound: React.FC = () => {
           </div>
           <div className="space-y-2">
             <div className="text-sm text-neutral-300">マイク</div>
-            <Slider
-              value={mic}
-              onChangeValue={setMic}
-              icon={mic === 0 ? MicOffIcon : MicIcon}
-            />
+            <Slider value={mic} onChangeValue={setMic} icon={mic === 0 ? MicOffIcon : MicIcon} />
           </div>
         </div>
       </motion.div>

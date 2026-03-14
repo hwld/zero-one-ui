@@ -52,9 +52,7 @@ export const validateCreateInput = (
 
   const taskbox = getTaskbox(input.taskboxId);
   if (!taskbox) {
-    throw new Error(
-      `タスクの保存先が見つかりません taskboxId:${input.taskboxId}`,
-    );
+    throw new Error(`タスクの保存先が見つかりません taskboxId:${input.taskboxId}`);
   }
 
   return input as ValidatedCreateInput;
@@ -92,8 +90,7 @@ export const validateUpdateInput = (
 };
 
 type UpdateTaskDoneInput = { id: string; done: boolean };
-export type ValidatedUpdateTaskDoneInput = UpdateTaskDoneInput &
-  BRAND<"UpdateTsakDone">;
+export type ValidatedUpdateTaskDoneInput = UpdateTaskDoneInput & BRAND<"UpdateTsakDone">;
 
 export const validateUpdateTaskDone = (
   input: UpdateTaskDoneInput,

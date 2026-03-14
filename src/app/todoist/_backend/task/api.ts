@@ -113,10 +113,7 @@ export const taskApiHandlers = [
     await delay();
     const taskId = z.string().parse(params.id);
 
-    const validatedInput = validateDeleteInput(
-      { id: taskId },
-      { getTask: taskRepository.get },
-    );
+    const validatedInput = validateDeleteInput({ id: taskId }, { getTask: taskRepository.get });
 
     taskRepository.delete(validatedInput);
 

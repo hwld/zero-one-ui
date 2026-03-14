@@ -17,9 +17,7 @@ export const useGitHubProjectCommands = () => {
         newCommands: [
           {
             icon: errorSimulationScope.query ? TriangleIcon : TriangleAlertIcon,
-            label: `タスク取得エラーを${
-              errorSimulationScope.query ? "止める" : "発生させる"
-            }`,
+            label: `タスク取得エラーを${errorSimulationScope.query ? "止める" : "発生させる"}`,
             action: async () => {
               setErrorSimulationScope((s) => ({ ...s, query: !s.query }));
 
@@ -33,9 +31,7 @@ export const useGitHubProjectCommands = () => {
             },
           },
           {
-            icon: errorSimulationScope.mutation
-              ? TriangleIcon
-              : TriangleAlertIcon,
+            icon: errorSimulationScope.mutation ? TriangleIcon : TriangleAlertIcon,
             label: `タスク更新系のエラーを${
               errorSimulationScope.mutation ? "止める" : "発生させる"
             }`,

@@ -1,9 +1,7 @@
 import { motion } from "motion/react";
 import { ArrowRightIcon } from "lucide-react";
 
-export const NextMenuItem: React.FC<{ onClick: () => void }> = ({
-  onClick,
-}) => {
+export const NextMenuItem: React.FC<{ onClick: () => void }> = ({ onClick }) => {
   return (
     <motion.button
       layout="position"

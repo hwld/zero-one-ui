@@ -21,9 +21,7 @@ export const PageCard: React.FC<Props> = (props) => {
     >
       <div className="flex items-center gap-1">
         <p className="text-neutral-400">{props.number}.</p>
-        {isPrime && (
-          <SparklesIcon className="fill-violet-500 text-violet-500" size={18} />
-        )}
+        {isPrime && <SparklesIcon className="fill-violet-500 text-violet-500" size={18} />}
         <p>{props.page.title}</p>
       </div>
       <div className="grow text-sm whitespace-pre-wrap text-neutral-400">

@@ -1,9 +1,4 @@
-import {
-  Dialog,
-  DialogAction,
-  DialogContent,
-  DialogTitle,
-} from "../../_components/dialog";
+import { Dialog, DialogAction, DialogContent, DialogTitle } from "../../_components/dialog";
 import { useUpdateEvent } from "./use-update-event";
 import { UpdateEventInput } from "../../_backend/api";
 import { EVENT_FORM_ID, EventForm } from "./event-form";
@@ -54,11 +49,7 @@ export const UpdateEventFormDialog: React.FC<Props> = ({
           <Button variant="ghost" onClick={onClose}>
             キャンセル
           </Button>
-          <Button
-            type="submit"
-            form={EVENT_FORM_ID}
-            isPending={updateEventMutation.isPending}
-          >
+          <Button type="submit" form={EVENT_FORM_ID} isPending={updateEventMutation.isPending}>
             更新する
           </Button>
         </DialogAction>

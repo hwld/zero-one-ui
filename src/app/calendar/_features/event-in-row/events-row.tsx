@@ -20,22 +20,12 @@ type Props = {
 };
 
 export const EventsRow = forwardRef<HTMLDivElement, Props>(function EventRow(
-  {
-    eventsRowDates,
-    allEventsInRow,
-    eventLimit,
-    eventHeight,
-    eventTop,
-    onClickMoreEvents,
-  },
+  { eventsRowDates, allEventsInRow, eventLimit, eventHeight, eventTop, onClickMoreEvents },
   _ref,
 ) {
-  const { isEventMoving, moveEventPreview, moveEventActions } =
-    useMoveEventInRow();
-  const { prepareCreateEventState, prepareCreateEventActions } =
-    usePrepareCreateEventInRow();
-  const { isEventResizing, resizeEventPreview, resizeEventActions } =
-    useResizeEventInRow();
+  const { isEventMoving, moveEventPreview, moveEventActions } = useMoveEventInRow();
+  const { prepareCreateEventState, prepareCreateEventActions } = usePrepareCreateEventInRow();
+  const { isEventResizing, resizeEventPreview, resizeEventActions } = useResizeEventInRow();
 
   const dragDateRangeForCreate = prepareCreateEventState.dragDateRange;
   const isDraggingForCreate = dragDateRangeForCreate !== undefined;
@@ -49,9 +39,7 @@ export const EventsRow = forwardRef<HTMLDivElement, Props>(function EventRow(
     }
 
     const rowRect = rowRef.current.getBoundingClientRect();
-    const index = Math.floor(
-      (x - rowRect.x) / (rowRect.width / eventsRowDates.length),
-    );
+    const index = Math.floor((x - rowRect.x) / (rowRect.width / eventsRowDates.length));
 
     return eventsRowDates[index];
   };
@@ -81,10 +69,7 @@ export const EventsRow = forwardRef<HTMLDivElement, Props>(function EventRow(
     }
   };
 
-  const handleEventDragStart = (
-    e: React.DragEvent<HTMLButtonElement>,
-    event: EventInRow,
-  ) => {
+  const handleEventDragStart = (e: React.DragEvent<HTMLButtonElement>, event: EventInRow) => {
     // dragの開始をハンドリングしたいだけなので他の挙動は抑制する
     e.preventDefault();
 
@@ -92,17 +77,12 @@ export const EventsRow = forwardRef<HTMLDivElement, Props>(function EventRow(
     moveEventActions.startMove(event, date);
   };
 
-  const handleStartResizeEvent: EventInRowCardProps["onStartResize"] = (
-    _,
-    { event, origin },
-  ) => {
+  const handleStartResizeEvent: EventInRowCardProps["onStartResize"] = (_, { event, origin }) => {
     resizeEventActions.startResize({ event, origin });
   };
 
   const visibleEvents =
-    eventLimit === undefined
-      ? allEventsInRow
-      : allEventsInRow.filter((e) => e.top < eventLimit);
+    eventLimit === undefined ? allEventsInRow : allEventsInRow.filter((e) => e.top < eventLimit);
 
   const exceededEventCountMap =
     eventLimit !== undefined
@@ -123,22 +103,16 @@ export const EventsRow = forwardRef<HTMLDivElement, Props>(function EventRow(
       <AnimatePresence>
         {visibleEvents.map((event) => {
           const isDragging = isEventMoving && moveEventPreview?.id === event.id;
-          const isResizing =
-            isEventResizing && resizeEventPreview?.id === event.id;
+          const isResizing = isEventResizing && resizeEventPreview?.id === event.id;
 
           return (
-            <motion.div
-              key={event.id}
-              exit={{ opacity: 0, transition: { duration: 0.1 } }}
-            >
+            <motion.div key={event.id} exit={{ opacity: 0, transition: { duration: 0.1 } }}>
               <EventInRowCard
                 eventInRow={event}
                 isDragging={isDragging}
                 topMargin={eventTop}
                 height={eventHeight}
-                disablePointerEvents={
-                  isDraggingForCreate || isEventMoving || isResizing
-                }
+                disablePointerEvents={isDraggingForCreate || isEventMoving || isResizing}
                 draggable
                 onMouseDown={(e) => e.stopPropagation()}
                 onDragStart={(e) => handleEventDragStart(e, event)}

@@ -9,9 +9,7 @@ export function Toaster() {
   return (
     <ToastProvider>
       {toasts.map(function ({ id, title, description, ...props }) {
-        return (
-          <Toast key={id} title={title} description={description} {...props} />
-        );
+        return <Toast key={id} title={title} description={description} {...props} />;
       })}
       <ToastViewport style={{ colorScheme: "dark" }} />
     </ToastProvider>

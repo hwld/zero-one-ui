@@ -4,10 +4,7 @@ import { Input } from "../../_components/input";
 import { useId } from "react";
 import { Label } from "../../_components/label";
 import { ErrorMessage } from "../../_components/error-message";
-import {
-  ProjectFormData,
-  projectFormSchema,
-} from "../../_backend/taskbox/project/schema";
+import { ProjectFormData, projectFormSchema } from "../../_backend/taskbox/project/schema";
 
 type Props = {
   id: string;
@@ -15,11 +12,7 @@ type Props = {
   onSubmit: (data: ProjectFormData) => void;
 };
 
-export const ProjectForm: React.FC<Props> = ({
-  id,
-  defaultValues,
-  onSubmit,
-}) => {
+export const ProjectForm: React.FC<Props> = ({ id, defaultValues, onSubmit }) => {
   const {
     register,
     formState: { errors },
@@ -45,9 +38,7 @@ export const ProjectForm: React.FC<Props> = ({
             aria-errormessage={labelErrorId}
           />
           {errors.label && (
-            <ErrorMessage errorId={labelErrorId}>
-              {errors.label.message}
-            </ErrorMessage>
+            <ErrorMessage errorId={labelErrorId}>{errors.label.message}</ErrorMessage>
           )}
         </div>
       </div>

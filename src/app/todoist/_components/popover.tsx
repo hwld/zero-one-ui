@@ -8,12 +8,7 @@ type Props = {
   onOpenChange: (open: boolean) => void;
 };
 
-export const Popover: React.FC<Props> = ({
-  trigger,
-  children,
-  isOpen,
-  onOpenChange,
-}) => {
+export const Popover: React.FC<Props> = ({ trigger, children, isOpen, onOpenChange }) => {
   return (
     <RxPopover.Root modal open={isOpen} onOpenChange={onOpenChange}>
       <RxPopover.Trigger asChild>{trigger}</RxPopover.Trigger>

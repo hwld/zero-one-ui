@@ -3,10 +3,7 @@ import { ProjectPositionChange } from "../../../_backend/taskbox/project/schema"
 import { ProjectExpansionMap } from "./expansion-map";
 
 // orderは存在せず、配列の並びで順番を決める
-export type ProjectNode = Omit<
-  Project,
-  "subProjects" | "order" | "parentProjectId"
-> & {
+export type ProjectNode = Omit<Project, "subProjects" | "order" | "parentProjectId"> & {
   depth: number;
   visible: boolean;
   descendantsProjectCount: number;
@@ -39,10 +36,7 @@ export const getProjectPositionChanges = (
       throw new Error("プロジェクトが削除されています");
     }
 
-    if (
-      baseProject.order !== project.order ||
-      baseProject.parentId !== project.parentId
-    ) {
+    if (baseProject.order !== project.order || baseProject.parentId !== project.parentId) {
       result.push({
         projectId: project.taskboxId,
         order: project.order,
@@ -206,9 +200,7 @@ export const updateProjectDepth = (
   }
 
   // 直近でvisibleがtrueのプロジェクトのdepth
-  const prevDepth =
-    nodes.slice(0, targetIndex).findLast((p) => p.visible === true)?.depth ??
-    -1;
+  const prevDepth = nodes.slice(0, targetIndex).findLast((p) => p.visible === true)?.depth ?? -1;
   const nextDepth = nodes[targetIndex + 1]?.depth ?? 0;
 
   // 前の要素のdepth+1以上大きくはできない
@@ -255,10 +247,7 @@ export const dragProjectStart = (
   const descendantsEndIndex = targetIndex + descendantCount + 1;
   const descendants = nodes.slice(descendantsStartIndex, descendantsEndIndex);
 
-  const newNodes = [
-    ...nodes.slice(0, descendantsStartIndex),
-    ...nodes.slice(descendantsEndIndex),
-  ];
+  const newNodes = [...nodes.slice(0, descendantsStartIndex), ...nodes.slice(descendantsEndIndex)];
 
   return { results: toProjects(newNodes), removedDescendantNodes: descendants };
 };
@@ -295,9 +284,7 @@ export const dragProjectEnd = (
 
   // ドラッグしたノードの親プロジェクトのexpandedをtrueにする
   if (targetNode.depth > 0) {
-    const parent = newNodes
-      .slice(0, targetIndex)
-      .findLast((p) => p.depth === targetNode.depth - 1);
+    const parent = newNodes.slice(0, targetIndex).findLast((p) => p.depth === targetNode.depth - 1);
     if (!parent) {
       throw new Error(`親プロジェクトが存在しない`);
     }

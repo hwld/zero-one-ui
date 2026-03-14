@@ -30,10 +30,7 @@ class Todo1TaskRepository {
   public async getAll(): Promise<Task[]> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
-    const tasks = await db
-      .select()
-      .from(todo1Tasks)
-      .orderBy(todo1Tasks.createdAt);
+    const tasks = await db.select().from(todo1Tasks).orderBy(todo1Tasks.createdAt);
 
     return tasks.map((task) => this.toTask(task));
   }
@@ -41,11 +38,7 @@ class Todo1TaskRepository {
   public async get(id: string): Promise<Task | undefined> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
-    const tasks = await db
-      .select()
-      .from(todo1Tasks)
-      .where(eq(todo1Tasks.id, id))
-      .limit(1);
+    const tasks = await db.select().from(todo1Tasks).where(eq(todo1Tasks.id, id)).limit(1);
 
     if (tasks.length === 0) {
       return undefined;
@@ -73,9 +66,7 @@ class Todo1TaskRepository {
     return this.toTask(newTasks[0]);
   }
 
-  public async update(
-    input: UpdateTaskInput & { id: string },
-  ): Promise<Task | undefined> {
+  public async update(input: UpdateTaskInput & { id: string }): Promise<Task | undefined> {
     errorSimulator.throwIfActive();
     const db = await this.getDb();
     const now = new Date();

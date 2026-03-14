@@ -1,12 +1,7 @@
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
-import {
-  CheckIcon,
-  PanelRightOpenIcon,
-  PencilIcon,
-  TrashIcon,
-} from "lucide-react";
+import { CheckIcon, PanelRightOpenIcon, PencilIcon, TrashIcon } from "lucide-react";
 import { TaskEditableTitle } from "../task-editable-title";
 import { TaskCardButton } from "./task-card-button";
 import { TaskDeleteConfirmDialog } from "../task-delete-confirm-dialog";
@@ -28,9 +23,7 @@ export const TaskCard: React.FC<{
   const [optimisticTitle, setOptimisticTitle] = useState<string | null>(null);
 
   const displayTitle =
-    optimisticTitle !== null && task.title !== optimisticTitle
-      ? optimisticTitle
-      : task.title;
+    optimisticTitle !== null && task.title !== optimisticTitle ? optimisticTitle : task.title;
   const displayTask = { ...task, title: displayTitle };
 
   const updateTaskMutation = useUpdateTask();
@@ -105,10 +98,7 @@ export const TaskCard: React.FC<{
               }, 0);
             }}
           />
-          <TaskCardLink
-            href={`/todo-1/detail?id=${task.id}`}
-            icon={<PanelRightOpenIcon />}
-          />
+          <TaskCardLink href={`/todo-1/detail?id=${task.id}`} icon={<PanelRightOpenIcon />} />
           <TaskCardButton
             aria-label="削除ダイアログを開く"
             onClick={() => setIsConfirmDeleteOpen(true)}

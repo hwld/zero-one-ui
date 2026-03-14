@@ -14,8 +14,7 @@ export const useUpdateTask = () => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "タスクを更新することができませんでした。もう一度試してみてください。",
+        description: "タスクを更新することができませんでした。もう一度試してみてください。",
       });
     },
     onMutate: async (input) => {

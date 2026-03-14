@@ -37,12 +37,7 @@ export const ProjectNavItemMenu: React.FC<Props> = ({
   onOpenCreateAfterDialog,
 }) => {
   return (
-    <Menu
-      width={300}
-      placement="right-start"
-      onOpenChange={onOpenChange}
-      trigger={trigger}
-    >
+    <Menu width={300} placement="right-start" onOpenChange={onOpenChange} trigger={trigger}>
       <MenuButtonItem
         icon={PiArrowUpLight}
         label="プロジェクトを上に追加"
@@ -54,11 +49,7 @@ export const ProjectNavItemMenu: React.FC<Props> = ({
         onClick={onOpenCreateAfterDialog}
       />
       <MenuSeparator />
-      <MenuButtonItem
-        icon={PiPencilSimpleLineLight}
-        label="編集"
-        onClick={onOpenUpdateDialog}
-      />
+      <MenuButtonItem icon={PiPencilSimpleLineLight} label="編集" onClick={onOpenUpdateDialog} />
       <MenuButtonItem icon={PiHeartLight} label="お気に入りに追加" />
       <MenuButtonItem icon={PiCopyLight} label="複製" />
       <MenuSeparator />
@@ -80,19 +71,10 @@ export const ProjectNavItemMenu: React.FC<Props> = ({
       <MenuButtonItem icon={PiBrowsersLight} label="テンプレートを見る" />
       <MenuSeparator />
       <MenuButtonItem icon={PiDownloadSimpleLight} label="CSVからインポート" />
-      <MenuButtonItem
-        icon={PiUploadSimpleLight}
-        label="CSVとしてエクスポート"
-      />
+      <MenuButtonItem icon={PiUploadSimpleLight} label="CSVとしてエクスポート" />
       <MenuSeparator />
-      <MenuButtonItem
-        icon={PiEnvelopeSimpleLight}
-        label="メールでタスクを追加"
-      />
-      <MenuButtonItem
-        icon={PiListBulletsLight}
-        label="プロジェクトカレンダーフィード"
-      />
+      <MenuButtonItem icon={PiEnvelopeSimpleLight} label="メールでタスクを追加" />
+      <MenuButtonItem icon={PiListBulletsLight} label="プロジェクトカレンダーフィード" />
       <MenuSeparator />
       <MenuButtonItem icon={PiPulseLight} label="アクティビティログ" />
       <MenuSeparator />

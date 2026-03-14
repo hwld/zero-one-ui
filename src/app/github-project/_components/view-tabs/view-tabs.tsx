@@ -11,18 +11,13 @@ import { LoadingContent } from "./loading-content";
 import { NoViewContent } from "./no-view-content";
 import { ViewContent } from "./view-content";
 
-const TabsLayout: React.FC<{ tabs?: ReactNode; children: ReactNode }> = ({
-  tabs,
-  children,
-}) => {
+const TabsLayout: React.FC<{ tabs?: ReactNode; children: ReactNode }> = ({ tabs, children }) => {
   return (
     <div className="grid min-h-0 grid-rows-[min-content_minmax(0,1fr)]">
       <div className="flex w-full items-stretch overflow-x-auto border-b border-neutral-600 px-8">
         <div className="flex h-[42px] items-stretch">{tabs}</div>
       </div>
-      <div className="relative flex overflow-auto bg-neutral-800">
-        {children}
-      </div>
+      <div className="relative flex overflow-auto bg-neutral-800">{children}</div>
     </div>
   );
 };
@@ -30,8 +25,7 @@ const TabsLayout: React.FC<{ tabs?: ReactNode; children: ReactNode }> = ({
 export const ViewTabs: React.FC = () => {
   const searchParams = useSearchParams(HomeSearchParamsSchema);
 
-  const { data: viewSummaries, status: viewSummariesStatus } =
-    useViewSummaries();
+  const { data: viewSummaries, status: viewSummariesStatus } = useViewSummaries();
 
   if (viewSummariesStatus === "error") {
     return (
@@ -74,11 +68,7 @@ export const ViewTabs: React.FC = () => {
         </>
       }
     >
-      {viewId ? (
-        <ViewContent key={viewId} viewId={viewId} />
-      ) : (
-        <NoViewContent />
-      )}
+      {viewId ? <ViewContent key={viewId} viewId={viewId} /> : <NoViewContent />}
     </TabsLayout>
   );
 };

@@ -13,8 +13,7 @@ export const useCreateView = () => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "ビューを作成することができませんでした。もう一度試してみてください。",
+        description: "ビューを作成することができませんでした。もう一度試してみてください。",
       });
     },
   });

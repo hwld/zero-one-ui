@@ -1,10 +1,5 @@
 "use client";
-import {
-  CalendarIcon,
-  CircleIcon,
-  HomeIcon,
-  LayoutListIcon,
-} from "lucide-react";
+import { CalendarIcon, CircleIcon, HomeIcon, LayoutListIcon } from "lucide-react";
 import { SideBarItem } from "./sidebar-item";
 import { usePathname } from "next/navigation";
 
@@ -19,11 +14,7 @@ export const SideBar: React.FC = () => {
       </div>
       <div className="h-px w-full bg-neutral-600" />
       <div className="flex flex-col items-start gap-2">
-        <SideBarItem
-          href="/todo-1"
-          active={path === "/todo-1"}
-          icon={<HomeIcon />}
-        >
+        <SideBarItem href="/todo-1" active={path === "/todo-1"} icon={<HomeIcon />}>
           今日のタスク
         </SideBarItem>
         <SideBarItem href="/todo-1" icon={<LayoutListIcon />}>

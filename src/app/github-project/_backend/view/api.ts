@@ -28,10 +28,7 @@ export type ViewColumn = z.infer<typeof viewColumnSchema>;
 export type ViewTask = z.infer<typeof viewTaskSchema>;
 
 export const viewFormSchema = z.object({
-  name: z
-    .string()
-    .min(1, "名前の入力は必須です")
-    .max(200, "200文字以内で入力してください"),
+  name: z.string().min(1, "名前の入力は必須です").max(200, "200文字以内で入力してください"),
 });
 export type ViewFormData = z.infer<typeof viewFormSchema>;
 
@@ -105,11 +102,9 @@ export const viewApiHandler = [
   http.get(GitHubProjectAPI.views(), async () => {
     await delay();
 
-    const summaries: ViewSummary[] = viewRecordStore
-      .getAll()
-      .map((viewRecord): ViewSummary => {
-        return { id: viewRecord.id, name: viewRecord.name };
-      });
+    const summaries: ViewSummary[] = viewRecordStore.getAll().map((viewRecord): ViewSummary => {
+      return { id: viewRecord.id, name: viewRecord.name };
+    });
 
     return HttpResponse.json(summaries);
   }),
@@ -219,9 +214,7 @@ export const viewApiHandler = [
       viewRecordStore.moveTaskToEndOfStatus({
         viewIds: otherViewIds,
         taskId: targetTask.id,
-        targetStatusTaskIds: taskStore
-          .getByStatusId(updateInput.statusId)
-          .map((t) => t.id),
+        targetStatusTaskIds: taskStore.getByStatusId(updateInput.statusId).map((t) => t.id),
       });
       taskStore.update({ ...targetTask, statusId: updateInput.statusId });
     }

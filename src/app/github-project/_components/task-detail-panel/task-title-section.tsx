@@ -18,11 +18,7 @@ export const TaskTitleSection: React.FC<{ task: Task }> = ({ task }) => {
     <div className="flex items-center justify-between gap-4">
       {isEditable ? (
         <>
-          <TaskTitleForm
-            task={task}
-            onCancel={disableEditing}
-            onAfterSubmit={disableEditing}
-          />
+          <TaskTitleForm task={task} onCancel={disableEditing} onAfterSubmit={disableEditing} />
         </>
       ) : (
         <>

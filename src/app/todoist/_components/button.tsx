@@ -81,20 +81,17 @@ export const Button = forwardRef<HTMLButtonElement, Props>(function Button(
   );
 });
 
-type ButtonLinkProps = { children: ReactNode } & LinkProps &
-  VariantProps<typeof button>;
+type ButtonLinkProps = { children: ReactNode } & LinkProps & VariantProps<typeof button>;
 
-export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
-  function ButtonLink(
-    { color = "primary", size = "md", loading = false, children, ...props },
-    ref,
-  ) {
-    const classes = button({ color, size, loading });
+export const ButtonLink = forwardRef<HTMLAnchorElement, ButtonLinkProps>(function ButtonLink(
+  { color = "primary", size = "md", loading = false, children, ...props },
+  ref,
+) {
+  const classes = button({ color, size, loading });
 
-    return (
-      <Link ref={ref} {...props} className={classes.base()}>
-        {children}
-      </Link>
-    );
-  },
-);
+  return (
+    <Link ref={ref} {...props} className={classes.base()}>
+      {children}
+    </Link>
+  );
+});

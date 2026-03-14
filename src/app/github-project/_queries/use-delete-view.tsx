@@ -33,8 +33,7 @@ export const useDeleteView = ({ onSuccess }: UseDeleteViewArgs) => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "ビューを削除することができませんでした。もう一度試してみてください。",
+        description: "ビューを削除することができませんでした。もう一度試してみてください。",
       });
     },
   });

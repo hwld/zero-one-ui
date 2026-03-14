@@ -36,9 +36,7 @@ export const ViewColumn: React.FC<Props> = ({
   onSetScrollBottomRef,
   addingColumnId,
 }) => {
-  const [acceptDrop, setAcceptDrop] = useState<"none" | "left" | "right">(
-    "none",
-  );
+  const [acceptDrop, setAcceptDrop] = useState<"none" | "left" | "right">("none");
   const moveColumnMutation = useMoveColumn();
 
   const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
@@ -72,10 +70,7 @@ export const ViewColumn: React.FC<Props> = ({
 
   const handleDragStart = (e: React.DragEvent<HTMLDivElement>) => {
     e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData(
-      DRAG_TYPE.column,
-      JSON.stringify({ statusId: column.statusId }),
-    );
+    e.dataTransfer.setData(DRAG_TYPE.column, JSON.stringify({ statusId: column.statusId }));
   };
 
   const handleSetScrollBottomRef = (e: HTMLDivElement) => {
@@ -123,9 +118,7 @@ export const ViewColumn: React.FC<Props> = ({
             </ViewColumnMenuTrigger>
           </div>
         </div>
-        <div className="px-4 pb-2 text-sm text-neutral-400">
-          {column.status.description}
-        </div>
+        <div className="px-4 pb-2 text-sm text-neutral-400">{column.status.description}</div>
         <ViewTaskCardList
           isAddingTask={addingColumnId === column.statusId}
           viewId={viewId}

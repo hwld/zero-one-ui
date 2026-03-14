@@ -3,10 +3,7 @@ import { ComponentPropsWithoutRef, forwardRef } from "react";
 
 type Props = ComponentPropsWithoutRef<"input">;
 
-export const Input = forwardRef<HTMLInputElement, Props>(function Input(
-  { ...props },
-  ref,
-) {
+export const Input = forwardRef<HTMLInputElement, Props>(function Input({ ...props }, ref) {
   return (
     <input
       ref={ref}

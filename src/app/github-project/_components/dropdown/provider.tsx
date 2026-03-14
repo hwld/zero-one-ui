@@ -11,14 +11,7 @@ import {
   useInteractions,
   useListNavigation,
 } from "@floating-ui/react";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useMemo,
-  useRef,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext, useMemo, useRef, useState } from "react";
 
 /**
  * https://github.com/radix-ui/primitives/issues/2545

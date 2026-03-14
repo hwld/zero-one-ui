@@ -98,8 +98,12 @@ const SelectComponent = forwardRef<HTMLButtonElement, SelectComponentProps>(
       loop: true,
     });
 
-    const { getReferenceProps, getFloatingProps, getItemProps } =
-      useInteractions([hover, click, dismiss, listNavigation]);
+    const { getReferenceProps, getFloatingProps, getItemProps } = useInteractions([
+      hover,
+      click,
+      dismiss,
+      listNavigation,
+    ]);
 
     useEffect(() => {
       if (!tree) return;
@@ -118,9 +122,7 @@ const SelectComponent = forwardRef<HTMLButtonElement, SelectComponentProps>(
       <FloatingNode id={nodeId}>
         <Slot
           ref={useMergeRefs([refs.setReference, item.ref, forwardRef])}
-          tabIndex={
-            !isNested ? undefined : parent.activeIndex === item.index ? 0 : -1
-          }
+          tabIndex={!isNested ? undefined : parent.activeIndex === item.index ? 0 : -1}
           {...getReferenceProps(
             parent.getItemProps({
               ...props,
@@ -148,19 +150,9 @@ const SelectComponent = forwardRef<HTMLButtonElement, SelectComponentProps>(
                     >
                       <motion.div
                         className="flex min-w-[150px] flex-col rounded-sm border border-neutral-300 bg-zinc-50 p-[2px] text-sm text-neutral-700 shadow-sm focus:outline-hidden"
-                        initial={
-                          isNested
-                            ? { opacity: 0, x: -4 }
-                            : { opacity: 0, y: -4 }
-                        }
-                        animate={
-                          isNested ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }
-                        }
-                        exit={
-                          isNested
-                            ? { opacity: 0, x: -4 }
-                            : { opacity: 0, y: -4 }
-                        }
+                        initial={isNested ? { opacity: 0, x: -4 } : { opacity: 0, y: -4 }}
+                        animate={isNested ? { opacity: 1, x: 0 } : { opacity: 1, y: 0 }}
+                        exit={isNested ? { opacity: 0, x: -4 } : { opacity: 0, y: -4 }}
                         transition={{ duration: 0.1 }}
                       >
                         {children}
@@ -193,13 +185,9 @@ const SelectItemBase = forwardRef(function SelectItemBase(
       {...props}
       className="grid h-[28px] grid-cols-[15px_1fr_20px] place-content-center gap-1 rounded-sm px-2 transition-colors focus:bg-neutral-200 focus-visible:outline-hidden"
     >
-      <div className="grid size-full place-items-center">
-        {selected ? <TbCheck /> : null}
-      </div>
+      <div className="grid size-full place-items-center">{selected ? <TbCheck /> : null}</div>
       <div className="w-full text-start">{label}</div>
-      <div className="grid size-full place-content-end place-items-center">
-        {option}
-      </div>
+      <div className="grid size-full place-content-end place-items-center">{option}</div>
     </button>
   );
 });
@@ -231,9 +219,7 @@ export const SelectItem = forwardRef(function SelectItem<T>(
       })}
       label={valueItem.label}
       selected={selected}
-      option={
-        <div className="text-xs text-neutral-500">{valueItem.shortcut}</div>
-      }
+      option={<div className="text-xs text-neutral-500">{valueItem.shortcut}</div>}
     />
   );
 });
@@ -258,12 +244,7 @@ type SelectProps<T> = {
   isEqual: (a: T, b: T) => boolean;
 };
 
-export const Select = <T,>({
-  items,
-  selectedValue,
-  onSelect,
-  isEqual,
-}: SelectProps<T>) => {
+export const Select = <T,>({ items, selectedValue, onSelect, isEqual }: SelectProps<T>) => {
   const selectedItem = items
     .flatMap((item) => {
       if (item.type === "root") {
@@ -336,10 +317,7 @@ const SubSelect = <T,>({
     <SelectComponent
       trigger={() => {
         return (
-          <SelectItemBase
-            label={label}
-            option={<ChevronRight className="-mr-1" size={16} />}
-          />
+          <SelectItemBase label={label} option={<ChevronRight className="-mr-1" size={16} />} />
         );
       }}
     >

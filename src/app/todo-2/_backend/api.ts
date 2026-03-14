@@ -10,11 +10,7 @@ const sortOrderSchema = z.union([z.literal("asc"), z.literal("desc")]);
 export type SortOrder = z.infer<typeof sortOrderSchema>;
 
 const sortEntrySchema = z.object({
-  field: z.union([
-    z.literal("title"),
-    z.literal("createdAt"),
-    z.literal("completedAt"),
-  ]),
+  field: z.union([z.literal("title"), z.literal("createdAt"), z.literal("completedAt")]),
   order: sortOrderSchema,
 });
 export type SortEntry = z.infer<typeof sortEntrySchema>;
@@ -40,9 +36,7 @@ const fieldFilterSchema = z.union([
 ]);
 export type FieldFilter = z.infer<typeof fieldFilterSchema>;
 
-const selectionFilterSchema = z
-  .union([z.literal("selected"), z.literal("unselected")])
-  .nullable();
+const selectionFilterSchema = z.union([z.literal("selected"), z.literal("unselected")]).nullable();
 export type SelectionFilter = z.infer<typeof selectionFilterSchema>;
 
 const paginatedTasksInputSchema = z.object({
@@ -76,9 +70,7 @@ export const updateTaskInputSchema = z
       .string()
       .min(1, "タイトルの入力は必須です。")
       .max(100, "タスクは100文字以下で入力してください。"),
-    description: z
-      .string()
-      .max(10000, "説明は10000文字以下で入力してください。"),
+    description: z.string().max(10000, "説明は10000文字以下で入力してください。"),
   })
   .extend(taskSchema.pick({ status: true }).shape);
 export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
@@ -88,16 +80,12 @@ export const updateTaskStatusesInputSchema = z
     selectedTaskIds: z.array(z.string()),
   })
   .extend(taskSchema.pick({ status: true }).shape);
-export type UpdateTaskStatusesInput = z.infer<
-  typeof updateTaskStatusesInputSchema
->;
+export type UpdateTaskStatusesInput = z.infer<typeof updateTaskStatusesInputSchema>;
 
 export const Todo2API = {
   base: "/todo-2/api",
   getTasks: (input?: PaginatedTasksInput) =>
-    `${Todo2API.base}/tasks${
-      input ? `?input=${encodeURIComponent(JSON.stringify(input))}` : ""
-    }`,
+    `${Todo2API.base}/tasks${input ? `?input=${encodeURIComponent(JSON.stringify(input))}` : ""}`,
   task: (id?: string) => `${Todo2API.base}/tasks/${id ?? ":id"}`,
   createTask: () => `${Todo2API.base}/tasks`,
   updateTaskStatuses: () => `${Todo2API.base}/update-task-statuses`,
@@ -130,9 +118,7 @@ export const createTask = async (input: CreateTaskInput): Promise<Task> => {
   return task;
 };
 
-export const updateTask = async (
-  input: UpdateTaskInput & { id: string },
-): Promise<Task> => {
+export const updateTask = async (input: UpdateTaskInput & { id: string }): Promise<Task> => {
   const res = await fetcher.put(Todo2API.task(input.id), { body: input });
   const json = await res.json();
   const task = taskSchema.parse(json);
@@ -140,9 +126,7 @@ export const updateTask = async (
   return task;
 };
 
-export const updateTaskStatuses = async (
-  input: UpdateTaskStatusesInput,
-): Promise<void> => {
+export const updateTaskStatuses = async (input: UpdateTaskStatusesInput): Promise<void> => {
   await fetcher.patch(Todo2API.updateTaskStatuses(), { body: input });
 
   return;
@@ -178,9 +162,7 @@ export const todo2Handlers = [
 
       const statusFilters = fieldFilters.filter((f) => f.field === "status");
       const isMatchingStatusFilter =
-        statusFilters.length > 0
-          ? statusFilters.some((f) => task[f.field] === f.value)
-          : true;
+        statusFilters.length > 0 ? statusFilters.some((f) => task[f.field] === f.value) : true;
 
       const isMatchingSelectionFilter = (() => {
         switch (selectionFilter) {
@@ -222,9 +204,7 @@ export const todo2Handlers = [
     });
 
     const searchedTasks = sortedTasks.filter((task) => {
-      return (
-        task.title.includes(searchText) || task.description.includes(searchText)
-      );
+      return task.title.includes(searchText) || task.description.includes(searchText);
     });
 
     const { page, limit } = paginationEntry;

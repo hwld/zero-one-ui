@@ -19,22 +19,23 @@ export const TreeToggleIconButton: React.FC<{
 
 type IconButtonProps = ComponentPropsWithoutRef<"button">;
 
-export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
-  function IconButton({ children, className, ...props }, ref) {
-    return (
-      <button
-        ref={ref}
-        {...props}
-        className={cn(
-          "grid size-6 place-items-center rounded-sm text-stone-700 transition-all hover:bg-black/5 hover:text-stone-900",
-          className,
-        )}
-      >
-        {children}
-      </button>
-    );
-  },
-);
+export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(function IconButton(
+  { children, className, ...props },
+  ref,
+) {
+  return (
+    <button
+      ref={ref}
+      {...props}
+      className={cn(
+        "grid size-6 place-items-center rounded-sm text-stone-700 transition-all hover:bg-black/5 hover:text-stone-900",
+        className,
+      )}
+    >
+      {children}
+    </button>
+  );
+});
 
 export const Icon: React.FC<{ icon: IconType }> = ({ icon: Icon }) => {
   return <Icon className="size-4" />;

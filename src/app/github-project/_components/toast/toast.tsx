@@ -54,12 +54,7 @@ const Toast = React.forwardRef<
       )}
       {...props}
     >
-      <div
-        className={cn(
-          "flex shrink-0 items-center p-4",
-          variantIconBackgroundClass[variant],
-        )}
-      >
+      <div className={cn("flex shrink-0 items-center p-4", variantIconBackgroundClass[variant])}>
         <Icon size={20} />
       </div>
       <div className="flex grow flex-col py-4 pl-2">

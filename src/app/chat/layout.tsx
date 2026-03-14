@@ -12,10 +12,7 @@ const ChatPage: React.FC<LayoutProps<"/chat">> = ({ children }) => {
 
   return (
     <div
-      className={clsx(
-        "grid h-dvh grid-cols-[70px_250px_1fr] text-neutral-100",
-        bgClass,
-      )}
+      className={clsx("grid h-dvh grid-cols-[70px_250px_1fr] text-neutral-100", bgClass)}
       style={{ colorScheme: "dark" }}
     >
       <ServerSidebar />

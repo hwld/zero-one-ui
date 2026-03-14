@@ -34,9 +34,7 @@ export const useMoveEventInRow = (): MoveEventContext => {
   return ctx;
 };
 
-export const MoveEventInRowProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const MoveEventInRowProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const updateEventMutation = useUpdateEvent();
 
   const [state, setState] = useState<{
@@ -46,19 +44,16 @@ export const MoveEventInRowProvider: React.FC<PropsWithChildren> = ({
 
   const { moveEventPreview, isEventMoving } = state;
 
-  const startMove: MoveEventActions["startMove"] = useCallback(
-    (event, moveStartDate) => {
-      setState({
-        isEventMoving: true,
-        moveEventPreview: {
-          ...event,
-          dragStartDate: moveStartDate,
-          dragEndDate: moveStartDate,
-        },
-      });
-    },
-    [],
-  );
+  const startMove: MoveEventActions["startMove"] = useCallback((event, moveStartDate) => {
+    setState({
+      isEventMoving: true,
+      moveEventPreview: {
+        ...event,
+        dragStartDate: moveStartDate,
+        dragEndDate: moveStartDate,
+      },
+    });
+  }, []);
 
   const updateMoveEnd: MoveEventActions["updateMoveEnd"] = useCallback(
     (moveEndDate: Date) => {

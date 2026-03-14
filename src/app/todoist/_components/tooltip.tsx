@@ -23,13 +23,7 @@ type Props = {
   delay?: Partial<{ open: number; close: number }>;
 };
 
-export const Tooltip: React.FC<Props> = ({
-  label,
-  keys,
-  children,
-  placement,
-  delay,
-}) => {
+export const Tooltip: React.FC<Props> = ({ label, keys, children, placement, delay }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const { refs, floatingStyles, context } = useFloating({
@@ -47,10 +41,7 @@ export const Tooltip: React.FC<Props> = ({
   });
   const focus = useFocus(context);
 
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    hover,
-    focus,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([hover, focus]);
 
   return (
     <>
@@ -85,12 +76,6 @@ export const Tooltip: React.FC<Props> = ({
   );
 };
 
-export const TooltipDelayGroup: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
-  return (
-    <FloatingDelayGroup delay={{ open: 500, close: 200 }}>
-      {children}
-    </FloatingDelayGroup>
-  );
+export const TooltipDelayGroup: React.FC<{ children: ReactNode }> = ({ children }) => {
+  return <FloatingDelayGroup delay={{ open: 500, close: 200 }}>{children}</FloatingDelayGroup>;
 };

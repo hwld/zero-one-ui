@@ -1,10 +1,4 @@
-import React, {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import React, { PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
 import { errorIfProduction } from "../../../_test/utils";
 
 export type TaskTableSelectionContext = {
@@ -16,13 +10,9 @@ export type TaskTableSelectionContext = {
   unselectAllTasks: () => void;
 };
 
-const TaskTableSelectionContext = createContext<
-  TaskTableSelectionContext | undefined
->(undefined);
+const TaskTableSelectionContext = createContext<TaskTableSelectionContext | undefined>(undefined);
 
-export const TaskTableSelectionProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const TaskTableSelectionProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [selectedTaskIds, setSelectedTaskIds] = useState<string[]>([]);
 
   const value = useMemo((): TaskTableSelectionContext => {

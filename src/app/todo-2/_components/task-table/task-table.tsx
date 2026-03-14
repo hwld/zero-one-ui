@@ -10,8 +10,7 @@ import { useTaskTablePaging } from "./paging-provider";
 type Props = { paginatedTasks: Task[]; totalPages: number };
 
 export const TaskTable: React.FC<Props> = ({ paginatedTasks, totalPages }) => {
-  const { selectedTaskIds, selectTaskIds, unselectTaskIds } =
-    useTaskTableSelection();
+  const { selectedTaskIds, selectTaskIds, unselectTaskIds } = useTaskTableSelection();
   const { page, setPage } = useTaskTablePaging();
 
   const allSelectedOnPage = useMemo(() => {
@@ -45,9 +44,7 @@ export const TaskTable: React.FC<Props> = ({ paginatedTasks, totalPages }) => {
         </>
       }
       footer={
-        totalPages > 1 && (
-          <Pagination page={page} onChangePage={setPage} total={totalPages} />
-        )
+        totalPages > 1 && <Pagination page={page} onChangePage={setPage} total={totalPages} />
       }
     />
   );

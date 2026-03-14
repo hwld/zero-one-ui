@@ -13,40 +13,39 @@ type Props = {
   };
 } & Omit<ComponentPropsWithoutRef<"button">, "style">;
 
-export const EventInColCardBase = forwardRef<HTMLButtonElement, Props>(
-  function EventInColCardBase({ className, children, style, ...props }, ref) {
-    const thin = style.height < DATE_EVENT_MIN_HEIGHT * 3;
+export const EventInColCardBase = forwardRef<HTMLButtonElement, Props>(function EventInColCardBase(
+  { className, children, style, ...props },
+  ref,
+) {
+  const thin = style.height < DATE_EVENT_MIN_HEIGHT * 3;
 
-    return (
-      <button
-        ref={ref}
-        className="group absolute z-10 pb-px select-none focus-visible:outline-hidden"
-        style={style}
-        {...props}
+  return (
+    <button
+      ref={ref}
+      className="group absolute z-10 pb-px select-none focus-visible:outline-hidden"
+      style={style}
+      {...props}
+    >
+      <div
+        className={cn(
+          "flex size-full flex-col overflow-hidden rounded-sm border border-neutral-500 bg-neutral-700 pl-[10px] text-start text-neutral-100 ring-blue-500 outline-3 transition-colors group-focus-visible:ring-3",
+          thin ? "pt-0" : "pt-1",
+          className,
+        )}
       >
+        {children}
         <div
           className={cn(
-            "flex size-full flex-col overflow-hidden rounded-sm border border-neutral-500 bg-neutral-700 pl-[10px] text-start text-neutral-100 ring-blue-500 outline-3 transition-colors group-focus-visible:ring-3",
-            thin ? "pt-0" : "pt-1",
-            className,
+            "absolute inset-y-0 left-0 w-1 rounded-full bg-neutral-500",
+            thin ? "mx-[2px] mt-[3px] mb-[4px]" : "mx-[3px] mt-1 mb-[5px]",
           )}
-        >
-          {children}
-          <div
-            className={cn(
-              "absolute inset-y-0 left-0 w-1 rounded-full bg-neutral-500",
-              thin ? "mx-[2px] mt-[3px] mb-[4px]" : "mx-[3px] mt-1 mb-[5px]",
-            )}
-          />
-        </div>
-      </button>
-    );
-  },
-);
+        />
+      </div>
+    </button>
+  );
+});
 
-export const EventInColCardContent: React.FC<{ event: EventInCol }> = ({
-  event,
-}) => {
+export const EventInColCardContent: React.FC<{ event: EventInCol }> = ({ event }) => {
   return (
     <>
       <div className="text-xs">{event.title}</div>

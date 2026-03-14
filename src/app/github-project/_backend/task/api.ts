@@ -15,10 +15,7 @@ export const fetchTask = async (id: string): Promise<Task> => {
 };
 
 export const createTaskInputSchema = z.object({
-  title: z
-    .string()
-    .min(1, "タイトルの入力は必須です")
-    .max(256, "256文字以内で入力してください"),
+  title: z.string().min(1, "タイトルの入力は必須です").max(256, "256文字以内で入力してください"),
   statusId: z.string(),
 });
 export type CreateTaskInput = z.infer<typeof createTaskInputSchema>;
@@ -43,10 +40,7 @@ export const updateTaskInputSchema = createTaskInputSchema.extend(
 
 export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;
 
-export const updateTask = async ({
-  id,
-  ...input
-}: UpdateTaskInput & { id: string }) => {
+export const updateTask = async ({ id, ...input }: UpdateTaskInput & { id: string }) => {
   const res = await fetcher.put(GitHubProjectAPI.task(id), { body: input });
   const json = await res.json();
   const updated = taskSchema.parse(json);
@@ -76,9 +70,7 @@ export const taskApiHandler = [
     viewRecordStore.addTaskToAllRecords({
       taskId: createdTask.id,
       statusId: createdTask.status.id,
-      sameStatusTaskIds: taskStore
-        .getByStatusId(createdTask.status.id)
-        .map((t) => t.id),
+      sameStatusTaskIds: taskStore.getByStatusId(createdTask.status.id).map((t) => t.id),
     });
 
     return HttpResponse.json(createdTask);
@@ -100,9 +92,7 @@ export const taskApiHandler = [
       viewRecordStore.moveTaskToEndOfStatus({
         viewIds: allViweIds,
         taskId,
-        targetStatusTaskIds: taskStore
-          .getByStatusId(updateInput.statusId)
-          .map((t) => t.id),
+        targetStatusTaskIds: taskStore.getByStatusId(updateInput.statusId).map((t) => t.id),
       });
     }
 

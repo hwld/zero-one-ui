@@ -11,16 +11,10 @@ import {
 import { useMemo } from "react";
 import { Event } from "../../_backend/event-store";
 import { splitEvent } from "./utils";
-import {
-  DATE_EVENT_MIN_HEIGHT,
-  DATE_EVENT_MIN_MINUTES,
-} from "../event-in-col/utils";
+import { DATE_EVENT_MIN_HEIGHT, DATE_EVENT_MIN_MINUTES } from "../event-in-col/utils";
 import { DateColumn } from "./date-column";
 import { DateColCalendarDayHeader } from "./header";
-import {
-  MoveEventInColProvider,
-  useMoveEventInCol,
-} from "../event-in-col/move-event-provider";
+import { MoveEventInColProvider, useMoveEventInCol } from "../event-in-col/move-event-provider";
 import { CreateEventFormDialog } from "../event/create-event-form-dialog";
 import {
   PrepareCreateEventInColProvider,
@@ -35,10 +29,7 @@ import { PrepareCreateEventInRowProvider } from "../event-in-row/prepare-create-
 import { useMinuteClock } from "../../_components/use-minute-clock";
 import clsx from "clsx";
 import { ResizeEventInRowProvider } from "../event-in-row/resize-event-provider";
-import {
-  ScrollableProvider,
-  useScrollableElement,
-} from "../event-in-col/scrollable-provider";
+import { ScrollableProvider, useScrollableElement } from "../event-in-col/scrollable-provider";
 
 const DATE_COLUMN_CALENDAR_GRID_FIRST_COL_SIZE = 75;
 export const DATE_COLUMN_CALENDAR_GRID_TEMPLATE_COLUMNS = (cols: number) =>
@@ -50,11 +41,7 @@ type DateColCalendarProps = {
   cols: number;
 };
 
-const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
-  cols,
-  viewDate,
-  events,
-}) => {
+const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({ cols, viewDate, events }) => {
   const { setScrollableElement } = useScrollableElement();
   const { currentDate } = useMinuteClock();
   const { longTermEvents, defaultEvents } = splitEvent(events);
@@ -71,8 +58,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
     return eachDayOfInterval({ start, end });
   }, [cols, viewDate]);
 
-  const { prepareCreateEventState, prepareCreateEventActions } =
-    usePrepareCreateEventInCol();
+  const { prepareCreateEventState, prepareCreateEventActions } = usePrepareCreateEventInCol();
   const { isEventMoving, moveEventActions } = useMoveEventInCol();
   const { isEventResizing, resizeEventActions } = useResizeEventInCol();
 
@@ -109,8 +95,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
           <div
             className={clsx("relative grid")}
             style={{
-              gridTemplateColumns:
-                DATE_COLUMN_CALENDAR_GRID_TEMPLATE_COLUMNS(cols),
+              gridTemplateColumns: DATE_COLUMN_CALENDAR_GRID_TEMPLATE_COLUMNS(cols),
             }}
           >
             <div>
@@ -123,8 +108,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
                     className="relative border-r border-neutral-200 pr-3 text-end whitespace-nowrap text-neutral-400 tabular-nums select-none"
                     key={i}
                     style={{
-                      height:
-                        DATE_EVENT_MIN_HEIGHT * (60 / DATE_EVENT_MIN_MINUTES),
+                      height: DATE_EVENT_MIN_HEIGHT * (60 / DATE_EVENT_MIN_MINUTES),
                       top: i !== 0 ? "-5px" : undefined,
                       fontSize: "10px",
                     }}
@@ -135,13 +119,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
               })}
             </div>
             {calendarViewDates.map((date) => {
-              return (
-                <DateColumn
-                  key={`${date}`}
-                  displayedDay={date}
-                  events={defaultEvents}
-                />
-              );
+              return <DateColumn key={`${date}`} displayedDay={date} events={defaultEvents} />;
             })}
             <div
               className="absolute grid h-px w-full"
@@ -176,9 +154,7 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({
   );
 };
 
-export const DateColCalendar: React.FC<DateColCalendarProps> = ({
-  ...props
-}) => {
+export const DateColCalendar: React.FC<DateColCalendarProps> = ({ ...props }) => {
   return (
     <ScrollableProvider>
       <PrepareCreateEventInRowProvider>

@@ -84,10 +84,7 @@ class EventStore {
     this.events = this.events.filter((e) => e.id !== id);
   }
 
-  public setErrorSimulationScope(
-    scope: EventStoreErrorSimulationScope,
-    enable: boolean,
-  ) {
+  public setErrorSimulationScope(scope: EventStoreErrorSimulationScope, enable: boolean) {
     if (enable) {
       this.errorSimuationScopes.add(scope);
     } else {

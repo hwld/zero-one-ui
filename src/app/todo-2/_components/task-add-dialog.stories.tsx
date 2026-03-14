@@ -1,19 +1,8 @@
 import { defaultStoryMeta } from "../story-meta";
-import {
-  clearAllMocks,
-  expect,
-  fn,
-  userEvent,
-  waitFor,
-  within,
-} from "storybook/test";
+import { clearAllMocks, expect, fn, userEvent, waitFor, within } from "storybook/test";
 import { TaskAddDialog } from "./task-add-dialog";
 import { HttpResponse, http } from "msw";
-import {
-  CreateTaskInput,
-  Todo2API,
-  createTaskInputSchema,
-} from "../_backend/api";
+import { CreateTaskInput, Todo2API, createTaskInputSchema } from "../_backend/api";
 import { initialTasks } from "../_backend/data";
 import preview from "../../../../.storybook/preview";
 
@@ -47,28 +36,25 @@ export default meta;
 
 export const Default = meta.story({});
 
-Default.test(
-  "デフォルトでは、作成したあとにダイアログが閉じる",
-  async ({ canvasElement }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const title = "タスク";
+Default.test("デフォルトでは、作成したあとにダイアログが閉じる", async ({ canvasElement }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const title = "タスク";
 
-    const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
-    await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
+  const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
+  await userEvent.type(titleInput, `${title}{enter}`, { delay: 50 });
 
-    await waitFor(async () => {
-      await expect(createTaskMock).toHaveBeenCalledTimes(1);
-      await expect(createTaskMock).toHaveBeenCalledWith(
-        expect.objectContaining({
-          title,
-          description: "",
-        } satisfies CreateTaskInput),
-      );
-      await expect(handleOpenChangeMock).toHaveBeenCalledTimes(1);
-      await expect(handleOpenChangeMock).toHaveBeenCalledWith(false);
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(createTaskMock).toHaveBeenCalledTimes(1);
+    await expect(createTaskMock).toHaveBeenCalledWith(
+      expect.objectContaining({
+        title,
+        description: "",
+      } satisfies CreateTaskInput),
+    );
+    await expect(handleOpenChangeMock).toHaveBeenCalledTimes(1);
+    await expect(handleOpenChangeMock).toHaveBeenCalledWith(false);
+  });
+});
 
 Default.test(
   "トグルを切り替えると、作成したあとにダイアログが閉じない",
@@ -95,20 +81,15 @@ Default.test(
   },
 );
 
-Default.test(
-  "タイトル未入力時にエラーが表示される",
-  async ({ canvasElement }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
+Default.test("タイトル未入力時にエラーが表示される", async ({ canvasElement }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const titleInput = await canvas.findByPlaceholderText("タスクのタイトル");
 
-    await userEvent.type(titleInput, "{enter}", { delay: 50 });
+  await userEvent.type(titleInput, "{enter}", { delay: 50 });
 
-    await waitFor(async () => {
-      await expect(createTaskMock).not.toHaveBeenCalled();
-      await expect(handleOpenChangeMock).not.toHaveBeenCalled();
-      await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タイトルの入力は必須です。",
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(createTaskMock).not.toHaveBeenCalled();
+    await expect(handleOpenChangeMock).not.toHaveBeenCalled();
+    await expect(titleInput).toHaveAccessibleErrorMessage("タイトルの入力は必須です。");
+  });
+});

@@ -14,8 +14,7 @@ export const useMoveColumn = () => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "列を移動することができませんでした。もう一度試してみてください。",
+        description: "列を移動することができませんでした。もう一度試してみてください。",
       });
     },
     onMutate: async (input) => {

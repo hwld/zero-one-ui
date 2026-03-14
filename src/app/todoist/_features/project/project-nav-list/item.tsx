@@ -1,10 +1,7 @@
 import { PiDotsThreeBold } from "@react-icons/all-files/pi/PiDotsThreeBold";
 import { PiHashLight } from "@react-icons/all-files/pi/PiHashLight";
 import { useState, useMemo } from "react";
-import {
-  SidebarListButton,
-  SidebarListLink,
-} from "../../../_components/sidebar/item";
+import { SidebarListButton, SidebarListLink } from "../../../_components/sidebar/item";
 import { ProjectNavItemMenu } from "./item-menu";
 import { IconButton, TreeToggleIconButton } from "./icon-button";
 import { ProjectNode } from "../logic/project";
@@ -31,8 +28,7 @@ export const ProjectNavItem: React.FC<ProjectListItemProps> = ({
   dragContext,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCreateBeforeDialogOpen, setIsCreateBeforeDialogOpen] =
-    useState(false);
+  const [isCreateBeforeDialogOpen, setIsCreateBeforeDialogOpen] = useState(false);
   const [isCreateAfterDialogOpen, setIsCreateAfterDialogOpen] = useState(false);
   const [isUpdateDialogOpen, setIsUpdateDialogOpen] = useState(false);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
@@ -93,11 +89,7 @@ export const ProjectNavItem: React.FC<ProjectListItemProps> = ({
   return (
     <>
       {isDragging ? (
-        <SidebarListButton
-          icon={PiHashLight}
-          isDragging={isDragging}
-          depth={project.depth}
-        >
+        <SidebarListButton icon={PiHashLight} isDragging={isDragging} depth={project.depth}>
           {project.label}
         </SidebarListButton>
       ) : (
@@ -129,9 +121,7 @@ export const ProjectNavItem: React.FC<ProjectListItemProps> = ({
               {project.descendantsProjectCount ? (
                 <TreeToggleIconButton
                   isOpen={expanded}
-                  onOpenChange={(open) =>
-                    onChangeExpanded(project.taskboxId, open)
-                  }
+                  onOpenChange={(open) => onChangeExpanded(project.taskboxId, open)}
                 />
               ) : null}
             </div>

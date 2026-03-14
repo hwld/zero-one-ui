@@ -10,20 +10,18 @@ type Props = {
   className?: string;
 } & LinkProps;
 
-export const ButtonLink = forwardRef<HTMLAnchorElement, Props>(
-  function ButtonLink(
-    { variant = "default", children, href, className, ...props },
-    ref,
-  ) {
-    return (
-      <Link
-        ref={ref}
-        href={href}
-        className={cn(buttonBaseClass, buttonClass[variant], className)}
-        {...props}
-      >
-        {children}
-      </Link>
-    );
-  },
-);
+export const ButtonLink = forwardRef<HTMLAnchorElement, Props>(function ButtonLink(
+  { variant = "default", children, href, className, ...props },
+  ref,
+) {
+  return (
+    <Link
+      ref={ref}
+      href={href}
+      className={cn(buttonBaseClass, buttonClass[variant], className)}
+      {...props}
+    >
+      {children}
+    </Link>
+  );
+});

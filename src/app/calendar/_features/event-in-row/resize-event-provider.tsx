@@ -12,10 +12,7 @@ import { useUpdateEvent } from "../event/use-update-event";
 import { endOfDay, isAfter, isBefore, startOfDay, subDays } from "date-fns";
 
 type ResizeEventActions = {
-  startResize: (params: {
-    event: EventInRow;
-    origin: ResizeEventInRowPreview["origin"];
-  }) => void;
+  startResize: (params: { event: EventInRow; origin: ResizeEventInRowPreview["origin"] }) => void;
   updateResizeDest: (day: Date) => void;
   resize: () => void;
 };
@@ -36,9 +33,7 @@ export const useResizeEventInRow = (): ResizeEventContext => {
   return ctx;
 };
 
-export const ResizeEventInRowProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const ResizeEventInRowProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const updateEventMutation = useUpdateEvent();
 
   const [state, setState] = useState<{
@@ -48,15 +43,12 @@ export const ResizeEventInRowProvider: React.FC<PropsWithChildren> = ({
 
   const { isEventResizing, resizeEventPreview } = state;
 
-  const startResize: ResizeEventActions["startResize"] = useCallback(
-    ({ event, origin }) => {
-      setState({
-        isEventResizing: true,
-        resizeEventPreview: { ...event, origin, updatedAt: Date.now() },
-      });
-    },
-    [],
-  );
+  const startResize: ResizeEventActions["startResize"] = useCallback(({ event, origin }) => {
+    setState({
+      isEventResizing: true,
+      resizeEventPreview: { ...event, origin, updatedAt: Date.now() },
+    });
+  }, []);
 
   const updateResizeDest: ResizeEventActions["updateResizeDest"] = useCallback(
     (day) => {
@@ -161,13 +153,7 @@ export const ResizeEventInRowProvider: React.FC<PropsWithChildren> = ({
       resizeEventPreview,
       resizeEventActions: { startResize, updateResizeDest, resize },
     }),
-    [
-      isEventResizing,
-      resize,
-      resizeEventPreview,
-      startResize,
-      updateResizeDest,
-    ],
+    [isEventResizing, resize, resizeEventPreview, startResize, updateResizeDest],
   );
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

@@ -16,7 +16,5 @@ export const AudioProvider: React.FC<{
   src: string | undefined;
 }> = ({ children, src }) => {
   const context = useAudio({ src: src ?? "", initialVolume: 0.1 });
-  return (
-    <AudioContext.Provider value={context}>{children}</AudioContext.Provider>
-  );
+  return <AudioContext.Provider value={context}>{children}</AudioContext.Provider>;
 };

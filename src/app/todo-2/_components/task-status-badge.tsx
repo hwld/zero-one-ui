@@ -6,10 +6,7 @@ type TaskStatusBadgeProps = {
   status: Task["status"];
   onChangeStatus: (value: Task["status"]) => void;
 };
-export const TaskStatusBadge: React.FC<TaskStatusBadgeProps> = ({
-  status,
-  onChangeStatus,
-}) => {
+export const TaskStatusBadge: React.FC<TaskStatusBadgeProps> = ({ status, onChangeStatus }) => {
   const statusClassMap = {
     done: "border-green-500 text-green-500 hover:bg-green-500/20",
     todo: "border-red-500 text-red-500 hover:bg-red-500/20",

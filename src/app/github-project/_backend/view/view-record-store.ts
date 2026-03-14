@@ -51,11 +51,7 @@ class ViewRecordStore {
     return this.viewRecords.find((vc) => vc.id === id);
   }
 
-  public add(input: {
-    name: string;
-    allTasks: Task[];
-    allStatus: TaskStatus[];
-  }) {
+  public add(input: { name: string; allTasks: Task[]; allStatus: TaskStatus[] }) {
     const newView: ViewRecord = {
       id: crypto.randomUUID(),
       name: input.name,
@@ -81,9 +77,7 @@ class ViewRecordStore {
   }
 
   public remove(viewId: string) {
-    this.viewRecords = this.viewRecords.filter(
-      (record) => record.id !== viewId,
-    );
+    this.viewRecords = this.viewRecords.filter((record) => record.id !== viewId);
   }
 
   public moveTask(input: { viewId: string; taskId: string; newOrder: number }) {
@@ -130,11 +124,7 @@ class ViewRecordStore {
     });
   }
 
-  public moveColumn(input: {
-    viewId: string;
-    statusId: string;
-    newOrder: number;
-  }) {
+  public moveColumn(input: { viewId: string; statusId: string; newOrder: number }) {
     this.viewRecords = this.viewRecords.map((viewRecord) => {
       if (viewRecord.id !== input.viewId) {
         return viewRecord;
@@ -172,18 +162,12 @@ class ViewRecordStore {
     sameStatusTaskIds: string[];
   }) {
     this.viewRecords = this.viewRecords.map((config): ViewRecord => {
-      const tasks = config.taskRecords.filter((t) =>
-        input.sameStatusTaskIds.includes(t.taskId),
-      );
-      const newOrder =
-        tasks.length === 0 ? 1 : Math.max(...tasks.map((t) => t.order)) + 1;
+      const tasks = config.taskRecords.filter((t) => input.sameStatusTaskIds.includes(t.taskId));
+      const newOrder = tasks.length === 0 ? 1 : Math.max(...tasks.map((t) => t.order)) + 1;
 
       return {
         ...config,
-        taskRecords: [
-          ...config.taskRecords,
-          { taskId: input.taskId, order: newOrder },
-        ],
+        taskRecords: [...config.taskRecords, { taskId: input.taskId, order: newOrder }],
       };
     });
   }

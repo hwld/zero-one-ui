@@ -1,9 +1,4 @@
-import {
-  autoUpdate,
-  offset,
-  useFloating,
-  useMergeRefs,
-} from "@floating-ui/react";
+import { autoUpdate, offset, useFloating, useMergeRefs } from "@floating-ui/react";
 import { Slot } from "@radix-ui/react-slot";
 import { AnimatePresence, motion } from "motion/react";
 import { ReactNode, RefObject } from "react";

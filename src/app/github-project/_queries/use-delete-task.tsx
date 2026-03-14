@@ -12,8 +12,7 @@ export const useDeleteTask = () => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "タスクを削除することができませんでした。もう一度試してみてください。",
+        description: "タスクを削除することができませんでした。もう一度試してみてください。",
       });
     },
   });

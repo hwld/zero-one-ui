@@ -22,18 +22,12 @@ export const useScrollableElement = () => {
   return ctx;
 };
 
-export const ScrollableProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
-  const [scrollableElement, setScrollableElement] =
-    useState<HTMLDivElement | null>(null);
+export const ScrollableProvider: React.FC<PropsWithChildren> = ({ children }) => {
+  const [scrollableElement, setScrollableElement] = useState<HTMLDivElement | null>(null);
 
   return (
     <Context.Provider
-      value={useMemo(
-        () => ({ scrollableElement, setScrollableElement }),
-        [scrollableElement],
-      )}
+      value={useMemo(() => ({ scrollableElement, setScrollableElement }), [scrollableElement])}
     >
       {children}
     </Context.Provider>

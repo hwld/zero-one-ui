@@ -8,14 +8,11 @@ type BaseProps = {
   size?: "md" | "lg";
 };
 
-const baseClass =
-  "rounded-md transition-colors disabled:opacity-50 flex items-center";
+const baseClass = "rounded-md transition-colors disabled:opacity-50 flex items-center";
 
 const colorClass = {
-  default:
-    "bg-neutral-800 border border-neutral-600 text-neutral-200 enabled:hover:bg-neutral-700",
-  primary:
-    "bg-green-700 border border-green-600 enabled:hover:bg-green-600 text-neutral-100",
+  default: "bg-neutral-800 border border-neutral-600 text-neutral-200 enabled:hover:bg-neutral-700",
+  primary: "bg-green-700 border border-green-600 enabled:hover:bg-green-600 text-neutral-100",
   destructive:
     "bg-neutral-800 text-red-500 enabled:hover:bg-red-500 enabled:hover:text-neutral-100 border border-neutral-600 enabled:hover:border-red-500",
 } satisfies Record<NonNullable<BaseProps["color"]>, string>;
@@ -34,10 +31,7 @@ export const Button: React.FC<ButtonProps> = ({
   ...props
 }) => {
   return (
-    <button
-      {...props}
-      className={clsx(baseClass, colorClass[color], sizeClass[size])}
-    >
+    <button {...props} className={clsx(baseClass, colorClass[color], sizeClass[size])}>
       {children}
     </button>
   );

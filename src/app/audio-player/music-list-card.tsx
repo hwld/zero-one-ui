@@ -91,9 +91,7 @@ export const MusicListCard: React.FC<Props> = ({
             <div className="flex flex-col items-center gap-6">
               <div className="hidden flex-col items-center gap-2 lg:flex">
                 <TbMusicPlus className="size-[40px]" />
-                <div className="text-center text-sm">
-                  ここに音声をドラッグ&ドロップしてください
-                </div>
+                <div className="text-center text-sm">ここに音声をドラッグ&ドロップしてください</div>
                 <div className="text-center text-xs text-neutral-400">
                   音声はサーバーにアップロードされることはありません。
                   <br />

@@ -6,9 +6,7 @@ import { AnnoyedIcon, LaughIcon } from "lucide-react";
 import { motion } from "motion/react";
 import clsx from "clsx";
 
-const initialMenu = [...new Array(3)].map(
-  (_, i) => `長いメニューアイテム${i + 1}`,
-);
+const initialMenu = [...new Array(3)].map((_, i) => `長いメニューアイテム${i + 1}`);
 const slimMenu = [...new Array(6)].map((_, i) => `メニュー${i + 1}`);
 
 type Props = {

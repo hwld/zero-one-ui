@@ -27,10 +27,7 @@ export const Menu: React.FC = () => {
 
   const click = useClick(context);
   const dismiss = useDismiss(context);
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-  ]);
+  const { getReferenceProps, getFloatingProps } = useInteractions([click, dismiss]);
 
   return (
     <div>
@@ -39,11 +36,7 @@ export const Menu: React.FC = () => {
       </motion.div>
       <AnimatePresence>
         {isOpen && (
-          <div
-            ref={refs.setFloating}
-            style={floatingStyles}
-            {...getFloatingProps()}
-          >
+          <div ref={refs.setFloating} style={floatingStyles} {...getFloatingProps()}>
             <MenuContent page={page} onPageChange={setPage} />
           </div>
         )}

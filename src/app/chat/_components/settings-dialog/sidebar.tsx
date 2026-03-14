@@ -38,10 +38,7 @@ export const SettingsSidebar = () => {
   );
 };
 
-const SettingItemGroup: React.FC<{ name: string; children: ReactNode }> = ({
-  name,
-  children,
-}) => {
+const SettingItemGroup: React.FC<{ name: string; children: ReactNode }> = ({ name, children }) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="text-sm text-neutral-400">{name}</div>
@@ -50,10 +47,7 @@ const SettingItemGroup: React.FC<{ name: string; children: ReactNode }> = ({
   );
 };
 
-const SettingItem: React.FC<{ children: ReactNode; active?: boolean }> = ({
-  children,
-  active,
-}) => {
+const SettingItem: React.FC<{ children: ReactNode; active?: boolean }> = ({ children, active }) => {
   return (
     <button
       className={clsx(

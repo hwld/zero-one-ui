@@ -7,10 +7,7 @@ import { Button } from "./button";
 
 type Props = { children: ReactNode; viewSummary: ViewSummary };
 
-export const ViewUpdateDialogTrigger: React.FC<Props> = ({
-  children,
-  viewSummary,
-}) => {
+export const ViewUpdateDialogTrigger: React.FC<Props> = ({ children, viewSummary }) => {
   const updateViewMutation = useUpdateView();
   const [isOpen, setIsOpen] = useState(false);
 
@@ -37,22 +34,13 @@ export const ViewUpdateDialogTrigger: React.FC<Props> = ({
           <Button size="lg" onClick={() => setIsOpen(false)}>
             Cancel
           </Button>
-          <Button
-            size="lg"
-            color="primary"
-            form={formId}
-            disabled={updateViewMutation.isPending}
-          >
+          <Button size="lg" color="primary" form={formId} disabled={updateViewMutation.isPending}>
             Create
           </Button>
         </>
       }
     >
-      <ViewForm
-        id={formId}
-        defaultValues={{ name: viewSummary.name }}
-        onSubmit={handleSubmit}
-      />
+      <ViewForm id={formId} defaultValues={{ name: viewSummary.name }} onSubmit={handleSubmit} />
     </Dialog>
   );
 };

@@ -24,10 +24,7 @@ export const TaskTableCheckbox: React.FC<Props> = ({
         className="size-full cursor-pointer appearance-none opacity-0"
       />
       {checked && (
-        <IconCheck
-          className="pointer-events-none absolute inset-0 text-zinc-700"
-          size={15}
-        />
+        <IconCheck className="pointer-events-none absolute inset-0 text-zinc-700" size={15} />
       )}
     </div>
   );

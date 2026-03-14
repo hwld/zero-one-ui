@@ -21,12 +21,7 @@ const DetailModalPage: React.FC = () => {
 
   return (
     <>
-      <TaskDetailSheet
-        taskId={taskId}
-        isOpen
-        onOpenChange={handleOpenChange}
-        ref={scope}
-      />
+      <TaskDetailSheet taskId={taskId} isOpen onOpenChange={handleOpenChange} ref={scope} />
     </>
   );
 };

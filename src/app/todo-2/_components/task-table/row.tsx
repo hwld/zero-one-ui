@@ -43,10 +43,7 @@ export const TaskTableRow: React.FC<{
         />
       </TaskTableData>
       <TaskTableData noWrap>
-        <TaskStatusBadge
-          status={task.status}
-          onChangeStatus={handleChangeStatus}
-        />
+        <TaskStatusBadge status={task.status} onChangeStatus={handleChangeStatus} />
       </TaskTableData>
       <TaskTableData>
         <Link
@@ -58,9 +55,7 @@ export const TaskTableRow: React.FC<{
         </Link>
       </TaskTableData>
       <TaskTableData noWrap>{format(task.createdAt)}</TaskTableData>
-      <TaskTableData noWrap>
-        {task.completedAt ? format(task.completedAt) : "None"}
-      </TaskTableData>
+      <TaskTableData noWrap>{task.completedAt ? format(task.completedAt) : "None"}</TaskTableData>
       <TaskTableData>
         <div className="flex gap-2">
           <Tooltip label="削除">

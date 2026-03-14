@@ -25,19 +25,12 @@ export const CalendarDate: React.FC<Props> = ({ calendarYearMonth, date }) => {
         isWeekend(date) ? "bg-neutral-200/15" : "",
       )}
     >
-      <div
-        className={clsx("size-full", isDraggedDate ? "bg-neutral-700/5" : "")}
-      >
-        <div
-          className="h-10 w-full p-1"
-          style={{ height: MONTHLY_DATE_HEADER_HEIGHT }}
-        >
+      <div className={clsx("size-full", isDraggedDate ? "bg-neutral-700/5" : "")}>
+        <div className="h-10 w-full p-1" style={{ height: MONTHLY_DATE_HEADER_HEIGHT }}>
           <div
             className={clsx(
               "grid place-items-center rounded-sm p-1",
-              isSameMonth(calendarYearMonth, date)
-                ? "opacity-100"
-                : "opacity-50",
+              isSameMonth(calendarYearMonth, date) ? "opacity-100" : "opacity-50",
               isSameDay(currentDate, date) && "bg-blue-500 text-neutral-100",
             )}
             style={{

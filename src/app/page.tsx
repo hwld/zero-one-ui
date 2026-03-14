@@ -28,10 +28,7 @@ export default function Home() {
             target="_blank"
             className="grid size-[30px] place-items-center rounded-sm transition-colors hover:bg-white/15"
           >
-            <IoLogoGithub
-              className="fill-neutral-100"
-              style={{ fontSize: "23" }}
-            />
+            <IoLogoGithub className="fill-neutral-100" style={{ fontSize: "23" }} />
           </a>
         </div>
         <div className="grid w-[300px] gap-2 text-center text-sm text-neutral-400">

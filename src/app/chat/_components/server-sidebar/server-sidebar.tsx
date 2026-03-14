@@ -1,11 +1,4 @@
-import {
-  BirdIcon,
-  CatIcon,
-  DogIcon,
-  FishIcon,
-  PlusIcon,
-  RabbitIcon,
-} from "lucide-react";
+import { BirdIcon, CatIcon, DogIcon, FishIcon, PlusIcon, RabbitIcon } from "lucide-react";
 import { Spacer } from "../spacer";
 import { ServerItem } from "./item";
 

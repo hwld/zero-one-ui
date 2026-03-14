@@ -73,11 +73,7 @@ export const UserDrawer: React.FC = () => {
           <Divider />
           <div>
             <ListButton icon={UploadIcon} label="Upgrade" />
-            <ListButton
-              icon={GlobeIcon}
-              label="Try Enterprise"
-              rightIcon={FreeBadgeIcon}
-            />
+            <ListButton icon={GlobeIcon} label="Try Enterprise" rightIcon={FreeBadgeIcon} />
             <ListButton icon={FlaskConicalIcon} label="Feature preview" />
             <ListButton icon={SettingsIcon} label="Settings" />
           </div>

@@ -35,10 +35,7 @@ export const Drawer: React.FC<Props> = ({
 
   const click = useClick(context);
   const dismiss = useDismiss(context);
-  const { getFloatingProps, getReferenceProps } = useInteractions([
-    click,
-    dismiss,
-  ]);
+  const { getFloatingProps, getReferenceProps } = useInteractions([click, dismiss]);
 
   const positionClass = { left: "left-0", right: "right-0" };
   const animationClass = {

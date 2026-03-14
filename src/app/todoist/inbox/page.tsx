@@ -12,9 +12,7 @@ import { TasksContent } from "../_components/app-layout/tasks-content";
 const InboxPage: React.FC = () => {
   const { data: inbox, status } = useInbox();
 
-  const taskbox = inbox
-    ? { tasks: inbox.tasks, taskboxId: inbox.taskboxId }
-    : undefined;
+  const taskbox = inbox ? { tasks: inbox.tasks, taskboxId: inbox.taskboxId } : undefined;
 
   return (
     <AppLayout

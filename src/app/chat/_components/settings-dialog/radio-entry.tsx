@@ -8,9 +8,7 @@ export type RadioSetting = {
 
 type Props = { setting: RadioSetting };
 
-export const RadioSettingEntry: React.FC<Props> = ({
-  setting: { name, description, items },
-}) => {
+export const RadioSettingEntry: React.FC<Props> = ({ setting: { name, description, items } }) => {
   return (
     <div className="space-y-4">
       <div className="space-y-1">

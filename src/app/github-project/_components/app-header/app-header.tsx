@@ -37,9 +37,7 @@ export const AppHeader: React.FC = () => {
             <SearchIcon size={16} />
             <div className="text-sm">
               Type
-              <kbd className="mx-1 rounded-sm border border-neutral-400 px-[3px]">
-                /
-              </kbd>
+              <kbd className="mx-1 rounded-sm border border-neutral-400 px-[3px]">/</kbd>
               to search
             </div>
           </div>

@@ -64,9 +64,7 @@ export const Dialog: React.FC<Props> = ({ children, isOpen, onChangeOpen }) => {
   );
 };
 
-export const DialogContent: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const DialogContent: React.FC<{ children: ReactNode }> = ({ children }) => {
   return <div className="flex flex-col gap-6">{children}</div>;
 };
 
@@ -84,8 +82,6 @@ export const DialogTitle: React.FC<{
   );
 };
 
-export const DialogAction: React.FC<{ children: ReactNode }> = ({
-  children,
-}) => {
+export const DialogAction: React.FC<{ children: ReactNode }> = ({ children }) => {
   return <div className="flex gap-2 self-end">{children}</div>;
 };

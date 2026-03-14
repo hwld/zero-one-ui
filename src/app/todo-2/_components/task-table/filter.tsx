@@ -60,31 +60,20 @@ export const TaskTableFilter: React.FC = () => {
   const filterCount = fieldFilters.length + (selectionFilter !== null ? 1 : 0);
 
   return (
-    <DropdownMenu
-      open={isFilterOpen}
-      onOpenChange={setIsFilterOpen}
-      modal={false}
-    >
+    <DropdownMenu open={isFilterOpen} onOpenChange={setIsFilterOpen} modal={false}>
       <DropdownMenuTrigger asChild>
         <Button>
           <FilterIcon size={15} />
           <p className="mt-px whitespace-nowrap">絞り込み</p>
           {filtered && (
-            <div className="size-[16px] rounded-full bg-white/30 text-zinc-100">
-              {filterCount}
-            </div>
+            <div className="size-[16px] rounded-full bg-white/30 text-zinc-100">{filterCount}</div>
           )}
         </Button>
       </DropdownMenuTrigger>
       <AnimatePresence>
         {isFilterOpen && (
           <DropdownMenuPortal forceMount>
-            <DropdownMenuContent
-              asChild
-              side="bottom"
-              align="start"
-              sideOffset={4}
-            >
+            <DropdownMenuContent asChild side="bottom" align="start" sideOffset={4}>
               <motion.div
                 className="flex w-[200px] flex-col gap-1 rounded-sm border border-zinc-600 bg-zinc-700 p-1 text-zinc-200"
                 initial={{ opacity: 0, y: -5 }}
@@ -93,9 +82,7 @@ export const TaskTableFilter: React.FC = () => {
               >
                 <FilterGroup label="状況">
                   {allStatusFilterContents.map((filter, i) => {
-                    const isSelected = !!fieldFilters.find(
-                      (f) => f.id === filter.id,
-                    );
+                    const isSelected = !!fieldFilters.find((f) => f.id === filter.id);
 
                     const handleSelect = () => {
                       if (isSelected) {
@@ -158,10 +145,7 @@ export const TaskTableFilter: React.FC = () => {
   );
 };
 
-const FilterGroup: React.FC<{ children: ReactNode; label: string }> = ({
-  children,
-  label,
-}) => {
+const FilterGroup: React.FC<{ children: ReactNode; label: string }> = ({ children, label }) => {
   return (
     <div>
       <p className="p-1 text-xs text-zinc-400">{label}</p>
@@ -204,9 +188,7 @@ const FilterItem: React.FC<FilterItemProps> = ({
             isSelected ? "bg-zinc-100" : "bg-transparent",
           )}
         >
-          {isSelected && (
-            <CheckIcon className="text-zinc-700" size={12} strokeWidth={3} />
-          )}
+          {isSelected && <CheckIcon className="text-zinc-700" size={12} strokeWidth={3} />}
         </div>
       </Button>
     </DropdownMenuItem>

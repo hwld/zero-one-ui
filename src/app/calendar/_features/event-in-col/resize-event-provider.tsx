@@ -43,9 +43,7 @@ export const useResizeEventInCol = (): ResizeEventContext => {
   return ctx;
 };
 
-export const ResizeEventInColProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const ResizeEventInColProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { scrollableElement } = useScrollableElement();
   const updateEventMutation = useUpdateEvent();
 
@@ -216,14 +214,7 @@ export const ResizeEventInColProvider: React.FC<PropsWithChildren> = ({
       resizeEventPreview,
       resizeEventActions: { startResize, updateResizeDest, scroll, resize },
     };
-  }, [
-    isEventResizing,
-    resize,
-    resizeEventPreview,
-    scroll,
-    startResize,
-    updateResizeDest,
-  ]);
+  }, [isEventResizing, resize, resizeEventPreview, scroll, startResize, updateResizeDest]);
 
   return <Context.Provider value={value}>{children}</Context.Provider>;
 };

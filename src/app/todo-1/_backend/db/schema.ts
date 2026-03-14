@@ -1,10 +1,4 @@
-import {
-  boolean,
-  pgTableCreator,
-  text,
-  timestamp,
-  uuid,
-} from "drizzle-orm/pg-core";
+import { boolean, pgTableCreator, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 const todo1Table = pgTableCreator((name) => `todo1_${name}`);
 

@@ -20,10 +20,8 @@ export const TaskDeleteConfirmDialog: React.FC<{
     >
       <div>
         タスク`
-        <span className="mx-1 font-bold break-all text-neutral-900">
-          {task.title}
-        </span>
-        ` を削除してもよろしいですか？
+        <span className="mx-1 font-bold break-all text-neutral-900">{task.title}</span>`
+        を削除してもよろしいですか？
         <br />
         タスクを削除すると、もとに戻すことはできません。
       </div>

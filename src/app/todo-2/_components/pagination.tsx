@@ -1,10 +1,6 @@
 import { usePagination } from "@mantine/hooks";
 import clsx from "clsx";
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  MoreHorizontalIcon,
-} from "lucide-react";
+import { ChevronLeftIcon, ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
 
 type Props = {
   total: number;
@@ -31,8 +27,7 @@ export const Pagination: React.FC<Props> = ({ total, page, onChangePage }) => {
         <ChevronLeftIcon />
       </button>
       {pagination.range.map((r, i) => {
-        const baseClass =
-          "grid h-[25px] min-w-[25px] place-items-center rounded-sm text-sm";
+        const baseClass = "grid h-[25px] min-w-[25px] place-items-center rounded-sm text-sm";
 
         if (r === "dots") {
           return (
@@ -47,9 +42,7 @@ export const Pagination: React.FC<Props> = ({ total, page, onChangePage }) => {
             className={clsx(
               baseClass,
               "transition-colors",
-              pagination.active === r
-                ? "bg-zinc-100 text-zinc-700"
-                : "hover:bg-white/20",
+              pagination.active === r ? "bg-zinc-100 text-zinc-700" : "hover:bg-white/20",
             )}
             onClick={() => pagination.setPage(r)}
           >

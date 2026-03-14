@@ -47,38 +47,30 @@ Default.test("タイトル入力でタスクを作成できる", async ({ canvas
   });
 });
 
-Default.test(
-  "タイトル未入力時にエラーを表示する",
-  async ({ canvasElement }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const titleInput = canvas.getByRole("textbox");
+Default.test("タイトル未入力時にエラーを表示する", async ({ canvasElement }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const titleInput = canvas.getByRole("textbox");
 
-    await userEvent.type(titleInput, "{enter}");
+  await userEvent.type(titleInput, "{enter}");
 
-    await waitFor(async () => {
-      await expect(createTaskMock).not.toHaveBeenCalled();
-      await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タスクのタイトルを入力してください",
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(createTaskMock).not.toHaveBeenCalled();
+    await expect(titleInput).toHaveAccessibleErrorMessage("タスクのタイトルを入力してください");
+  });
+});
 
-Default.test(
-  "タイトルが長すぎるとエラーを表示する",
-  async ({ canvasElement }) => {
-    const canvas = within(canvasElement.parentElement!);
-    const titleInput = canvas.getByRole("textbox");
+Default.test("タイトルが長すぎるとエラーを表示する", async ({ canvasElement }) => {
+  const canvas = within(canvasElement.parentElement!);
+  const titleInput = canvas.getByRole("textbox");
 
-    await userEvent.click(titleInput);
-    await userEvent.paste(`${"a".repeat(200)}`);
-    await userEvent.type(titleInput, "{enter}");
+  await userEvent.click(titleInput);
+  await userEvent.paste(`${"a".repeat(200)}`);
+  await userEvent.type(titleInput, "{enter}");
 
-    await waitFor(async () => {
-      await expect(createTaskMock).not.toHaveBeenCalled();
-      await expect(titleInput).toHaveAccessibleErrorMessage(
-        "タスクのタイトルは100文字以内で入力してください",
-      );
-    });
-  },
-);
+  await waitFor(async () => {
+    await expect(createTaskMock).not.toHaveBeenCalled();
+    await expect(titleInput).toHaveAccessibleErrorMessage(
+      "タスクのタイトルは100文字以内で入力してください",
+    );
+  });
+});

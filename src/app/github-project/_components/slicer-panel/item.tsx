@@ -28,9 +28,7 @@ export const SlicerListItem: React.FC<Props> = ({ active = false, column }) => {
           <div className="flex flex-col items-start">
             <div className="text-sm">{column.status.name}</div>
             {column.status.description && (
-              <div className="text-xs text-neutral-400">
-                {column.status.description}
-              </div>
+              <div className="text-xs text-neutral-400">{column.status.description}</div>
             )}
           </div>
         </div>

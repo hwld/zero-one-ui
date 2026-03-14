@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
 import { FieldFilter, SelectionFilter } from "../../_backend/api";
 import { useTaskTablePaging } from "./paging-provider";
 import { errorIfProduction } from "../../../_test/utils";
@@ -19,13 +13,9 @@ export type TaskTableFilterContext = {
   removeAllFilter: () => void;
 };
 
-const TaskTableFilterContext = createContext<
-  TaskTableFilterContext | undefined
->(undefined);
+const TaskTableFilterContext = createContext<TaskTableFilterContext | undefined>(undefined);
 
-export const TaskTableFilterProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const TaskTableFilterProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { setPage } = useTaskTablePaging();
 
   const [fieldFilters, setFieldFilters] = useState<FieldFilter[]>([]);
@@ -60,9 +50,7 @@ export const TaskTableFilterProvider: React.FC<PropsWithChildren> = ({
   }, [fieldFilters, selectionFilter, setPage]);
 
   return (
-    <TaskTableFilterContext.Provider value={value}>
-      {children}
-    </TaskTableFilterContext.Provider>
+    <TaskTableFilterContext.Provider value={value}>{children}</TaskTableFilterContext.Provider>
   );
 };
 
@@ -84,8 +72,6 @@ export const MockTaskTableFilterProvider: React.FC<
   }
 
   return (
-    <TaskTableFilterContext.Provider value={value}>
-      {children}
-    </TaskTableFilterContext.Provider>
+    <TaskTableFilterContext.Provider value={value}>{children}</TaskTableFilterContext.Provider>
   );
 };

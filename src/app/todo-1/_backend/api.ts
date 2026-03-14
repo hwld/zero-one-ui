@@ -17,9 +17,7 @@ export const updateTaskInputSchema = z.object({
     .string()
     .min(1, "タスクのタイトルを入力してください")
     .max(100, "タスクのタイトルは100文字以内で入力してください"),
-  description: z
-    .string()
-    .max(10000, "タスクの説明は10000文字以内で入力してください"),
+  description: z.string().max(10000, "タスクの説明は10000文字以内で入力してください"),
   done: z.boolean(),
 });
 export type UpdateTaskInput = z.infer<typeof updateTaskInputSchema>;

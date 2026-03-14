@@ -11,11 +11,7 @@ export const ProjectsProvider: React.FC<{
   value: ProjectsContext;
   children: ReactNode;
 }> = ({ value, children }) => {
-  return (
-    <ProjectsContext.Provider value={value}>
-      {children}
-    </ProjectsContext.Provider>
-  );
+  return <ProjectsContext.Provider value={value}>{children}</ProjectsContext.Provider>;
 };
 
 export const useProjects = () => {

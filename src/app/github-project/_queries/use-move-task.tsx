@@ -14,8 +14,7 @@ export const useMoveTask = () => {
     onError: () => {
       toast({
         variant: "error",
-        description:
-          "タスクを移動することができませんでした。もう一度試してみてください。",
+        description: "タスクを移動することができませんでした。もう一度試してみてください。",
       });
     },
     onMutate: async (input) => {
@@ -25,9 +24,7 @@ export const useMoveTask = () => {
           return view;
         }
 
-        const targetTask = view.columns
-          .flatMap((c) => c.tasks)
-          .find((t) => t.id === input.taskId);
+        const targetTask = view.columns.flatMap((c) => c.tasks).find((t) => t.id === input.taskId);
 
         const taskDeletedView: View = {
           ...view,
@@ -52,10 +49,9 @@ export const useMoveTask = () => {
               throw new Error("存在しないタスク");
             }
 
-            const tasks = [
-              ...column.tasks,
-              { ...targetTask, order: input.newOrder },
-            ].sort((a, b) => a.order - b.order);
+            const tasks = [...column.tasks, { ...targetTask, order: input.newOrder }].sort(
+              (a, b) => a.order - b.order,
+            );
 
             return { ...column, tasks };
           }),

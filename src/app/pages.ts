@@ -41,16 +41,14 @@ export const pages: Page[] = [
     icon: LayoutListIcon,
     href: "/todo-1",
     title: "todoリスト",
-    description:
-      "浮いてるinputを使ったTodoリスト。\ninputの隣のメニューがお気に入り。",
+    description: "浮いてるinputを使ったTodoリスト。\ninputの隣のメニューがお気に入り。",
     tags: ["PC", "MOBILE", "LAYOUT"],
   },
   {
     icon: TablePropertiesIcon,
     href: "/todo-2",
     title: "todoリスト2",
-    description:
-      "表形式のtodoリスト。\nテーブルの部分だけカードになっているのがお気に入り。",
+    description: "表形式のtodoリスト。\nテーブルの部分だけカードになっているのがお気に入り。",
     tags: ["PC", "LAYOUT"],
   },
   {
@@ -72,16 +70,14 @@ export const pages: Page[] = [
     icon: RectangleEllipsisIcon,
     href: "/dynamic-island",
     title: "Dynamic Island",
-    description:
-      "Dynamic Islandみたいなメニュー。\nframer-motionでspring animationを使ってみた。",
+    description: "Dynamic Islandみたいなメニュー。\nframer-motionでspring animationを使ってみた。",
     tags: ["PC", "MOBILE", "PART"],
   },
   {
     icon: FullscreenIcon,
     href: "/continuty-transition",
     title: "ページトランジション",
-    description:
-      "モバイルでよくありそうなページトランジションをWebで作ってみた。",
+    description: "モバイルでよくありそうなページトランジションをWebで作ってみた。",
     tags: ["PC", "MOBILE", "LAYOUT"],
   },
   {
@@ -96,8 +92,7 @@ export const pages: Page[] = [
     icon: PlayCircleIcon,
     href: "/audio-player",
     title: "Audio Player",
-    description:
-      "ブラウザ上で音楽を再生できるオーディオプレイヤーを作ってみた。",
+    description: "ブラウザ上で音楽を再生できるオーディオプレイヤーを作ってみた。",
     tags: ["PC", "MOBILE", "PART"],
   },
   {
@@ -112,8 +107,7 @@ export const pages: Page[] = [
     icon: ListTreeIcon,
     href: "/tree-view",
     title: "TreeView",
-    description:
-      "階層構造のデータを視覚的に表示するためのTreeViewコンポーネント。",
+    description: "階層構造のデータを視覚的に表示するためのTreeViewコンポーネント。",
     tags: ["PC", "PART"],
   },
   {

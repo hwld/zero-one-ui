@@ -1,15 +1,7 @@
 import { useDropdown } from "./provider";
 import { ReactNode, useEffect } from "react";
-import {
-  AnimatePresence,
-  AnimatePresenceProps,
-  useIsPresent,
-} from "motion/react";
-import {
-  FloatingFocusManager,
-  FloatingOverlay,
-  FloatingPortal,
-} from "@floating-ui/react";
+import { AnimatePresence, AnimatePresenceProps, useIsPresent } from "motion/react";
+import { FloatingFocusManager, FloatingOverlay, FloatingPortal } from "@floating-ui/react";
 
 type BaseProps = {
   onEscapeKeydown?: (e: React.KeyboardEvent<HTMLElement>) => void;
@@ -28,8 +20,7 @@ export const DropdownContent: React.FC<DropdownContentProps> = ({
   animationMode,
 }) => {
   const isPresent = useIsPresent();
-  const { isOpen, refs, getFloatingProps, floatingStyles, context } =
-    useDropdown();
+  const { isOpen, refs, getFloatingProps, floatingStyles, context } = useDropdown();
 
   return (
     <AnimatePresence mode={animationMode}>
@@ -80,11 +71,7 @@ export const DropdownMultiContent = <T extends string>({
   }, [mode, setActiveIndex]);
 
   return (
-    <DropdownContent
-      contentKey={mode}
-      animationMode="wait"
-      onEscapeKeydown={onEscapeKeydown}
-    >
+    <DropdownContent contentKey={mode} animationMode="wait" onEscapeKeydown={onEscapeKeydown}>
       {contents[mode]}
     </DropdownContent>
   );

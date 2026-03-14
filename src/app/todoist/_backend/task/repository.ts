@@ -32,10 +32,7 @@ class TaskRepository {
     return recordsToTasks(this.taskRecords);
   };
 
-  public getMaxOrderByParentId = (
-    parentId: string | null,
-    taskboxId: string,
-  ) => {
+  public getMaxOrderByParentId = (parentId: string | null, taskboxId: string) => {
     const siblingsOrders = this.taskRecords
       .filter((t) => t.parentId === parentId && t.taskboxId === taskboxId)
       .map((t) => t.order);
@@ -44,9 +41,7 @@ class TaskRepository {
   };
 
   public add = (input: ValidatedCreateInput) => {
-    const newOrder =
-      input.order ??
-      this.getMaxOrderByParentId(input.parentId, input.taskboxId) + 1;
+    const newOrder = input.order ?? this.getMaxOrderByParentId(input.parentId, input.taskboxId) + 1;
 
     const newRecord: TaskRecord = {
       id: crypto.randomUUID(),
@@ -59,11 +54,7 @@ class TaskRepository {
     };
 
     this.taskRecords = this.taskRecords.map((t) => {
-      if (
-        t.taskboxId === input.taskboxId &&
-        t.parentId === input.parentId &&
-        t.order >= newOrder
-      ) {
+      if (t.taskboxId === input.taskboxId && t.parentId === input.parentId && t.order >= newOrder) {
         return { ...t, order: t.order + 1 };
       }
       return t;
@@ -144,26 +135,19 @@ const recordsToTasks = (taskRecords: TaskRecord[]): Task[] => {
 
     const parent = taskMap.get(task.parentId);
     if (!parent) {
-      throw new Error(
-        `親タスクが存在しない id:${task.id}, parentId:${task.parentId}`,
-      );
+      throw new Error(`親タスクが存在しない id:${task.id}, parentId:${task.parentId}`);
     }
 
     parent.subTasks.push(task);
     parent.subTasks.sort((a, b) => a.order - b.order);
   });
 
-  const result = tasks
-    .filter((t) => !t.parentId)
-    .sort((a, b) => a.order - b.order);
+  const result = tasks.filter((t) => !t.parentId).sort((a, b) => a.order - b.order);
 
   return result;
 };
 
-const allDescendantTaskIds = (
-  taskRecords: TaskRecord[],
-  taskId: string,
-): string[] => {
+const allDescendantTaskIds = (taskRecords: TaskRecord[], taskId: string): string[] => {
   const allTasks = recordsToTasks(taskRecords);
   const task = allTasks.find((t) => t.id === taskId);
   if (!task) {

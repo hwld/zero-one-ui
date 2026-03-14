@@ -11,11 +11,7 @@ type Props = {
   onSubmit: (input: ViewFormData) => void;
 };
 
-export const ViewForm: React.FC<Props> = ({
-  id,
-  defaultValues = { name: "" },
-  onSubmit,
-}) => {
+export const ViewForm: React.FC<Props> = ({ id, defaultValues = { name: "" }, onSubmit }) => {
   const {
     register,
     formState: { errors },

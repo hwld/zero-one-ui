@@ -37,9 +37,7 @@ const Page: NextPage = () => {
   const renderContent = () => {
     switch (status) {
       case "success": {
-        return (
-          <TaskTable paginatedTasks={data.tasks} totalPages={data.totalPages} />
-        );
+        return <TaskTable paginatedTasks={data.tasks} totalPages={data.totalPages} />;
       }
       case "pending": {
         return <LoadingTaskTable />;

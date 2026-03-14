@@ -15,14 +15,7 @@ type Props = {
 
 export const TaskStatusSelectionMenu = forwardRef<HTMLDivElement, Props>(
   function TaskStatusSelectionMenu(
-    {
-      allStatus,
-      currentStatus,
-      onBack,
-      onClose,
-      onSelect,
-      placeHolder = "Status...",
-    },
+    { allStatus, currentStatus, onBack, onClose, onSelect, placeHolder = "Status..." },
     ref,
   ) {
     return (

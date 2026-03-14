@@ -1,9 +1,5 @@
 import { z } from "zod";
-import {
-  TaskStatus,
-  taskStatusSchema,
-  taskStatusStore,
-} from "../task-status/store";
+import { TaskStatus, taskStatusSchema, taskStatusStore } from "../task-status/store";
 import { initialTasks } from "./data";
 
 export const taskSchema = z.object({
@@ -54,12 +50,7 @@ class TaskStore {
     return newTask;
   }
 
-  public update(input: {
-    id: string;
-    title: string;
-    comment: string;
-    statusId: string;
-  }) {
+  public update(input: { id: string; title: string; comment: string; statusId: string }) {
     this.throwErrorForScope("mutation");
 
     const status = taskStatusStore.get(input.statusId);

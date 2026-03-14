@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
 import { useTaskTablePaging } from "./paging-provider";
 import { errorIfProduction } from "../../../_test/utils";
 
@@ -13,13 +7,9 @@ export type TaskTableSearchContext = {
   search: (text: string) => void;
 };
 
-const TaskTableSearchContext = createContext<
-  TaskTableSearchContext | undefined
->(undefined);
+const TaskTableSearchContext = createContext<TaskTableSearchContext | undefined>(undefined);
 
-export const TaskTableSearchProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const TaskTableSearchProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { setPage } = useTaskTablePaging();
   const [searchText, setSefarchText] = useState<string>("");
 
@@ -34,9 +24,7 @@ export const TaskTableSearchProvider: React.FC<PropsWithChildren> = ({
   }, [searchText, setPage]);
 
   return (
-    <TaskTableSearchContext.Provider value={value}>
-      {children}
-    </TaskTableSearchContext.Provider>
+    <TaskTableSearchContext.Provider value={value}>{children}</TaskTableSearchContext.Provider>
   );
 };
 
@@ -59,8 +47,6 @@ export const MockTaskTableSearchProvider: React.FC<
   }
 
   return (
-    <TaskTableSearchContext.Provider value={value}>
-      {children}
-    </TaskTableSearchContext.Provider>
+    <TaskTableSearchContext.Provider value={value}>{children}</TaskTableSearchContext.Provider>
   );
 };

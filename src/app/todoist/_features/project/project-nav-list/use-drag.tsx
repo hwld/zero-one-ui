@@ -8,14 +8,7 @@ import {
   toProjectMap,
   updateProjectDepth,
 } from "../logic/project";
-import {
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Dispatch, SetStateAction, useCallback, useEffect, useRef, useState } from "react";
 import { useChangeProjectPosition } from "../use-change-project-position";
 import { ProjectExpansionMap } from "../logic/expansion-map";
 import type { ProjectsContext } from "../use-projects";
@@ -41,18 +34,14 @@ export const useDragProjectContext = ({
   updateProjectsCache,
 }: UseDragProjectListParams): DragProjectContext => {
   const changeProjectPosition = useChangeProjectPosition();
-  const [draggingProjectId, setDraggingProjectId] = useState<string | null>(
-    null,
-  );
+  const [draggingProjectId, setDraggingProjectId] = useState<string | null>(null);
   const dragStartProjectMap = useRef<ProjectMap>(new Map());
 
   const dragStartInfo = useRef({ x: 0, depth: 0 });
   const removedDescendantsRef = useRef<ProjectNode[]>([]);
 
   const queryClient = useQueryClient();
-  const mutationAbortController = useRef<AbortController | undefined>(
-    undefined,
-  );
+  const mutationAbortController = useRef<AbortController | undefined>(undefined);
 
   const handleDragStart: DragProjectContext["handleDragStart"] = useCallback(
     (e, project) => {
@@ -78,39 +67,26 @@ export const useDragProjectContext = ({
     [projectExpansionMap, updateProjectsCache],
   );
 
-  const handleMoveProjects: DragProjectContext["handleMoveProjects"] =
-    useCallback(
-      (draggingId, dragOverId) => {
-        updateProjectsCache((projects) => {
-          return moveProject(
-            projects,
-            projectExpansionMap,
-            draggingId,
-            dragOverId,
-          );
-        });
-      },
-      [projectExpansionMap, updateProjectsCache],
-    );
+  const handleMoveProjects: DragProjectContext["handleMoveProjects"] = useCallback(
+    (draggingId, dragOverId) => {
+      updateProjectsCache((projects) => {
+        return moveProject(projects, projectExpansionMap, draggingId, dragOverId);
+      });
+    },
+    [projectExpansionMap, updateProjectsCache],
+  );
 
-  const handleChangeDepth: DragProjectContext["handleChangeDepth"] =
-    useCallback(
-      (e, projectId) => {
-        const newDepth =
-          dragStartInfo.current.depth +
-          Math.floor((e.clientX - dragStartInfo.current.x) / 16);
+  const handleChangeDepth: DragProjectContext["handleChangeDepth"] = useCallback(
+    (e, projectId) => {
+      const newDepth =
+        dragStartInfo.current.depth + Math.floor((e.clientX - dragStartInfo.current.x) / 16);
 
-        updateProjectsCache((projects) => {
-          return updateProjectDepth(
-            projects,
-            projectExpansionMap,
-            projectId,
-            newDepth,
-          );
-        });
-      },
-      [projectExpansionMap, updateProjectsCache],
-    );
+      updateProjectsCache((projects) => {
+        return updateProjectDepth(projects, projectExpansionMap, projectId, newDepth);
+      });
+    },
+    [projectExpansionMap, updateProjectsCache],
+  );
 
   useEffect(() => {
     const handleDragEnd = () => {
@@ -170,17 +146,9 @@ export const useDragProjectContext = ({
   };
 };
 
-export const useDragProject = (
-  projectId: string,
-  context: DragProjectContext,
-) => {
+export const useDragProject = (projectId: string, context: DragProjectContext) => {
   const itemRef = useRef<HTMLLIElement>(null);
-  const {
-    handleMoveProjects,
-    handleChangeDepth,
-    draggingProjectId,
-    handleDragStart,
-  } = context;
+  const { handleMoveProjects, handleChangeDepth, draggingProjectId, handleDragStart } = context;
 
   const isDragging = projectId === draggingProjectId;
 
@@ -205,8 +173,7 @@ export const useDragProject = (
       }
 
       const itemRect = itemEl.getBoundingClientRect();
-      const isPointerOver =
-        e.clientY <= itemRect.bottom && e.clientY >= itemRect.top;
+      const isPointerOver = e.clientY <= itemRect.bottom && e.clientY >= itemRect.top;
       if (isPointerOver) {
         handleMoveProjects(draggingProjectId, projectId);
       }

@@ -16,10 +16,7 @@ export const TaskEditableTitle = forwardRef<
     onChangeEditable: (editable: boolean) => void;
     onChangeTitle: (title: string) => void;
   }
->(function EditableTaskTitle(
-  { task, editable, onChangeEditable, onChangeTitle },
-  _inputRef,
-) {
+>(function EditableTaskTitle({ task, editable, onChangeEditable, onChangeTitle }, _inputRef) {
   const {
     register,
     handleSubmit: createHandleSubmit,
@@ -86,10 +83,7 @@ export const TaskEditableTitle = forwardRef<
       </AnimatePresence>
     </Popover.Root>
   ) : (
-    <label
-      className="cursor-pointer break-all select-none checked:line-through"
-      htmlFor={task.id}
-    >
+    <label className="cursor-pointer break-all select-none checked:line-through" htmlFor={task.id}>
       {task.title}
     </label>
   );

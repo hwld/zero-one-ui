@@ -14,15 +14,11 @@ type SidebarContext = {
 
 const SidebarContext = createContext<SidebarContext | undefined>(undefined);
 
-export const SidebarContextProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const SidebarContextProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(true);
 
   return (
-    <SidebarContext.Provider value={{ isOpen, setIsOpen }}>
-      {children}
-    </SidebarContext.Provider>
+    <SidebarContext.Provider value={{ isOpen, setIsOpen }}>{children}</SidebarContext.Provider>
   );
 };
 

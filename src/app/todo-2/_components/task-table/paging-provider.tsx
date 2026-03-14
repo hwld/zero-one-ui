@@ -1,10 +1,4 @@
-import {
-  PropsWithChildren,
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-} from "react";
+import { PropsWithChildren, createContext, useContext, useMemo, useState } from "react";
 import { useScrollableRoot } from "../../_providers/scrollable-root-provider";
 import { errorIfProduction } from "../../../_test/utils";
 
@@ -16,13 +10,9 @@ export type TaskTablePagingContext = {
   setLimit: (limit: number) => void;
 };
 
-const TaskTablePagingContext = createContext<
-  TaskTablePagingContext | undefined
->(undefined);
+const TaskTablePagingContext = createContext<TaskTablePagingContext | undefined>(undefined);
 
-export const TaskTablePagingProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const TaskTablePagingProvider: React.FC<PropsWithChildren> = ({ children }) => {
   const { scrollableRootRef } = useScrollableRoot();
 
   const [page, setPage] = useState(1);
@@ -41,9 +31,7 @@ export const TaskTablePagingProvider: React.FC<PropsWithChildren> = ({
   }, [limit, page, scrollableRootRef]);
 
   return (
-    <TaskTablePagingContext.Provider value={value}>
-      {children}
-    </TaskTablePagingContext.Provider>
+    <TaskTablePagingContext.Provider value={value}>{children}</TaskTablePagingContext.Provider>
   );
 };
 
@@ -66,8 +54,6 @@ export const MockTaskTablePagingProvider: React.FC<
   }
 
   return (
-    <TaskTablePagingContext.Provider value={value}>
-      {children}
-    </TaskTablePagingContext.Provider>
+    <TaskTablePagingContext.Provider value={value}>{children}</TaskTablePagingContext.Provider>
   );
 };

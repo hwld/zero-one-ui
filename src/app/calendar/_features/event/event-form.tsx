@@ -14,13 +14,7 @@ import { TbAlertCircle } from "@react-icons/all-files/tb/TbAlertCircle";
 import { EventInput, eventInputFormSchema } from "../../_backend/api";
 import { Controller, useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  addMinutes,
-  differenceInMinutes,
-  format,
-  parse,
-  startOfDay,
-} from "date-fns";
+import { addMinutes, differenceInMinutes, format, parse, startOfDay } from "date-fns";
 import { DragDateRange } from "../../utils";
 import { cn } from "../../../../lib/utils";
 
@@ -36,9 +30,7 @@ const getDateFormatString = (allDay: boolean = false) => {
 };
 
 type Props = {
-  onChangeEventPeriodPreview?: Dispatch<
-    SetStateAction<DragDateRange | undefined>
-  >;
+  onChangeEventPeriodPreview?: Dispatch<SetStateAction<DragDateRange | undefined>>;
   onSubmit: (input: EventInput) => void;
   defaultValues: EventInput;
   isPending?: boolean;
@@ -126,11 +118,7 @@ export const EventForm: React.FC<Props> = ({
   };
 
   return (
-    <form
-      id={EVENT_FORM_ID}
-      onSubmit={handleSubmitEvent}
-      className="flex flex-col gap-4"
-    >
+    <form id={EVENT_FORM_ID} onSubmit={handleSubmitEvent} className="flex flex-col gap-4">
       <FormField icon={TbTextCaption} error={errors.title?.message}>
         <Input
           placeholder="タイトルを入力してください..."
@@ -200,9 +188,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       {...props}
       className={cn(
         "h-8 w-full rounded-sm border bg-neutral-50 px-2 text-sm placeholder:text-neutral-400 focus-visible:ring-1 focus-visible:outline-hidden",
-        error
-          ? "border-red-600 ring-red-600"
-          : "border-neutral-300 ring-neutral-500",
+        error ? "border-red-600 ring-red-600" : "border-neutral-300 ring-neutral-500",
         className,
       )}
     />
@@ -226,11 +212,7 @@ const DateInput = forwardRef<
   }, [isAllDay, value]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const date = parse(
-      e.target.value,
-      getDateFormatString(isAllDay),
-      new Date(),
-    );
+    const date = parse(e.target.value, getDateFormatString(isAllDay), new Date());
 
     if (isNaN(date.getTime())) {
       onChange(new Date());

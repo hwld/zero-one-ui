@@ -4,35 +4,24 @@ import { TaskboxNodesProvider } from "../_features/taskbox/taskbox-nodes-provide
 import { PiSpinnerGap } from "@react-icons/all-files/pi/PiSpinnerGap";
 import { useProjectsQuery } from "../_features/project/use-projects-query";
 import { AnimatePresence, motion } from "motion/react";
-import {
-  ProjectsProvider,
-  type ProjectsContext,
-} from "../_features/project/use-projects";
+import { ProjectsProvider, type ProjectsContext } from "../_features/project/use-projects";
 import { Button } from "./button";
 import { useInbox } from "../_features/inbox/use-inbox";
 
-export const GlobalDataProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
+export const GlobalDataProvider: React.FC<PropsWithChildren> = ({ children }) => {
   // prefetch
   useInbox();
 
-  const { data: taskboxNodes, status: taskboxNodesStatus } =
-    useQueryTaskboxNodes();
+  const { data: taskboxNodes, status: taskboxNodesStatus } = useQueryTaskboxNodes();
 
-  const {
-    data: projects = [],
-    updateProjectsCache,
-    status: projectsStatus,
-  } = useProjectsQuery();
+  const { data: projects = [], updateProjectsCache, status: projectsStatus } = useProjectsQuery();
 
   const projectsValue = useMemo(
     (): ProjectsContext => ({ projects, updateProjectsCache }),
     [projects, updateProjectsCache],
   );
 
-  const loading =
-    taskboxNodesStatus === "pending" || projectsStatus === "pending";
+  const loading = taskboxNodesStatus === "pending" || projectsStatus === "pending";
 
   const error = taskboxNodesStatus === "error" || projectsStatus === "error";
 
@@ -73,9 +62,7 @@ export const GlobalDataProvider: React.FC<PropsWithChildren> = ({
 
       {data ? (
         <ProjectsProvider value={projectsValue}>
-          <TaskboxNodesProvider taskboxNodes={taskboxNodes}>
-            {children}
-          </TaskboxNodesProvider>
+          <TaskboxNodesProvider taskboxNodes={taskboxNodes}>{children}</TaskboxNodesProvider>
         </ProjectsProvider>
       ) : null}
     </>
