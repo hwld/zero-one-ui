@@ -37,7 +37,8 @@ export const Button: React.FC<ButtonProps> = ({
   );
 };
 
-type ButtonLinkProps = BaseProps & LinkProps & { external?: boolean };
+type ButtonLinkProps = BaseProps & Omit<LinkProps, "href"> & { href: string; external?: boolean };
+
 export const ButtonLink: React.FC<ButtonLinkProps> = ({
   children,
   color = "default",
@@ -49,7 +50,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
 
   if (external) {
     return (
-      <a href={props.href.toString()} className={className}>
+      <a href={props.href} className={className}>
         {children}
       </a>
     );

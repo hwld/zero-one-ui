@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useAddTask } from "../_queries/use-add-task";
 import { CreateTaskInput, createTaskInputSchema } from "../_backend/api";
 
-export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm({}, _inputRef) {
+export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm(_, _inputRef) {
   const {
     register,
     formState: { errors },
@@ -24,7 +24,7 @@ export const TaskCreateInput = forwardRef<HTMLInputElement>(function TaskForm({}
   const inputRef = useMergeRefs([_inputRef, ref]);
 
   const handleBlur: FocusEventHandler<HTMLInputElement> = (e) => {
-    onBlur(e);
+    void onBlur(e);
     clearErrors("title");
   };
 

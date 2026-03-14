@@ -59,6 +59,7 @@ export const AudioPlayerCard: React.FC<Props> = ({
             {currentMusic?.fileName}
           </div>
         </div>
+        {/* oxlint-disable-next-line jsx_a11y/media-has-caption */}
         <audio ref={audioRef} {...handlers}></audio>
         <div className="flex grow flex-col items-center justify-between gap-2">
           <div className="flex w-full flex-col gap-2">

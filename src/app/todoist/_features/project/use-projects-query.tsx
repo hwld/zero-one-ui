@@ -16,7 +16,7 @@ export const useProjectsQuery = () => {
 
   const updateProjectsCache = useCallback(
     (callback: (projects: Project[]) => Project[]) => {
-      client.cancelQueries({
+      void client.cancelQueries({
         queryKey: projectsQueryOptions.queryKey,
       });
 

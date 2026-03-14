@@ -81,7 +81,7 @@ export const TaskForm: React.FC<Props> = ({
 
   useEffect(() => {
     // 初期レンダリングでエラーを表示させる
-    trigger();
+    void trigger();
   }, [trigger]);
 
   return (

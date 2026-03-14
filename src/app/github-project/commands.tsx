@@ -27,7 +27,7 @@ export const useGitHubProjectCommands = () => {
                 taskStore.addErrorSimulationScope("getAll");
               }
 
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
           {
@@ -44,7 +44,7 @@ export const useGitHubProjectCommands = () => {
                 taskStore.addErrorSimulationScope("mutation");
               }
 
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
         ],

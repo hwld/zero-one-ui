@@ -67,7 +67,7 @@ export const DateColCalendarDayHeader: React.FC<Props> = ({
         </div>
         {dates.map((date) => {
           return (
-            <div className="flex flex-col" key={`${date}`}>
+            <div className="flex flex-col" key={date.toISOString()}>
               <div
                 className={clsx(
                   "flex items-center justify-center gap-1 pb-1 text-xs select-none",

@@ -110,7 +110,7 @@ export const useAudio = ({ src, initialVolume: _initialVolume = 1 }: UseAudioPar
 
       window.setTimeout(() => {
         if (audioRef.current && seekStartPlaying.current) {
-          audioRef.current.play();
+          void audioRef.current.play();
         }
         seekStartPlaying.current = undefined;
       }, 0);

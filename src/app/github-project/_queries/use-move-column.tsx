@@ -26,14 +26,14 @@ export const useMoveColumn = () => {
 
         return {
           ...view,
-          columns: [
-            ...view.columns.map((column) => {
+          columns: view.columns
+            .map((column) => {
               if (column.statusId === input.statusId) {
                 return { ...column, order: input.newOrder };
               }
               return column;
-            }),
-          ].sort((a, b) => a.order - b.order),
+            })
+            .sort((a, b) => a.order - b.order),
         };
       });
     },

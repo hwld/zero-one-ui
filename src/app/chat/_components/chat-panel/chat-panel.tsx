@@ -13,11 +13,17 @@ export const ChatPanel: React.FC = () => {
 
     const form = e.target as HTMLFormElement;
     const formData = new FormData(form);
+    const chat = formData.get(chatInputName);
+
+    if (typeof chat !== "string") {
+      return;
+    }
+
     setChats((c) => [
       ...c,
       {
         id: crypto.randomUUID(),
-        text: formData.get(chatInputName)!.toString(),
+        text: chat,
       },
     ]);
 

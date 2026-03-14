@@ -30,7 +30,7 @@ export const TaskEditableTitle = forwardRef<
   const ref = useMergeRefs([_inputRef, _ref]);
 
   const handleBlur: FocusEventHandler<HTMLInputElement> = (e) => {
-    onBlur(e);
+    void onBlur(e);
     onChangeEditable(false);
   };
 

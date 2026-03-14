@@ -32,6 +32,9 @@ export default defineConfig({
           img: ["Image"],
         },
       ],
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-autofocus": "off",
+      "jsx-a11y/no-static-element-interactions": "off",
       "no-restricted-globals": [
         "error",
         {
@@ -49,7 +52,6 @@ export default defineConfig({
           destructuredArrayIgnorePattern: "^_",
         },
       ],
-      "react-hooks/exhaustive-deps": "warn",
       // TODO: https://github.com/facebook/react/issues/34775 が解決するのを待つ
       "react-hooks/refs": "off",
       "react-hooks/rules-of-hooks": "error",

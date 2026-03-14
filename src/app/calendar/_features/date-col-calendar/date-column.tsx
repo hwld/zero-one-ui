@@ -49,7 +49,7 @@ export const DateColumn = forwardRef<HTMLDivElement, Props>(function DateColumn(
             }
             return (
               <div
-                key={`${hour}`}
+                key={hour.toISOString()}
                 className="absolute h-px w-full bg-neutral-200"
                 style={{
                   top: DATE_EVENT_MIN_HEIGHT * (60 / DATE_EVENT_MIN_MINUTES) * i,

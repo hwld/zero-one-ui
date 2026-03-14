@@ -24,7 +24,7 @@ export const useCalendarCommands = () => {
               setErrorSimulationScope((s) => ({ ...s, query: !s.query }));
               eventStore.setErrorSimulationScope("query", !errorSimulationScope.query);
 
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
           {
@@ -34,7 +34,7 @@ export const useCalendarCommands = () => {
               setErrorSimulationScope((s) => ({ ...s, mutation: !s.mutation }));
               eventStore.setErrorSimulationScope("mutation", !errorSimulationScope.mutation);
 
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
         ],

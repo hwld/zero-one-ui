@@ -1,4 +1,4 @@
-import { DragEvent, SyntheticEvent, forwardRef, useMemo, useRef, useState } from "react";
+import { SyntheticEvent, forwardRef, useMemo, useRef, useState } from "react";
 import { ResizeEventInColPreview } from "../type";
 import { EventInCol } from "../type";
 import { calcEventInColCardStyle } from "../utils";

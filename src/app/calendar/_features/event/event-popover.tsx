@@ -63,7 +63,7 @@ export const EventPopover: React.FC<Props> = ({
 
   const deleteEvent = useDeleteEvent();
   const handleDelete = () => {
-    deleteEvent(event.id);
+    void deleteEvent(event.id);
   };
 
   const [isUpdateDialogOpen, setIsUpdateDialogOpen] = useState(false);

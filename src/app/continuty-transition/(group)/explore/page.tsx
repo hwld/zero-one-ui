@@ -8,7 +8,7 @@ const Page = () => {
     <div>
       <h1 className="mb-10 text-3xl font-bold">Explore</h1>
       <ContentContainer>
-        {[...new Array(300)].map((_, i) => {
+        {Array.from({ length: 300 }, (_, i) => {
           return <Content key={i} />;
         })}
       </ContentContainer>

@@ -25,7 +25,7 @@ export const useTodo2HomeCommands = () => {
                 todo2ErrorSimulator.addErrorSimulationScope("getAll");
               }
 
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
           {
@@ -33,7 +33,7 @@ export const useTodo2HomeCommands = () => {
             label: "タスク一覧を空にする",
             action: async () => {
               await todo2TaskRepository.clear();
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
           {
@@ -41,7 +41,7 @@ export const useTodo2HomeCommands = () => {
             label: "タスク一覧を初期化する",
             action: async () => {
               await resetTodo2Data();
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
         ],
@@ -75,7 +75,7 @@ export const useTodo2DetailCommands = () => {
                 todo2ErrorSimulator.addErrorSimulationScope("get");
               }
 
-              client.refetchQueries();
+              void client.refetchQueries();
             },
           },
         ],

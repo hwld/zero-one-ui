@@ -6,7 +6,7 @@ import { ensureSchema } from "../../lib/db/migrate";
 
 export const PGliteProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   useEffect(() => {
-    (async () => {
+    void (async () => {
       try {
         await pgliteManager.startInitialization();
         await ensureSchema();

@@ -119,7 +119,9 @@ const DateColCalendarImpl: React.FC<DateColCalendarProps> = ({ cols, viewDate, e
               })}
             </div>
             {calendarViewDates.map((date) => {
-              return <DateColumn key={`${date}`} displayedDay={date} events={defaultEvents} />;
+              return (
+                <DateColumn key={date.toISOString()} displayedDay={date} events={defaultEvents} />
+              );
             })}
             <div
               className="absolute grid h-px w-full"

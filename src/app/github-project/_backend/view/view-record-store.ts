@@ -26,7 +26,7 @@ type ViewTaskRecord = z.infer<typeof viewTaskRecordSchema>;
 type ViewRecord = z.infer<typeof viewRecordSchema>;
 
 class ViewRecordStore {
-  private viewRecords = [...new Array(3)].map((_, i): ViewRecord => {
+  private viewRecords = Array.from({ length: 3 }, (_, i): ViewRecord => {
     const columnRecords = initialStatuses.map((status, i): ViewColumnRecord => {
       return { statusId: status.id, order: i + 1 };
     });

@@ -34,7 +34,7 @@ const Page: React.FC = () => {
     <>
       <div className={clsx("grid h-full min-h-screen place-items-center", bgClass)}>
         <div className="relative flex min-h-screen w-full max-w-(--breakpoint-lg) flex-wrap justify-center gap-4 px-2 pt-10">
-          {[...new Array(30)].map((_, i) => {
+          {Array.from({ length: 30 }, (_, i) => {
             return <div key={i} className="h-[150px] w-[300px] rounded-lg bg-black/5" />;
           })}
         </div>

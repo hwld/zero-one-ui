@@ -72,7 +72,7 @@ const MonthlyCalendarImpl: React.FC<Props> = ({ yearMonth, events }) => {
           {calendar.map((week, i) => {
             return (
               <WeekRow
-                key={`${week[i]}`}
+                key={week[i].toISOString()}
                 rowRef={i === 0 ? firstEventsRowRef : undefined}
                 week={week}
                 events={events}
