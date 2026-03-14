@@ -3,7 +3,19 @@
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.wordWrap": "on",
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
+    "source.fixAll.oxc": "explicit"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "oxc.oxc-vscode"
   },
   "tailwindCSS.classAttributes": [
     ".*Class",
@@ -17,6 +29,5 @@
   "tailwindCSS.classFunctions": ["tv", "clsx"],
   "editor.codeLens": true,
   "typescript.referencesCodeLens.enabled": true,
-  "tailwindCSS.lint.suggestCanonicalClasses": "ignore",
-  "prettier.trailingComma": "all"
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore"
 }

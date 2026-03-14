@@ -17,9 +17,9 @@ PRのマージフローには重要なルールがある: **PRブランチ側に
 gh pr list --base renovate-base --state open
 ```
 
-### 2. ユーザーにどのPRを処理するか確認
+### 2. どのPRを処理するか確認
 
-AskUserQuestionツールを使って、一覧からどのPRを処理するかユーザーに選択してもらう。
+利用可能な確認手段で、一覧からどのPRを処理するかユーザーに選択してもらう。
 
 ### 3. 選択されたPRのブランチをチェックアウト
 
@@ -39,7 +39,7 @@ git merge origin/renovate-base
 
 - **lock fileのみのコンフリクト** (`pnpm-lock.yaml`):
   1. `git checkout --theirs pnpm-lock.yaml` でlock fileを一旦解消
-  2. `pnpm install` でlock fileを再生成
+  2. `vp install` でlock fileを再生成
   3. `git add pnpm-lock.yaml`
   4. `git commit` でマージコミットを完了
 

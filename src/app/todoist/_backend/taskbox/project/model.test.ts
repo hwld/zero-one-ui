@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import {
   getOrderBasedOnProject,
   validateDeleteInput,
@@ -77,10 +77,7 @@ describe("project model", () => {
 
     it("プロジェクトが存在しないときにはエラー", () => {
       const execute = () =>
-        validateUpdateInput(
-          { id: "1", label: "label" },
-          { getProject: () => undefined },
-        );
+        validateUpdateInput({ id: "1", label: "label" }, { getProject: () => undefined });
 
       expect(execute).toThrowError();
     });
@@ -135,10 +132,7 @@ describe("project model", () => {
 
     it("存在しないプロジェクトだとエラー", () => {
       const execute = () => {
-        validateDeleteInput(
-          { projectId: "1" },
-          { getProject: () => undefined },
-        );
+        validateDeleteInput({ projectId: "1" }, { getProject: () => undefined });
       };
 
       expect(execute).toThrowError();
