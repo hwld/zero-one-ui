@@ -1,13 +1,13 @@
 ---
 name: merge-renovate
-description: renovate PRをrenovate-baseブランチに安全にマージする
+description: renovate PRをrenovate-baseブランチに安全にマージするスキル。ユーザーが「renovateのPRをマージして」「renovate-baseにマージ」「依存関係の更新PRを処理して」「renovate PR」などと言ったときに使う。/merge-renovateコマンドでも呼び出される。
 ---
 
 # merge-renovate
 
-renovate PRのコンフリクトを解消し、renovate-baseブランチにマージするスキル。
+renovate PRのコンフリクトを解消し、renovate-baseブランチにマージする。
 
-**重要: PRブランチ側にベースブランチをマージしてからPRブランチにpushすること。ベースブランチに直接マージ・pushしてはいけない。**
+PRのマージフローには重要なルールがある: **PRブランチ側にベースブランチをマージしてからPRブランチにpushする**こと。ベースブランチに直接マージ・pushすると、PRのレビューフローを壊してしまうため。
 
 ## 手順
 
