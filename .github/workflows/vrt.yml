@@ -10,23 +10,20 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - uses: pnpm/action-setup@v4
+      - uses: docker/setup-buildx-action@v3
+
+      - name: "Build VRT image"
+        uses: docker/build-push-action@v6
         with:
-          version: 10
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-          cache: pnpm
-
-      - name: "Install dependencies"
-        run: pnpm install --frozen-lockfile
-
-      - name: "Install Playwright"
-        run: pnpm exec playwright install --with-deps chromium
+          context: .
+          file: e2e/vrt/Dockerfile
+          load: true
+          tags: zero-one-ui-vrt
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
       - name: "Run VRT"
-        run: pnpm vrt
+        run: docker compose -f e2e/vrt/compose.yml run --rm vrt pnpm playwright test --config playwright-vrt.config.ts
 
       - name: "Upload report"
         if: failure()
