@@ -1,0 +1,39 @@
+name: VRT
+on:
+  workflow_dispatch:
+
+jobs:
+  vrt:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: "Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      - name: "Install Playwright"
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: "Run VRT"
+        run: pnpm vrt
+
+      - name: "Upload report"
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: vrt-report
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7
