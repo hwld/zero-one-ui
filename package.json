@@ -17,8 +17,8 @@
     "storybook:build": "storybook build",
     "storybook:test": "vitest run --project=storybook",
     "db:generate": "tsx scripts/generate-schema.ts",
-    "vrt": "playwright test --config playwright-vrt.config.ts",
-    "vrt:update": "playwright test --config playwright-vrt.config.ts --update-snapshots"
+    "vrt": "docker compose -f e2e/vrt/compose.yml run --rm vrt pnpm playwright test --config playwright-vrt.config.ts",
+    "vrt:update": "docker compose -f e2e/vrt/compose.yml run --rm vrt pnpm playwright test --config playwright-vrt.config.ts --update-snapshots"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.3.15",
