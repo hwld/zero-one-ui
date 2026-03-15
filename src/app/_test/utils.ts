@@ -11,6 +11,20 @@ export const waitForAnimation = () => {
 };
 
 /**
+ * VRTでPlaywrightがスクショを撮る前にストーリーの準備完了を待つためのマーカー。
+ */
+export const storyReadySelector = "body[data-story-ready]";
+
+/**
+ * VRTでPlaywrightがスクショを撮る前にストーリーの準備完了を待つためのマーカーを設定する。
+ * 非同期データ取得があるストーリーのplay関数の最後で呼ぶ。
+ * ストーリーにはtags: ["wait-for-ready"]を設定する必要がある。
+ */
+export const markStoryReady = () => {
+  document.body.dataset.storyReady = "true";
+};
+
+/**
  * 本番環境で実行されたときにエラーを出す関数。
  * テスト用のContextProviderを公開するときなどに使用する
  */

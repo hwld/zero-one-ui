@@ -42,3 +42,7 @@ firebase-debug.log
 storybook-static
 
 src/lib/db/migrations
+
+# playwright
+test-results
+playwright-report
