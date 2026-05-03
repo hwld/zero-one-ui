@@ -1,11 +1,9 @@
-import { Meta } from "@storybook/react";
-import { todo2Handlers } from "./_backend/api";
+import { Meta } from "@storybook/nextjs-vite";
 import { DefaultQueryClientProvider } from "../_providers/default-query-client-provider";
 
 export const defaultStoryMeta = {
-  parameters: {
-    backgrounds: { default: "dark" },
-    msw: { handlers: [...todo2Handlers] },
+  globals: {
+    backgrounds: { value: "dark" },
   },
   decorators: [
     (Story: React.FC) => {

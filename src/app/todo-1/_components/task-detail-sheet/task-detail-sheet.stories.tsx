@@ -11,7 +11,7 @@ import {
 } from "storybook/test";
 import { HttpResponse, http } from "msw";
 import { Todo1API, updateTaskInputSchema } from "../../_backend/api";
-import { waitForAnimation } from "../../../_test/utils";
+import { markStoryReady, waitForAnimation } from "../../../_test/utils";
 import preview from "../../../../../.storybook/preview";
 
 const updateTaskMock = fn();
@@ -50,6 +50,11 @@ export const Default = meta.story({
     isOpen: true,
     onOpenChange: handleOpenChangeMock,
     taskId: dummyTask.id,
+  },
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement.parentElement!);
+    await canvas.findByText(dummyTask.title);
+    markStoryReady();
   },
 });
 

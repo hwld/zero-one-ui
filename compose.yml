@@ -1,0 +1,11 @@
+services:
+  vrt:
+    image: zero-one-ui-vrt
+    build:
+      context: .
+      dockerfile: e2e/vrt/Dockerfile
+    ipc: host
+    volumes:
+      - ./e2e/vrt/__screenshots__:/work/e2e/vrt/__screenshots__
+      - ./test-results:/work/test-results
+      - ./playwright-report:/work/playwright-report

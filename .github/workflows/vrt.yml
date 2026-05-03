@@ -1,0 +1,60 @@
+name: VRT
+on:
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: vrt-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  vrt:
+    runs-on: ubuntu-24.04
+    # ローカルのDocker環境と同じPlaywright公式イメージを使用して
+    # フォントやブラウザ環境を統一する
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: pnpm
+
+      - name: "Install dependencies"
+        run: pnpm install --frozen-lockfile
+
+      - name: "Run VRT"
+        run: pnpm vrt:ci
+
+      - name: "Upload report"
+        id: upload-report
+        if: failure()
+        uses: actions/upload-artifact@v7
+        with:
+          name: vrt-report-pr${{ github.event.number }}-${{ github.sha }}
+          path: |
+            playwright-report
+            test-results
+          retention-days: 7
+
+      - name: "Comment on PR"
+        if: failure() && github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const artifactUrl = '${{ steps.upload-report.outputs.artifact-url }}';
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: `## VRT 差分検出\n\nスクリーンショットに差分があります。レポートをダウンロードして \`index.html\` を開いてください。\n\n[レポートをダウンロード](${artifactUrl})`
+            });
