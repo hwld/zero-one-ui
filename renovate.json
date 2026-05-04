@@ -4,10 +4,6 @@
   "baseBranchPatterns": ["renovate-base"],
   "schedule": ["after 6pm on Friday"],
   "minimumReleaseAge": "14 days",
-  "lockFileMaintenance": {
-    "enabled": true,
-    "automerge": true
-  },
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
