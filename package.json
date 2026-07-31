@@ -24,7 +24,7 @@
     "vrt:ci": "pnpm _vrt:test"
   },
   "dependencies": {
-    "@electric-sql/pglite": "^0.3.15",
+    "@electric-sql/pglite": "^0.5.0",
     "@floating-ui/react": "^0.27.16",
     "@hookform/resolvers": "^5.2.2",
     "@mantine/hooks": "^8.3.10",
